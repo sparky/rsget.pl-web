@@ -3,9 +3,7 @@
 set -e
 set -x
 
-cd svn
-svn up
-cd ..
+svn co http://svn.pld-linux.org/svn/toys/rsget.pl svn
 
 rm -rf rsget.pl
 ./file_info.pl
