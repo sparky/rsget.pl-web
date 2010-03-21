@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--
+     http://rsget.pl/ error page
+     2010 (c) Przemysław Iskra <sparky@pld-linux.org>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>rsget.pl</title>
+	<link rel="stylesheet" type="text/css" href="/_style/screen.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/_style/print.css" media="print" />
+	<link rel="shortcut icon" href="/_style/favicon.png" />
+</head>
+<body id="body">
+
+<div class="column center">
+	<div class="head">
+		<h1>Error 666</h1>
+	</div>
+	<div class="body">
+		<img src="/_style/hook.png" class="logo" alt="rsget.pl" />
+		<p style="font-size: 20pt"><tt style="font-size: 20pt">www.</tt> is not allowed !</p>
+
+		<p>
+			As a punishment you will have to redirect yourself manually
+			to the correct page. Go to the address bar,
+			select <tt class="selection">www.</tt>, hit delete key
+			and then press enter.
+		</p>
+		<hr />
+		<p>
+			You should take your frustration out on the
+			person who gave you that incorrect link.
+		</p>
+		<address>2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;</address>
+	</div>
+	<hr class="foot"/>
+</div>
+
+
+</body>
+</html>

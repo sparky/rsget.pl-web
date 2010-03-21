@@ -1,0 +1,40 @@
+index:	0
+title:	PrzeklejPL
+desc:	[przeklej.pl] <a href="http://www.przeklej.pl/">"http://www.przeklej.pl/"</a>
+
+body:	
+	<p>Check <a href="http://www.przeklej.pl/regulamin">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: PrzeklejPL 11257 2010-03-12 02:56:59Z sparky $
+# Get::PrzeklejPL - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: PrzeklejPL
+short: przeklej.pl
+web: "http://www.przeklej.pl/"
+tos: "http://www.przeklej.pl/regulamin"
+uri: qr{przeklej\.pl/plik/}
+slots: max
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /Plik nie istnieje/;
+
+	! m{&lt;h1&gt;&lt;a href="(/download/.*?)" title="Pobierz plik"&gt;(.*?)&lt;/a&gt;&lt;/h1&gt;&lt;span class="size".*?&gt; \(($STDSIZE)\)&lt;/span&gt;};
+	my ( $file_uri, $name, $size ) = ( $1, $2, $3 );
+
+	$name =~ s/(.*) \./$1_www.przeklej.pl./
+		unless $name =~ s/\.\.\.$/\0/;
+
+	INFO( ainame =&gt; $name, asize =&gt; $size );
+
+	CLICK_DOWNLOAD( de_ml( $file_uri ) );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

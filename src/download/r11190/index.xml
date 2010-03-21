@@ -1,0 +1,73 @@
+index:	-11190
+title:	r11190
+desc:	
+	<ul>
+		<li>File: <a href="/download/rsget.pl-11190.tar.bz2">rsget.pl-11190.tar.bz2</a></li>
+		<li>Date: 2010-02-26</li>
+		<li>Size: 130531</li>
+		<li>MD5: <tt>199d9a18b6e62c7690988598884407ab</tt></li>
+	</ul>
+
+body:	
+	<h2>SVN changelog</h2>
+	<p>Commits: 29</p>
+	<dl>
+		<dt id="r11190"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11190&amp;view=rev">r11190</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-26 22:30:48 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- LC_ALL=C</pre></dd>
+		<dt id="r11181"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11181&amp;view=rev">r11181</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-25 21:02:48 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/EasyShare">Get/EasyShare</a></li></ul><pre>- update wait message</pre></dd>
+		<dt id="r11180"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11180&amp;view=rev">r11180</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-25 20:57:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl">/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio">Audio/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get">Get/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image">Image/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link">Link/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet">RSGet/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video">Video/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data">data/</a></li></ul><pre>- ignore *~</pre></dd>
+		<dt id="r11179"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11179&amp;view=rev">r11179</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-25 20:55:03 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t">t/</a></li></ul><pre>- ignore *~ and *.nonfree</pre></dd>
+		<dt id="r11178"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11178&amp;view=rev">r11178</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-25 20:30:49 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/EasyShare">Get/EasyShare</a></li></ul><pre>- fix it my way</pre></dd>
+		<dt id="r11177"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11177&amp;view=rev">r11177</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-02-25 20:12:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/EasyShare">Get/EasyShare</a></li></ul><pre>- Captcha seems to be (temporary?) disabled on EasyShare.</pre></dd>
+		<dt id="r11176"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11176&amp;view=rev">r11176</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-25 00:30:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/YouTube">Link/YouTube</a></li></ul><pre>- uniq uris on the list</pre></dd>
+		<dt id="r11175"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11175&amp;view=rev">r11175</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-24 19:46:43 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/YouTube">Link/YouTube</a></li></ul><pre>- add video playlist support</pre></dd>
+		<dt id="r11160"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11160&amp;view=rev">r11160</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-23 02:30:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- use dumper from get object</pre></dd>
+		<dt id="r11159"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11159&amp;view=rev">r11159</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-23 02:29:42 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- better debug dumper</pre></dd>
+		<dt id="r11158"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11158&amp;view=rev">r11158</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-22 22:37:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a></li></ul><pre>- wait some additional time before starting download</pre></dd>
+		<dt id="r11157"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11157&amp;view=rev">r11157</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-22 02:42:15 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t/check">t/check</a></li></ul><pre>- decode file names</pre></dd>
+		<dt id="r11156"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11156&amp;view=rev">r11156</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-22 02:41:51 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t/Get::X7">t/Get::X7</a></li></ul><pre>- new, tests for x7.to</pre></dd>
+		<dt id="r11155"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11155&amp;view=rev">r11155</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-22 02:41:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a></li></ul><pre>- new, still somewhat problematic</pre></dd>
+		<dt id="r11154"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11154&amp;view=rev">r11154</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-21 01:54:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a></li></ul><pre>- unify pl. uris</pre></dd>
+		<dt id="r11153"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11153&amp;view=rev">r11153</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-21 01:54:09 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t/Get::HotFile">t/Get::HotFile</a></li></ul><pre>- tests for hotfile getter</pre></dd>
+		<dt id="r11152"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11152&amp;view=rev">r11152</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-21 01:53:05 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t">t/</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t/check">t/check</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/t/prepare">t/prepare</a></li></ul><pre>- added some download tests</pre></dd>
+		<dt id="r11150"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11150&amp;view=rev">r11150</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-19 16:40:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/addgetter">addgetter</a></li></ul><pre>- automatically add file to svn and set Id keyword</pre></dd>
+		<dt id="r11149"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11149&amp;view=rev">r11149</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-19 16:23:36 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/XHamster">Video/XHamster</a></li></ul><pre>- new, position 90 @ alexa</pre></dd>
+		<dt id="r11148"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11148&amp;view=rev">r11148</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-19 15:17:50 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio/.template">Audio/.template</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/.template">Get/.template</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image/.template">Image/.template</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/.template">Link/.template</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/.template">Video/.template</a></li></ul><pre>- date updated</pre></dd>
+		<dt id="r11147"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11147&amp;view=rev">r11147</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-19 15:15:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/ExtremeTube">Video/ExtremeTube</a></li></ul><pre>- fixed date and $Id$</pre></dd>
+		<dt id="r11146"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11146&amp;view=rev">r11146</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-19 15:04:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/ExtremeTube">Video/ExtremeTube</a></li></ul><pre>- new, becouse someone sent it to me</pre></dd>
+		<dt id="r11144"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11144&amp;view=rev">r11144</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-15 18:05:52 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- allow setting perl interpreter</pre></dd>
+		<dt id="r11143"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11143&amp;view=rev">r11143</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-14 23:39:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a></li></ul><pre>- detect download limit</pre></dd>
+		<dt id="r11139"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11139&amp;view=rev">r11139</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-02-09 22:10:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UploadingCom">Get/UploadingCom</a></li></ul><pre>- updated for file changes</pre></dd>
+		<dt id="r11128"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11128&amp;view=rev">r11128</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-02-06 23:25:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a></li></ul><pre>- Accept http://pl.hotfile.com/... links</pre></dd>
+		<dt id="r11123"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11123&amp;view=rev">r11123</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-01-30 22:44:42 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a></li></ul><pre>- default to fmt 18</pre></dd>
+		<dt id="r11122"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11122&amp;view=rev">r11122</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-01-30 22:16:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a></li></ul><pre>- added fmt 37 (1080p)</pre></dd>
+		<dt id="r11120"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11120&amp;view=rev">r11120</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-01-24 02:37:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a></li></ul><pre>- fix unify</pre></dd>
+	</dl>

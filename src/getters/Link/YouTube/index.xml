@@ -1,0 +1,47 @@
+index:	0
+title:	YouTube
+desc:	[L:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a>
+
+body:	
+	<p>Status: OK 2010-02-24</p>
+	<pre># $Id: YouTube 11176 2010-02-25 00:30:14Z sparky $
+# Link::YouTube - Link retriever plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: YouTube
+short: L:YouTube
+web: "http://www.youtube.com/"
+uri: qr{youtube\.com/view_play_list\?p=([A-F0-9]{16})}
+slots: max
+status: OK 2010-02-24
+
+unify:
+	return "http://www.youtube.com/view_play_list?p=$1"
+		if m{youtube\.com/view_play_list\?p=([A-F0-9]{16})};
+
+start:
+	GET( $-{_uri} );
+
+stage_morelinks:
+	push @{$-{list}}, $1 while s# href="(/watch\?v=.*?)\&amp;feature=PlayList##;
+
+	if ( m{class="pagerCurrent".*&lt;a href='(.*/view_play_list\?p=.{16}&amp;page=\d+)' class="pagerNotCurrent" &gt;}s ) {
+		GET_NEXT( stage_morelinks, $1 );
+	}
+
+	my @list = @{$-{list}};
+	my %list;
+	my @outlist;
+	foreach ( @list ) {
+		next if exists $list{ $_ };
+		push @outlist, "http://www.youtube.com$_";
+		$list{ $_ } = 1;
+	}
+
+	LINK( @outlist );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

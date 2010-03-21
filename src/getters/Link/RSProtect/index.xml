@@ -1,0 +1,34 @@
+index:	0
+title:	RSProtect
+desc:	[L:RSProtect] <a href="http://www.rsprotect.com/">"http://www.rsprotect.com/"</a>
+
+body:	
+	<p>Status: OK 2009-10-24</p>
+	<pre># $Id: RSProtect 11111 2010-01-13 13:09:39Z sparky $
+# Link::RSProtect - Link decrypter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: RSProtect
+short: L:RSProtect
+web: "http://www.rsprotect.com/"
+uri: qr{rsprotect\.com/rc-.*?/}
+slots: max
+status: OK 2009-10-24
+
+unify:
+	s/#.*//;
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;form method="post" onsubmit="return ch.*?" action="(.*?)"};
+	$_ = $1;
+	s/&amp;#x(..);/chr hex $1/eg;
+
+	LINK( $_ );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

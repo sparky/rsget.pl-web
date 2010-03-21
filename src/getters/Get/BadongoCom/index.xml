@@ -1,0 +1,164 @@
+index:	0
+title:	BadongoCom
+desc:	[BC] <a href="http://www.badongo.com/">"http://www.badongo.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: BadongoCom 11251 2010-03-11 17:32:15Z sparky $
+# Get::BadongoCom - File, audio, video and picture getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: BadongoCom
+short: BC
+web: "http://www.badongo.com/"
+uri: qr{badongo\.com/}
+cookie: !badongo
+status: OK 2010-03-11
+
+unify:
+	s/#.*//; s{/$}{};
+	my $host = "http://www.badongo.com";
+	return "$host/file/$1" if m{/c?file/(\d+(/.*)?)};
+	return "$host/vid/$1/1" if m{/c?vid/(\d+)};
+	return "$host/pic/$1" if m{/pic/(\d+)};
+	return "$host/file/$1" if m{/audio/(\d+)};
+
+start:
+	COOKIE( [ (qw(.badongo.com TRUE / FALSE), time + 86400, 'badongoL', 'en' ) ] );
+
+	GET( $-{_uri} );
+
+	GOTO stage_getlink if $-{_referer} =~ m{/c(?:file|vid)/};
+
+	ERROR( "file not found" ) if /&lt;div id="fileError"&gt;/;
+
+	if ( not /This file has been split/ or $-{_referer} =~ m{/\d+/(.+)$} ) {
+		my $part = $1;
+		! m{&lt;div class="finfo"&gt;(.*?)&lt;/div&gt;};
+		my $name = $1;
+		! m{&lt;div class="ffileinfo"&gt;Views : \d+ \| Filesize : ($STDSIZE)&lt;/div&gt;};
+		my $size = $1;
+		if ( $part ) {
+			INFO( name =&gt; "$name.$part", quality =&gt; "part of $1" );
+		} else {
+			INFO( name =&gt; $name, asize =&gt; $1 );
+		}
+	}
+
+	GOTO stage_getpic if $-{_referer} =~ m{/pic/};
+
+stage_getcaptcha:
+	my $rsrnd = jstime();
+	$-{_referer} =~ m{.*/(.*?)$};
+	GET( "$1?rs=displayCaptcha&amp;rst=&amp;rsrnd=$rsrnd&amp;rsargs[]=yellow",
+		keep_referer =&gt; 1 );
+
+	! m{&lt;img src=\\"(/ccaptcha.*?)\\"};
+	my $img = $1;
+
+	! s/^.*?&lt;form/&lt;form/s;
+	! s{&lt;/form&gt;.*$}{&lt;/form&gt;}s;
+	s/\\n/ /g;
+	s/\\"/"/g;
+
+	! $-{form} = $self-&gt;form( source =&gt; $_ );
+
+	GET( $img, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/[A-Z]{4}/,
+		process =&gt; \&amp;bc_decaptcha
+	);
+
+	GOTO stage_getcaptcha unless defined $_;
+
+	$-{form}-&gt;set( user_code =&gt; lc $_ );
+	GET( $-{form}-&gt;post() );
+
+	if ( $-{_referer} =~ m{/c(?:file|vid)/} ) {
+		CAPTCHA_RESULT( "OK" );
+	} else {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_getcaptcha;
+	}
+
+	if ( my @links = m{&lt;a href="(http://www\.badongo\.com/file/\d+/..)"&gt;}g ) {
+		LINK( @links );
+	}
+
+stage_getlink:
+	! /var check_n = (\d+);/;
+	WAIT( $1, "getting download link" );
+
+	my $linkType = "getFileLink";
+	$linkType = "getVidLink" if $-{_referer} =~ m{/cvid/};
+	my $rsrnd = jstime();
+	$-{_referer} =~ m{.*/(.*?)$};
+	GET( "$1?rs=$linkType&amp;rst=&amp;rsrnd=$rsrnd&amp;rsargs[]=yellow" );
+
+	! m{doDownload\(\\'(.*?)\\'\)};
+	$-{dllink} = $1;
+
+	CLICK( $-{dllink} . "/ifr?pr=1&amp;zenc=" );
+
+	$-{file_uri} = $-{dllink} . "/loc?pr=1";
+	GOTO stage_download;
+
+stage_getpic:
+	! m{/pic/(\d+)};
+	GET( "$1?size=original" );
+
+	! m{&lt;img src="(http://mediacache.*)" border="0"&gt;};
+	$-{file_uri} = $1;
+ 
+stage_download:
+	DOWNLOAD( $-{file_uri} );
+
+	MULTI() if m{&lt;h3&gt;FREE MEMBER WAITING PERIOD&lt;/h3&gt;};
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if /You have exceeded your Download Quota/;
+
+
+perl:
+
+sub bc_color_select
+{
+	my @s = sort { $a &lt;=&gt; $b } @_;
+	my $diff = $s[2] - $s[0];
+	return $diff &gt;= 64 ? 0xff : $s[2] + $diff * 2;
+}
+
+sub bc_decaptcha
+{
+	my $img = shift;
+
+	$img-&gt;color_filter( \&amp;bc_color_select );
+	$img = $img-&gt;crop( y1 =&gt; 10, y2 =&gt; 49 );
+	my @text;
+	foreach my $limg ( $img-&gt;chop( 50, 100, 150 ) ) {
+		my %try;
+		for ( my $min = 0; $min &lt;= 200; $min += 100 ) {
+			for ( my $max = $min + 200; $max &lt;= 200; $max += 100 ) {
+				my $copy = $limg-&gt;crop;
+				$copy-&gt;luma_emphasize( $min, $max );
+
+				my $txt = $copy-&gt;ocr();
+				if ( $txt =~ /([A-Z])/ ) {
+					$try{ $1 } ||= 0;
+					$try{ $1 }++;
+				}
+			}
+		}
+		return "" unless keys %try;
+		my @s = sort { $try{ $b } &lt;=&gt; $try{ $a } } keys %try;
+		push @text, $s[ 0 ];
+	}
+	return join "", @text;
+}
+
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

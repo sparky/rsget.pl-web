@@ -1,0 +1,74 @@
+index:	0
+title:	FreakShare
+desc:	[FS] <a href="http://freakshare.net/">"http://freakshare.net/"</a>
+
+body:	
+	<p>Check <a href="http://freakshare.net/terms-of-service.html">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: FreakShare 11254 2010-03-12 02:30:36Z sparky $
+# Get::FreakShare - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FreakShare
+short: FS
+web: "http://freakshare.net/"
+tos: "http://freakshare.net/terms-of-service.html"
+uri: qr{freakshare\.net/files/}
+cookie: fs
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /Sorry, this Download doesnt exist anymore/;
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if /Sorry, your Traffic is used up for today/;
+
+	! m#&lt;h1 class="box_heading" style="text-align:center;"&gt;(.*?) - ($STDSIZE)yte&lt;/h1&gt;#;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	! $-{form} = $self-&gt;form( match =&gt; { body =&gt; qr/"Free Download"/ } );
+
+	! m#var time = (\d+)(?:\.\d+);\s*var intervall;#;
+	WAIT( -$1, "expecting recaptcha" );
+
+stage_getcaptcha:
+	CLICK( $-{form}-&gt;post() );
+
+stage_solvecaptcha:
+	unless ( $-{capform} = $self-&gt;form( match =&gt; { body =&gt; qr/recaptcha\.net/ } ) ) {
+		! $-{capform} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^disableButton/ } );
+		GOTO stage_download;
+	}
+
+	! m{ src="(http://api\.recaptcha\.net/challenge.*)"};
+
+	GET( $1, keep_referer =&gt; 1 );
+
+	! m{challenge : '(\S+)',};
+	$-{capform}-&gt;set( recaptcha_challenge_field =&gt; $1 );
+
+	GET( "http://api.recaptcha.net/image?c=" . $1, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/\S+ \S+/
+	);
+
+	GOTO stage_getcaptcha unless defined $_;
+	$-{capform}-&gt;set( recaptcha_response_field =&gt; $_ );
+
+stage_download:
+	CLICK_DOWNLOAD( $-{capform}-&gt;post() );
+
+	if ( m/recaptcha/ or /^bad try$/ ) {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_solvecaptcha;
+	}
+
+	MULTI() if /Sorry, you cant download more then 1 files at time/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

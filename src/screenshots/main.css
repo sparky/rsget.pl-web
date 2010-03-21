@@ -1,0 +1,222 @@
+html {
+	background: #333;
+}
+body {
+	width: 900px;
+	margin: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 10px solid #555;
+	padding: 5px;
+	background: #777;
+}
+fieldset {
+	border: 10px solid #999;
+	padding: 5px;
+	margin: 5px;
+	background: #bbb;
+}
+input, textarea {
+	border: 10px solid #ddd;
+	padding: 5px;
+	margin: 5px;
+	background: #fff;
+}
+input {
+	width: 150px;
+	margin-left: 700px;
+}
+legend {
+	border: 10px solid #999;
+	border-top: 0;
+	border-bottom: 0;
+	background: #bbb;
+}
+ul {
+	border: 10px solid #ddd;
+	padding: 5px;
+	margin: 5px;
+	background: #fff;
+	list-style: none;
+}
+li:first-child {
+	border-top: 0;
+}
+li {
+	border-top: 2px solid #ddd;
+	clear: both;
+}
+
+#log li {
+	border-color: #ddd;
+}
+
+#f_status ul {
+	display: block;
+	height: 100px;
+}
+#f_status ul li {
+	display: block;
+	height: 25px;
+	width: 266px;
+	border: 1px solid #EEE;
+	margin: 1px;
+	float: left;
+	text-align: center;
+	clear: none;
+}
+a, a:visited {
+	color: inherit;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:focus, a:hover {
+	text-decoration: underline;
+}
+h2 a, h2 a:visited {
+	border-bottom: 2px dashed black;
+}
+h2 a:focus, h2 a:hover {
+	border-bottom: none;
+}
+
+li.active, li.file, li.uri, li.comment {
+	display: block;
+	border: 2px solid black;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding: 1px;
+	clear: both;
+}
+li.comment {
+	color: #44F;
+	border-color: #AAF;
+}
+.flist li.file {
+	margin-bottom: 0;
+}
+.flist li.uri {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 50px;
+}
+span.logo {
+	display: block;
+	float: right;
+	margin-left: 3px;
+	height: 40px;
+	font-size: 30px;
+	text-align: right;
+}
+div.info {
+	display: block;
+	overflow: hidden;
+}
+div.href {
+	display: block;
+	overflow: hidden;
+}
+div.info span.size {
+	display: block;
+	float: right;
+}
+.flist li div span.cmd {
+	display: block;
+	float: left;
+	font-weight: bold;
+	width: 60px;
+}
+li.green {
+	background: #AFA;
+	border-color: #2F2;
+}
+li.red {
+	background: #FAA;
+	border-color: #F22;
+}
+li.blue {
+	background: #AAF;
+	border-color: #22F;
+}
+li.bluegreen {
+	background: #AED;
+	border-color: #2EC;
+}
+li.orange {
+	background: #FCA;
+	border-color: #F82;
+}
+
+.error {
+	color: #F00;
+	font-weight: bold;
+}
+
+div.progress {
+	clear: both;
+	position: relative;
+	border: 1px solid;
+	border-color: inherit;
+	height: 25px;
+	width: 98%;
+	background: transparent;
+	margin-left: auto;
+	margin-right: auto;
+}
+li.green div.progress {
+	background: #DFD;
+}
+li.red div.progress {
+	background: #FDD;
+}
+li.blue div.progress {
+	background: #DDF;
+}
+li.bluegreen div.progress {
+	background: #DFE;
+}
+li.orange div.progress {
+	background: #FDC;
+}
+
+div.progress div {
+	position: absolute;
+	background: #2F2;
+	height: 25px;
+}
+div.progress span {
+	position: absolute;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.tools {
+	font-size: 75%;
+	font-weight: bold;
+}
+.tools span {
+	cursor: pointer;
+}
+.tools span:hover {
+	text-decoration: underline;
+}
+
+
+li.captcha {
+	height: 60px;
+}
+li.captcha iframe {
+	float: left;
+	height: 50px;
+	width: 20px;
+}
+li.captcha img {
+	display: block;
+	float: left;
+}
+
+li.captcha input {
+	width: auto;
+	margin-left: 20px;
+}

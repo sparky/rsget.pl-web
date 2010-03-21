@@ -1,0 +1,53 @@
+index:	0
+title:	zSHARE
+desc:	[zS] <a href="http://zshare.net/">"http://zshare.net/"</a>
+
+body:	
+	<p>Check <a href="http://zshare.net/TOS.html">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: zSHARE 11261 2010-03-12 19:34:49Z sparky $
+# Get::zSHARE - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: zSHARE
+short: zS
+web: "http://zshare.net/"
+tos: "http://zshare.net/TOS.html"
+uri: qr{zshare\.net/(?:download|video)/[0-9a-f]+}
+cookie: zs
+slots: max
+status: OK 2010-03-12
+
+unify:
+	return "http://zshare.net/download/$1"
+		if m{zshare\.net/(?:download|video)/([0-9a-f]+)}
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if $-{_referer} =~ /file-404.html$/;
+
+	! m{&gt;File Name:\s*&lt;font.*?&gt;(.*?)&lt;/font&gt;&lt;/td&gt;}s;
+	my $name = $1;
+	! m{&gt;File Size:\s*&lt;font.*?&gt;($STDSIZE)&lt;/font&gt;&lt;/td&gt;}s;
+	INFO( name =&gt; $name, asize =&gt; $1 );
+
+	! my $form = $self-&gt;form( name =&gt; "form1" );
+	$form-&gt;set( "imageField.x" =&gt; irand 10, 190 );
+	$form-&gt;set( "imageField.y" =&gt; irand 10, 37 );
+	$form-&gt;set( "imageField" =&gt; "" );
+
+	CLICK( $form-&gt;post() );
+
+	! m{var link_enc=new Array\('(.*?)'\);};
+	( $-{uri} = $1 ) =~ s/','//g;
+
+	WAIT( 50, "starting download" );
+
+	CLICK_DOWNLOAD( $-{uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

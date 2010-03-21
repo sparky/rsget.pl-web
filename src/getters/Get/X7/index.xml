@@ -1,0 +1,56 @@
+index:	0
+title:	X7
+desc:	[X7] <a href="http://x7.to/">"http://x7.to/"</a>
+
+body:	
+	<p>Check <a href="http://x7.to/legal">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: X7 11261 2010-03-12 19:34:49Z sparky $
+# Get::X7 - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: X7
+short: X7
+web: "http://x7.to/"
+tos: "http://x7.to/legal"
+uri: qr{x7\.to/[a-z0-9]{6}}
+status: OK 2010-03-12
+
+unify:
+	return "http://x7.to/$1"
+		if m#x7\.to/([a-z0-9]{6})#;
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /&lt;title&gt;File not found/;
+
+	! m#&lt;b&gt;Download&lt;/b&gt;\s+\((\d+(?:,\d+)?\s*[KMG]?B)\)#s;
+	my $asize = $1;
+	$asize =~ tr/,/./;
+	! m#&lt;title&gt;.*? Download: (.*?)&lt;/title&gt;#;
+	INFO( name =&gt; $1, asize =&gt; $asize );
+
+	! m#var dlID = '([a-z0-9]{6})';#;
+	$-{id} = $1;
+
+	CLICK( "/james/ticket/dl/$-{id}" );
+
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if /{err:"limit-dl"}/;
+	MULTI() if /{err:"limit-parallel"}/;
+
+	! m#{type:'download',wait:(\d+),url:'(.+?)'}#;
+	$-{file_uri} = $2;
+
+	# wait a bit longer because server needs some time to prepare the file
+	WAIT( 20 + $1, "starting download" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

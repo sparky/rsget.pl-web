@@ -1,0 +1,78 @@
+index:	0
+title:	config
+desc:	Config file example.
+
+body:
+<h2>README.config</h2>
+<pre><![CDATA[# Example config file
+# $Id: README.config 10940 2009-11-03 22:55:47Z sparky $
+#
+# Copy it to $HOME/.rsget.pl/config and make necessary adjustments.
+
+# backups may be disabled or enabled for 3 different cases:
+#  done - make backup of file in donedir
+#  continue - make backup of file in workdir if continuing partial download
+#  scratch - make backup of file in workdir if downloading it from scratch
+#  no - backups are never made
+# make backups always:
+backup = done,continue,scratch
+# make backups of completed downloads only:
+#backup = done
+# never make backups:
+#backup = no
+
+# for file FILE_NAME.EXT by default backups will be named as:
+# FILE_NAME-{N}.EXT where {N} is 1, 2, 3...
+# to name backups as FILE_NAME.EXT~{N} use:
+backup_suf = ~
+
+# Start http server on port 7666 (won't be started by default or if port is 0).
+# Make sure the port is blocked in the firewall (only allow IPs you trust),
+# because rsget.pl has very weak authentification.
+http_port = 7666
+
+# require authentication for http:
+#  user: root
+#  password: qwerty
+http_pass = qwerty
+
+# Some services have no parallel-downloads limitation, set max slots
+# for such services. If you've got fast connection and only one
+# ip address / interface, increase this number to a large value.
+# Number of maximum connections is the number of max_slots multiplied
+# by number of ip addresses / interfaces.
+max_slots = 8
+
+# number of links to check at once in the same service
+max_slots_check = 8
+
+# if you are blessed with multiple interfaces:
+#interfaces = eth0, tun0, tun1
+# same thing for multiple IP addresses:
+#interfaces = 1.1.1.1, 1.1.1.2, 1.1.1.3
+
+# if your vim stores swap files in different directory and you want list
+# file locking:
+#list_lock = ${HOME}/.vim/.$(file).swp
+# list will be manipulated by some external app which creates .lock file
+# in the same directory as list file:
+#list_lock = $(dir)/.lock
+
+# store unfinished files in "partial" directory
+workdir = partial
+
+# move finished downloads to "done"
+outdir = done
+
+# update automatically from SVN (possibly dangerous, but very convenient):
+#use_svn = update
+
+# save erroneous pages (only useful for getter debugging):
+#debug = 1
+
+# be verbose (useful for debugging):
+#verbose = 2
+
+# save captcha images (useful for debugging) in ~/.rsget.pl/captcha directory:
+#captcha_save_results = ${RSGET_DIR}/captcha
+]]></pre>

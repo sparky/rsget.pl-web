@@ -1,0 +1,102 @@
+index:	0
+title:	RapidShare
+desc:	[RS] <a href="http://rapidshare.com/">"http://rapidshare.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-12</p>
+	<pre># $Id: RapidShare 11254 2010-03-12 02:30:36Z sparky $
+# Get::RapidShare - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: RapidShare
+short: RS
+web: "http://rapidshare.com/"
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/files/\d+/.+}
+status: OK 2010-03-12
+
+unify:
+	s/#.*//;
+	return "http://rapidshare.com/files/$1"
+		if m{rapidshare\.com/files/(\d+/.+)};
+
+pre:
+	my $match;
+
+	sub match($)
+	{
+		my $re = shift;
+		if ( ref $re ) {
+			die "Incorrect match regexp"
+				unless ref $re eq "Regexp";
+		} else {
+			$re = qr/\Q$re\E/;
+		}
+		if ( /.*&gt;(.*?$re.*?)&lt;/s ) {
+			$match = $2;
+			$_ = $1;
+			s/\r//g;
+			s/\n/ /g;
+			return 1;
+		} else {
+			return undef;
+		}
+	}
+
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $_" )
+		if match "The file could not be found.  Please check the download link.";
+	ERROR( "file removed: $_" )
+		if match "file has been removed from the server";
+	ERROR( "file removed: $_" )
+		if match "The uploader has removed this file from the server";
+	ERROR( "file removed: $_" )
+		if match "download of this file is currently not possible";
+	ERROR( "file removed: $_" )
+		if match "This limit is reached";
+
+	! m#&lt;p class="downloadlink"&gt;.*/(.+?) &lt;font style=".*?"&gt;\| (\d+ KB)&lt;/font&gt;&lt;/p&gt;#;
+	INFO( name =&gt; $1, asize =&gt; $2, kilo =&gt; 1000 );
+
+	RESTART( $match * 60, "servers overloaded: $_" )
+		if match qr/Unfortunately you will have to wait (\d+) minutes/;
+
+	! my $form = $self-&gt;form( id =&gt; "ff" );
+	CLICK( $form-&gt;post() );
+
+	MULTI( "multi-download not allowed: $_" )
+		if match "Please wait until the download is completed";
+
+	# TODO: this should decrease file priority to delay its download,
+	# postpone it, download after the next file.
+	RESTART( -2 * 60, "no slots for free users: $_" )
+		if match "There are no more download slots available for free users right now"
+			or match "Unfortunately right now our servers are overloaded";
+
+	RESTART( $match * 60 + 10, "free limit reached: $_" )
+		if match qr/Instant download access! Or try again in about (\d+) minutes/;
+
+	RESTART( $match * 60, "servers overloaded: $_" )
+		if match qr/Unfortunately you will have to wait (\d+) minutes,/
+			or match qr/Please try again in (\d+) minutes/;
+
+	! $-{form} = $self-&gt;form( name =&gt; "dlf" );
+	$-{form}-&gt;set( mirror =&gt; "on" );
+	$-{form}-&gt;set( x =&gt; irand 5, 103 );
+	$-{form}-&gt;set( y =&gt; irand 5, 103 );
+
+	! /var c=(\d+);/;
+	WAIT( $1, "starting download" );
+
+	CLICK_DOWNLOAD( $-{form}-&gt;post() );
+
+	MULTI( "multi-download not allowed: $_" )
+		if match "Please wait until the download is completed";
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

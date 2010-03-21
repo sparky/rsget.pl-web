@@ -1,0 +1,49 @@
+index:	0
+title:	StorageTo
+desc:	[ST] <a href="http://storage.to/">"http://storage.to/"</a>
+
+body:	
+	<p>Status: OK 2010-03-12</p>
+	<pre># $Id: StorageTo 11261 2010-03-12 19:34:49Z sparky $
+# Get::StorageTo - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: StorageTo
+short: ST
+web: "http://storage.to/"
+uri: qr{storage\.to/get/[a-zA-Z0-9]{8}([\?/].*?)?$}
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /File not found\./;
+	! m{&lt;span class="orange"&gt;.*?:&lt;/span&gt; (.*?) &lt;span class="light"&gt;\(($STDSIZE)\)&lt;/span&gt;};
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	! /onclick='javascript:startcountdown\("(.*?)",\s*"(?:.*?)",\s*"(.*?)"\);'/;
+	CLICK( "/getlink/$2/" );
+
+	! s/^.*?{\s+//;
+	! s/\s+}.*?$//;
+
+	ERROR( "download failed" ) if /'state'\s*:\s*'failed'/;
+
+	! /'countdown'\s*:\s*(\d+)/;
+	my $wait = $1;
+	RESTART( $wait, "free limit reached" )
+		unless /'state'\s*:\s*'ok'/;
+
+	! /'link'\s*:\s*'(.*?)'/ and $1;
+	$-{file_uri} = $1;
+
+	WAIT( $wait, "starting download" );
+
+	delete $-{_referer}; # started from ajax, there must be no referer
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

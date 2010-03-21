@@ -1,0 +1,30 @@
+index:	-999999
+title:	svn
+desc:	Get latest copy.
+	<pre>svn co http://svn.pld-linux.org/svn/toys/rsget.pl</pre>
+
+body:	
+
+	<h2>SVN changelog</h2>
+	<p>Commits: 9</p>
+	<dl>
+		<dt id="r11279"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11279&amp;view=rev">r11279</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-18 00:26:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget.pl.user.js">rsget.pl.user.js</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- suggest port 7666 for http</pre></dd>
+		<dt id="r11278"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11278&amp;view=rev">r11278</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:54:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- commands to compare lists of supported services</pre></dd>
+		<dt id="r11277"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11277&amp;view=rev">r11277</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:35:53 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image/ImageShack">Image/ImageShack</a></li></ul><pre>- uri: mark dynamic part to ease uri list preparation</pre></dd>
+		<dt id="r11276"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11276&amp;view=rev">r11276</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:20:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Break">Video/Break</a></li></ul><pre>- limit uris a bit
+- TODO: support pictures</pre></dd>
+		<dt id="r11275"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11275&amp;view=rev">r11275</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:11:45 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/ZippyShare">Get/ZippyShare</a></li></ul><pre>- uri: wwwN. is optional</pre></dd>
+		<dt id="r11274"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11274&amp;view=rev">r11274</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:03:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/DailyMotion">Video/DailyMotion</a></li></ul><pre>- separate .com and .pl uris to ease preparing supported list</pre></dd>
+		<dt id="r11273"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11273&amp;view=rev">r11273</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 15:57:46 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- updated lists of supported services</pre></dd>
+		<dt id="r11272"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11272&amp;view=rev">r11272</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-13 21:26:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li></ul><pre>- FIXED ! There still is one more glitch, but it isn't a big problem.</pre></dd>
+		<dt id="r11271"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11271&amp;view=rev">r11271</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-13 02:41:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboUpload">Get/TurboUpload</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UpFile">Get/UpFile</a></li></ul><pre>- added notes why those getters are broken</pre></dd>
+	</dl>

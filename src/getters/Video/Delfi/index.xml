@@ -1,0 +1,35 @@
+index:	0
+title:	Delfi
+desc:	[V:Delfi] <a href="http://tv.delfi.ee/">"http://tv.delfi.ee/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: Delfi 11237 2010-03-11 00:24:12Z sparky $
+# Video::Delfi - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Delfi
+short: V:Delfi
+web: "http://tv.delfi.ee/"
+uri: qr{tv\.delfi\.ee/video/[a-zA-Z0-9]+}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;title&gt;DELFI TV &amp;#62; Video &amp;#62; (.*?)&lt;/title&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	! m{addVariable\('file','(.*?)'};
+
+	DOWNLOAD( uri_unescape( $1 ), fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

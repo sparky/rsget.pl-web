@@ -1,0 +1,131 @@
+index:	0
+title:	EasyShare
+desc:	[ES] <a href="http://easy-share.com/">"http://easy-share.com/"</a>
+
+body:	
+	<p>Check <a href="http://easy-share.com/tos.html">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: EasyShare 11254 2010-03-12 02:30:36Z sparky $
+# Get::EasyShare - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: EasyShare
+short: ES
+web: "http://easy-share.com/"
+tos: "http://easy-share.com/tos.html"
+uri: qr{(?:w\d+\.)?easy-share\.com/(../)?(\d+)}
+cookie: !es
+status: OK 2010-03-12
+
+start:
+	COOKIE( [ (qw(.easy-share.com TRUE / FALSE), time + 80000, 'language', 'en' ) ] );
+
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /File not found/;
+	ERROR( "file removed" ) if /Requested file is deleted/;
+
+	! m{&lt;p class="pt15 pb0 px18 txtgray family2 c"&gt;You are requesting\s+(.*?) \(($STDSIZE)\)&lt;/p&gt;};
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if m#You have downloaded over.*?during last hour#;
+
+	unless ( m#&lt;script type="text/javascript"&gt;\s*u='(.*?)';\s*w='(\d+)';# ) {
+		GOTO stage_captcha;
+	}
+	$-{uri} = $1;
+	my $wait = $2;
+
+	WAIT( $wait, "expecting captcha or download button" );
+stage_cappage:
+
+	GET( $-{uri}, keep_referer =&gt; 1 );
+stage_captcha:
+
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if m#You have downloaded over.*?during last hour#;
+
+	if ( m#&lt;script type="text/javascript"&gt;\s*u='(.*?)';\s*w='(\d+)';# ) {
+		$-{uri} = $1;
+		WAIT_NEXT( stage_cappage, $2, "still expecting captcha" );
+	}
+
+	! $-{capform} = $self-&gt;form( match =&gt; { class =&gt; qr/^captcha1$/ } );
+
+	GOTO stage_download
+		unless m#&lt;p class="pb0"&gt;&lt;img src="(.*?)" width="220" height="50" alt="" border="1"&gt;&lt;/p&gt;#;
+	my $img = $1;
+
+	GET( $img, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+	  	qr/[2-9abcdeghkmnpqsuvxyz]{5,6}/,
+	  	process =&gt; \&amp;es_decaptcha
+	);
+
+	GOTO stage_cappage unless defined $_;
+	$-{capform}-&gt;set( captcha =&gt; $_ );
+
+stage_download:
+	DOWNLOAD( $-{capform}-&gt;post() );
+
+	if ( /Invalid characters/ ) {
+		CAPTCHA_RESULT( "FAIL" );
+		RESTART( 1, "invalid captcha" );
+	}
+	RESTART( 1, "to slow ?" ) if m#&lt;script type="text/javascript"&gt;\s*u='(.*?)';\s*w='(\d+)';#;
+
+perl:
+
+sub es_color_get_luma
+{
+	# for real luma should convert to linear first
+	return ($_[0] * 0.30 + $_[1] * 0.59 + $_[2] * 0.11);
+}
+
+sub es_histogram_get_min_max
+{
+	my $h = shift;
+	my $min_sum = shift;
+	my $max_sum = shift;
+
+	my ( $max, $min, $sum );
+	$sum = 0;
+	for ( my $i = 255; $i &gt;= 0; $i-- ) {
+		$sum += $h-&gt;[$i];
+		if ( $sum &gt; $max_sum ) {
+			$max = $i;
+			last;
+		}
+	}
+	$sum = 0;
+	for ( my $i = 0; $i &lt; 256; $i++ ) {
+		$sum += $h-&gt;[$i];
+		if ( $sum &gt; $min_sum ) {
+			$min = $i;
+			last;
+		}
+	}
+
+	return ( $min, $max )
+}
+
+sub es_decaptcha
+{
+	my $img = shift;
+
+	$img-&gt;color_filter( \&amp;es_color_get_luma );
+	my $h = $img-&gt;histogram();
+	$img-&gt;luma_emphasize( es_histogram_get_min_max( $h, 50, 3000 ) );
+	return $img-&gt;ocr();
+	#char_fix =&gt; { " " =&gt; "", G =&gt; 6, Z =&gt; 2, S =&gt; 8, B =&gt; 8, X =&gt; 'x', Q =&gt; 9, },
+}
+
+
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

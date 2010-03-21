@@ -1,0 +1,33 @@
+index:	0
+title:	donate
+desc:	Support <strong>rsget.pl</strong>.
+
+body:	
+	<p>
+		I'm going to set up moneybookers account some day.
+		For now money transfer is the only option.
+	</p>
+	<h2>Bank account</h2>
+	<dl>
+		<dt>International account number:</dt>
+		<dd>IBAN: ES78 2077 0194 5511 0058 1729<br />
+			BIC: CVALESVVXXX</dd>
+
+		<dt>Spanish account number:</dt>
+		<dd>0194-55-1100581729</dd>
+
+		<dt>Bank office:</dt>
+		<dd>Name: Bancaixa<br />
+		Address: c./Salvador Salom 22<br />
+		Address2: 46-712 Piles<br />
+		Country: (es) Spain</dd>
+
+		<dt>Account holder:</dt>
+		<dd>Name: Przemyslaw Piotr Iskra<br />
+		Address: c./La Creu 32/2/3<br />
+		Address2: 46-712 Piles<br />
+		Country: (es) Spain</dd>
+
+		<dt>Preferred transfer title:</dt>
+		<dd><ins>rsget.pl donation from <em>your@email</em></ins></dd>
+	</dl>

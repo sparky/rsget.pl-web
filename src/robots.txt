@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /_style/
+Sitemap: http://rsget.pl/sitemap.xml

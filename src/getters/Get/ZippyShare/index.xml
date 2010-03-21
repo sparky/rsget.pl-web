@@ -1,0 +1,49 @@
+index:	0
+title:	ZippyShare
+desc:	[ZipS] <a href="http://www.zippyshare.com/">"http://www.zippyshare.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.zippyshare.com/terms.html">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: ZippyShare 11275 2010-03-14 16:11:45Z sparky $
+# Get::ZippyShare - File getter plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: ZippyShare
+short: ZipS
+web: "http://www.zippyshare.com/"
+tos: "http://www.zippyshare.com/terms.html"
+uri: qr{(?:www\d*\.)?zippyshare\.com/v/\d+/file\.}
+cookie: zips
+slots: max
+status: OK 2010-03-12
+
+unify:
+	return "$1/file.html" if m{^(.*?)/file};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if m{&lt;title&gt;.*?- File does not exist&lt;/title&gt;};
+
+	! m#&lt;strong&gt;Name: &lt;/strong&gt;(.+?)&lt;#;
+	my $name = $1;
+	! m#&lt;strong&gt;Size: &lt;/strong&gt;($STDSIZE)&lt;#;
+	INFO( name =&gt; $name, asize =&gt; $1 );
+
+	! m#var ziptime = (\d+); tuw\(\);#s;
+	my $wait = $1;
+
+	! m#var pong = '(.*?)';#;
+	$-{file_uri} = uri_unescape( $1 );
+	$-{file_uri} =~ s/\.\S+?\./.zippyshare./g;
+
+	WAIT( $wait, "starting download" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

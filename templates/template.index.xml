@@ -1,0 +1,29 @@
+<content:head />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--
+     http://rsget.pl/ page generated from index template.
+     2010 (c) Przemysław Iskra <sparky@pld-linux.org>
+
+     NOTE: If you expected do see a web page, but all you see is this XML
+   source it probably means your web browser cannot handle XHTML correctly.
+                  Try using different web browser !
+   In links or elinks press '\' to switch to HTML view.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title><content:titles /></title>
+	<link rel="stylesheet" type="text/css" href="/_style/screen.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/_style/print.css" media="print" />
+	<link rel="shortcut icon" href="/_style/favicon.png" />
+	<script type="text/javascript" src="/_style/screen.js"></script>
+</head>
+<body id="body">
+
+<div id="_lightL"></div>
+<div id="_lightR"></div>
+<div id="_msgBoard"></div>
+
+<content:columns />
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+index:	0
+title:	about
+desc:	Basic information. This section will some day be organized.
+
+body:
+<p>
+	<strong>rsget.pl</strong> is primarily designed to run on a
+	small server on top of your home network. Any hardware capable of
+	running perl will do, for me it is <em>AMD K6/2 450MHz with 320MB
+		of RAM</em> but even a machine with 1/5 of those specifications
+	should be enough.
+</p>
+<p>
+	<strong>rsget.pl</strong> was tested and works as expected on a
+	variety of UNIX-like systems, those include Linux, FreeBSD, NetBSD,
+	Open Solaris and Mac OS X. There shouldn't be any problem with
+	operating systems from UNIX family. Other operating systems, especially
+	those which do not handle file paths in same way UNIX does (i.e.
+	React OS or Windows, Mac OS) may not be supported.
+</p>
+<h2>Features</h2>
+<ul>
+	<li>Perfect for screen session</li>
+	<li>Support for many download services</li>
+	<li>Supports multiple network interfaces</li>
+	<li>Dead interfaces are kicked out (useful with unreliable vpn tunnels)</li>
+	<li>Continues partially downloaded files (if download service allows it)</li>
+	<li>Incorporates small HTTP server allowing to check the status of downloads,
+		and add new links.</li>
+	<li>Automatically updates itself from SVN.</li>
+</ul>
+
+<h2>TODO</h2>
+<ul>
+	<li>Write more documentation</li>
+	<li>When continuing partially downloaded data start few kb before the end and
+		compare old with new.</li>
+	<li>Add commands: pause downloads, allow/don't allow captcha, clean done
+		downloads, and more</li>
+	<li>File group support (first step for multiuser support)</li>
+	<li>File priorities and group priorities.</li>
+	<li>Selectable temporary directory.</li>
+	<li><del>Fix freezing http server - move to separate thread/process ?</del>
+		<ins>Should be fixed now.</ins></li>
+	<li><del>Fix bugs in http server, and speed it up.</del>
+		<ins>Those are list file writer problems.</ins></li>
+	<li>Better file writing methods, to allow downloading from multiple sources.</li>
+	<li>Backoff if captcha fails too many times; lower uri priority.</li>
+	<li>If multi-download problem appears while checking files force check on
+		another interface/ip.</li>
+	<li><del>Possibility to mark uri as "cannot continue".</del>
+		<ins>I'm not sure what I meant by it.</ins></li>
+	<li>Investigate using user space tunnels (ssh, proxy) to use as additional
+		interfaces.</li>
+	<li>Download rate limits. Soft limit - don't start another downloads if
+		rate limit exceeded. Hard limit - don't allow download speeds
+		over specified value.</li>
+
+</ul>
+
+<h2>Planned features</h2>
+<ul>
+	<li>Multiuser support (may require major changes in the code).</li>
+	<li>XML-RPC (or similar) to allow writing GUIs.</li>
+	<li>Use SQL for storing links and other data. This should speed things up.
+		At least SQLite 3, PostgreSQL and MySQL will be supported to allow
+		user chose hers/his favourite.</li>
+	<li>Premium accounts support and premium plugins.</li>
+</ul>
+
+<h2>Wishful thinking</h2>
+<ul>
+	<li>Squid and iptables integration. To disallow users accessing
+		download sites directly.</li>
+	<li>File uploading.</li>
+	<li>Download list sharing between daemons running on different hosts.</li>
+</ul>
+
+<h2>Not TODO</h2>
+<ul>
+	<li>Lower memory footprint. -- I have done what I could,
+		if it still is to much for your device try curl library with http
+		support only (disable https, ftp and others).</li>
+	<li>I am thinking about C version of the program with getters written in
+		Lua, or some other minimal scripting language. It would enable it
+		to run on even the smallest devices. -- Unless someone generously
+		sponsors development of that version I will continue work on
+		perl version only.</li>
+</ul>
+
+<h2>Command-line options</h2>
+<pre>For full list of command-line options check: rsget.pl --help. All those options
+may also be set in config file ( $HOME/.rsget.pl/config ). Check 'README.config'
+file for example config.
+Each option requires a value, which may be specified immediately after '=' sign,
+or as next argument. Underscores may be replaced with dashes.
+Following command-line declarations are equivalent:
+ --use_svn=update
+ --use-svn=update
+ --use_svn update
+ --use-svn update
+</pre>

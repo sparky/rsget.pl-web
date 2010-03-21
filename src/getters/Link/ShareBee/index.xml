@@ -1,0 +1,34 @@
+index:	0
+title:	ShareBee
+desc:	[L:ShareBee] <a href="http://www.sharebee.com/">"http://www.sharebee.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.sharebee.com/tos">terms of service</a>.</p>
+<p>Status: OK 2009-10-24</p>
+	<pre># $Id: ShareBee 11111 2010-01-13 13:09:39Z sparky $
+# Link::ShareBee - Link retriever plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: ShareBee
+short: L:ShareBee
+web: "http://www.sharebee.com/"
+tos: "http://www.sharebee.com/tos"
+uri: qr{sharebee\.com/}
+slots: max
+status: OK 2009-10-24
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if m{&lt;title&gt;404 - Page not found};
+	! m{&lt;table class="links".*?&gt;(.*?)&lt;/table&gt;}s;
+	my $tbody = $1;
+	my @links = ($tbody =~ /a href="(.*?)"/g);
+
+	LINK( @links );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

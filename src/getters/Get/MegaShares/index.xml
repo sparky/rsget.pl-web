@@ -1,0 +1,129 @@
+index:	0
+title:	MegaShares
+desc:	[MS] <a href="http://megashares.com/">"http://megashares.com/"</a>
+
+body:	
+	<p>Check <a href="http://megashares.com/tos.php">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: MegaShares 11254 2010-03-12 02:30:36Z sparky $
+# Get::MegaShares - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: MegaShares
+short: MS
+web: "http://megashares.com/"
+tos: "http://megashares.com/tos.php"
+uri: qr{d01\.megashares\.com/(\?d01=|dl/)}
+cookie: !ms
+status: OK 2010-03-12
+
+unify:
+	return "http://d01.megashares.com/?d01=$1" if m#(?:\?d01=|/dl/)([0-9a-f]{7})#;
+
+start:
+	# create fake cookie to skip first page
+	my $stime = time() - 10000;
+	COOKIE( [ (qw(.megashares.com TRUE / FALSE), $stime + 43200, 'freest', $stime . "%3A" ) ] );
+
+	GET( $-{_uri} );
+
+	ERROR( "temporarily unavailable" )
+		if m{&lt;dd class="red"&gt;([^&lt;]|&lt;br&gt;)*(link is currently offline)([^&lt;]|&lt;br&gt;)*&lt;/dd&gt;};
+	my $fnf = join "|",
+		"Link was removed", "Invalid link", "Could not download file";
+	ERROR( "file not found" )
+		if m{&lt;dd class="red"&gt;([^&lt;]|&lt;br&gt;)*($fnf)([^&lt;]|&lt;br&gt;)*&lt;/dd&gt;};
+	ERROR( "file not found" )
+		if m{&lt;dd class="red"&gt;Link has been deleted};
+	MULTI()
+		if m{You already have the maximum of 1 download running};
+
+	RESTART( 600, "servers overloaded" )
+		if m{All download slots for this link are currently filled};
+
+	! m{&lt;!-- download page link title //--&gt;\s*&lt;h1.*&gt;(.+?)&lt;/h1&gt;}s;
+	my $name = $1;
+	if ( $name =~ s/\.\.\.$// ) {
+		if ( m{/(\Q$name\E.*?)["']} ) {
+			$name = $1;
+		} else {
+			$name .= "\0";
+		}
+	}
+	! m{&lt;strong&gt;&lt;span.*&gt;Filesize:&lt;/span&gt;&lt;/strong&gt; ($STDSIZE)&lt;br /&gt;}so;
+	my $size = $1;
+	INFO( iname =&gt; $name, asize =&gt; $size );
+
+	RESTART( $1 * 60 + $2, "free limit reached" )
+		if m{Your download passport will renew\s*in 00:&lt;strong&gt;(\d+)&lt;/strong&gt;:&lt;strong&gt;(\d+)&lt;/strong&gt;};
+
+	unless( m{&lt;dt&gt;Your Passport needs to be reactivated.&lt;/dt&gt;} ) {
+		! m{.*&lt;a href="(.+?)"&gt;\s*&lt;img.*src="images/download_file\.png" alt="download file"}s;
+		$-{file_uri} = $1;
+
+		m{You have ([\d\.]+ .*?) left that you can download with this passport.};
+		my $left = $1;
+		m{Your download passport will renew in\s*&lt;strong&gt;0&lt;/strong&gt;:&lt;strong&gt;(\d+)&lt;/strong&gt;:&lt;strong&gt;(\d+)&lt;/strong&gt;}s;
+		my $time = s2string( $1 * 60 + $2 );
+		LOG( "Passport: $left, $time" );
+
+		GOTO stage_download;
+	}
+
+	! m{var request_uri = "(.*?)";};
+	$-{ajax} = $1 . "&amp;rs=check_passport_renewal";
+
+	! m{&lt;input type="hidden" name="random_num" id="random_num" value="(\d+)" /&gt;};
+	$-{random_num} = $1;
+
+	! m{&lt;input type="hidden" name="passport_num" id="passport_num" value="([0-9a-f]+)" /&gt;};
+	$-{passport_num} = $1;
+
+	! m{&lt;img src="(index.*?)" alt="Security Code"};
+	GET( $1, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/[0-9]{4}/,
+		process =&gt; \&amp;ms_decaptcha
+	);
+
+	RESTART( 1, "Can't read captcha" ) unless defined $_;
+
+	my $captcha = $_;
+	my $rand = jstime();
+	my $ajax = $-{ajax}
+		. (join "", map { '&amp;rsargs[]=' . $_ }
+			( $captcha, $-{random_num}, $-{passport_num}, "replace_sec_pprenewal" ) )
+		. "&amp;rsrnd=$rand";
+
+	GET( $ajax, keep_referer =&gt; 1 );
+
+	if ( /Thank you for reactivating your passport/ ) {
+		CAPTCHA_RESULT( "OK" );
+		RESTART( 1, "Passport reactivated" );
+	} else {
+		CAPTCHA_RESULT( "FAIL" );
+		RESTART( 1, "Wrong captcha ?" );
+	}
+
+stage_download:
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+perl:
+
+sub ms_decaptcha
+{
+	my $img = shift;
+
+	$img-&gt;color_filter( sub { shift } );
+	$img-&gt;luma_emphasize( 50, 51 );
+	$img = $img-&gt;crop( x1 =&gt; 9, x2 =&gt; 45, y1 =&gt; 4, y2 =&gt; 15 );
+	return $img-&gt;doublesize-&gt;ocr();
+}
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

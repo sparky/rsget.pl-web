@@ -1,0 +1,55 @@
+index:	0
+title:	SharePlace
+desc:	[SP] <a href="http://shareplace.com/">"http://shareplace.com/"</a>
+
+body:	
+	<p>Check <a href="http://shareplace.com/rules.php">terms of service</a>.</p>
+<p>Status: OK 2010-03-13</p>
+	<pre># $Id: SharePlace 11268 2010-03-13 02:07:14Z sparky $
+# Get::SharePlace - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SharePlace
+short: SP
+web: "http://shareplace.com/"
+tos: "http://shareplace.com/rules.php"
+uri: qr{shareplace\.com/\?[0-9A-F]+(/.*)?}
+uri: qr{shareplace\.org/\?[0-9A-F]+(/.*)?}
+slots: max
+status: OK 2010-03-13
+
+unify:
+	return "http://shareplace.org/?$1"
+		if m{shareplace\.com/\?([0-9A-F]+)(/.*)?};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /Your requested file is not found/;
+
+	! m#Filename:&lt;/font&gt;&lt;/b&gt;\s*(.*?)&lt;b&gt;&lt;br&gt;\s*Filesize:&lt;/font&gt;&lt;/b&gt;\s*($STDSIZE)&lt;b&gt;#s;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	RESTART( - irand( 60, 300 ), "limit reached" )
+		if /You have got max allowed download sessions from the same IP/;
+
+	! m#var beer = '(.*?)';#;
+	my $beer = $1;
+	$beer =~ s/vvvvvvvvv//;
+	$beer =~ s/lllllllll//;
+	my $sinep = uri_unescape( $beer );
+	$sinep =~ s/teletubbies//;
+
+	$-{file_uri} = substr uri_unescape( $sinep ), 13;
+
+	! m#var zzipitime = (\d+);#;
+	WAIT( $1, "starting download" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

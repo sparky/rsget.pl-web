@@ -1,0 +1,42 @@
+index:	0
+title:	Google
+desc:	[V:Google] <a href="http://video.google.com/">"http://video.google.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: Google 11238 2010-03-11 00:32:41Z sparky $
+# Video::Google - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Google
+short: V:Google
+web: "http://video.google.com/"
+uri: qr{video\.google\.com/videoplay\?}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;title&gt;(.*?)&lt;/title&gt;};
+	my $name = de_ml( $1 );
+	$name =~ s{/}{_}g;
+
+	my @file_uri;
+	if ( /&lt;a href=(http.*?ck1)&gt;/ ) {
+		@file_uri = ( $1 );
+		INFO( ainame =&gt; $name, quality =&gt; "mp4" );
+	} else {
+		! m{videoUrl\\x3d(.*?)\\x26};
+		@file_uri = (uri_unescape( $1 ),
+			fname =&gt; "$name.flv" );
+		INFO( name =&gt; "$name.flv", quality =&gt; "flv" );
+	}
+
+	DOWNLOAD( @file_uri );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

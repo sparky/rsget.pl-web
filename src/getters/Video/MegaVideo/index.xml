@@ -1,0 +1,76 @@
+index:	0
+title:	MegaVideo
+desc:	[V:MegaVideo] <a href="http://megavideo.com/">"http://megavideo.com/"</a>
+
+body:	
+	<p>Check <a href="http://megavideo.com/?c=terms">terms of service</a>.</p>
+<p>Status: OK 2010-03-11</p>
+	<pre># $Id: MegaVideo 11238 2010-03-11 00:32:41Z sparky $
+# Video::MegaVideo - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: MegaVideo
+short: V:MegaVideo
+web: "http://megavideo.com/"
+tos: "http://megavideo.com/?c=terms"
+uri: qr{megavideo\.com/\?v=}
+uri: qr{megaporn\.com/(.*?/)?\?v=}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	my %fv = /flashvars\.(.*?)\s*=\s*"(.*?)";/g;
+
+	my $fname = $fv{title};
+	$fname =~ tr/+/ /;
+	$fname = uri_unescape( $fname );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+
+	my $hd = "";
+	$hd = "hd_" if $fv{hd};
+
+	INFO( name =&gt; $fname, quality =&gt; "${hd}flv" );
+
+	my $s = $fv{ $hd . "s" };
+	my $path = id_to_path( map { $fv{ $hd . $_ } } qw(un k1 k2) );
+	my $file_uri = "http://www${s}.megaporn.com/files/$path/";
+
+	DOWNLOAD( $file_uri, fname =&gt; $fname );
+
+perl:
+
+sub id_to_path
+{
+	my $un = shift;
+	my $key1 = 0 + shift;
+	my $key2 = 0 + shift;
+
+	my @bits = split //, unpack "B*", pack "H*", $un;
+
+	my @keys = map {
+		$key1 = ( $key1 * 11 + 77213 ) % 81371;
+		$key2 = ( $key2 * 17 + 92717 ) % 192811;
+		( $key1 + $key2 ) % 128;
+	} (1..384);
+
+	for ( my $i = 256; $i &gt;= 0; $i-- ) {
+		my $pos1 = $keys[ $i ];
+		my $pos2 = $i % 128;
+		my $tmp = $bits[ $pos1 ];
+		$bits[ $pos1 ] = $bits[ $pos2 ];
+		$bits[ $pos2 ] = $tmp;
+	}
+
+	$bits[ $_ ] ^= $keys[ $_ + 256 ] &amp; 1 foreach (0..127);
+
+	return unpack "H*", pack "B*", join "", @bits;
+}
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

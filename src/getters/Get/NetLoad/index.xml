@@ -1,0 +1,170 @@
+index:	0
+title:	NetLoad
+desc:	[NL] <a href="http://netload.in/">"http://netload.in/"</a>
+
+body:	
+	<p>Check <a href="http://netload.in/index.php?id=13">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: NetLoad 11254 2010-03-12 02:30:36Z sparky $
+# Get::NetLoad - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: NetLoad
+short: NL
+web: "http://netload.in/"
+tos: "http://netload.in/index.php?id=13"
+uri: qr{netload\.in/datei}
+cookie: nl
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+stage_first:
+
+	ERROR( "file not found" )
+		if /(Sorry, we don't host the requested file|unknown_file_data)/;
+	m#&lt;div class="dl_first_filename"&gt;\s*(.+?)&lt;span.*?&gt;, ($STDSIZE)&lt;/span&gt;&lt;/div&gt;#s;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	RESTART( 60, "Not prepared" )
+		if /We will prepare your download/;
+
+	! /href="(.*?captcha=1)"/;
+	CLICK( de_ml( $1 ) );
+
+	RESTART( 1, "Still on the same page ?" ) if /"(.*?captcha=1)"/;
+
+	! m#please wait .*countdown\(([0-9]+),#;
+	$-{s3wait} = $1;
+
+	! $-{capform} = $self-&gt;form( match =&gt; { body =&gt; qr/Please enter the Securitycode/ } );
+
+	! m#"(share/includes/captcha\.php\?t=[0-9]+)"#;
+	$-{captcha_img} = $1;
+
+stage_getcaptcha:
+	GET( $-{captcha_img}, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/[0-9]{4}/,
+		process =&gt; \&amp;nl_decaptcha
+	);
+
+	GOTO stage_getcaptcha unless defined $_;
+	$-{capform}-&gt;set( captcha_check =&gt; $_ );
+
+	WAIT( $-{s3wait} / 100, "checking" );
+
+	GET( $-{capform}-&gt;post() );
+
+	if ( /You may forgot the security code or it might be wrong/ ) {
+		PRINT( "Captcha failed" );
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_first;
+	}
+	ERROR( "file not found" )
+		if /This file is currently unavailable/;
+	RESTART( $1 / 100, "free limit reached" )
+		if /You could download your next file in.*countdown\(([0-9]+)/;
+
+	! /&lt;a class="Orange_Link" href="(.*?)"/;
+	$-{file_uri} = $1;
+
+	CAPTCHA_RESULT( "OK" );
+
+	! /please wait .*countdown\(([0-9]+),/;
+	WAIT( $1 / 100, "starting download" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+perl:
+
+sub nl_color_select_grey
+{
+	my @s = sort { $a &lt;=&gt; $b } @_;
+	return ( $s[2] - $s[0] &gt; 50 ) ? 0xff : $s[0];
+}
+
+sub nl_filter_spots # remove dark pixels
+{
+	my $pix = shift;
+
+	my $lim = 250;
+	return if $pix-&gt;isAbove( $lim );
+
+	my $whites = 0;
+	my @sides = ( $pix-&gt;up, $pix-&gt;down, $pix-&gt;left, $pix-&gt;right );
+	foreach my $spix ( @sides ) {
+		return unless $spix; # borders are taken care of
+		$whites++ if $spix-&gt;isAbove( $lim );
+	}
+	return if $whites &lt;= 2;
+	if ( $whites == 4 ) {
+		$pix-&gt;set( 0xff );
+		return;
+	}
+
+	# possible double spot
+	my $bpix;
+	foreach my $spix ( @sides ) {
+		unless ( $spix-&gt;isAbove( $lim ) ) {
+			$bpix = $spix;
+			last;
+		}
+	}
+
+	$whites = 0;
+	my $sides = 0;
+	@sides = ( $bpix-&gt;up, $bpix-&gt;down, $bpix-&gt;left, $bpix-&gt;right );
+	foreach my $spix ( @sides ) {
+		next unless $spix;
+		$sides++;
+		$whites++ if $spix-&gt;isAbove( $lim );
+	}
+
+	if ( $whites &gt;= $sides - 1 ) {
+		# it is a double spot
+		$pix-&gt;set( 0xff );
+		$bpix-&gt;set( 0xff );
+	}
+}
+
+sub nl_filter_snow # remove light pixels
+{
+	my $pix = shift;
+
+	my $lim = 10;
+	return if $pix-&gt;isBelow( $lim );
+
+	my $black = 0;
+	my @sides = ( $pix-&gt;up, $pix-&gt;down, $pix-&gt;left, $pix-&gt;right );
+	foreach my $i ( (0..3) ) {
+		my $pix = $sides[ $i ];
+		next unless $pix;
+		$black |= 1 &lt;&lt; $i if $pix-&gt;isBelow( $lim );
+	}
+	if ( ($black &amp; 0x03) == 0x03
+			or ($black &amp; 0x0c) == 0x0c ) {
+		$pix-&gt;set( 0 );
+	}
+}
+
+sub nl_decaptcha
+{
+	my $img = shift;
+	$img-&gt;color_filter( \&amp;nl_color_select_grey );
+	$img-&gt;set_border( 0xff );
+	$img-&gt;luma_emphasize( 180, 256 );
+	$img-&gt;pix_filter( \&amp;nl_filter_spots );
+	$img-&gt;pix_filter( \&amp;nl_filter_snow );
+	# TODO: chop to pieces and scan each digit separately
+	local $_ = $img-&gt;doublesize-&gt;ocr();
+	s/\s+//;
+	return $_;
+}
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

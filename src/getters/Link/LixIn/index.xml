@@ -1,0 +1,83 @@
+index:	0
+title:	LixIn
+desc:	[L:LixIn] <a href="http://lix.in/">"http://lix.in/"</a>
+
+body:	
+	<p>Status: OK 2009-10-25</p>
+	<pre># $Id: LixIn 11111 2010-01-13 13:09:39Z sparky $
+# Link::LixIn - Link decrypter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: LixIn
+short: L:LixIn
+web: "http://lix.in/"
+uri: qr{lix\.in/-?[0-9a-f]+(#.*)?$}
+slots: !1
+cookie: !lix
+status: OK 2009-10-25
+
+start:
+	GET( $-{_uri} );
+
+	if ( m#&lt;img src="(captcha_img.*?)"# ) {
+		$-{img} = $1;
+	} else {
+		GOTO stage_getlinks;
+	}
+
+stage_captcha:
+	! $-{form} = $self-&gt;form( num =&gt; 0 );
+
+stage_getimg:
+	GET( $-{img}, keep_referer =&gt; 1 );
+
+	CAPTCHA( qr/[A-Z0-9]{3}/ );
+
+	GOTO stage_getimg unless defined $_;
+
+	$-{form}-&gt;set( capt =&gt; $_ );
+
+	GET( $-{form}-&gt;post() );
+
+	if ( m#&lt;img src="(captcha_img.*?)"# ) {
+		$-{img} = $1;
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_captcha;
+	} else {
+		CAPTCHA_RESULT( "OK" );
+	}
+
+	if ( m#&lt;iframe .*?src="\s*(.*?)\s*"# ) {
+		LINK( $1 );
+	}
+
+stage_getlinks:
+	my @forms;
+	my $i = 0;
+	while ( my $form = $self-&gt;form( num =&gt; $i ) ) {
+		push @forms, $form
+			if $form-&gt;action() eq $-{_referer};
+		$i++;
+	}
+
+	ERROR( "no links" ) unless @forms;
+	$-{forms} = \@forms;
+	$-{links} = [];
+
+stage_nextlink:
+	my $f = shift @{ $-{forms} };
+	$f-&gt;select( submit =&gt; 0 );
+	GET( $f-&gt;post() );
+
+	! m#&lt;iframe .*?src="\s*(.*?)\s*"#;
+	push @{ $-{links} }, $1;
+
+	GOTO stage_nextlink if @{ $-{forms} };
+
+	LINK( @{ $-{links} } );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

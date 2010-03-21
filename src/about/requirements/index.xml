@@ -1,0 +1,88 @@
+index:	0
+title:	requirements
+desc:	List of system requirements.
+
+body:
+<h2>Any system</h2>
+<pre><![CDATA[* Required:
+  - Most required modules are found in standard perl distribution. Only perl
+    5.8 and 5.10 was tested.
+  - WWW::Curl (perl) is required at least in version 4, older versions are
+    missing some options.
+  - URI (perl).
+* Recomended:
+  - GD (perl) and tesseract (version 2.00 or newer) with english data files -
+    both required for automatic captcha recognition.
+  - subversion - svn client may be used for automatic updates.
+* Optional:
+  - Term::Size allows to redraw the screen correctly after terminal size change.
+  - Image::Magick - better support for MegaUpload captcha (higher probability
+    of success)
+  - Crypt::Blowfish - required for Link/SecuredIn
+  - Crypt::Rijndael - required for Link/CryptIt
+]]></pre>
+
+<h2>Specific distributions</h2>
+<pre><![CDATA[PLD Linux:
+* Required:
+  - perl-modules
+  - perl-WWW-Curl version 4
+  - perl-URI
+* Recomended:
+  - perl-GD, tesseract 2 and tesseract-lang-en
+  - subversion
+* Optional:
+  - perl-Term-Size
+  - ImageMagick-perl
+  - perl-Crypt-Blowfish
+  - perl-Crypt-Rijndael
+
+
+OpenSolaris:
+* Required:
+  - SUNWperl584core
+  - SUNWcurl and pending/WWW-Curl
+  - pending/perl-uri
+* Recomended:
+  - (?)/GD and (?)/tesseract
+  - SUNWsvn
+* Optional:
+  - pending/Term-Size
+  - SUNWimagick
+  - (?)/Crypt-Blowfish
+  - pending/Crypt-Rijndael
+
+
+FreeBSD:
+* Required:
+  - lang/perl5.8 or lang/perl5.10
+  - www/p5-WWW-Curl version 4
+  - net/p5-URI
+* Recomended:
+  - graphics/p5-GD and graphics/tesseract
+  - devel/subversion
+* Optional:
+  - devel/p5-Term-Size
+  - graphics/ImageMagick with IMAGEMAGICK_PERL support
+  - security/p5-Crypt-Blowfish
+  - security/p5-Crypt-Rijndael
+
+MacOS X
+* Required:
+  - XCode
+
+NetBSD:
+* Required:
+  ! substitute #!/usr/bin/perl with #!/usr/pkg/bin/perl in ./rsget.pl file
+  - perl5/perl
+  - perl5/p5-WWW-Curl
+  - perl5/p5-URI
+* Recomended:
+  - perl/p5-GD and graphics/tesseract
+  - scm/subversion-base
+* Optional:
+  - perl5/p5-Term-Size
+  - ?
+  - perl5/p5-Crypt-Blowfish
+  - perl5/p5-Crypt-Rijndael
+]]></pre>

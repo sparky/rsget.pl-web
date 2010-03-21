@@ -1,1 +1,4 @@
 Repository of sources from which http://rsget.pl/ pages are generated.
+
+TODO:
+- rewrite templates/template.*.xml as xslt and update scripts

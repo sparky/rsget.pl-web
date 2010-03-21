@@ -1,0 +1,55 @@
+index:	0
+title:	DepositFiles
+desc:	[DF] <a href="http://depositfiles.com/">"http://depositfiles.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-12</p>
+	<pre># $Id: DepositFiles 11254 2010-03-12 02:30:36Z sparky $
+# Get::DepositFiles - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: DepositFiles
+short: DF
+web: "http://depositfiles.com/"
+uri: qr{depositfiles\.com/(../)?files/[0-9a-z]+}
+status: OK 2010-03-12
+
+unify:
+	return "http://depositfiles.com/files/$1" if m#/files/([0-9a-z]+)#;
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /Such file does not exist /;
+
+	! m{&lt;div class="info"&gt;.*?&lt;b title="(.*?)"&gt;.*?&lt;/b&gt;\s*&lt;span .*?&gt;.*?&lt;b&gt;(\d+(?:\.\d+)?)&amp;nbsp;([KMG]B)&lt;/b&gt;&lt;/span&gt;}s;
+	my $name = $1;
+	my $size = "$2$3";
+	INFO( iname =&gt; $name, asize =&gt; $size );
+	RESTART( 5 * 60, "servers overloaded" )
+		if /We are sorry, but all downloading slots for your country are busy/;
+	
+	$-{dl_form} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^download_started/ } );
+	GOTO stage_download if $-{dl_form};
+
+	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/name="gateway_result"/ } );
+	CLICK( $form-&gt;post() );
+
+	RESTART( $1, "free limit reached" )
+		if m#&lt;span class="html_download_api-limit_interval"&gt;(\d+)&lt;/span&gt;#;
+	
+	MULTI() if m#&lt;span class="html_download_api-limit_parallel"&gt;#;
+	$-{dl_form} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^download_started/ } );
+	
+	WAIT( 60, "starting download" );
+
+stage_download:
+	CLICK_DOWNLOAD( $-{dl_form}-&gt;post() );
+
+	RESTART( $1, "traffic limit" ) if /Wait (\d+) seconds/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

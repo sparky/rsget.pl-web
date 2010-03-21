@@ -1,0 +1,63 @@
+index:	0
+title:	screenshots
+desc:	The absolutely most important web section of any application.
+
+body:
+<h2>running inside screen session, as seen on 80 columns wide terminal</h2>
+<pre><![CDATA[$ rsget.pl
+Updating from SVN:
+    Checked out revision 11126.
+[Actual date: 2010-02-04]
+[02:00:54] INFO: Using 'get.list' file list
+[02:00:54] INFO: Using './.get.list.swp' as file lock
+
+[02:00:54] INIT: /home/users/sparky/.rsget.pl/svn/Get: found 30 new plugins
+[02:00:54] INIT: /home/users/sparky/.rsget.pl/svn/Video: found 17 new plugins
+[02:00:54] INIT: /home/users/sparky/.rsget.pl/svn/Audio: found 1 new plugins
+[02:00:54] INIT: /home/users/sparky/.rsget.pl/svn/Image: found 1 new plugins
+[02:00:54] INIT: /home/users/sparky/.rsget.pl/svn/Link: found 12 new plugins
+[02:00:54] INIT: /usr/share/rsget.pl/Get: found 1 new plugins
+[02:00:54] INFO: HTTP server started on port 7666
+
+[02:00:54] rsget.pl started successfully
+
+[02:00:55] INFO: Compiling Get::RapidShare plugin ("http://rapidshare.com/")
+[02:00:55] INFO: Compilation successful
+[02:15:45] [RS] Star_Trek_TNG_-_2x22_-_Shades_Of_Gray.part2.joeschatterbox.rar: DONE 104_857_601; 122.63KB/s 13:55
+[02:46:00] [RS] Star_Trek_TNG_-_2x22_-_Shades_Of_Gray.part3.joeschatterbox.rar: DONE 104_857_601; 125.95KB/s 13:33
+[03:11:27] [RS] Star_Trek_TNG_-_2x22_-_Shades_Of_Gray.part4.joeschatterbox.rar: DONE 71_438_956; 126.84KB/s 9:10
+[22:10:16] INFO: Compiling Get::MegaUpload plugin ("http://megaupload.com/")
+[22:10:16] INFO: Get::MegaUpload: make sure you agree with "http://megaupload.com/?c=terms"
+[22:10:16] INFO: Compilation successful
+[22:37:55] [MU] CSI.NY.614.LOL.part1.rar: DONE 104_857_600; 66.11KB/s 25:49
+[22:37:58] [MU] CSI.NY.614.LOL.part2.rar: file not found
+[22:46:47] [MU] CSI.NY.614.LOL.part3.rar: DONE 104_857_600; 225.55KB/s 7:34
+[22:50:42] [MU] CSI.NY.614.LOL.part4.rar: DONE 50_701_289; 300.08KB/s 2:45
+[23:51:56] [RS] CSI.NY.614.LOL.part2.rar: DONE 104_857_600; 51.35KB/s 33:14
+[Actual date: 2010-02-05]
+[16:46:04] INFO: Compiling Get::MegaShares plugin ("http://megashares.com/")
+[16:46:04] INFO: Get::MegaShares: make sure you agree with "http://megashares.com/tos.php"
+[16:46:04] INFO: Compilation successful
+[16:46:04] INFO: Compilation successful
+[16:46:47] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: Passport: 250 MB, 1:57:29
+[17:32:10] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: PARTIAL 262_275_072; 94.23KB/s 45:18
+[18:45:25] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: Passport: 1000 MB, 1:57:52
+[18:45:29] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: Continuing at 262_275_072
+
+ \--------------------------< 2010-02-05 19:25:54 >---------------------------/
+ |               rsget.pl -- downloading: 1; running cURL: 1; to download: 1; |
+ |                                                    total speed: 43.39KB/s; |
+ /----------------------------------------------------------------------------\
+[MS] CSI....ENSION.mkv: 371_616_744 / 1_174_055_319 [31.65%]; 43.70KB/s 4:58:50
+]]></pre>
+
+<h2>WWW interface</h2>
+<p>Main page - file list
+	<a href="/screenshots/if1.png"><img src="/screenshots/if1_sm.png" alt="file list" /></a>
+</p>
+
+<p><a href="/screenshots/if2.xml">Another capture of the interface</a>, in xml form (links are partially obscured).</p>
+
+<p>Add page
+	<a href="/screenshots/add.png"><img src="/screenshots/add_sm.png" alt="add file" /></a>
+</p>

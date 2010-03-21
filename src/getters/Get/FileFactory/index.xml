@@ -1,0 +1,59 @@
+index:	0
+title:	FileFactory
+desc:	[FF] <a href="http://filefactory.com/">"http://filefactory.com/"</a>
+
+body:	
+	<p>Check <a href="http://filefactory.com/legal/terms.php">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: FileFactory 11264 2010-03-12 20:37:49Z sparky $
+# Get::FileFactory - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FileFactory
+short: FF
+web: "http://filefactory.com/"
+tos: "http://filefactory.com/legal/terms.php"
+uri: qr{filefactory\.com/file/[0-9a-f]{6}}
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /File Not Found|This file has been deleted/;
+	! m{&lt;title&gt;(.*?) - download now for free};
+	my $name = $1;
+	! m{&lt;div id="info" class="metadata"&gt;\s*&lt;span&gt;($STDSIZE) file uploaded}s;
+	my $size = $1;
+	INFO( name =&gt; $name, asize =&gt; $size );
+	
+	MULTI() if /You are currently downloading/;
+	if ( /starthtimer[\s\S]*timerend=d\.getTime\(\)\+(\d+);/m ) {
+		RESTART( $1 / 1000, "free limit reached" ) if $1 &gt; 0;
+	}
+
+	! m#&lt;a href="(/dlf.*?)"&gt;&lt;img.*?alt="Download Now" /&gt;&lt;/a&gt;#;
+	CLICK( $1 );
+
+	! m#&lt;a href="(http.*?)"&gt;&lt;strong&gt;Download with FileFactory Basic&lt;/strong&gt;&lt;/a&gt;#;
+	$-{file_uri} = $1;
+
+	! m#&lt;span class="countdown".*?&gt;(\d+)&lt;/span&gt;#;
+	my $wait = $1;
+	RESTART( $wait, "free limit reached" ) if $wait &gt; 30;
+
+	WAIT( $wait, "expecting download link" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+	# file turned out to be html, means we have to wait
+	MULTI() if /You are currently downloading too many files at once/;
+	RESTART( $1 * 60 - 30, "free limit reached" )
+		if /Please wait (\d+) minutes to download more files/;
+	RESTART( $1, "free limit reached" )
+		if /Please wait (\d+) seconds to download more files/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

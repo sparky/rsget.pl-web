@@ -1,0 +1,38 @@
+index:	0
+title:	MetaCafe
+desc:	[V:MetaCafe] <a href="http://www.metacafe.com/">"http://www.metacafe.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: MetaCafe 11238 2010-03-11 00:32:41Z sparky $
+# Video::MetaCafe - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: MetaCafe
+short: V:MetaCafe
+web: "http://www.metacafe.com/"
+uri: qr{metacafe\.com/watch/}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	LINK( "http://youtube.com/watch?v=$1" )
+		if $-{_referer} =~ m{/watch/yt-(.*?)/};
+
+	! m{mediaURL=(.*?)&amp;};
+	my $file_uri = uri_unescape( $1 );
+	! m{&lt;title&gt;(.*?) - Video&lt;/title&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	DOWNLOAD( $file_uri, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

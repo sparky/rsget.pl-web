@@ -1,0 +1,81 @@
+index:	0
+title:	UploadingCom
+desc:	[UC] <a href="http://uploading.com/">"http://uploading.com/"</a>
+
+body:	
+	<p>Check <a href="http://uploading.com/terms/">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: UploadingCom 11258 2010-03-12 19:19:48Z sparky $
+# Get::UploadingCom - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: UploadingCom
+short: UC
+web: "http://uploading.com/"
+tos: "http://uploading.com/terms/"
+uri: qr{uploading\.com/(../)?files/(get/)?[A-Za-z0-9]{8}}
+cookie: !uc
+slots: 1
+status: OK 2010-03-12
+
+unify:
+	return "http://uploading.com/files/$1/"
+		if m{uploading\.com/(?:../)?files/(?:get/)?([A-Za-z0-9]{8})/?};
+
+start:
+	COOKIE( [ (qw(.uploading.com TRUE / FALSE), time() + 43200, 'lang', 1 ) ] );
+
+	GET( $-{_uri} );
+
+	RESTART( -irand( 60, 300 ), "free limit reached: $1" )
+		if /(Sorry, you can download only one file per \d+ minutes)/;
+	RESTART( -irand( 60, 300 ), "temporarily unavailable" )
+		if m{&lt;h1&gt;Service Not Available&lt;/h1&gt;};
+	ERROR( "file not found" ) if /Requested file not found/;
+
+	! m{.*&lt;h2&gt;(.+?)&lt;/h2&gt;&lt;br/&gt;\s*File size: &lt;b&gt;($STDSIZE)&lt;/b&gt;}so;
+	my $name = $1; my $size = $2;
+	if ( $name =~ /\.\..{1,5}$/ ) {
+		! m{&lt;title&gt;Download (.+?) for free on uploading\.com&lt;/title&gt;};
+		$name = $1;
+	}
+	INFO( name =&gt; $name, asize =&gt; $size );
+
+	my $form = $self-&gt;form( id =&gt; "downloadform" );
+	! $-{file_id} = $form-&gt;get( "file_id" );
+	! $-{file_code} = $form-&gt;get( "code" );
+
+	CLICK( $form-&gt;post() );
+
+	if ( m{var file_link = '(.+?)'} ) {
+		$-{file_uri} = $1;
+		GOTO stage_download;
+	}
+	! /CONF\s*=\s*{\s*host:\s*'(.*?)'/;
+	$-{host} = $1;
+
+	! m{start_timer\((\d+)\);};
+	WAIT( -$1, "expecting download link" );
+
+	GET( $-{host} . "files/get/?JsHttpRequest=" . jstime() . "-xml",
+		post =&gt; "action=get_link&amp;file_id=$-{file_id}&amp;code=$-{file_code}&amp;pass=",
+		headers =&gt; [ "Content-Type: application/octet-stream" ],
+		keep_referer =&gt; 1,
+	);
+stage_download:
+
+	unless ( $-{file_uri} ) {
+		! m{"link"\s*:\s*"(.*?)"};
+		$-{file_uri} = $1;
+		$-{file_uri} =~ s/\\(.)/$1/g;
+	}
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+	MULTI() if /Your IP address is currently downloading a file/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

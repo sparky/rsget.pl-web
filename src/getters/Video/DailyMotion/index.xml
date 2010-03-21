@@ -1,0 +1,49 @@
+index:	0
+title:	DailyMotion
+desc:	[V:DailyMotion] <a href="http://www.dailymotion.com/">"http://www.dailymotion.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: DailyMotion 11274 2010-03-14 16:03:47Z sparky $
+# Video::DailyMotion - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: DailyMotion
+short: V:DailyMotion
+web: "http://www.dailymotion.com/"
+uri: qr{dailymotion\.com/(.*?/)?video/[a-z0-9]+}
+uri: qr{dailymotion\.pl/(.*?/)?video/[a-z0-9]+}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;h1 class="dmco_title"&gt;&lt;span class="title" title="(.*?)"};
+	my $name = de_ml( $1 );
+	$name =~ s{/}{_}g;
+
+	! m{"video", "(.*?)"};
+	my @uris = map { /(.*)@@.*/; $1 } split /\|\|/, uri_unescape( $1 );
+	my $best_uri = undef;
+	my $best_size = 0;
+	foreach my $uri ( @uris ) {
+		$uri =~ m{/cdn/.*?-(\d+)x};
+		next unless $1 &gt; $best_size;
+		$best_size = $1;
+		$best_uri = $uri;
+	}
+
+	my $ext = "mp4";
+	! $best_uri =~ m{/cdn/((.*?)-\d+x\d+)};
+	$ext = "flv" if $2 eq "FLV";
+	my $fname = $name . "." . $ext;
+	INFO( name =&gt; $fname, quality =&gt; $1 );
+
+	DOWNLOAD( $best_uri, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -1,0 +1,69 @@
+index:	0
+title:	TurboUpload
+desc:	[TU] <a href="http://www.turboupload.com/">"http://www.turboupload.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.turboupload.com/tos.html">terms of service</a>.</p>
+<p>Status: BROKEN 2010-03-12</p>
+	<pre># $Id: TurboUpload 11271 2010-03-13 02:41:55Z sparky $
+# Get::TurboUpload - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: TurboUpload
+short: TU
+web: "http://www.turboupload.com/"
+tos: "http://www.turboupload.com/tos.html"
+uri: qr{turboupload\.com/(../)?files/get/.+?/.+}
+#uri: qr{turboupload\.com/[a-z0-9]{12}/.+?\.html}
+status: BROKEN 2010-03-12
+
+# BROKEN Note: Page requires to do some stupid thing to download a file.
+# In Spain it asks you to enter a web page which asks for cell phone number.
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if /File Not Found/;
+	! m{&lt;h2&gt;\S* \S* (.*?)&lt;/h2&gt;\s*&lt;font .*?&lt;/font&gt; \(($STDSIZE)\)&lt;/font&gt;}s;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/"method_free"/ } );
+	! $form-&gt;select( method_free =&gt; 0 );
+
+	CLICK( $form-&gt;post() );
+
+	ERROR( "file not found" )
+		if /No such file with this filename/;
+
+	if ( /You have to wait (.*) till next download/ ) {
+		$_ = $1;
+		my $wait = 0;
+		$wait += 60 * 60 * $1 if /(\d+) hour/;
+		$wait += 60 * $1 if /(\d+) minute/;
+		$wait += $1 if /(\d+) second/;
+		RESTART( $wait, "free limit reached" );
+	}
+
+	! $-{form} = $self-&gt;form( name =&gt; "F1" );
+
+	! m#Enter code below:[\S\s]*?&lt;div.*?&gt;(.*?)&lt;/div&gt;#;
+	$-{form}-&gt;set( code =&gt; captcha( $1 ) );
+
+	! m#&lt;span id="countdown"&gt;(\d+)&lt;/span&gt;#;
+	WAIT( $1, "starting download" );
+	
+	CLICK_DOWNLOAD( $-{form}-&gt;post() );
+
+perl:
+	sub captcha
+	{
+		my %c = map /&lt;span.*?padding-left:\s*?(\d+)px;.*?&gt;(\d)&lt;/g, shift;
+		my @c = map { $c{$_} } sort { $a &lt;=&gt; $b } keys %c;
+		return join "", @c;
+	}
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

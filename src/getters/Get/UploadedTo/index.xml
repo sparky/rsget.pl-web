@@ -1,0 +1,59 @@
+index:	0
+title:	UploadedTo
+desc:	[UT] <a href="http://uploaded.to/">"http://uploaded.to/"</a>
+
+body:	
+	<p>Check <a href="http://uploaded.to/agb">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: UploadedTo 11261 2010-03-12 19:34:49Z sparky $
+# Get::UploadedTo - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: UploadedTo
+short: UT
+web: "http://uploaded.to/"
+tos: "http://uploaded.to/agb"
+uri: qr{uploaded\.to/(?:file/|\?id=)[0-9a-z]{6}}
+uri: qr{ul\.to/[0-9a-z]{6}}
+status: OK 2010-03-12
+
+unify:
+	return "http://uploaded.to/file/$1" if
+		m{ul\.to/([0-9a-z]{6})} or m{uploaded\.to/(?:file/|\?id=)([0-9a-z]{6})};
+
+start:
+	GET( $-{_uri} );
+
+	RESTART( $1 * 60, "free limit reached" )
+		if /Or wait (\d+) minutes/;
+
+	if ( $-{_referer} =~ m#/\?view=# ) {
+		ERROR( "file not found" ) if $-{_referer} =~ /fileremoved/;
+		ERROR( "unknown error" );
+	}
+
+	! m{&lt;title&gt;(.*?) \.\.\. at uploaded\.to - };
+	my $name = $1;
+	if ( length $name &gt;= 60 ) {
+		! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filename: &amp;nbsp;&lt;/td&gt;&lt;td&gt;&lt;b&gt;\s+(.*?)\s+&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;}s;
+		$name = $1;
+		$name =~ s/\.\.\.$/\0/;
+		! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filetype: &amp;nbsp;&lt;/td&gt;&lt;td&gt;(.*?)&lt;/td&gt;&lt;/tr&gt;};
+		$name .= $1;
+	}
+	! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filesize: &amp;nbsp;&lt;/td&gt;&lt;td&gt;\s*($STDSIZE)\s*&lt;/td&gt;&lt;/tr&gt;};
+	INFO( name =&gt; $name, asize =&gt; $1 );
+
+	! $-{form} = $self-&gt;form( name =&gt; "download_form" );
+	! $-{form}-&gt;select( download_submit =&gt; 0 );
+
+	! m#var secs = (\d+); // Wartezeit#;
+	WAIT( $1, "starting download" );
+
+	CLICK_DOWNLOAD( $-{form}-&gt;post() );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

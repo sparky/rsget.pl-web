@@ -1,0 +1,36 @@
+index:	-10883
+title:	r10883
+desc:	
+	<ul>
+		<li>File: <a href="/download/rsget.pl-10883.tar.bz2">rsget.pl-10883.tar.bz2</a></li>
+		<li>Date: 2009-10-29</li>
+		<li>Size: 118662</li>
+		<li>MD5: <tt>dc8c60749d30ce719d10426eb4cf2efd</tt></li>
+	</ul>
+
+body:	
+	<h2>SVN changelog</h2>
+	<p>Commits: 10</p>
+	<dl>
+		<dt id="r10883"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10883&amp;view=rev">r10883</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 23:47:06 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- updated</pre></dd>
+		<dt id="r10882"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10882&amp;view=rev">r10882</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 23:24:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- don't lie about content-disposition value</pre></dd>
+		<dt id="r10881"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10881&amp;view=rev">r10881</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 23:23:44 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- compile everything right away if debug enabled</pre></dd>
+		<dt id="r10878"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10878&amp;view=rev">r10878</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 03:10:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- don't overwrite uris when loading file second time</pre></dd>
+		<dt id="r10877"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10877&amp;view=rev">r10877</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 03:02:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- check settings after updating from svn</pre></dd>
+		<dt id="r10876"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10876&amp;view=rev">r10876</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 02:58:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- work !</pre></dd>
+		<dt id="r10875"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10875&amp;view=rev">r10875</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 02:57:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- hmm</pre></dd>
+		<dt id="r10874"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10874&amp;view=rev">r10874</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 02:48:11 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Captcha.pm">RSGet/Captcha.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/ListAdder.pm">RSGet/ListAdder.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li><li class="file_R"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Tools.pm">RSGet/Tools.pm</a></li></ul><pre>- compile plugins on demand, lowers memory usage in typical cases</pre></dd>
+		<dt id="r10873"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10873&amp;view=rev">r10873</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-29 02:44:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a></li></ul><pre>- uris must be Regexp</pre></dd>
+		<dt id="r10872"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10872&amp;view=rev">r10872</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-27 22:55:27 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li></ul><pre>- fixed get_slots
+- introduced max_slots_check option</pre></dd>
+	</dl>

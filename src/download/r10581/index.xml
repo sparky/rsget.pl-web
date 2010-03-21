@@ -1,0 +1,63 @@
+index:	-10581
+title:	r10581
+desc:	
+	<ul>
+		<li>File: <a href="/download/rsget.pl-10581.tar.bz2">rsget.pl-10581.tar.bz2</a></li>
+		<li>Date: 2009-09-12</li>
+		<li>Size: 93708</li>
+		<li>MD5: <tt>47ff67b16f04dbabd7f735e24a041cc0</tt></li>
+	</ul>
+
+body:	
+	<h2>SVN changelog</h2>
+	<p>Commits: 22</p>
+	<dl>
+		<dt id="r10580"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10580&amp;view=rev">r10580</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 23:45:58 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/ListManager.pm">RSGet/ListManager.pm</a></li></ul><pre>- few improvements</pre></dd>
+		<dt id="r10578"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10578&amp;view=rev">r10578</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 23:43:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget.pl.user.js">rsget.pl.user.js</a></li></ul><pre>- updated</pre></dd>
+		<dt id="r10576"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10576&amp;view=rev">r10576</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:12:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/zSHARE">Get/zSHARE</a></li></ul><pre>- new, seems somewhat problematic</pre></dd>
+		<dt id="r10575"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10575&amp;view=rev">r10575</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:12:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li></ul><pre>- new</pre></dd>
+		<dt id="r10574"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10574&amp;view=rev">r10574</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:10:52 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaShares">Get/MegaShares</a></li></ul><pre>- mark incomplete name
+- other improvements</pre></dd>
+		<dt id="r10573"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10573&amp;view=rev">r10573</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:09:22 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/DepositFiles">Get/DepositFiles</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileFactory">Get/FileFactory</a></li></ul><pre>- mark incomplete name</pre></dd>
+		<dt id="r10572"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10572&amp;view=rev">r10572</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:08:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UploadedTo">Get/UploadedTo</a></li></ul><pre>- find better name if the one in &lt;title&gt; is shortened</pre></dd>
+		<dt id="r10571"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10571&amp;view=rev">r10571</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:07:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/StorageTo">Get/StorageTo</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboUpload">Get/TurboUpload</a></li></ul><pre>- approximate file size is asize</pre></dd>
+		<dt id="r10570"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10570&amp;view=rev">r10570</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:03:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/OdSiebie">Get/OdSiebie</a></li></ul><pre>- allow downloading mp3 files</pre></dd>
+		<dt id="r10569"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10569&amp;view=rev">r10569</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:01:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/NetLoad">Get/NetLoad</a></li></ul><pre>- fixes</pre></dd>
+		<dt id="r10568"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10568&amp;view=rev">r10568</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:00:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a></li></ul><pre>- some fixes
+- mark incomplete file name</pre></dd>
+		<dt id="r10567"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10567&amp;view=rev">r10567</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:59:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.css">data/main.css</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.js">data/main.js</a></li></ul><pre>- files used by http interface</pre></dd>
+		<dt id="r10566"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10566&amp;view=rev">r10566</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:58:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README">README</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget.pl">rsget.pl</a></li></ul><pre>- updated</pre></dd>
+		<dt id="r10565"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10565&amp;view=rev">r10565</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:53:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPServer.pm">RSGet/HTTPServer.pm</a></li><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/MicroHTTP.pm">RSGet/MicroHTTP.pm</a></li></ul><pre>- rewritten and vastly improved http interface</pre></dd>
+		<dt id="r10564"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10564&amp;view=rev">r10564</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:52:24 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Tools.pm">RSGet/Tools.pm</a></li></ul><pre>- dump_to_file() sometimes useful when debugging getters</pre></dd>
+		<dt id="r10563"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10563&amp;view=rev">r10563</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:51:48 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- be nicer to older perl</pre></dd>
+		<dt id="r10562"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10562&amp;view=rev">r10562</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:51:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- mostly rewritten to allow new syntax and use ListManager</pre></dd>
+		<dt id="r10561"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10561&amp;view=rev">r10561</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:49:51 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/ListManager.pm">RSGet/ListManager.pm</a></li></ul><pre>- added ListManager to manage entries on the list, Dispatch only starts downloads</pre></dd>
+		<dt id="r10560"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10560&amp;view=rev">r10560</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:47:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- warn if continuing wrong file
+- other improvements</pre></dd>
+		<dt id="r10559"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10559&amp;view=rev">r10559</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 16:44:11 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- cache additional data
+- local SIG __DIE__, so it won't affect eval blocks</pre></dd>
+		<dt id="r10511"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10511&amp;view=rev">r10511</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-08-29 12:25:53 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a></li></ul><pre>- many files still have captcha</pre></dd>
+		<dt id="r10510"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10510&amp;view=rev">r10510</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-08-29 01:30:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a></li></ul><pre>- HF dropped captcha, updated</pre></dd>
+	</dl>

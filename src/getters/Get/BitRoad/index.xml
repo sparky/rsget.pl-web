@@ -1,0 +1,38 @@
+index:	0
+title:	BitRoad
+desc:	[BR] <a href="http://bitroad.net/">"http://bitroad.net/"</a>
+
+body:	
+	<p>Check <a href="http://bitroad.net/page/terms.php">terms of service</a>.</p>
+<p>Status: OK 2010-03-11</p>
+	<pre># $Id: BitRoad 11249 2010-03-11 17:29:47Z sparky $
+# Get::BitRoad - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: BitRoad
+short: BR
+web: "http://bitroad.net/"
+tos: "http://bitroad.net/page/terms.php"
+uri: qr{bitroad\.net/}
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /The requested file is not found/;
+
+	m#&lt;div class="content_text"&gt;\s*&lt;h1&gt;(.*?)\s*\[ ($STDSIZE) \]&lt;/h1&gt;#;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	RESTART( - irand( 60, 300 ), "free limit reached" )
+		if /Downloading is in process from your IP-Address/;
+
+	$-{form} = $self-&gt;form( match =&gt; { action =&gt; qr{^/download3\.php$} } );
+	CLICK_DOWNLOAD( $-{form}-&gt;post() );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

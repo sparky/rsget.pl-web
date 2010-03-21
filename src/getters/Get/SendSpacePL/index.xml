@@ -1,0 +1,47 @@
+index:	0
+title:	SendSpacePL
+desc:	[SS.pl] <a href="http://www.sendspace.pl/">"http://www.sendspace.pl/"</a>
+
+body:	
+	<p>Check <a href="http://www.sendspace.pl/informacje/regulamin">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: SendSpacePL 11257 2010-03-12 02:56:59Z sparky $
+# Get::SendSpacePL - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SendSpacePL
+short: SS.pl
+web: "http://www.sendspace.pl/"
+tos: "http://www.sendspace.pl/informacje/regulamin"
+uri: qr{sendspace\.pl/file/[a-zA-Z0-9]{8}}
+cookie: ss.pl
+status: OK 2010-03-12
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /Podany plik nie istnieje lub został usunięty./;
+
+	! m#&lt;div class="text"&gt;&lt;span class="black3"&gt;Nazwa pliku:&lt;/span&gt;&lt;/div&gt;\s*&lt;div class="info"&gt;&lt;span class="black3".*?&gt;&lt;b&gt;(.*?)&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;#s;
+	my $name = $1;
+	$name =~ s/\.\.\.$/\0/;
+
+	! m#&lt;div class="text"&gt;&lt;span class="black3"&gt;Rozmiar pliku:&lt;/span&gt;&lt;/div&gt;\s*&lt;div class="info"&gt;&lt;span class="blue4"&gt;([\d,]+ MB)&lt;/span&gt;&lt;/div&gt;#s;
+	my $size = $1;
+	$size =~ s/,/\./;
+
+	INFO( name =&gt; $name, asize =&gt; $size );
+
+	! m#&lt;a href="(http://www.sendspace.pl/download/.*?)"&gt;&lt;img src=".*?" alt="Pobierz plik" title="Pobierz plik" /&gt;&lt;/a&gt;#;
+	my $file_uri = $1;
+
+	CLICK_DOWNLOAD( $file_uri );
+
+	RESTART( $1, "free limit reached" ) if /setDownloadTimeOut\('(\d+)'\);/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

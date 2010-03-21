@@ -1,0 +1,7 @@
+index:	0
+title:	logo
+desc:	rsget.pl logo
+
+body:
+	<h2>Hook</h2>
+	<a href="/about/logo/hook.svg"><img src="/about/logo/hook.png" alt="hook" /></a>

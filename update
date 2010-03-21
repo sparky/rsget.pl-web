@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+set -x
+
+cd svn
+svn up
+cd ..
+
+rm -rf rsget.pl
+./file_info.pl
+./getter_info.pl
+./generator.pl
+
+find rsget.pl -name "index.xml" -o -name "error*.xml" \
+	| xargs xmllint --valid >/dev/null
+
+cd rsget.pl
+
+#rsync -zctrlP --delay-updates --delete --delete-after \
+#	. szamchat.xatka.net:public_html/rsget.pl
+
+rsync -zctrlP --delay-updates --delete --delete-after \
+	. sparky.homelinux.org:public_html/rsget.pl

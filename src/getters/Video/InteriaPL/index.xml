@@ -1,0 +1,37 @@
+index:	0
+title:	InteriaPL
+desc:	[V:InteriaPL] <a href="http://video.interia.pl/">"http://video.interia.pl/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: InteriaPL 11238 2010-03-11 00:32:41Z sparky $
+# Video::InteriaPL - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: InteriaPL
+short: V:InteriaPL
+web: "http://video.interia.pl/"
+uri: qr{video\.interia\.pl/obejrzyj,film,\d+}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;h2&gt;(.*?)&lt;/h2&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	! m{so\.addVariable\("vid", "(\d+)"\);};
+	my $id = $1;
+
+	DOWNLOAD( "http://flv.interia.pl/l/$id.flv", fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -1,0 +1,46 @@
+index:	-10943
+title:	r10943
+desc:	
+	<ul>
+		<li>File: <a href="/download/rsget.pl-10943.tar.bz2">rsget.pl-10943.tar.bz2</a></li>
+		<li>Date: 2009-11-04</li>
+		<li>Size: 128155</li>
+		<li>MD5: <tt>d332d593068a285c3befd80f8b6fbb1d</tt></li>
+	</ul>
+
+body:	
+	<h2>SVN changelog</h2>
+	<p>Commits: 15</p>
+	<dl>
+		<dt id="r10943"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10943&amp;view=rev">r10943</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 23:08:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Tools.pm">RSGet/Tools.pm</a></li></ul><pre>- added type to def_settings</pre></dd>
+		<dt id="r10942"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10942&amp;view=rev">r10942</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 23:03:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- fixed text log in daemon mode</pre></dd>
+		<dt id="r10941"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10941&amp;view=rev">r10941</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 22:58:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- use Proc::Daemon for daemonizing
+- fixed http server in daemon mode</pre></dd>
+		<dt id="r10940"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10940&amp;view=rev">r10940</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 22:55:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Captcha.pm">RSGet/Captcha.pm</a></li></ul><pre>- changed captcha_save_results setting into a directory</pre></dd>
+		<dt id="r10938"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10938&amp;view=rev">r10938</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 17:19:42 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image/ImageShack">Image/ImageShack</a></li></ul><pre>- new: imageshack.us</pre></dd>
+		<dt id="r10937"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10937&amp;view=rev">r10937</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 17:19:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image/.template">Image/.template</a></li></ul><pre>- new simple template</pre></dd>
+		<dt id="r10936"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10936&amp;view=rev">r10936</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 17:18:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio/GoEar">Audio/GoEar</a></li></ul><pre>- new: goear.com</pre></dd>
+		<dt id="r10935"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10935&amp;view=rev">r10935</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 17:18:01 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio/.template">Audio/.template</a></li></ul><pre>- new, based on Video/.template</pre></dd>
+		<dt id="r10934"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10934&amp;view=rev">r10934</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 17:15:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio">Audio/</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Image">Image/</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/addgetter">addgetter</a></li></ul><pre>- added Audio and Image directories</pre></dd>
+		<dt id="r10932"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10932&amp;view=rev">r10932</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 01:19:07 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- +README.requirements</pre></dd>
+		<dt id="r10931"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10931&amp;view=rev">r10931</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-03 00:39:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README">README</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/CaptchaImage.pm">RSGet/CaptchaImage.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/MortalObject.pm">RSGet/MortalObject.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Tools.pm">RSGet/Tools.pm</a></li></ul><pre>- added randid function - 16 random bytes as hexadecimal string</pre></dd>
+		<dt id="r10930"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10930&amp;view=rev">r10930</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-02 22:45:01 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- added daemon option, not done correctly, but should work</pre></dd>
+		<dt id="r10929"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10929&amp;view=rev">r10929</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-02 21:13:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.requirements">README.requirements</a></li></ul><pre>- added OpenSolaris</pre></dd>
+		<dt id="r10928"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10928&amp;view=rev">r10928</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-02 17:14:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.requirements">README.requirements</a></li></ul><pre>- new, please add more distributions if you have tested it</pre></dd>
+		<dt id="r10927"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10927&amp;view=rev">r10927</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-11-02 16:15:59 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/AutoUpdate.pm">RSGet/AutoUpdate.pm</a></li></ul><pre>- use mkpath instead of mkdir</pre></dd>
+	</dl>

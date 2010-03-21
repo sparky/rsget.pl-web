@@ -1,0 +1,165 @@
+index:	0
+title:	getting started
+desc:	Where to start if you have no idea how it works.
+
+body:
+<p>
+	First of all, make sure your operating system meets basic requirements.
+	You must have perl interpreter, and WWW::Curl and URI modules. Perl
+	forms part of most UNIX-like systems, and modules should be easily
+	installable. For recommended and optional packages check
+	<a href="/about/requirements/">requirements</a> page.
+</p>
+	
+<h2>instalation</h2>
+<p>
+	Get a fresh copy to prepare for instalation. You can either
+	check it out from <a href="/download/svn/">SVN</a> directly or
+	download <a href="/download/latest.php">latest tarball</a>
+	(this link always points to newest package, but it probably won't
+	be as fresh as SVN).
+</p>
+<pre>[sparky@quad ~]$ <tt>wget -nv http://rsget.pl/download/latest.php</tt>
+2010-02-07 20:40:46 URL:http://rsget.pl/download/rsget.pl-11111.tar.bz2 [129363/129363] -> "rsget.pl-11111.tar.bz2" [1]
+[sparky@quad ~]$ <tt>tar -jxf rsget.pl-11111.tar.bz2</tt>
+[sparky@quad ~]$ <tt>cd rsget.pl-11111/</tt>
+</pre>
+
+<p>
+	You don't even have to install <strong>rsget.pl</strong>, you can
+	run it directly from its source directory (<tt>./rsget.pl</tt>).
+	It should look similar to the dry run
+	<a href="#c2_dry_run">below</a>.
+</p>
+
+<p>
+	To install <strong>rsget.pl</strong> type <tt>make install</tt>.
+	Default, system wide installation requires root privileges,
+	so use <tt>su</tt> or <tt>sudo</tt>.
+	You can append perl path information if it isn't installed
+	in <tt>/usr/bin/perl</tt>, or you would like to use a different one:
+	<tt>make install PERL=/usr/local/bin/perl</tt>
+</p>
+<pre>[sparky@quad rsget.pl-11111]$ <tt>sudo make install PERL=`which perl`</tt></pre>
+
+<p>
+	If you don't want to install it as system wide package, set DATADIR
+	and BINDIR to some path you can write to. Make sure your local bin
+	directory is in your $PATH.
+</p>
+<pre>[sparky@quad rsget.pl-11111]$ <tt>make install DATADIR=$HOME/.rsget.pl/data BINDIR=$HOME/bin</tt>
+rm -fv {RSGet,Get,Video,Audio,Image,Link,data,.}/*~
+rm -fv {RSGet,Get,Video,Audio,Image,Link,data,.}/.*~
+rm -fv {RSGet,Get,Video,Audio,Image,Link,data,.}/svn-commit.tmp*
+rm -fv rsget.pl.datadir
+install -d /home/sparky/.rsget.pl/data/{RSGet,Get,Video,Audio,Image,Link,data} /home/sparky/bin
+sed 's#\($install_path\) =.*;#\1 = "/home/sparky/.rsget.pl/data";#' &lt; rsget.pl &gt; rsget.pl.datadir
+install rsget.pl.datadir /home/sparky/bin/rsget.pl
+cp RSGet/*.pm /home/sparky/.rsget.pl/data/RSGet
+cp data/* //home/sparky/.rsget.pl/data/data
+for DIR in Get Video Audio Image Link; do \
+    cp $DIR/* /home/sparky/.rsget.pl/data/$DIR || exit 1; \
+    grep -l "status:\s*BROKEN" /home/sparky/.rsget.pl/data/$DIR/* | xargs -r rm -v; \
+  done</pre>
+<p>
+	Viola. Now clean up after yourself.
+</p>
+<pre>[sparky@quad rsget.pl-11111]$ <tt>cd ..</tt>
+[sparky@quad ~]$ <tt>rm -r rsget.pl-11111</tt>
+[sparky@quad ~]$ <tt>rm rsget.pl-11111.tar.bz2</tt>
+</pre>
+
+
+<h2>prepare for download</h2>
+<pre>[sparky@quad ~]$ <tt>mkdir Downloads</tt>
+[sparky@quad ~]$ <tt>cd Downloads</tt>
+[sparky@quad Downloads]$
+</pre>
+
+<h2>dry run</h2>
+<pre>[sparky@quad Downloads]$ <tt>rsget.pl</tt>
+[Actual date: 2010-02-07]
+[20:46:46] INFO: Using 'get.list' file list
+[20:46:46] INFO: Using './.get.list.swp' as file lock
+
+[20:46:46] INIT: /home/sparky/.rsget.pl/data/Get: found 30 new plugins
+[20:46:46] INIT: /home/sparky/.rsget.pl/data/Video: found 17 new plugins
+[20:46:46] INIT: /home/sparky/.rsget.pl/data/Audio: found 1 new plugins
+[20:46:46] INIT: /home/sparky/.rsget.pl/data/Image: found 1 new plugins
+[20:46:46] INIT: /home/sparky/.rsget.pl/data/Link: found 12 new plugins
+
+[20:46:46] rsget.pl started successfully
+
+ \--------------------------&lt; 2010-02-07 20:46:47 &gt;---------------------------/
+ |                                         rsget.pl -- total speed: 0.00KB/s; |
+ /----------------------------------------------------------------------------\
+</pre>
+<p>
+	Press <tt>Ctrl+C</tt> to stop it.
+</p>
+
+<h2>prepare download list</h2>
+<pre>[sparky@quad Downloads]$ <tt>cat &gt; get.list &lt;&lt;'EOF'</tt>
+> <tt>http://www.megaupload.com/?d=M50CJZXF</tt>
+> <tt>http://rapidshare.com/files/336525724/Linux-journal-february-2010_www.softarchive.net.rar</tt>
+> <tt>EOF</tt>
+</pre>
+
+<h2>start downloading</h2>
+<pre>[sparky@quad Downloads]$ <tt>rsget.pl</tt>
+[Actual date: 2010-02-07]
+[20:53:06] INFO: Using 'get.list' file list
+[20:53:06] INFO: Using './.get.list.swp' as file lock
+
+[20:53:06] INIT: /home/sparky/.rsget.pl/data/Get: found 30 new plugins
+[20:53:06] INIT: /home/sparky/.rsget.pl/data/Video: found 17 new plugins
+[20:53:06] INIT: /home/sparky/.rsget.pl/data/Audio: found 1 new plugins
+[20:53:06] INIT: /home/sparky/.rsget.pl/data/Image: found 1 new plugins
+[20:53:06] INIT: /home/sparky/.rsget.pl/data/Link: found 12 new plugins
+
+[20:53:06] rsget.pl started successfully
+
+[20:53:07] INFO: Compiling Get::MegaUpload plugin ("http://megaupload.com/")
+[20:53:07] INFO: Get::MegaUpload: make sure you agree with "http://megaupload.com/?c=terms"
+[20:53:07] INFO: Compilation successful
+[20:53:07] INFO: Compiling Get::RapidShare plugin ("http://rapidshare.com/")
+[20:53:07] INFO: Compilation successful
+
+ \--------------------------&lt; 2010-02-07 20:53:12 >---------------------------/
+ | rsget.pl -- captcha: 1; to download: 2; total speed: 0.00KB/s; waiting: 1; |
+ /----------------------------------------------------------------------------\
+[MU] MANUAL LINUX.rar: captcha solved: DUY4, delaying 0:03
+[RS] Linu...-february-2010_www.softarchive.net.rar: clicking link; waiting 0:01
+</pre>
+
+
+<h2>add more links</h2>
+<pre>[sparky@quad Downloads]$ <tt>vim get.list</tt></pre>
+
+<pre>DONE: fname=MANUAL%20LINUX.rar fsize=189799
++ http://megaupload.com/?d=M50CJZXF asize=185.35KB fname=MANUAL%20LINUX.rar fsize=189799 getter=Get%3A%3AMegaUpload iname=MANUAL%20LINUX.rar
+GET:
++ http://rapidshare.com/files/336525724/Linux-journal-february-2010_www.softarchive.net.rar asize=10949KB getter=Get%3A%3ARapidShare kilo=1000 name=Linux-journal-february-2010_www.softarchive.net.rar
+<tt>http://www.youtube.com/watch?v=0bQM5G5y7ik</tt>
+</pre>
+
+
+<h2>how it should look like right now</h2>
+<pre>[20:56:51] rsget.pl started successfully
+
+[20:56:51] INFO: Compiling Get::MegaUpload plugin ("http://megaupload.com/")
+[20:56:51] INFO: Get::MegaUpload: make sure you agree with "http://megaupload.com/?c=terms"
+[20:56:51] INFO: Compilation successful
+[20:56:51] INFO: Compiling Get::RapidShare plugin ("http://rapidshare.com/")
+[20:56:51] INFO: Compilation successful
+[20:57:57] [MU] MANUAL LINUX.rar: DONE 189_799; 92.68KB/s 0:02
+[20:59:39] INFO: Compiling Video::YouTube plugin ("http://www.youtube.com/")
+[20:59:39] INFO: Compilation successful
+
+ \--------------------------&lt; 2010-02-07 20:59:57 >---------------------------/
+ |               rsget.pl -- downloading: 2; running cURL: 1; to download: 2; |
+ |                                        total speed: 64.90KB/s; waiting: 1; |
+ /----------------------------------------------------------------------------\
+[RS] Linu... non-members. Of course you can also try again later.; waiting 1:17
+[V:YouTube] The ...Of Christ.mp4: 987_350 / 44_318_611 [2.23%]; 64.28KB/s 10:58
+</pre>

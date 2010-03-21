@@ -1,0 +1,48 @@
+index:	0
+title:	Veoh
+desc:	[V:Veoh] <a href="http://www.veoh.com/">"http://www.veoh.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: Veoh 11240 2010-03-11 01:39:10Z sparky $
+# Video::Veoh - Video getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Veoh
+short: V:Veoh
+web: "http://www.veoh.com/"
+uri: qr{veoh\.com/}
+slots: max
+status: OK 2010-03-11
+
+unify:
+	my $id;
+	$id = $1 if m{.*/(?:watch|videos)/(v.*?)(#.*)?$};
+	$id = $1 if m{#watch%3D(v.*)$};
+	return "http://www.veoh.com/browse/videos/watch/" . $id if $id;
+
+start:
+	GET( unify( $-{_uri} ) );
+
+	! m/"videoId":"(.*?)",/;
+	my $id = $1;
+	my $ex_uri = "http://www.veoh.com/rest/v2/execute.xml?"
+		. "apiKey=5697781E-1C60-663B-FFD8-9B49D2B56D36&amp;method=veoh.video.findByPermalink"
+		. "&amp;permalink=$id&amp;";
+	GET( $ex_uri );
+
+	! m/title="(.*?)"/;
+	my $fname = de_ml( $1 );
+	$fname =~ tr{/}{_};
+	$fname .= ".flv";
+
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	! m/fullPreviewHashPath="(.*?)"/;
+	DOWNLOAD( de_ml( $1 ), fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

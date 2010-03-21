@@ -1,0 +1,48 @@
+index:	0
+title:	SendSpace
+desc:	[SS] <a href="http://sendspace.com/">"http://sendspace.com/"</a>
+
+body:	
+	<p>Check <a href="http://sendspace.com/terms.html">terms of service</a>.</p>
+<p>Status: OK 2010-03-11</p>
+	<pre># $Id: SendSpace 11251 2010-03-11 17:32:15Z sparky $
+# Get::SendSpace - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SendSpace
+short: SS
+web: "http://sendspace.com/"
+tos: "http://sendspace.com/terms.html"
+uri: qr{sendspace\.com/file/}
+cookie: ss
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /Sorry, the file you requested is not available/;
+
+	! m#&lt;b&gt;Name:&lt;/b&gt;\s*(.*?)\s*&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt;\s*(\d+MB)\s*&lt;br&gt;#;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/"download"/ } );
+	! $form-&gt;select( download =&gt; 0 );
+
+	CLICK( $form-&gt;post() );
+
+	! m#&lt;a id="downlink" class="mango" href="(.*?)"#;
+	my $file_uri = $1;
+
+	CLICK_DOWNLOAD( $file_uri );
+
+	RESTART( - irand( 60, 300 ), "servers overloaded" )
+		if /Sorry, the free service is at full capacity/;
+	RESTART( 0, "empty page" ) unless /\S/;
+	MULTI() if /You cannot download more than one file at a time/;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

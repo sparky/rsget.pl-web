@@ -1,0 +1,103 @@
+index:	0
+title:	SecuredIn
+desc:	[L:SecuredIn] <a href="http://secured.in/">"http://secured.in/"</a>
+
+body:	
+	<p>Status: OK 2009-10-24</p>
+	<pre># $Id: SecuredIn 11111 2010-01-13 13:09:39Z sparky $
+# Link::SecuredIn - Link decrypter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SecuredIn
+short: L:SecuredIn
+web: "http://secured.in/"
+uri: qr{secured\.in/download-\d+-[0-9a-f]+\.html$}
+slots: max
+status: OK 2009-10-24
+
+pre:
+	use MIME::Base64;
+	use Crypt::Blowfish;
+
+	my $cipher = new Crypt::Blowfish "\0\0\0\0\0\0\0\0";
+	sub cipher
+	{
+		my $cipher_string = shift;
+		my $cipher_text = decode_base64( $cipher_string );
+		my $iv = substr $cipher_text, 0, 8;
+
+		my $decrypted = '';
+		for ( my $pos = 8; $pos &lt; length $cipher_text; $pos += 8 ) {
+			my $part = substr $cipher_text, $pos, 8;
+			my $d = $cipher-&gt;decrypt( $part );
+			$decrypted .= $d ^ $iv;
+			$iv = $part;
+		}
+		return $decrypted;
+	}
+
+start:
+	GET( $-{_uri} );
+
+	$-{cap_form} = $self-&gt;form( id =&gt; "frm_captcha" );
+	GOTO stage_find_links unless $-{cap_form};
+
+stage_captcha:
+	my $h = $-{cap_form}-&gt;get( "captcha_hash" );
+	my $img = "captcha-$h.jpg";
+
+	GET( $img, keep_referer =&gt; 1 );
+
+	CAPTCHA( qr/[A-Z0-9]/i );
+
+	GOTO stage_checkcaptcha if defined $_;
+
+	GET( "/ajax-handler.php", post =&gt; { cmd =&gt; "captcha" }, keep_referer =&gt; 1 );
+
+	s/\s+//g;
+	$-{cap_form}-&gt;set( captcha_hash =&gt; $_ );
+
+	GOTO stage_captcha;
+
+stage_checkcaptcha:
+	$-{cap_form}-&gt;set( captcha_key =&gt; $_ );
+
+	GET( $-{cap_form}-&gt;post() );
+
+	$-{cap_form} = $self-&gt;form( id =&gt; "frm_captcha" );
+	if ( $-{cap_form} ) {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_captcha;
+	}
+
+	CAPTCHA_RESULT( "OK" );
+
+stage_find_links:
+
+	my @list;
+	push @list, $1 while s/accessDownload\(\d+, \d+, '(\d+-[0-9a-f]+)', \d+\);//;
+
+	ERROR("no links") unless @list;
+
+	$-{list} = \@list;
+	$-{outlist} = [];
+
+stage_get_link:
+	GET( "/ajax-handler.php",
+		post =&gt; { cmd =&gt; "download", download_id =&gt; shift @{$-{list}} },
+		keep_referer =&gt; 1 );
+
+	my $uri = cipher( $_ );
+	$uri =~ s/\s+$//;
+	$uri =~ s/ /%20/g;
+	push @{$-{outlist}}, $uri;
+
+	GOTO stage_get_link if @{$-{list}};
+
+	LINK( @{$-{outlist}} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

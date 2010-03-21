@@ -1,0 +1,31 @@
+index:	0
+title:	AnonymTo
+desc:	[L:AnonymTo] <a href="http://anonym.to/">"http://anonym.to/"</a>
+
+body:	
+	<p>Status: OK 2009-10-24</p>
+	<pre># $Id: AnonymTo 11201 2010-02-27 17:33:52Z sparky $
+# Link::AnonymTo - Link retriever plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: AnonymTo
+short: L:AnonymTo
+web: "http://anonym.to/"
+uri: qr{anonym\.to/}
+slots: max
+status: OK 2009-10-24
+
+unify:
+	return $_;
+
+start:
+	GET( $-{_uri} );
+	$_ = $-{_uri};
+	s{^http://.*?http}{http};
+	LINK( $_ );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

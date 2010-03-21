@@ -1,0 +1,18 @@
+index:	0
+title:	download
+desc:	Download tarball files.
+
+body:	
+	<h2>Other files</h2>
+	<dl>
+		<dt>MegaUpload captcha database.</dt>
+		<dd>
+			source images and generator scripts
+			<ul>
+				<li>File: <a href="/download/MU-captcha.tar.gz">MU-captcha.tar.gz</a></li>
+				<li>Date: 2009-11-01</li>
+				<li>Size: 810150</li>
+				<li>MD5: <tt>9499ef915e7fdb0490e5ff7255b91445</tt></li>
+			</ul>
+		</dd>
+	</dl>

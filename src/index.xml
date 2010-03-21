@@ -1,0 +1,24 @@
+index:	0
+title:	rsget.pl
+logo:	<a href="/"><img src="/_style/hook.png" class="logo" alt="rsget.pl" /></a>
+desc:	<p>
+		<strong>rsget.pl</strong> is a powerful perl application
+		designed to retrieve files from download services (like
+		RapidShare, MegaUpload and <a href="/getters/">many more</a>).
+		It has a long list of features implemented already
+		and even longer TODO list.
+	</p>
+	<p>
+		You can find more details on the <a href="/about/">about</a> page.
+	</p>
+	<p>
+		If you already know you want it, grab latest tarball from
+		<a href="/download/">downloads</a> and read
+		<a href="/about/start/">where to start</a>.
+	</p>
+
+body:	
+<p class="large">
+	Help <strong>rsget.pl</strong>, make sure it stays alive:
+	<a href="/donate/">donate</a>!
+</p>

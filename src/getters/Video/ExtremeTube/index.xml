@@ -1,0 +1,44 @@
+index:	0
+title:	ExtremeTube
+desc:	[V:ExtremeTube] <a href="http://www.extremetube.com/">"http://www.extremetube.com/"</a>
+
+body:	
+	<p>Status: OK 2010-03-11</p>
+	<pre># $Id: ExtremeTube 11238 2010-03-11 00:32:41Z sparky $
+# Video::ExtremeTube - Video getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: ExtremeTube
+short: V:ExtremeTube
+web: "http://www.extremetube.com/"
+uri: qr{extremetube\.com/video/}
+slots: max
+status: OK 2010-03-11
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;h1 class="title-video-box".+?&gt;(.*?)&lt;/h1&gt;};
+	$-{fname} = de_ml( $1 );
+	$-{fname} =~ s{/}{_}g;
+	$-{fname} =~ s/\s*$/.flv/;
+
+	! m{flashvars\.options = "(.*?)"};
+	GET( $1 );
+
+	! m#&lt;flv_url&gt;(.+?)&lt;/flv_url&gt;#;
+	$-{file_uri} = $1;
+	! m#&lt;width&gt;(\d+)&lt;/width&gt;#;
+	my $width = $1;
+	! m#&lt;height&gt;(\d+)&lt;/height&gt;#;
+	my $height = $1;
+
+	INFO( name =&gt; $-{fname}, quality =&gt; $width."x".$height );
+
+	DOWNLOAD( $-{file_uri}, fname =&gt; $-{fname} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

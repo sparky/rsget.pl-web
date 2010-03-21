@@ -1,0 +1,85 @@
+index:	0
+title:	TurboBit
+desc:	[TB] <a href="http://turbobit.net/">"http://turbobit.net/"</a>
+
+body:	
+	<p>Check <a href="http://turbobit.net/rules">terms of service</a>.</p>
+<p>Status: OK 2010-03-13</p>
+	<pre># $Id: TurboBit 11267 2010-03-13 01:32:41Z sparky $
+# Get::TurboBit - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: TurboBit
+short: TB
+web: "http://turbobit.net/"
+tos: "http://turbobit.net/rules"
+uri: qr{turbobit\.net/[a-z0-9]+\.html}
+uri: qr{turbobit\.ru/[a-z0-9]+\.html}
+cookie: tb
+slots: max
+status: OK 2010-03-13
+
+unify:
+	return "http://turbobit.net/$1"
+		if m{turbobit\.[a-z]{2,3}/([a-z0-9]+\.html)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if m#&lt;div class="code-404"&gt;404&lt;/div&gt;#;
+	ERROR( "file not found" ) if m#Файл не найден. Возможно он был удален|File was not found. It could possibly be deleted#;
+
+	! m#&lt;h1 class="download-file"&gt;.*?&lt;span.*?&gt;&amp;nbsp;(.*?)&lt;/b&gt;&lt;/h1&gt;#;
+	my $name = $1;
+	! m#&lt;br&gt;&lt;b&gt;File size:&lt;/b&gt; ([\d,\.]+ .b)&lt;/div&gt;#;
+	( my $size = $1 ) =~ tr/,/./;
+	INFO( name =&gt; $name, asize =&gt; $size );
+
+	! m#&lt;td&gt;&lt;a class="free" href="(.*?)" onclick#;
+	CLICK( $1 );
+
+stage_captcha:
+	if ( m#&lt;img alt="Captcha" src="(.*?)"# ) {
+		$-{capimg} = $1;
+	} else {
+		! m#var Timeout = {\s*limit: (\d+),#s;
+		RESTART( $1, "free limit reached" );
+	}
+	! $-{form} = $self-&gt;form( match =&gt; { body =&gt; qr#&lt;img alt="Captcha"# } );
+
+stage_getimg:
+	GET( $-{capimg}, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/[A-Z0-9]{4}/i,
+	);
+
+	GOTO stage_getimg unless defined $_;
+	
+	$-{form}-&gt;set( captcha_response =&gt; uc $_ );
+	GET( $-{form}-&gt;post() );
+
+	if ( /updateTime: function/ ) {
+		CAPTCHA_RESULT( "OK" );
+	} else {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_captcha;
+	}
+
+	! m{\$\("#timeout"\)\.load\("(/download/timeout/.*?)"\);};
+	$-{dl_link} = $1;
+
+	! m#var Timeout = {\s*limit: (\d+),#;
+	WAIT( -$1, "starting download" );
+
+	GET( $-{dl_link}, keep_referer =&gt; 1 );
+
+	! m#&lt;a href='(.*?)'&gt;#;
+
+	CLICK_DOWNLOAD( $1 );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

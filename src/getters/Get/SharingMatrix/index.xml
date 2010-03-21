@@ -1,0 +1,118 @@
+index:	0
+title:	SharingMatrix
+desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
+
+body:	
+	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
+<p>Status: OK 2010-03-12</p>
+	<pre># $Id: SharingMatrix 11253 2010-03-12 02:26:52Z sparky $
+# Get::SharingMatrix - File getter plugin for rsget.pl
+#
+# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SharingMatrix
+short: SM
+web: "http://sharingmatrix.com/"
+tos: "http://sharingmatrix.com/user_agreement"
+uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
+cookie: sm
+status: OK 2010-03-12
+
+unify:
+	return "http://sharingmatrix.com/file/$1"
+		if m{/file/(\d+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if m#File has been deleted#;
+
+	if ( /You are already downloading file/ ) {
+		! m#link_name = '(.*?)';#;
+		my $name = $1;
+		! m#fsize = '(.*?)';#;
+		my $size = $1;
+		$size =~ s/&amp;nbsp;//;
+		INFO( name =&gt; $name, asize =&gt; $size );
+
+		MULTI();
+	}
+
+	! m#link_id = '(\d+)';#;
+	$-{link_id} = $1;
+
+	! m#case 'free':.*?sUrl2 = '(.*?)' \+ link_id;#s;
+	my $link = $1 . $-{link_id};
+
+	CLICK( $link, keep_referer =&gt; 1 );
+
+	! m#link_name = '(.*?)';#;
+	$-{link_name} = $1;
+	! m#file_size = '(\d+)';#;
+	INFO( name =&gt; $-{link_name}, size =&gt; $1 );
+
+	! m#sid='(.*?)';#;
+	$-{sid} = $1;
+
+	! m#onclick="javascript:document\.images\.cryptogram\.src='(.*?)'#;
+	$-{img_base} = $1;
+
+stage_captcha:
+	$-{img} = $-{img_base} . (irand 1000) . 1;
+	GET( $-{img}, keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/[a-z]{5}/,
+		#process =&gt; \&amp;sm_decaptcha,
+	);
+
+	GOTO stage_captcha unless defined $_;
+
+	GET( '/ajax_scripts/verifier.php', post =&gt; "?$-{sid}&amp;code=$_", keep_referer =&gt; 1 );
+
+	if ( /^\s*1\s*$/s ) {
+		CAPTCHA_RESULT( "OK" );
+	} else {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_captcha;
+	}
+
+	GET( '/ajax_scripts/dl.php', keep_referer =&gt; 1 );
+
+	s/\s+//sg;
+	$-{dl_id} = $_;
+
+	GET( '/ajax_scripts/update_dl.php?id=' . $-{dl_id}, keep_referer =&gt; 1 );
+
+	GET( "/ajax_scripts/_get.php?link_id=$-{link_id}&amp;link_name=$-{link_name}&amp;dl_id=$-{dl_id}&amp;password=",
+		keep_referer =&gt; 1 );
+
+	s/^{//; s/}$//;
+	my %js = map { /^(.*?)\s*:\s*"(.*?)"/ } split /\s*,\s*/, $_;
+
+	CLICK_DOWNLOAD( "$js{serv}/download/$js{hash}/$-{dl_id}/" );
+
+	# most likely multi-download
+	RESTART( 0, "download error" ) if /Download Error/;
+
+perl:
+
+sub sm_color_select
+{
+	my @s = sort { $a &lt;=&gt; $b } @_;
+	return $s[0];
+}
+
+sub sm_decaptcha
+{
+	my $img = shift;
+
+	$img-&gt;color_filter( \&amp;sm_color_select );
+	$img-&gt;luma_emphasize( 50, 150 );
+	return $img-&gt;ocr();
+}
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

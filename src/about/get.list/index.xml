@@ -1,0 +1,103 @@
+index:	0
+title:	get.list
+desc:	Download list structure.
+
+body:
+
+<h2>URI list</h2>
+<pre><![CDATA[
+Understanding URI list syntax may be very important for people unable or not
+willing to use HTTP interface. It also is crucial if writing any software
+for manipulating the list.
+
+Empty lines and lines starting with '#' are ignored. If line does not start
+with '#', the sign and text after it are treated as part of the line, and not
+as a comment.
+
+Long lines may be truncated between any two words in following manners:
+- Append '\' at the end of unfinished line:
+	word1 word2 \
+	word3 \
+	word4 word5
+- Start added line with '+' sign (preferred):
+	word1 word2
+	+ word3
+	+ word4 word5
+
+Each line specify one file to download, it is composed of following parts:
+
+[COMMAND:] [GLOBAL_OPTS] URI1 [URI1_OPTS] [URI2 [URI2_OPTS] [URI3 ...]]
+
+When introducing new source URI1 is the only part required. URIs must valid
+identifiers, as seen in location bar in your web browser; i.e. they may not
+contain spaces, replace them with '%20'.
+
+COMMAND may be one of: GET, DONE, STOP or ADD. Note the upper case, and colon
+sign (:) after command. If none specified GET is assumed. Their meanings are:
+- GET: download the file, or continue partially downloaded one
+- DONE: file download completed, don't try to download
+- STOP: file download aborted or never started, don't try to download
+- ADD: try to find other uris on the list with the same name and size and add
+    this uri as clone, if none found add it as new source. Command possibly
+    dangerous, SEE (1)
+
+GLOBAL_OPTS are options applied to all URIs for this file. Options specified
+after URI are applied only to the URI immediately proceeding them. Each option
+has syntax: 'name=value', where both name and value must be URI-encoded, in most
+cases it is enough to replace '%' sign and any white space with corresponding
+'%XX' code. There are many options saved by rsget.pl itself, but only a few
+which should be introduced, before starting download, by the user:
+- (global) dir=VALUE - directory within workdir and outdir where downloaded
+    file should be placed
+- (local) pass=VALUE - file password, sometimes required to download a file,
+    SEE (2)
+
+Some of automatic options (saved by rsget.pl):
+- (global) fname=VALUE - exact name of file, set after starting download
+- (global) fsize=VALUE - exact size of file, set after starting download
+- (local) error=VALUE - reason of last failure, URI won't be considered if it
+    contains error option, if all URIs for file have errors COMMAND will change
+    to STOP
+- (local) name, iname, aname, ainame - name of file as reported by the website
+- (local) size, asize - size of file as reported by the website
+
+rsget.pl always writes each line in the following style:
+	COMMAND: [GLOBAL_OPTS]
+	+ URI1 [URI1_OPTS]
+	+ URI2 [URI2_OPTS]
+	...
+
+NOTE to programmers:
+  rsget.pl rereads list file each time it is willing to change something,
+or file's mtime has changed. For that matter you should newer write directly to
+that file, unless you are appending only.
+  On the other hand, rsget.pl will not make any changes to the list file if lock
+file exists. There is one exception tho: if new sources are added from HTTP
+interface and lock file exists it is removed and new URIs are written.
+  Assuming your list_file is get.list, and lock file used is: get.list.lock,
+you should:
+	touch get.list.lock # this ensures consistency
+	read get.list
+	process
+	if needs update:
+	    write get.list.new
+	    if exists get.list.lock:
+	        rename get.list.new to get.list
+	    else: # get.list has changed
+	        restart from beginning
+	remove get.list.lock
+
+
+NOTES:
+ (1) Some download services (e.g. MegaUpload) abbreviate file names on their
+download pages, which may lead to incorrect clone guesses. If there is a three
+part rar, first two parts will have the same size, and same abbreviated name.
+ADD command will think both links specify the same file. Moreover MegaUpload
+allows continuing partial downloads, so after restarting rsget.pl you may end up
+with a broken file containing data chunks from both sources.
+
+ (2) It is not user password nor rar file password. Some sites (in fact
+MegaUpload is the only one) may require to introduce resource password to be
+able to download a file. That password is set by the uploader, separately for
+each resource, and it should be provided by the uploader along with the URIs.
+]]></pre>
