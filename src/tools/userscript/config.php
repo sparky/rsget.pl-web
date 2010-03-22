@@ -526,14 +526,11 @@ var menu = { /* {{{ */
 		var ltext = links.join( "\n" );
 		var text = links.length == 1 ? text1 : textN.replace( /%d/, links.length );
 
-		/* Currently uzbl is unable to send POST request in new window. */
-		var form;
-		if ( uzbl_hacks	)
-			form = el( 'form', { action: server + "add#cnt_" + cnt(),
+		var form = el( 'form', { action: server + "add#cnt_" + cnt(),
 				method: 'POST' } );
-		else
-			form = el( 'form', { action: server + "add#cnt_" + cnt(),
-				method: 'POST', target: '_blank' } );
+		/* Currently uzbl is unable to send POST request in new window. */
+		if ( ! uzbl_hacks )
+			form.setAttribute( 'target', '_blank' );
 
 		form.appendChild( el( 'input', { type: 'hidden',
 			name: 'links', value: ltext } ) );

@@ -38,15 +38,14 @@ body:
 		directory.</p></dd>
 
 	<dt><a href="http://uzbl.org/">UZBL</a></dt>
-	<dd><p>Save the script in <tt>$XDG_DATA_HOME/uzbl/rsget.js</tt> and add keybinding in your uzbl config:
+	<dd><p>Save the script as <tt>$XDG_DATA_HOME/uzbl/rsget.js</tt> and add keybinding in your uzbl config:</p>
 		<pre>@cbind  dr   = script @scripts_dir/rsget.js</pre>
-		Invoke this keybinding to enable script on given site.
-		If you want to have it always enabled, bind it to LOAD_FINISH event:
+		<p>Invoke this keybinding to enable script on given site.
+		If you want to have it always enabled, bind it to LOAD_FINISH event:</p>
 		<pre>@on_event   LOAD_FINISH script @scripts_dir/rsget.js</pre>
-		</p>
 		<p>Known issues:</p>
 		<ul>
-			<li>NEW_WINDOW event is not yet fully implemented. It does not work with rsget userscript.
+			<li>NEW_WINDOW event is not yet fully implemented. It does not work with rsget.pl userscript.
 			You have to enable uzbl-specific hacks either by selecting uzbl&nbsp;hacks checkbox, or by
 			setting uzbl_hacks variable in generated script.</li>
 		</ul>
@@ -65,7 +64,7 @@ body:
 		<input type="checkbox" id="open_supported" name="open_supported"
 		<?= $_REQUEST["open_supported"] ? 'checked="checked"' : '' ?>
 		/></dd>
-	<dt>Do you use <a href="http://uzbl.org">UZBL</a>? If so, enable uzbl-specific hacks</dt>
+	<dt>Are you using UZBL ? If so, enable uzbl-specific hacks</dt>
 	<dd><label for="uzbl_hacks">uzbl hacks</label>:
 		<input type="checkbox" id="uzbl_hacks" name="uzbl_hacks"
 		<?= $_REQUEST["uzbl_hacks"] ? 'checked="checked"' : '' ?>
