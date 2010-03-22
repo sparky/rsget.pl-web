@@ -6,8 +6,13 @@ desc:	Get latest copy.
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 9</p>
+	<p>Commits: 11</p>
 	<dl>
+		<dt id="r11284"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11284&amp;view=rev">r11284</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-21 23:43:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- removed: you can find userscript source generator here:
+  http://github.com/sparky/rsget.pl-web/blob/master/src/tools/userscript/config.php</pre></dd>
+		<dt id="r11283"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11283&amp;view=rev">r11283</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-21 23:41:28 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget.pl.user.js">rsget.pl.user.js</a></li></ul><pre>- removed: no longer supported</pre></dd>
 		<dt id="r11279"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11279&amp;view=rev">r11279</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-18 00:26:21 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget.pl.user.js">rsget.pl.user.js</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- suggest port 7666 for http</pre></dd>
 		<dt id="r11278"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11278&amp;view=rev">r11278</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-14 16:54:10 UTC</em></dt>
