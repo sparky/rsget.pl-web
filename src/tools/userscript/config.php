@@ -7,18 +7,23 @@ $exp = time() + 60 * 60 * 24 * 150;
 $cpath = "/tools/userscript/";
 $host = "http://localhost:7666/";
 $open = 0;
+$uzbl = 0;
 if ( $_POST["host"] ) {
 	$host = $_POST["host"];
 	$open = $_POST["open_supported"] ? 1 : 0;
+	$uzbl = $_POST["uzbl_hacks"] ? 1 : 0;
 } else if ( $_GET["host"] ) {
 	$host = $_GET["host"];
 	$open = $_GET["open_supported"] ? 1 : 0;
+	$uzbl = $_GET["uzbl_hacks"] ? 1 : 0;
 } else {
 	$host = $_REQUEST["host"];
 	$open = $_REQUEST["open_supported"] ? 1 : 0;
+	$uzbl = $_REQUEST["uzbl_hacks"] ? 1 : 0;
 }
 setcookie( "host", $host, $exp, $cpath );
 setcookie( "open_supported", $open, $exp, $cpath );
+setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 ?>
 // ==UserScript==
 // @name		rsget.pl
@@ -31,6 +36,7 @@ setcookie( "open_supported", $open, $exp, $cpath );
 
 var server = '<?= $host ?>';
 var always_open_supported = <?= $open ? "true" : "false" ?>;
+var uzbl_hacks = <?= $uzbl ? "true" : "false" ?>;
 
 /* supported links {{{ */
 /* update supported lists:
@@ -520,8 +526,14 @@ var menu = { /* {{{ */
 		var ltext = links.join( "\n" );
 		var text = links.length == 1 ? text1 : textN.replace( /%d/, links.length );
 
-		var form = el( 'form', { action: server + "add#cnt_" + cnt(),
-			method: 'POST', target: '_blank' } );
+		/* Currently uzbl is unable to send POST request in new window. */
+		var form;
+		if ( uzbl_hacks	)
+			form = el( 'form', { action: server + "add#cnt_" + cnt(),
+				method: 'POST' } );
+		else
+			form = el( 'form', { action: server + "add#cnt_" + cnt(),
+				method: 'POST', target: '_blank' } );
 
 		form.appendChild( el( 'input', { type: 'hidden',
 			name: 'links', value: ltext } ) );

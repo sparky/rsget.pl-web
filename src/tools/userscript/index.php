@@ -50,6 +50,11 @@ body:
 		<input type="checkbox" id="open_supported" name="open_supported"
 		<?= $_REQUEST["open_supported"] ? 'checked="checked"' : '' ?>
 		/></dd>
+	<dt>Do you use <a href="http://uzbl.org">UZBL</a>? If so, enable uzbl-specific hacks</dt>
+	<dd><label for="uzbl_hacks">uzbl hacks</label>:
+		<input type="checkbox" id="uzbl_hacks" name="uzbl_hacks"
+		<?= $_REQUEST["uzbl_hacks"] ? 'checked="checked"' : '' ?>
+		/></dd>
 	<dt>All done ?</dt>
 	<dd><input type="submit" value="Get it !" /></dd>
 </dl>
