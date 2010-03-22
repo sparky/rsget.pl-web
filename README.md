@@ -1,7 +1,7 @@
 http://rsget.pl/ sources
 ------------------------
 
-Repository of sources from which http://rsget.pl/ pages are generated.
+Repository of sources from which <http://rsget.pl/> pages are generated.
 
 TODO:
 
