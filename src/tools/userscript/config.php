@@ -16,7 +16,7 @@ if ( $_POST["host"] ) {
 	$host = $_GET["host"];
 	$open = $_GET["open_supported"] ? 1 : 0;
 	$uzbl = $_GET["uzbl_hacks"] ? 1 : 0;
-} else {
+} else if ( $_REQUEST["host"] ) {
 	$host = $_REQUEST["host"];
 	$open = $_REQUEST["open_supported"] ? 1 : 0;
 	$uzbl = $_REQUEST["uzbl_hacks"] ? 1 : 0;
@@ -28,21 +28,37 @@ setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 // ==UserScript==
 // @name		rsget.pl
 // @namespace	http://rsget.pl/
-// @description	quickly add links to rsget.pl
+// @description	Quickly add links to rsget.pl http interface (you must enable it first by setting http-port).
 // @include		http://*/*
 // @include		https://*/*
 // @include		file://*
 // ==/UserScript==
 
-var server = '<?= $host ?>';
+/*** Configuration ***/
+/* 
+ * You can edit those values manually, but you should better use configuration
+ * page instead: http://rsget.pl/tools/userscript/
+ */
+
+// Where your rsget.pl can be found; default: 'http://localhost:7666/'
+var server = '<?= $host /* TODO: escape '' chars */ ?>';
+// Open menu on all supported pages (including flash-based); default: false
 var always_open_supported = <?= $open ? "true" : "false" ?>;
+// Are you using UZBL ? If so, enable uzbl-specific hacks; default: false
 var uzbl_hacks = <?= $uzbl ? "true" : "false" ?>;
+
+/*** End configuration ***/
+/*
+ * You shouldn't have to change anything below.
+ */
+
 
 /* supported links {{{ */
 /* update supported lists:
-awk '/}/ { p = 0 } { if ( p ) { sub(/\t"/, ""); sub( /".+/, "" ); print } } /supported[23] =/ { p = 1 }' < rsget_pl.user.js > l.old
-grep uri: {Audio,Get,Image,Link,Video}/* | sed 's/.*qr{//; s#/.*##; s/\\\././g; s/(?.\+)?\?//; /\..*\./d' | sort -u > l.new
-grep uri: {Audio,Get,Image,Link,Video}/* | sed 's/.*qr{//; s#/.*##; s/\\\././g; s/(?.\+)?\?//; /\..*\./!d' | sort -u >> l.new
+awk '/}/ { p = 0 } { if ( p ) { sub(/\t"/, ""); sub( /".+/, "" ); print } } /supported[23] =/ { p = 1 }' \
+	< src/tools/userscript/config.php > l.old
+grep uri: svn/{Audio,Get,Image,Link,Video}/* | sed 's/.*qr{//; s#/.*##; s/\\\././g; s/(?.\+)?\?//; /\..*\./d' | sort -u > l.new
+grep uri: svn/{Audio,Get,Image,Link,Video}/* | sed 's/.*qr{//; s#/.*##; s/\\\././g; s/(?.\+)?\?//; /\..*\./!d' | sort -u >> l.new
 diff -u l.old l.new
  */
 var supported2 = {
@@ -683,4 +699,4 @@ function start()
 		window.addEventListener( 'load', start, false );
 })();
 
-// vim: ts=4:sw=4:fdm=marker
+// vim: ts=4:sw=4:fdm=marker:filetype=javascript
