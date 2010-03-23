@@ -18,19 +18,22 @@ for PHP in $(find rsget.pl -name "index.php" -o -name "error*.php"); do
 	echo "+ xmllint --valid $PHP"
 	php $PHP | xmllint --valid - > /dev/null
 done
-
-echo
-echo -n "Update servers [y/N] ? "
-read ANS
-[ "$ANS" = "y" ] || exit 0
-
 set -x
+
+ask() {
+	echo
+	echo -n "Update $1 server [y/N] ? "
+	read ANS
+	[ "$ANS" = "y" ] || exit 0
+}
 
 cd rsget.pl
 
+ask "local"
 rsync -zctrlP --delay-updates --delete --delete-after \
 	. sparky.homelinux.org:public_html/rsget.pl
 
+ask "remote"
 rsync -zctrlP --delay-updates --delete --delete-after \
 	. szamchat.xatka.net:public_html/rsget.pl
 
