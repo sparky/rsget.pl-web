@@ -6,8 +6,10 @@ desc:	Get latest copy.
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 11</p>
+	<p>Commits: 12</p>
 	<dl>
+		<dt id="r11286"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11286&amp;view=rev">r11286</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-23 23:54:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/AutoUpdate.pm">RSGet/AutoUpdate.pm</a></li></ul><pre>- test</pre></dd>
 		<dt id="r11284"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11284&amp;view=rev">r11284</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-21 23:43:10 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/rsget_pl.user.js">rsget_pl.user.js</a></li></ul><pre>- removed: you can find userscript source generator here:
   http://github.com/sparky/rsget.pl-web/blob/master/src/tools/userscript/config.php</pre></dd>
