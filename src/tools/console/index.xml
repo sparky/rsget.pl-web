@@ -1,0 +1,29 @@
+index:	0
+title:	console
+desc:	Simple sed and awk scripts to quickly edit get.list
+
+body:	
+<p>
+	Following scripts are used to edit multiple entries in get.list at
+	once. Useful if list contains 20 or more links.
+</p>
+
+<h3>Remove all error</h3>
+<p>Remove error=something from all links. This won't restart download until you <a href="#c2_start_all_stop">Start all STOP</a>.</p>
+<pre>sed -i 's/ error=\S*//' get.list</pre>
+
+<h3>Start all STOP</h3>
+<p>Change to GET all stopped downloads.</p>
+<pre>sed -i 's/^STOP:/GET:/' get.list</pre>
+
+<h3>Remove all STOP</h3>
+<p>Remove all STOPped links from the list.</p>
+<pre>awk '!/^\+ / { stop = 0 } /^STOP:/ { stop = 1 } { if ( !stop ) print }' get.list > get.list.awk &amp;&amp; mv get.list{.awk,}</pre>
+
+<h3>Remove all DONE</h3>
+<p>Remove all DONE links from the list.</p>
+<pre>awk '!/^\+ / { done = 0 } /^DONE:/ { done = 1 } { if ( !done ) print }' get.list > get.list.awk &amp;&amp; mv get.list{.awk,}</pre>
+
+<h3>Stop all GET</h3>
+<p>Change to STOP all active downloads.</p>
+<pre>sed -i 's/^GET:/STOP:/' get.list</pre>
