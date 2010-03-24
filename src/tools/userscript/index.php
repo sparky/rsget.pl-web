@@ -1,6 +1,6 @@
 index:	0
 title:	userscript
-desc:	Userscript for Mozilla, Chormium, Opera and Epiphany web browsers.
+desc:	Userscript for Mozilla, Chormium, Opera, Epiphany and UZBL web browsers.
 
 body:	
 <p>
