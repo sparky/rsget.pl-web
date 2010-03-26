@@ -4,7 +4,7 @@ desc:	[RS] <a href="http://rapidshare.com/">"http://rapidshare.com/"</a>
 
 body:	
 	<p>Status: OK 2010-03-12</p>
-	<pre># $Id: RapidShare 11254 2010-03-12 02:30:36Z sparky $
+	<pre># $Id: RapidShare 11288 2010-03-25 22:40:31Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -59,6 +59,8 @@ start:
 		if match "download of this file is currently not possible";
 	ERROR( "file removed: $_" )
 		if match "This limit is reached";
+	ERROR( "not allowed: $_" )
+		if m#&lt;h1&gt;Error&lt;/h1&gt;# and match qr/This file is larger than /;
 
 	! m#&lt;p class="downloadlink"&gt;.*/(.+?) &lt;font style=".*?"&gt;\| (\d+ KB)&lt;/font&gt;&lt;/p&gt;#;
 	INFO( name =&gt; $1, asize =&gt; $2, kilo =&gt; 1000 );
