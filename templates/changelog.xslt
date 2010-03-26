@@ -72,6 +72,13 @@
 				<xsl:value-of select="substring(text(), 16)" />
 				<xsl:if test="@kind='dir'"><xsl:text>/</xsl:text></xsl:if>
 			</a>
+			<xsl:if test="perl:isgetter( text() )">
+				<xsl:text> (</xsl:text>
+				<a href="/getters/{substring(text(), 16)}/">
+					<xsl:text>getter</xsl:text>
+				</a>
+				<xsl:text>)</xsl:text>
+			</xsl:if>
 		</li>
 	</xsl:template>
  

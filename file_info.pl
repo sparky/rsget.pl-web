@@ -29,7 +29,20 @@ sub xslt_fixlog
 	return $_;
 }
 
+sub xslt_isgetter
+{
+	local $_ = shift || die;
+
+	if ( m#^/toys/rsget\.pl/((Get|Video|Audio|Image|Link)/\S+)# ) {
+		return 1 if -r "svn/$1";
+	}
+
+	return undef;
+}
+
+
 XML::LibXSLT->register_function( "urn:perl", "fixlog", \&xslt_fixlog );
+XML::LibXSLT->register_function( "urn:perl", "isgetter", \&xslt_isgetter );
 
 
 sub xml_changelog
