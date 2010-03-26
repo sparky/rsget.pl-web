@@ -9,14 +9,15 @@ my $out = "src/getters";
 my %getters = ();
 
 foreach my $dir ( qw(Get Video Audio Image Link) ) {
-	foreach my $f ( glob "$src/$dir/*" ) {
+	foreach my $f ( "$src/$dir/.template", glob "$src/$dir/*" ) {
+		next unless -r $f;
 		next if $f =~ /~$/;
 		$getters{ $f } = 1;
 		getter_info( $f );
 	}
 }
 foreach my $dir ( qw(Get Video Audio Image Link) ) {
-	foreach my $f ( glob "$out/$dir/*" ) {
+	foreach my $f ( "$out/$dir/.template", glob "$out/$dir/*" ) {
 		next unless -d $f;
 		$f =~ s/^$out/$src/;
 		die "getter $f does not exist"

@@ -102,7 +102,9 @@ sub wanted
 	return if -d;
 	return if /~$/;
 	return if /\.bak$/;
-	return if m#/\.#;
+	return if m{/\.+$};
+	return if m{/\..+\.swp};
+	#return if m#/\.#;
 
 	s#^$src##;
 	my $dir = "";
