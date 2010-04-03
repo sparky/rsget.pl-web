@@ -6,8 +6,12 @@ desc:	Get latest copy.
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 14</p>
+	<p>Commits: 16</p>
 	<dl>
+		<dt id="r11295"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11295&amp;view=rev">r11295</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-02 22:22:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- unborked format detection</pre></dd>
+		<dt id="r11294"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11294&amp;view=rev">r11294</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-02 22:20:06 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- updated for web changes</pre></dd>
 		<dt id="r11288"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11288&amp;view=rev">r11288</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-25 22:40:31 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- return error on 200MB+ files</pre></dd>
 		<dt id="r11287"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11287&amp;view=rev">r11287</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-03-24 01:20:57 UTC</em></dt>

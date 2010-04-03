@@ -4,7 +4,7 @@ desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a
 
 body:	
 	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: YouTube 11241 2010-03-11 01:43:17Z sparky $
+	<pre># $Id: YouTube 11295 2010-04-02 22:22:55Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -34,14 +34,14 @@ pre:
 start:
 	GET( $-{_uri} );
 
-	! m{"video_id": "(.*?)"};
+	! m{"video_id": "(.*?)"} or m{'VIDEO_ID': '(.*?)'};
 	my $id = $1;
 
 	! m{&lt;meta name="title" content="(.*?)"&gt;};
 	my $name = de_ml( de_ml( $1 ) );
 	$name =~ s{/}{_}g;
 
-	! /"fmt_map"\s*:\s*"(.*?)"/;
+	! /"fmt_map"\s*:\s*"(.*?)"/ or m{&amp;fmt_map=(\S+?)&amp;};
 	my %fmts = map { m{(\d+)/}; $1 =&gt; $_ } split ",", uri_unescape( $1 );
 
 	my $fmt = $fmt[ $#fmt ];
@@ -52,7 +52,7 @@ start:
 		}
 	}
 
-	! /"t"\s*:\s*"(.*?)"/;
+	! /"t"\s*:\s*"(.*?)"/ or m{&amp;t=(\S+?)&amp;};
 	my $t = $1;
 
 	my $fname = $name . "." . $fmt-&gt;[1];
