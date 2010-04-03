@@ -3,8 +3,8 @@ title:	AnonymTo
 desc:	[L:AnonymTo] <a href="http://anonym.to/">"http://anonym.to/"</a>
 
 body:	
-	<p>Status: OK 2009-10-24</p>
-	<pre># $Id: AnonymTo 11201 2010-02-27 17:33:52Z sparky $
+	<p>Status: OK 2010-04-03</p>
+	<pre># $Id: AnonymTo 11297 2010-04-03 00:32:29Z sparky $
 # Link::AnonymTo - Link retriever plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:AnonymTo
 web: "http://anonym.to/"
 uri: qr{anonym\.to/}
 slots: max
-status: OK 2009-10-24
+status: OK 2010-04-03
 
 unify:
 	return $_;

@@ -4,8 +4,8 @@ desc:	[FS] <a href="http://freakshare.net/">"http://freakshare.net/"</a>
 
 body:	
 	<p>Check <a href="http://freakshare.net/terms-of-service.html">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: FreakShare 11254 2010-03-12 02:30:36Z sparky $
+<p>Status: OK 2010-04-03</p>
+	<pre># $Id: FreakShare 11297 2010-04-03 00:32:29Z sparky $
 # Get::FreakShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://freakshare.net/"
 tos: "http://freakshare.net/terms-of-service.html"
 uri: qr{freakshare\.net/files/}
 cookie: fs
-status: OK 2010-03-12
+status: OK 2010-04-03
 
 start:
 	GET( $-{_uri} );

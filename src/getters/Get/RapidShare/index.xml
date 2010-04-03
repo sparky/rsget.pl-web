@@ -3,8 +3,8 @@ title:	RapidShare
 desc:	[RS] <a href="http://rapidshare.com/">"http://rapidshare.com/"</a>
 
 body:	
-	<p>Status: OK 2010-03-12</p>
-	<pre># $Id: RapidShare 11288 2010-03-25 22:40:31Z sparky $
+	<p>Status: OK 2010-04-03</p>
+	<pre># $Id: RapidShare 11297 2010-04-03 00:32:29Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -15,7 +15,7 @@ name: RapidShare
 short: RS
 web: "http://rapidshare.com/"
 uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/files/\d+/.+}
-status: OK 2010-03-12
+status: OK 2010-04-03
 
 unify:
 	s/#.*//;

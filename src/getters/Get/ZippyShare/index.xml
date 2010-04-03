@@ -4,8 +4,8 @@ desc:	[ZipS] <a href="http://www.zippyshare.com/">"http://www.zippyshare.com/"</
 
 body:	
 	<p>Check <a href="http://www.zippyshare.com/terms.html">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: ZippyShare 11275 2010-03-14 16:11:45Z sparky $
+<p>Status: OK 2010-04-03</p>
+	<pre># $Id: ZippyShare 11297 2010-04-03 00:32:29Z sparky $
 # Get::ZippyShare - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://www.zippyshare.com/terms.html"
 uri: qr{(?:www\d*\.)?zippyshare\.com/v/\d+/file\.}
 cookie: zips
 slots: max
-status: OK 2010-03-12
+status: OK 2010-04-03
 
 unify:
 	return "$1/file.html" if m{^(.*?)/file};

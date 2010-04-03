@@ -4,8 +4,8 @@ desc:	[ES] <a href="http://easy-share.com/">"http://easy-share.com/"</a>
 
 body:	
 	<p>Check <a href="http://easy-share.com/tos.html">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: EasyShare 11254 2010-03-12 02:30:36Z sparky $
+<p>Status: OK 2010-04-03</p>
+	<pre># $Id: EasyShare 11297 2010-04-03 00:32:29Z sparky $
 # Get::EasyShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://easy-share.com/"
 tos: "http://easy-share.com/tos.html"
 uri: qr{(?:w\d+\.)?easy-share\.com/(../)?(\d+)}
 cookie: !es
-status: OK 2010-03-12
+status: OK 2010-04-03
 
 start:
 	COOKIE( [ (qw(.easy-share.com TRUE / FALSE), time + 80000, 'language', 'en' ) ] );
