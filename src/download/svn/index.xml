@@ -1,13 +1,22 @@
 index:	-999999
 title:	svn
-desc:	Get latest copy.
-	<pre>svn co http://svn.pld-linux.org/svn/toys/rsget.pl</pre>
+desc:	
+	<ul>	
+		<li>Get latest copy:
+			<pre>svn co http://svn.pld-linux.org/svn/toys/rsget.pl</pre>
+		</li>
+		<li>SVN snapshot: <a href="/download/snapshot.php">latest tar</a></li>
+	</ul>
 
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 18</p>
+	<p>Commits: 20</p>
 	<dl>
+		<dt id="r11311"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11311&amp;view=rev">r11311</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-05 20:34:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio/GoEar">Audio/GoEar</a> (<a href="/getters/Audio/GoEar/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/4Shared">Get/4Shared</a> (<a href="/getters/Get/4Shared/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/4Shared">Link/4Shared</a> (<a href="/getters/Link/4Shared/">getter</a>)</li></ul><pre>- updated status</pre></dd>
+		<dt id="r11310"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11310&amp;view=rev">r11310</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-05 20:33:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/ArchivTo">Get/ArchivTo</a> (<a href="/getters/Get/ArchivTo/">getter</a>)</li></ul><pre>- allow /GET/ uris; added unify</pre></dd>
 		<dt id="r11297"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11297&amp;view=rev">r11297</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-03 00:32:29 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/EasyShare">Get/EasyShare</a> (<a href="/getters/Get/EasyShare/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FreakShare">Get/FreakShare</a> (<a href="/getters/Get/FreakShare/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a> (<a href="/getters/Get/HotFile/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/ZippyShare">Get/ZippyShare</a> (<a href="/getters/Get/ZippyShare/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/AnonymTo">Link/AnonymTo</a> (<a href="/getters/Link/AnonymTo/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/CryptIt">Link/CryptIt</a> (<a href="/getters/Link/CryptIt/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- getters checked - status date updated</pre></dd>
 		<dt id="r11296"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11296&amp;view=rev">r11296</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-03 00:26:53 UTC</em></dt>
