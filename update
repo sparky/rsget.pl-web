@@ -1,11 +1,12 @@
 #!/bin/sh
 
+export LC_ALL=C
+
 set -e
 set -x
 
-svn co http://svn.pld-linux.org/svn/toys/rsget.pl svn
-
 rm -rf rsget.pl
+./svn_snapshot.sh
 ./file_info.pl
 ./getter_info.pl
 ./generator.pl

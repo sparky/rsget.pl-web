@@ -114,8 +114,13 @@ sub page_changelog
 my $svn_head =
 'index:	-999999
 title:	svn
-desc:	Get latest copy.
-	<pre>svn co http://svn.pld-linux.org/svn/toys/rsget.pl</pre>
+desc:	
+	<ul>	
+		<li>Get latest copy:
+			<pre>svn co http://svn.pld-linux.org/svn/toys/rsget.pl</pre>
+		</li>
+		<li>SVN snapshot: <a href="/download/snapshot.php">latest tar</a></li>
+	</ul>
 
 body:	
 
