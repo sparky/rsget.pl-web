@@ -1,4 +1,4 @@
-<?php
+<?php /* {{{ */
 if ( ! $_SERVER["PATH_TRANSLATED"] || ! ereg( ".user.js$", $_SERVER["PATH_TRANSLATED"] ) ) {
 	header( 'Refresh: 1;url=/tools/userscript/config.php/rsgetpl.user.js' );
 }
@@ -24,7 +24,7 @@ if ( $_POST["host"] ) {
 setcookie( "host", $host, $exp, $cpath );
 setcookie( "open_supported", $open, $exp, $cpath );
 setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
-?>
+/* }}} */ ?>
 // ==UserScript==
 // @name		rsget.pl
 // @namespace	http://rsget.pl/
@@ -34,7 +34,7 @@ setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 // @include		file://*
 // ==/UserScript==
 
-/*** Configuration ***/
+/*** {{{ Configuration {{{ ***/
 /* 
  * You can edit those values manually, but you should better use configuration
  * page instead: http://rsget.pl/tools/userscript/
@@ -42,12 +42,14 @@ setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 
 // Where your rsget.pl can be found; default: 'http://localhost:7666/'
 var server = '<?= $host /* TODO: escape '' chars */ ?>';
+
 // Open menu on all supported pages (including flash-based); default: false
 var always_open_supported = <?= $open ? "true" : "false" ?>;
+
 // Are you using UZBL ? If so, enable uzbl-specific hacks; default: false
 var uzbl_hacks = <?= $uzbl ? "true" : "false" ?>;
 
-/*** End configuration ***/
+/*** }}} End configuration }}} ***/
 /*
  * You shouldn't have to change anything below.
  */
@@ -699,4 +701,4 @@ function start()
 		window.addEventListener( 'load', start, false );
 })();
 
-// vim: ts=4:sw=4:fdm=marker:filetype=javascript
+// vim: ts=4:sw=4:filetype=javascript:fdm=marker
