@@ -13,3 +13,5 @@ userscript TODO:
 - detect whether page is server as xhtml (text/xml, application/xhtml+xml)
   and use NS functions on such pages
 - open single uris in iframe/object popup
+- update links information on DOMNodeInserted event
+- display some progress report while detecting links

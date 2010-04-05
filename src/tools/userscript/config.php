@@ -158,6 +158,11 @@ function el( tag, attrib )
 	return el;
 }
 
+function tn( str )
+{
+	return document.createTextNode( str );
+}
+
 function stop_propagation( ev )
 {
 	ev.stopPropagation();
@@ -235,14 +240,14 @@ var finder = { /* {{{ */
 					continue;
 
 				text_node.insertBefore(
-						document.createTextNode( text.substr( 0, start ) ),
+						tn( text.substr( 0, start ) ),
 						node );
 
 				/* class is a special word, must have quotes */
 				var a = el( 'a', { href: href, 'class': 'get_link_text' } );
 				a.addEventListener( 'DOMActivate', finder._click, false );
 				a.addEventListener( 'click', finder._click, false );
-				a.appendChild( document.createTextNode( href ) );
+				a.appendChild( tn( href ) );
 				text_node.insertBefore( a, node );
 
 				text = text.substr( start + href.length );
@@ -455,6 +460,14 @@ var menu = { /* {{{ */
 			menu.open();
 		}
 	},
+	_disable_ev: function ( ev )
+	{
+		ev.stopPropagation();
+		ev.preventDefault();
+		// XXX: this is ugly
+		document.location = document.location.href + "#no_rsget";
+		document.location.reload();
+	},
 	open: function ()
 	{
 		menu.init();
@@ -465,6 +478,32 @@ var menu = { /* {{{ */
 
 		var div = el( 'div' );
 		var ul = el( 'ul' );
+
+		{
+			var li = el( 'li' );
+
+			var a = el( 'a', { href: "#no_rsget" } );
+			a.addEventListener( 'DOMActivate', menu._disable_ev, false );
+			a.addEventListener( 'click', menu._disable_ev, false );
+			a.appendChild( tn( "close" ) );
+			li.appendChild( a );
+
+			var buttons = [
+				"config", "http://rsget.pl/tools/userscript/",
+				"interface", server,
+				"web", "http://rsget.pl/"
+			];
+
+			for ( var i = 0; i < buttons.length; i+=2 ) {
+				li.appendChild( tn( ", " ) );
+
+				a = el( 'a', { href: buttons[ i + 1 ] } );
+				a.appendChild( tn( buttons[ i ] ) );
+				li.appendChild( a );
+			}
+
+			ul.appendChild( li );
+		}
 
 		if ( finder.page_supported ) {
 			ul.appendChild( menu._li_form(
@@ -641,6 +680,7 @@ div#rsget_pl * {\
 	font-family: \"Bitstream Vera Sans\", \"Free Sans\", \"FreeSans\",\
 		\"DejaVu Sans Condensed\", \"Droid Sans\", sans-serif;\
 	font-size: 13px;\
+	line-height: 13px;\
 	color: #222;\
 	padding: 0;\
 	margin: 0;\
@@ -653,8 +693,6 @@ div#rsget_pl div {\
 }\
 div#rsget_pl ul {\
 	list-style-type: none;\
-	margin: 0;\
-	padding: 0;\
 	width: 250px;\
 	right: 0;\
 	position: absolute;\
@@ -662,13 +700,17 @@ div#rsget_pl ul {\
 div#rsget_pl li {\
 	text-align: right;\
 }\
-div#rsget_pl input[type=submit] {\
+div#rsget_pl input[type=submit], div#rsget_pl a {\
+	margin-top: -1px;\
+	margin-bottom: -1px;\
+}\
+div#rsget_pl input[type=submit], div#rsget_pl a {\
 	display: inline;\
 	border-bottom: 1px solid transparent;\
 	color: #711;\
 	cursor: pointer;\
 }\
-div#rsget_pl input[type=submit]:hover {\
+div#rsget_pl input[type=submit]:hover, div#rsget_pl a:hover {\
 	color: #000;\
 	border-bottom: 1px solid #000;\
 }\
@@ -695,6 +737,9 @@ function start()
 
 (function ()
 {
+	if ( document.location.hash == "#no_rsget" )
+		return;
+
 	if ( document.documentElement )
 		start();
 	else
