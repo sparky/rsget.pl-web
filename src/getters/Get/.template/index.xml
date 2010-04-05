@@ -1,0 +1,43 @@
+index:	0
+title:	[NAME]
+desc:	[[NAME]] <a href="http://gsite.com/">"http://gsite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11148 2010-02-19 15:17:50Z sparky $
+# Get::[NAME] - File getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: [NAME]
+web: "http://gsite.com/"
+uri: qr{gsite\.com/}
+status: OK [DATE]
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if /404/;
+
+	! m#(.+?) \| ($STDSIZE)#;
+	INFO( name =&gt; $1, asize =&gt; $2 );
+
+	MULTI() if /You are downloading/;
+
+	RESTART( $1 * 60, "free limit reached" )
+		if /try again in (\d+) minutes/;
+
+	! /href="(.*?)"/;
+	$-{file_uri} = $1;
+
+	! /var wait = (\d+);/;
+	WAIT( $1, "starting download" );
+
+	DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

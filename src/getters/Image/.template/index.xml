@@ -1,0 +1,38 @@
+index:	0
+title:	[NAME]
+desc:	[I:[NAME]] <a href="http://isite.com/">"http://isite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11148 2010-02-19 15:17:50Z sparky $
+# Image::[NAME] - Image getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: I:[NAME]
+web: "http://isite.com/"
+uri: qr{isite\.com/}
+slots: max
+status: OK [DATE]
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;title&gt;(.*?)&lt;/title&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".jpeg";
+
+	! m{resolution: (\d+x\d+)};
+
+	INFO( name =&gt; $fname, quality =&gt; $1 );
+
+	! m{&lt;img src='(.*?)'&gt;};
+	my $file_uri = $1;
+	DOWNLOAD( $file_uri );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

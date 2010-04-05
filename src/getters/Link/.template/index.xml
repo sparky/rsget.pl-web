@@ -1,0 +1,54 @@
+index:	0
+title:	[NAME]
+desc:	[L:[NAME]] <a href="http://lsite.com/">"http://lsite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11148 2010-02-19 15:17:50Z sparky $
+# Link::[NAME] - Link decrypter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: L:[NAME]
+web: "http://lsite.com/"
+uri: qr{lsite\.com/}
+slots: max
+status: OK [DATE]
+
+pre:
+	use MIME::Base64;
+
+	sub decrypt
+	{
+		...
+		return $decrypted;
+	}
+
+start:
+	GET( $-{_uri} );
+
+	my @list;
+	push @list, $1 while s/link: '(\d+-[0-9a-f]+)';//;
+
+	ERROR("no links") unless @list;
+
+	$-{list} = \@list;
+	$-{outlist} = [];
+
+stage_get_link:
+	GET( "getlink",
+		post =&gt; { link_id =&gt; shift @{$-{list}} },
+		keep_referer =&gt; 1 );
+
+	my $uri = decrypt( $_ );
+	push @{$-{outlist}}, $uri;
+
+	GOTO stage_get_link if @{$-{list}};
+
+	LINK( @{$-{outlist}} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -1,0 +1,36 @@
+index:	0
+title:	[NAME]
+desc:	[A:[NAME]] <a href="http://asite.com/">"http://asite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11148 2010-02-19 15:17:50Z sparky $
+# Audio::[NAME] - Audio getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: A:[NAME]
+web: "http://asite.com/"
+uri: qr{asite\.com/}
+slots: max
+status: OK [DATE]
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;title&gt;(.*?)&lt;/title&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".mp3";
+
+	INFO( name =&gt; $fname, quality =&gt; "mp3" );
+
+	! m{file_uri_here:'(.*?)'};
+	my $file_uri = uri_unescape( $1 );
+	DOWNLOAD( $file_uri, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

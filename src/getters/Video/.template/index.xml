@@ -1,0 +1,36 @@
+index:	0
+title:	[NAME]
+desc:	[V:[NAME]] <a href="http://vsite.com/">"http://vsite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11148 2010-02-19 15:17:50Z sparky $
+# Video::[NAME] - Video getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: V:[NAME]
+web: "http://vsite.com/"
+uri: qr{vsite\.com/}
+slots: max
+status: OK [DATE]
+
+start:
+	GET( $-{_uri} );
+
+	! m{&lt;title&gt;(.*?)&lt;/title&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	! m{file_uri_here:'(.*?)'};
+	my $file_uri = uri_unescape( $1 );
+	DOWNLOAD( $file_uri, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
