@@ -21,6 +21,8 @@ for PHP in $(find rsget.pl -name "index.php" -o -name "error*.php"); do
 done
 set -x
 
+./plugins_db.pl
+
 ask() {
 	echo
 	echo -n "Update $1 server [y/N] ? "
