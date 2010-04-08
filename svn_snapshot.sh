@@ -3,7 +3,7 @@
 rm -rf svn/rsget.pl-*
 
 svn co http://svn.pld-linux.org/svn/toys/rsget.pl svn | tee svn_co.log
-REV=$(tail svn_co.log | sed 's/.* //;s/\.$//')
+REV=$(tail -n1 svn_co.log | sed 's/.* //;s/\.$//')
 rm svn_co.log
 
 [ ! -r src/download/rsget.pl-svn-$REV.tar.bz2 ] || exit 0
