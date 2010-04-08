@@ -4,8 +4,8 @@ desc:	[NL] <a href="http://netload.in/">"http://netload.in/"</a>
 
 body:	
 	<p>Check <a href="http://netload.in/index.php?id=13">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: NetLoad 11254 2010-03-12 02:30:36Z sparky $
+<p>Status: OK 2010-04-08</p>
+	<pre># $Id: NetLoad 11318 2010-04-08 13:38:42Z sparky $
 # Get::NetLoad - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://netload.in/"
 tos: "http://netload.in/index.php?id=13"
 uri: qr{netload\.in/datei}
 cookie: nl
-status: OK 2010-03-12
+status: OK 2010-04-08
 
 start:
 	GET( $-{_uri} );

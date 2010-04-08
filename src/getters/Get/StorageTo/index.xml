@@ -3,8 +3,8 @@ title:	StorageTo
 desc:	[ST] <a href="http://storage.to/">"http://storage.to/"</a>
 
 body:	
-	<p>Status: OK 2010-03-12</p>
-	<pre># $Id: StorageTo 11261 2010-03-12 19:34:49Z sparky $
+	<p>Status: OK 2010-04-08</p>
+	<pre># $Id: StorageTo 11318 2010-04-08 13:38:42Z sparky $
 # Get::StorageTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -15,7 +15,7 @@ name: StorageTo
 short: ST
 web: "http://storage.to/"
 uri: qr{storage\.to/get/[a-zA-Z0-9]{8}([\?/].*?)?$}
-status: OK 2010-03-12
+status: OK 2010-04-08
 
 start:
 	GET( $-{_uri} );

@@ -3,8 +3,8 @@ title:	XHamster
 desc:	[V:XHamster] <a href="http://xhamster.com/">"http://xhamster.com/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: XHamster 11238 2010-03-11 00:32:41Z sparky $
+	<p>Status: OK 2010-04-08</p>
+	<pre># $Id: XHamster 11320 2010-04-08 14:05:07Z sparky $
 # Video::XHamster - Video getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:XHamster
 web: "http://xhamster.com/"
 uri: qr{xhamster\.com/movies/\d+/}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-04-08
 
 start:
 	GET( $-{_uri} );

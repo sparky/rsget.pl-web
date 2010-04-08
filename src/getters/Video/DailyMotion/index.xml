@@ -3,8 +3,8 @@ title:	DailyMotion
 desc:	[V:DailyMotion] <a href="http://www.dailymotion.com/">"http://www.dailymotion.com/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: DailyMotion 11274 2010-03-14 16:03:47Z sparky $
+	<p>Status: OK 2010-04-08</p>
+	<pre># $Id: DailyMotion 11320 2010-04-08 14:05:07Z sparky $
 # Video::DailyMotion - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ web: "http://www.dailymotion.com/"
 uri: qr{dailymotion\.com/(.*?/)?video/[a-z0-9]+}
 uri: qr{dailymotion\.pl/(.*?/)?video/[a-z0-9]+}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-04-08
 
 start:
 	GET( $-{_uri} );

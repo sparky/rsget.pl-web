@@ -3,8 +3,8 @@ title:	RedTube
 desc:	[V:RedTube] <a href="http://redtube.com/">"http://redtube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: RedTube 11241 2010-03-11 01:43:17Z sparky $
+	<p>Status: OK 2010-04-08</p>
+	<pre># $Id: RedTube 11321 2010-04-08 15:16:20Z sparky $
 # Video::RedTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:RedTube
 web: "http://redtube.com/"
 uri: qr{redtube\.com/}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-04-08
 
 start:
 	GET( $-{_uri} );
@@ -31,34 +31,9 @@ start:
 
 	INFO( name =&gt; $fname, quality =&gt; "$o{width}x$o{height}" );
 
-	my $file_uri = "http://dl.redtube.com/467f9bca32b1989277b48582944f325afa3374/"
-		. id_to_file( $o{id} ) . $o{hash_flv};
+	my $file_uri = uri_unescape( $o{hashlink} );
 
 	DOWNLOAD( $file_uri, fname =&gt; $fname );
-
-perl:
-
-	# simplified version of what may be found in clive
-sub id_to_file
-{
-	my $id = shift;
-	my @id = split //, sprintf '%08d', $id;
-
-	my $hash = 0;
-	$hash += $id[ $_ ] * $_ foreach (1..7);
-
-	my $add = 0;
-	$add += $_ foreach split //, "$hash";
-
-	my @map = unpack( 'C*', 'R15342O7K9HBCDXFGAIJ8LMZ6PQ0STUVWEYN' );
-	my @add = (3, 0, 2, 1, 6, 5, 0, 7, 4);
-	my @d_at = (4, 0, 1, 3, 6, 2, 0, 5, 7);
-	my @chars = map { $map[ $id[ $d_at[ $_ ] ] + $add + $add[ $_ ] ] } (0..8);
-	$chars[ 1 ] = 48 + $add % 10;
-	$chars[ 6 ] = 48 + $add / 10;
-
-	return sprintf( '%07d/%s.flv', $id / 1000, pack( 'C*', @chars ) );
-}
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

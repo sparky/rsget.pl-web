@@ -4,8 +4,8 @@ desc:	[MU] <a href="http://megaupload.com/">"http://megaupload.com/"</a>
 
 body:	
 	<p>Check <a href="http://megaupload.com/?c=terms">terms of service</a>.</p>
-<p>Status: OK 2010-04-03</p>
-	<pre># $Id: MegaUpload 11297 2010-04-03 00:32:29Z sparky $
+<p>Status: OK 2010-04-08</p>
+	<pre># $Id: MegaUpload 11318 2010-04-08 13:38:42Z sparky $
 # Get::MegaUpload - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -21,7 +21,7 @@ uri: qr{megaporn\.com/(../)?\?d=}
 uri: qr{megarotic\.com/(../)?\?d=}
 uri: qr{sexuploader\.com/(../)?\?d=}
 uri: qr{megavideo\.com/\?d=}
-status: OK 2010-04-03
+status: OK 2010-04-08
 
 pre:
 	my @captcha_solver;

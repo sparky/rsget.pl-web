@@ -4,8 +4,8 @@ desc:	[MS] <a href="http://megashares.com/">"http://megashares.com/"</a>
 
 body:	
 	<p>Check <a href="http://megashares.com/tos.php">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: MegaShares 11254 2010-03-12 02:30:36Z sparky $
+<p>Status: OK 2010-04-08</p>
+	<pre># $Id: MegaShares 11318 2010-04-08 13:38:42Z sparky $
 # Get::MegaShares - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://megashares.com/"
 tos: "http://megashares.com/tos.php"
 uri: qr{d01\.megashares\.com/(\?d01=|dl/)}
 cookie: !ms
-status: OK 2010-03-12
+status: OK 2010-04-08
 
 unify:
 	return "http://d01.megashares.com/?d01=$1" if m#(?:\?d01=|/dl/)([0-9a-f]{7})#;

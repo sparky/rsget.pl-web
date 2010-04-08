@@ -4,8 +4,8 @@ desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
 
 body:	
 	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: SharingMatrix 11253 2010-03-12 02:26:52Z sparky $
+<p>Status: OK 2010-04-08</p>
+	<pre># $Id: SharingMatrix 11322 2010-04-08 16:10:11Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://sharingmatrix.com/"
 tos: "http://sharingmatrix.com/user_agreement"
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
 cookie: sm
-status: OK 2010-03-12
+status: OK 2010-04-08
 
 unify:
 	return "http://sharingmatrix.com/file/$1"
@@ -56,11 +56,20 @@ start:
 	! m#sid='(.*?)';#;
 	$-{sid} = $1;
 
-	! m#onclick="javascript:document\.images\.cryptogram\.src='(.*?)'#;
+	! m#CAPTCHA_IMAGE_URL = '(.*?)';#;
 	$-{img_base} = $1;
 
 stage_captcha:
-	$-{img} = $-{img_base} . (irand 1000) . 1;
+	GET( "/ajax_scripts/check_timer.php?tmp=" . (irand 1000) . 1, keep_referer =&gt; 1 );
+
+	if ( m{^(\d+)$} ) {
+		WAIT( $1, "expecting captcha" );
+		GOTO stage_captcha;
+	}
+
+	! m{img:(\S+)};
+	$-{img} = $-{img_base} . $1 . ".jpg";
+
 	GET( $-{img}, keep_referer =&gt; 1 );
 
 	CAPTCHA(
