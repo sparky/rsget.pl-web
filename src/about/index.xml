@@ -50,8 +50,10 @@ body:
 		another interface/ip.</li>
 	<li><del>Possibility to mark uri as "cannot continue".</del>
 		<ins>I'm not sure what I meant by it.</ins></li>
-	<li>Investigate using user space tunnels (ssh, proxy) to use as additional
-		interfaces.</li>
+	<li><del>Investigate using user space tunnels (ssh, proxy) to use as
+		additional interfaces.</del>
+		<ins>Use http proxy or socks as:
+		<tt>eth0, http=somehost.com:8080, socks5=localhost:9999</tt></ins></li>
 	<li>Download rate limits. Soft limit - don't start another downloads if
 		rate limit exceeded. Hard limit - don't allow download speeds
 		over specified value.</li>
