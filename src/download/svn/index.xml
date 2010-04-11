@@ -11,8 +11,20 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 1</p>
+	<p>Commits: 7</p>
 	<dl>
+		<dt id="r11330"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11330&amp;view=rev">r11330</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-11 14:28:15 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- added proxy examples</pre></dd>
+		<dt id="r11329"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11329&amp;view=rev">r11329</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-11 14:23:04 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- added proxy (http and proxy) support as additional interfaces</pre></dd>
+		<dt id="r11328"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11328&amp;view=rev">r11328</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-09 22:26:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- POST zero-length data, as their javascript does</pre></dd>
+		<dt id="r11327"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11327&amp;view=rev">r11327</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-09 19:14:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- it works, but I don't like it</pre></dd>
+		<dt id="r11326"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11326&amp;view=rev">r11326</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 19:25:05 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a> (<a href="/getters/Get/MediaFire/">getter</a>)</li></ul><pre>- removed TODO and pointless warnings</pre></dd>
+		<dt id="r11325"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11325&amp;view=rev">r11325</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 19:23:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a> (<a href="/getters/Get/MediaFire/">getter</a>)</li></ul><pre>- improvements for very unlikely cases</pre></dd>
 		<dt id="r11324"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11324&amp;view=rev">r11324</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 16:36:57 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README">README</a></li></ul><pre>- more info</pre></dd>
 	</dl>

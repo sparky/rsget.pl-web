@@ -4,20 +4,22 @@ desc:	[X7] <a href="http://x7.to/">"http://x7.to/"</a>
 
 body:	
 	<p>Check <a href="http://x7.to/legal">terms of service</a>.</p>
-<p>Status: BROKEN 2010-04-08</p>
-	<pre># $Id: X7 11317 2010-04-08 13:37:38Z sparky $
+<p>Status: OK 2010-04-09</p>
+	<pre># $Id: X7 11328 2010-04-09 22:26:20Z sparky $
 # Get::X7 - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
+# TODO: try to act more like web browser
+
 name: X7
 short: X7
 web: "http://x7.to/"
 tos: "http://x7.to/legal"
 uri: qr{x7\.to/[a-z0-9]{6}}
-status: BROKEN 2010-04-08
+status: OK 2010-04-09
 
 unify:
 	return "http://x7.to/$1"
@@ -38,7 +40,7 @@ start:
 	! m#var dlID = '([a-z0-9]{6})';#;
 	$-{id} = $1;
 
-	CLICK( "/james/ticket/dl/$-{id}" );
+	CLICK( "/james/ticket/dl/$-{id}", post =&gt; "" );
 
 	RESTART( - irand( 60, 300 ), "free limit reached" )
 		if /{err:"limit-dl"}/;
