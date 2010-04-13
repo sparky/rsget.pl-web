@@ -285,18 +285,20 @@ label {
 label:hover, label:active, label:focus {
 	text-decoration: underline;
 }
-input {
+input, select {
 	background: #ddd;
 	border: 2px solid #777;
 	padding: 1px;
 	margin: 1px;
 	color: #555;
 }
-input:hover, input:active, input:focus {
+input:hover, input:active, input:focus,
+select:hover, input:active, input:focus
+{
 	border-color: #711;
 	color: #000;
 }
-input:focus {
+input:focus, select:focus {
 	background: #fff;
 }
 input[type=text] {
@@ -305,6 +307,9 @@ input[type=text] {
 input[type=submit] {
 	width: 150px;
 	font-weight: bold;
+}
+select {
+	width: 540px;
 }
 
 address {

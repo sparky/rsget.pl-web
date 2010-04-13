@@ -3,10 +3,57 @@ title:	donate
 desc:	Support <strong>rsget.pl</strong>.
 
 body:	
-	<p>
-		I'm going to set up moneybookers account some day.
-		For now money transfer is the only option.
-	</p>
+	<h2>moneybookers</h2>
+<form action="https://www.moneybookers.com/app/payment.pl" method="post">
+	<dl>
+		<dt>Amount, in Euros</dt>
+		<dd>
+			<input type="hidden" name="pay_to_email" value="sparky@pld-linux.org" />
+			<input type="hidden" name="recipient_description" value="donate to rsget.pl" />
+			<input type="hidden" name="status_url" value="moneybookers@rsget.pl" />
+			<input type="hidden" name="language" value="EN" />
+			<input type="hidden" name="dynamic_descriptor" value="rsget.pl" />
+			<input type="hidden" name="confirmation_note" value="rsget.pl developer will be very grateful for your donation" />
+			<input type="hidden" name="logo_url" value="http://rsget.pl/_style/hook.png" />
+			<select name="amount">
+				<option value="10">10 Euro</option>
+				<option value="15">15 Euro</option>
+				<option value="20" selected="selected">20 Euro</option>
+				<option value="30">30 Euro</option>
+				<option value="50">50 Euro</option>
+			</select>
+			<input type="hidden" name="currency" value="EUR" />
+		</dd>
+		<dt>Your email</dt>
+		<dd>
+			<input type="text" name="pay_from_email" value="" />
+		</dd>
+		<dt>Reason you wish to donate</dt>
+		<dd>
+			<select name="detail1_description">
+				<option value="rsget.pl - keep up the good work">
+					keep up the good work
+				</option>
+				<option value="rsget.pl - I'm using it and I love it">
+					I'm using it and I love it
+				</option>
+				<option value="rsget.pl - I would like a new feature">
+					I would like a new feature
+				</option>
+				<option value="rsget.pl - I would like a new getter plugin">
+					I would like new getter plugin
+				</option>
+			</select><br />
+			Your comment:
+			<input type="text" name="detail1_text" value="Thank you for rsget.pl!" />
+		</dd>
+		<dt>Are you sure ?</dt>
+		<dd>
+			<input type="submit" name="Pay" value="Donate" />
+		</dd>
+	</dl>
+</form>
+
 	<h2>Bank account</h2>
 	<dl>
 		<dt>International account number:</dt>
