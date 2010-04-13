@@ -44,7 +44,7 @@ body:
 					I would like new getter plugin
 				</option>
 			</select><br />
-			Your comment:
+			Your comment:<br />
 			<input type="text" name="detail1_text" value="Thank you for rsget.pl!" />
 		</dd>
 		<dt>Are you sure ?</dt>
