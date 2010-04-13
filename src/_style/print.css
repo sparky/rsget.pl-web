@@ -66,12 +66,12 @@ h1 {
 	clear: both;
 }
 h2 {
-	font-size: 12pt;
+	font-size: 16pt;
 	color: #333;
 	clear: both;
 }
 h3 {
-	font-size: 6pt;
+	font-size: 12pt;
 	color: #444;
 	clear: both;
 }
@@ -98,6 +98,7 @@ a, a:visited, a:link, a:hover, a:active, a:focus {
 	color: #711;
 }
 h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+	font-size: inherit;
 	text-decoration: none !important;
 	color: inherit !important;
 }
@@ -164,9 +165,22 @@ tt {
 	font-family: "Monospace", monospace;
 }
 
-input {
-	background: #ddd;
-	border: 2px solid #777;
+input, select {
+	background: #fff;
+	border: 2px solid #711;
+	padding: 1px;
+	margin: 1px;
+	color: #000;
+}
+input[type=text] {
+	width: 540px;
+}
+input[type=submit] {
+	width: 150px;
+	font-weight: bold;
+}
+select {
+	width: 540px;
 }
 
 address {
