@@ -8,6 +8,7 @@ TODO:
 - rewrite templates/template.*.xml as xslt and update scripts
 - rewrite all index.xml files as real xml
 
+
 userscript TODO:
 
 - detect whether page is server as xhtml (text/xml, application/xhtml+xml)
@@ -16,11 +17,15 @@ userscript TODO:
 - update links information on DOMNodeInserted event
 - display some progress report while detecting links
 
+
 Server requirements:
+
 - php, php-pdo-sqlite, php-zlib
 - rsync (over ssh)
 
+
 User requirements:
+
 - perl (and XML::LibXSLT, DBI, DBD::SQLite, DateTime::Format::W3CDTF)
 - svn
 - php command (php-program)
