@@ -1,0 +1,17 @@
+index:	0
+title:	news
+desc:	Current and past events.
+
+body:	
+<h2>Old news</h2>
+<dl>
+	<dt>2010-03-13 - <a href="/download/r11270/">r11270</a> released</dt>
+	<dd>
+		Superseded by <a href="/news/2010-04-08/">r11322</a> release.
+	</dd>
+
+	<dt>2010-02-28 - freshmeat <a href="http://freshmeat.net/projects/rsgetpl">project page</a></dt>
+	<dd>
+		Subscribe, vote for rsget.pl, and do other <del>useless</del> things.
+	</dd>
+</dl>

@@ -1,0 +1,59 @@
+index:	-6
+title:	2010-04-11
+desc:	<strong>proxy support</strong>
+	<p>
+		In svn revision
+		<a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm?r1=11195&amp;r2=11329">11329</a>,
+		proxy support was added. HTTP or SOCKS proxies can be used
+		as additional interfaces (a.k.a. IP addresses).
+	</p>
+
+body:	
+<h2>Using SOCKS proxy</h2>
+<p>
+	If you have some spare remote host with decent network connection, you
+	can use it to tunnel additional connections to rapidshare and other
+	providers. This will act just like having additional IP addresses in
+	your machine.
+</p>
+<p>
+	First, make sure <tt>AllowTcpForwarding</tt> is enabled on the remote
+	server. Check your <tt>/etc/ssh/sshd_config</tt> and add this line if
+	needed (you will have to restart sshd afterwards):
+</p>
+<pre>AllowTcpForwarding yes</pre>
+
+<p>
+	Create SOCKS tunnel, from your host to that remote server. You must
+	leave this ssh connection open.
+</p>
+<pre>[me@local]$ ssh -D 9980 remote.server.com</pre>
+
+<p>
+	Now add that proxy to the interfaces used by <strong>rsget.pl</strong>. Also make
+	sure *_proxy environment variables are not set.
+</p>
+<pre>[me@local]$ unset http_proxy
+[me@local]$ rsget.pl --interfaces="eth0, socks5=localhost:9980"</pre>
+<p>
+	This will allow two parallel connections. One using eth0 directly
+	and the other one through remote.server.com.
+</p>
+
+<h2>More information</h2>
+<p>
+	Other types of proxies are supported:
+</p>
+<ul>
+	<li>http => CURLPROXY_HTTP</li>
+	<li>http10 => CURLPROXY_HTTP_1_0</li>
+	<li>socks4 => CURLPROXY_SOCKS4</li>
+	<li>socks4a => CURLPROXY_SOCKS4a</li>
+	<li>socks5 => CURLPROXY_SOCKS5</li>
+	<li>socks5host => CURLPROXY_SOCKS5_HOSTNAME</li>
+</ul>
+<p>
+	For more information refer to <tt>curl_easy_setopt</tt> man page
+	(<tt>CURLOPT_PROXY</tt> and following options).
+</p>
+

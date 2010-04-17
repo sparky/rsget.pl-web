@@ -1,0 +1,37 @@
+index:	-2
+title:	2010-03-21
+desc:	<strong><a href="http://github.com/sparky/rsget.pl-web">rsget.pl-web</a> sources at github</strong>
+	<p>
+		If you'd like to send us typo fixes, which this web page
+		may require; or you would like to have a similar one,
+		you can find this web page's
+		<a href="http://github.com/sparky/rsget.pl-web">sources</a>
+		at github.
+	</p>
+	<p>
+		Also <a href="/tools/userscript/">userscript</a> improvements
+		are very welcome.
+	</p>
+
+body:	
+<h2>Sending fixes</h2>
+<p>
+	You can make fixes in standard git way. That is:
+</p>
+<ul>
+	<li>clone the repository</li>
+	<li>make fixes and commit them</li>
+	<li>send me the git pull request</li>
+</ul>
+
+<h2>GitHub issue tracker</h2>
+<p>
+	At the GitHub
+	<a href="http://github.com/sparky/rsget.pl-web/issues">issue page</a>,
+	you can create new issues concerning <a href="/">http://rsget.pl/</a>
+	web page or <a href="/tools/userscript/">web browser userscript</a>.
+</p>
+<p>
+	For <strong>rsget.pl</strong> application problems check
+	<a href="/news/2010-03-24/">this page</a> instead.
+</p>

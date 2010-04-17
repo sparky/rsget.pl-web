@@ -1,0 +1,31 @@
+index:	-3
+title:	2010-03-24
+desc:	<strong>rsget.pl <a href="http://github.com/sparky/rsget.pl">svn mirror</a> at github</strong>
+	<p>
+		If you'd like to ease <strong>rsget.pl</strong> development
+		process, but you prefer git over svn, you can use
+		<a href="http://github.com/sparky/rsget.pl">this mirror</a>.
+	</p>
+
+body:	
+<h2>Patches</h2>
+<p>
+	This is just a mirror. Reintegrating git changes from other
+	repositories back to svn is somewhat problematic. That's
+	why I won't accept pull requests. Please send patches instead.
+</p>
+<p>
+	After committing changes to your local repository you can generate
+	patches using following command:
+</p>
+<pre>git format-patch [FIRST COMMIT]..[LAST COMMIT]</pre>
+<p>
+	Afterwards send them to &lt;<tt>patches<strong>@</strong>rsget.pl</tt>&gt;.
+</p>
+
+<h2>GitHub issue tracker</h2>
+<p>
+	If there's any problem with <strong>rsget.pl</strong> you can fill
+	out an <a href="http://github.com/sparky/rsget.pl/issues">issue at
+	GitHub</a>.
+</p>
