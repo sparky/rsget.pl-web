@@ -4,85 +4,163 @@ desc:	List of system requirements.
 
 body:
 <h2>Any system</h2>
-<pre>* Required:
-  - Most required modules are found in standard perl distribution. Only perl
-    5.8 and 5.10 was tested.
-  - WWW::Curl (perl) is required at least in version 4, older versions are
-    missing some options.
-  - URI (perl).
-* Recomended:
-  - GD (perl) and tesseract (version 2.00 or newer) with english data files -
-    both required for automatic captcha recognition.
-  - subversion - svn client may be used for automatic updates.
-* Optional:
-  - Term::Size allows to redraw the screen correctly after terminal size change.
-  - Image::Magick - better support for MegaUpload captcha (higher probability
-    of success)
-  - Crypt::Blowfish - required for Link/SecuredIn
-  - Crypt::Rijndael - required for Link/CryptIt
-</pre>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>Most required modules are found in standard perl distribution. Only perl
+				5.8 and 5.10 was tested</li>
+			<li>WWW::Curl (perl) is required at least in version 4, older versions are
+				missing some options</li>
+			<li>URI (perl)</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>GD (perl) and tesseract (version 2.00 or newer) with English data files -
+				both required for automatic captcha recognition</li>
+			<li>subversion - svn client may be used for automatic updates</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>Term::Size allows to redraw the screen correctly after terminal size change</li>
+			<li>Image::Magick - better support for MegaUpload captcha (higher probability
+				of success)</li>
+			<li>Crypt::Blowfish - required for Link/SecuredIn</li>
+			<li>Crypt::Rijndael - required for Link/CryptIt</li>
+		</ul>
+	</dd>
+</dl>
+
 
 <h2>Specific distributions</h2>
-<pre>PLD Linux:
-* Required:
-  - perl-modules
-  - perl-WWW-Curl version 4
-  - perl-URI
-* Recomended:
-  - perl-GD, tesseract 2 and tesseract-lang-en
-  - subversion
-* Optional:
-  - perl-Term-Size
-  - ImageMagick-perl
-  - perl-Crypt-Blowfish
-  - perl-Crypt-Rijndael
 
 
-OpenSolaris:
-* Required:
-  - SUNWperl584core
-  - SUNWcurl and pending/WWW-Curl
-  - pending/perl-uri
-* Recomended:
-  - (?)/GD and (?)/tesseract
-  - SUNWsvn
-* Optional:
-  - pending/Term-Size
-  - SUNWimagick
-  - (?)/Crypt-Blowfish
-  - pending/Crypt-Rijndael
+<h3>PLD Linux</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>perl-modules</li>
+			<li>perl-WWW-Curl version 4</li>
+			<li>perl-URI</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>perl-GD, tesseract 2 and tesseract-lang-en</li>
+			<li>subversion</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>perl-Term-Size</li>
+			<li>ImageMagick-perl</li>
+			<li>perl-Crypt-Blowfish</li>
+			<li>perl-Crypt-Rijndael</li>
+		</ul>
+	</dd>
+</dl>
 
 
-FreeBSD:
-* Required:
-  - lang/perl5.8 or lang/perl5.10
-  - www/p5-WWW-Curl version 4
-  - net/p5-URI
-* Recomended:
-  - graphics/p5-GD and graphics/tesseract
-  - devel/subversion
-* Optional:
-  - devel/p5-Term-Size
-  - graphics/ImageMagick with IMAGEMAGICK_PERL support
-  - security/p5-Crypt-Blowfish
-  - security/p5-Crypt-Rijndael
+<h3>OpenSolaris</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>SUNWperl584core</li>
+			<li>SUNWcurl and pending/WWW-Curl</li>
+			<li>pending/perl-uri</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>(?)/GD and (?)/tesseract</li>
+			<li>SUNWsvn</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>pending/Term-Size</li>
+			<li>SUNWimagick</li>
+			<li>(?)/Crypt-Blowfish</li>
+			<li>pending/Crypt-Rijndael</li>
+		</ul>
+	</dd>
+</dl>
 
-MacOS X
-* Required:
-  - XCode
 
-NetBSD:
-* Required:
-  ! substitute #!/usr/bin/perl with #!/usr/pkg/bin/perl in ./rsget.pl file
-  - perl5/perl
-  - perl5/p5-WWW-Curl
-  - perl5/p5-URI
-* Recomended:
-  - perl/p5-GD and graphics/tesseract
-  - scm/subversion-base
-* Optional:
-  - perl5/p5-Term-Size
-  - ?
-  - perl5/p5-Crypt-Blowfish
-  - perl5/p5-Crypt-Rijndael
-</pre>
+<h3>FreeBSD</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>lang/perl5.8 or lang/perl5.10</li>
+			<li>www/p5-WWW-Curl version 4</li>
+			<li>net/p5-URI</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>graphics/p5-GD and graphics/tesseract</li>
+			<li>devel/subversion</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>devel/p5-Term-Size</li>
+			<li>graphics/ImageMagick with IMAGEMAGICK_PERL support</li>
+			<li>security/p5-Crypt-Blowfish</li>
+			<li>security/p5-Crypt-Rijndael</li>
+		</ul>
+	</dd>
+</dl>
+
+
+<h3>MacOS X</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<strong>XCode</strong>
+	</dd>
+</dl>
+
+
+<h3>NetBSD</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<strong>replace <tt>#!/usr/bin/perl</tt> with <tt>#!/usr/pkg/bin/perl</tt> in ./rsget.pl file,
+			or set <tt>PERL=/usr/pkg/bin/perl</tt> when calling make install</strong>
+		<ul>
+			<li>perl5/perl</li>
+			<li>perl5/p5-WWW-Curl</li>
+			<li>perl5/p5-URI</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>perl/p5-GD and graphics/tesseract</li>
+			<li>scm/subversion-base</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>perl5/p5-Term-Size</li>
+			<li>?</li>
+			<li>perl5/p5-Crypt-Blowfish</li>
+			<li>perl5/p5-Crypt-Rijndael</li>
+		</ul>
+	</dd>
+</dl>
