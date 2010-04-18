@@ -146,6 +146,19 @@ h2 {
 	clear: both;
 	margin-top: 1em;
 }
+h3 {
+	font-size: 18px;
+	color: #444;
+	clear: both;
+	margin-top: 0.75em;
+}
+h4 {
+	font-size: 16px;
+	color: #555;
+	clear: both;
+	margin-top: 0.5em;
+}
+
 
 hr {
 	clear: both;

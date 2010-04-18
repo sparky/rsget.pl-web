@@ -71,10 +71,16 @@ h2 {
 	clear: both;
 }
 h3 {
-	font-size: 12pt;
+	font-size: 14pt;
 	color: #444;
 	clear: both;
 }
+h4 {
+	font-size: 12pt;
+	color: #555;
+	clear: both;
+}
+
 
 hr {
 	clear: both;
