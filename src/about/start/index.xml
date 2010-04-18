@@ -15,11 +15,11 @@ body:
 <p>
 	Get a fresh copy to prepare for instalation. You can either
 	check it out from <a href="/download/svn/">SVN</a> directly or
-	download <a href="/download/latest.php">latest tarball</a>
+	download <a href="/download/latest">latest tarball</a>
 	(this link always points to newest package, but it probably won't
 	be as fresh as SVN).
 </p>
-<pre>[sparky@quad ~]$ <tt>wget -nv http://rsget.pl/download/latest.php</tt>
+<pre>[sparky@quad ~]$ <tt>wget -nv http://rsget.pl/download/latest</tt>
 2010-02-07 20:40:46 URL:http://rsget.pl/download/rsget.pl-11111.tar.bz2 [129363/129363] -> "rsget.pl-11111.tar.bz2" [1]
 [sparky@quad ~]$ <tt>tar -jxf rsget.pl-11111.tar.bz2</tt>
 [sparky@quad ~]$ <tt>cd rsget.pl-11111/</tt>

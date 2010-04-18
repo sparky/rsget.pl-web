@@ -52,7 +52,7 @@ body:
 	</dd>
 </dl>
 
-<form method="post" action="/tools/userscript/config.php">
+<form method="post" action="/tools/userscript/config">
 <h2>Configuration</h2>
 <dl>
 	<dt>Where your rsget.pl can be found</dt>
