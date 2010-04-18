@@ -11,8 +11,13 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 7</p>
+	<p>Commits: 9</p>
 	<dl>
+		<dt id="r11336"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11336&amp;view=rev">r11336</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-18 13:21:52 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- perl 5.8 does not understand //= , use ||= instead</pre></dd>
+		<dt id="r11335"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11335&amp;view=rev">r11335</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-18 13:05:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- implemented robust video format detection. getter is now able
+  to download videos which don't have format 18</pre></dd>
 		<dt id="r11330"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11330&amp;view=rev">r11330</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-11 14:28:15 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- added proxy examples</pre></dd>
 		<dt id="r11329"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11329&amp;view=rev">r11329</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-11 14:23:04 UTC</em></dt>

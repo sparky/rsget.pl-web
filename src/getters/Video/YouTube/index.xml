@@ -4,7 +4,7 @@ desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a
 
 body:	
 	<p>Status: OK 2010-04-08</p>
-	<pre># $Id: YouTube 11320 2010-04-08 14:05:07Z sparky $
+	<pre># $Id: YouTube 11336 2010-04-18 13:21:52Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -31,9 +31,38 @@ pre:
 		[ 18, "mp4", "LQ" ],
 	);
 
+	sub best_format
+	{
+		/"fmt_map"\s*:\s*"(.*?)"/ or m{&amp;fmt_map=(\S+?)&amp;}
+			or return undef;
+		my %fmts = map { m{(\d+)/}; $1 =&gt; $_ } split ",", uri_unescape( $1 );
+
+		foreach my $f ( @fmt ) {
+			return $f
+				if exists $fmts{ $f-&gt;[0] };
+		}
+
+		return undef;
+	}
 start:
 	GET( $-{_uri} );
 
+	ERROR( "file cannot be accessed" )
+		if /&lt;div id="" class="yt-alert-content"&gt;/;
+
+	# try to find best format
+	$-{fmt} = best_format();
+
+	# format 18 is almost always hidden,
+	# if the best format we found is 5 we check for 18 manually
+	GOTO stage_got_format
+		if $-{fmt};
+
+	GET( "$-{_uri}&amp;fmt=18" );
+
+	$-{fmt} = best_format();
+
+stage_got_format:
 	! m{"video_id": "(.*?)"} or m{'VIDEO_ID': '(.*?)'};
 	my $id = $1;
 
@@ -41,24 +70,17 @@ start:
 	my $name = de_ml( de_ml( $1 ) );
 	$name =~ s{/}{_}g;
 
-	! /"fmt_map"\s*:\s*"(.*?)"/ or m{&amp;fmt_map=(\S+?)&amp;};
-	my %fmts = map { m{(\d+)/}; $1 =&gt; $_ } split ",", uri_unescape( $1 );
-
-	my $fmt = $fmt[ $#fmt ];
-	foreach my $f ( @fmt ) {
-		if ( exists $fmts{ $f-&gt;[0] } ) {
-			$fmt = $f;
-			last;
-		}
-	}
-
 	! /"t"\s*:\s*"(.*?)"/ or m{&amp;t=(\S+?)&amp;};
 	my $t = $1;
+
+	my $fmt = $-{fmt};
+	my $fmtstr = $fmt ? "&amp;fmt=$fmt-&gt;[0]" : "";
+	$fmt ||= [ 5, "flv", "vLQ" ];
 
 	my $fname = $name . "." . $fmt-&gt;[1];
 	INFO( name =&gt; $fname, fmt =&gt; $fmt-&gt;[0], quality =&gt; $fmt-&gt;[2] );
 
-	DOWNLOAD( "http://youtube.com/get_video?video_id=$id&amp;t=$t&amp;fmt=$fmt-&gt;[0]",
+	DOWNLOAD( "http://youtube.com/get_video?video_id=$id&amp;t=$t$fmtstr",
 		fname =&gt; $fname );
 
 # vim: filetype=perl:ts=4:sw=4
