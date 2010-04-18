@@ -5,8 +5,7 @@ desc:	Download list structure.
 body:
 
 <h2>URI list</h2>
-<pre><![CDATA[
-Understanding URI list syntax may be very important for people unable or not
+<pre>Understanding URI list syntax may be very important for people unable or not
 willing to use HTTP interface. It also is crucial if writing any software
 for manipulating the list.
 
@@ -100,4 +99,4 @@ with a broken file containing data chunks from both sources.
 MegaUpload is the only one) may require to introduce resource password to be
 able to download a file. That password is set by the uploader, separately for
 each resource, and it should be provided by the uploader along with the URIs.
-]]></pre>
+</pre>

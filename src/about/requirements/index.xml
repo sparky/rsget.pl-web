@@ -4,7 +4,7 @@ desc:	List of system requirements.
 
 body:
 <h2>Any system</h2>
-<pre><![CDATA[* Required:
+<pre>* Required:
   - Most required modules are found in standard perl distribution. Only perl
     5.8 and 5.10 was tested.
   - WWW::Curl (perl) is required at least in version 4, older versions are
@@ -20,10 +20,10 @@ body:
     of success)
   - Crypt::Blowfish - required for Link/SecuredIn
   - Crypt::Rijndael - required for Link/CryptIt
-]]></pre>
+</pre>
 
 <h2>Specific distributions</h2>
-<pre><![CDATA[PLD Linux:
+<pre>PLD Linux:
 * Required:
   - perl-modules
   - perl-WWW-Curl version 4
@@ -85,4 +85,4 @@ NetBSD:
   - ?
   - perl5/p5-Crypt-Blowfish
   - perl5/p5-Crypt-Rijndael
-]]></pre>
+</pre>

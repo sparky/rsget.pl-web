@@ -4,7 +4,7 @@ desc:	The absolutely most important web section of any application.
 
 body:
 <h2>running inside screen session, as seen on 80 columns wide terminal</h2>
-<pre><![CDATA[$ rsget.pl
+<pre>$ rsget.pl
 Updating from SVN:
     Checked out revision 11126.
 [Actual date: 2010-02-04]
@@ -44,12 +44,12 @@ Updating from SVN:
 [18:45:25] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: Passport: 1000 MB, 1:57:52
 [18:45:29] [MS] CSI.S10E13.720p.HDTV.X264-DIMENSION.mkv: Continuing at 262_275_072
 
- \--------------------------< 2010-02-05 19:25:54 >---------------------------/
+ \--------------------------&lt; 2010-02-05 19:25:54 &gt;---------------------------/
  |               rsget.pl -- downloading: 1; running cURL: 1; to download: 1; |
  |                                                    total speed: 43.39KB/s; |
  /----------------------------------------------------------------------------\
 [MS] CSI....ENSION.mkv: 371_616_744 / 1_174_055_319 [31.65%]; 43.70KB/s 4:58:50
-]]></pre>
+</pre>
 
 <h2>WWW interface</h2>
 <p>Main page - file list
