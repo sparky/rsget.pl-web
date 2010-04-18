@@ -27,7 +27,7 @@ body:
 	Create SOCKS tunnel, from your host to that remote server. You must
 	leave this ssh connection open.
 </p>
-<pre>[me@local]$ ssh -D 9980 remote.server.com</pre>
+<pre>[me@local]$ ssh -fND 9980 remote.server.com</pre>
 
 <p>
 	Now add that proxy to the interfaces used by <strong>rsget.pl</strong>. Also make
