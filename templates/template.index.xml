@@ -7,7 +7,8 @@
      NOTE: If you expected do see a web page, but all you see is this XML
    source it probably means your web browser cannot handle XHTML correctly.
                   Try using different web browser !
-   In links or elinks press '\' to switch to HTML view.
+       
+        In links, elinks or w3m press '\' to switch to HTML view.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
