@@ -1,0 +1,92 @@
+index:	0
+title:	web page
+desc:	What was I smoking when I created this web page.
+
+body:
+<p>
+	My (sparky's) main idea when creating this web page was to make it as simple as
+	possible while maximizing functionality. Any fancy stuff was added
+	only because it didn't conflict with the main ideology.
+</p>
+
+<h2>goals</h2>
+<dl>
+	<dt>must look good in text-based web browser</dt>
+	<dd>
+		Underlying html is very simple and condensed. There are no
+		floating menus, popup menus or narrow columns with additional
+		information. This makes it look perfectly in lynx and similar
+		web browsers, also all subpages are easily accessible.
+	</dd>
+	<dt>must look good on small screen</dt>
+	<dd>
+		Columns are just 620px wide. Screen 800px wide (like those in
+		some eeepc) is more than enough.
+
+	</dd>
+	<dt>must take advantage of wide screens</dt>
+	<dd>
+		Horizontal stacking of pages makes them occupy whole screen.
+	</dd>
+	<dt>must be browsable with only the keyboard</dt>
+	<dd>
+		Goal very similar to that of text web browser. No popup things
+		make it very easy to navigate with just the keyboard.
+	</dd>
+	<dt>simple pleasant look</dt>
+	<dd>
+		All surfaces have added a little noise, this makes them look brushed,
+		not shiny. Low contrast letters are very pleasing to look at.
+		In addition reddish color in links emphasizes grayscale nature of
+		the page. This was somewhat influenced by Amiga game
+		<a href="http://www.lemonamiga.com/games/details.php?id=828">Perihelion</a>.
+	</dd>
+	<dt>easy access to subpages</dt>
+	<dd>
+		Each page serves as menu with links to subpages. It also puts
+		links in some context.
+	</dd>
+	<dt>printable</dt>
+	<dd>
+		Uses separate CSS for printed media. Condensed html allowed
+		to make it look good on paper without much effort.
+	</dd>
+</dl>
+
+<h2>tools and technology</h2>
+<dl>
+	<dt>Valid XHTML 1.1</dt>
+	<dd>
+		Each page is validated using <a href="http://xmlsoft.org/">xmllint</a>
+		just before uploading to the server. This way all the pages
+		can be served as <tt>text/xml</tt> and take advantage of xml
+		extensions.
+	</dd>
+	<dt>Almost valid CSS 2.1</dt>
+	<dd>
+		Is uses <tt>::selection</tt> which is part of CSS 3, and
+		<tt>::-moz-selection</tt> which does the same but works in
+		gecko engine. Other than that there are no browser tricks.
+	</dd>
+	<dt>JavaScript</dt>
+	<dd>
+		Tries to adhere to DOM specification as much as possible, but
+		some non-portable code was needed as well.
+	</dd>
+	<dt>Build tools</dt>
+	<dd>
+		Destination pages are built from sources using my own perl
+		contraption, I'd like to use XSLT for this task some day.
+		SVN changelogs are built using XSLT style sheet.
+	</dd>
+	<dt>Server-side scripting</dt>
+	<dd>
+		Almost all pages are static. Only few of them use PHP.
+		Nevertheless a well configured web server is required.
+	</dd>
+	<dt>Sources</dt>
+	<dd>
+		All web page sources are managed on
+		<a href="http://github.com/sparky/rsget.pl-web">github</a>.
+	</dd>
+</dl>
