@@ -11,8 +11,28 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 9</p>
+	<p>Commits: 19</p>
 	<dl>
+		<dt id="r11370"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11370&amp;view=rev">r11370</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-04 15:42:30 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaShares">Get/MegaShares</a> (<a href="/getters/Get/MegaShares/">getter</a>)</li></ul><pre>- better passport information</pre></dd>
+		<dt id="r11369"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11369&amp;view=rev">r11369</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-04 14:08:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaShares">Get/MegaShares</a> (<a href="/getters/Get/MegaShares/">getter</a>)</li></ul><pre>- hopefully fixed passport information</pre></dd>
+		<dt id="r11368"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11368&amp;view=rev">r11368</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-04 13:58:05 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FreakShare">Get/FreakShare</a> (<a href="/getters/Get/FreakShare/">getter</a>)</li></ul><pre>- updated recaptcha, based on hotfile problems</pre></dd>
+		<dt id="r11367"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11367&amp;view=rev">r11367</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-04 13:48:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a> (<a href="/getters/Get/HotFile/">getter</a>)</li></ul><pre>- fixed recaptcha (belongs to google now)</pre></dd>
+		<dt id="r11356"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11356&amp;view=rev">r11356</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-30 14:59:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaShares">Get/MegaShares</a> (<a href="/getters/Get/MegaShares/">getter</a>)</li></ul><pre>- allow index.php in uri, match all possible IDs</pre></dd>
+		<dt id="r11355"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11355&amp;view=rev">r11355</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-30 14:47:19 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li></ul><pre>- allow lower-case ID</pre></dd>
+		<dt id="r11354"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11354&amp;view=rev">r11354</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-29 18:50:32 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/BadongoCom">Get/BadongoCom</a> (<a href="/getters/Get/BadongoCom/">getter</a>)</li></ul><pre>- fails</pre></dd>
+		<dt id="r11353"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11353&amp;view=rev">r11353</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-29 18:11:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileFactory">Get/FileFactory</a> (<a href="/getters/Get/FileFactory/">getter</a>)</li></ul><pre>- allow uris with 'g' in ID</pre></dd>
+		<dt id="r11352"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11352&amp;view=rev">r11352</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-29 18:04:44 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/PrzeklejPL">Get/PrzeklejPL</a> (<a href="/getters/Get/PrzeklejPL/">getter</a>)</li></ul><pre>- more "file not found"</pre></dd>
+		<dt id="r11351"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11351&amp;view=rev">r11351</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-29 18:03:57 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- make sure file names encoded in utf8 don't cause problems</pre></dd>
 		<dt id="r11336"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11336&amp;view=rev">r11336</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-18 13:21:52 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- perl 5.8 does not understand //= , use ||= instead</pre></dd>
 		<dt id="r11335"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11335&amp;view=rev">r11335</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-18 13:05:33 UTC</em></dt>

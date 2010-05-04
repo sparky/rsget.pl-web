@@ -5,7 +5,7 @@ desc:	[MS] <a href="http://megashares.com/">"http://megashares.com/"</a>
 body:	
 	<p>Check <a href="http://megashares.com/tos.php">terms of service</a>.</p>
 <p>Status: OK 2010-04-08</p>
-	<pre># $Id: MegaShares 11318 2010-04-08 13:38:42Z sparky $
+	<pre># $Id: MegaShares 11370 2010-05-04 15:42:30Z sparky $
 # Get::MegaShares - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,12 +16,12 @@ name: MegaShares
 short: MS
 web: "http://megashares.com/"
 tos: "http://megashares.com/tos.php"
-uri: qr{d01\.megashares\.com/(\?d01=|dl/)}
+uri: qr{d01\.megashares\.com/((index\.php)?\?d01=|dl/)}
 cookie: !ms
 status: OK 2010-04-08
 
 unify:
-	return "http://d01.megashares.com/?d01=$1" if m#(?:\?d01=|/dl/)([0-9a-f]{7})#;
+	return "http://d01.megashares.com/?d01=" . lc $1 if m#(?:\?d01=|/dl/)([0-9A-Za-z]{7})#;
 
 start:
 	# create fake cookie to skip first page
@@ -64,7 +64,7 @@ start:
 		! m{.*&lt;a href="(.+?)"&gt;\s*&lt;img.*src="images/download_file\.png" alt="download file"}s;
 		$-{file_uri} = $1;
 
-		m{You have ([\d\.]+ .*?) left that you can download with this passport.};
+		m{You have\s+&lt;.*?&gt;\s+([\d\.]+ \S+?)\s+&lt;.*?&gt;\s+left that you can download with this passport.}s;
 		my $left = $1;
 		m{Your download passport will renew in\s*&lt;strong&gt;0&lt;/strong&gt;:&lt;strong&gt;(\d+)&lt;/strong&gt;:&lt;strong&gt;(\d+)&lt;/strong&gt;}s;
 		my $time = s2string( $1 * 60 + $2 );

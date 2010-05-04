@@ -3,8 +3,8 @@ title:	BadongoCom
 desc:	[BC] <a href="http://www.badongo.com/">"http://www.badongo.com/"</a>
 
 body:	
-	<p>Status: OK 2010-04-08</p>
-	<pre># $Id: BadongoCom 11318 2010-04-08 13:38:42Z sparky $
+	<p>Status: FAIL 2010-04-29</p>
+	<pre># $Id: BadongoCom 11354 2010-04-29 18:50:32Z sparky $
 # Get::BadongoCom - File, audio, video and picture getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: BC
 web: "http://www.badongo.com/"
 uri: qr{badongo\.com/}
 cookie: !badongo
-status: OK 2010-04-08
+status: FAIL 2010-04-29
 
 unify:
 	s/#.*//; s{/$}{};
@@ -70,7 +70,7 @@ stage_getcaptcha:
 
 	CAPTCHA(
 		qr/[A-Z]{4}/,
-		process =&gt; \&amp;bc_decaptcha
+		#	process =&gt; \&amp;bc_decaptcha
 	);
 
 	GOTO stage_getcaptcha unless defined $_;

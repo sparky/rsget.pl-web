@@ -4,8 +4,8 @@ desc:	[HF] <a href="http://hotfile.com/">"http://hotfile.com/"</a>
 
 body:	
 	<p>Check <a href="http://hotfile.com/terms-of-service.html">terms of service</a>.</p>
-<p>Status: OK 2010-04-08</p>
-	<pre># $Id: HotFile 11318 2010-04-08 13:38:42Z sparky $
+<p>Status: OK 2010-05-04</p>
+	<pre># $Id: HotFile 11367 2010-05-04 13:48:10Z sparky $
 # Get::HotFile - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://hotfile.com/"
 tos: "http://hotfile.com/terms-of-service.html"
 uri: qr{hotfile\.com/dl/\d+/[0-9a-f]+/.+}
 uri: qr{pl\.hotfile\.com/dl/\d+/[0-9a-f]+/.+}
-status: OK 2010-04-08
+status: OK 2010-05-04
 
 unify:
 	return "http://hotfile.com/dl/$1"
@@ -56,10 +56,13 @@ stage_getcaptcha:
 
 	GET( $1, keep_referer =&gt; 1 );
 
-	! m{challenge : '(\S+)',};
+	! m{server\s*:\s*'(\S+?)'};
+	my $server = $1;
+	
+	! m{challenge\s*:\s*'(\S+?)',};
 	$-{capform}-&gt;set( recaptcha_challenge_field =&gt; $1 );
 
-	GET( "http://api.recaptcha.net/image?c=" . $1, keep_referer =&gt; 1 );
+	GET( $server . "image?c=" . $1, keep_referer =&gt; 1 );
 
 	CAPTCHA(
 		qr/\S+ \S+/

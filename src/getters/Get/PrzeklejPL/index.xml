@@ -5,7 +5,7 @@ desc:	[przeklej.pl] <a href="http://www.przeklej.pl/">"http://www.przeklej.pl/"<
 body:	
 	<p>Check <a href="http://www.przeklej.pl/regulamin">terms of service</a>.</p>
 <p>Status: OK 2010-03-12</p>
-	<pre># $Id: PrzeklejPL 11257 2010-03-12 02:56:59Z sparky $
+	<pre># $Id: PrzeklejPL 11352 2010-04-29 18:04:44Z sparky $
 # Get::PrzeklejPL - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -24,7 +24,7 @@ start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found" )
-		if /Plik nie istnieje/;
+		if /Plik nie istnieje|Plik został usunięty/;
 
 	! m{&lt;h1&gt;&lt;a href="(/download/.*?)" title="Pobierz plik"&gt;(.*?)&lt;/a&gt;&lt;/h1&gt;&lt;span class="size".*?&gt; \(($STDSIZE)\)&lt;/span&gt;};
 	my ( $file_uri, $name, $size ) = ( $1, $2, $3 );

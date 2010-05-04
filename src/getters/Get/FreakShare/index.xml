@@ -5,7 +5,7 @@ desc:	[FS] <a href="http://freakshare.net/">"http://freakshare.net/"</a>
 body:	
 	<p>Check <a href="http://freakshare.net/terms-of-service.html">terms of service</a>.</p>
 <p>Status: OK 2010-04-08</p>
-	<pre># $Id: FreakShare 11318 2010-04-08 13:38:42Z sparky $
+	<pre># $Id: FreakShare 11368 2010-05-04 13:58:05Z sparky $
 # Get::FreakShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -48,10 +48,13 @@ stage_solvecaptcha:
 
 	GET( $1, keep_referer =&gt; 1 );
 
-	! m{challenge : '(\S+)',};
+	! m{server\s*:\s*'(\S+?)'};
+	my $server = $1;
+	
+	! m{challenge\s*:\s*'(\S+?)',};
 	$-{capform}-&gt;set( recaptcha_challenge_field =&gt; $1 );
 
-	GET( "http://api.recaptcha.net/image?c=" . $1, keep_referer =&gt; 1 );
+	GET( $server . "image?c=" . $1, keep_referer =&gt; 1 );
 
 	CAPTCHA(
 		qr/\S+ \S+/

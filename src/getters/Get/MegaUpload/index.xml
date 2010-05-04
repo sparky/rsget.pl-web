@@ -5,7 +5,7 @@ desc:	[MU] <a href="http://megaupload.com/">"http://megaupload.com/"</a>
 body:	
 	<p>Check <a href="http://megaupload.com/?c=terms">terms of service</a>.</p>
 <p>Status: OK 2010-04-08</p>
-	<pre># $Id: MegaUpload 11318 2010-04-08 13:38:42Z sparky $
+	<pre># $Id: MegaUpload 11355 2010-04-30 14:47:19Z sparky $
 # Get::MegaUpload - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -42,7 +42,8 @@ pre:
 	}
 
 unify:
-	my ($id) = /d=([A-Z0-9]*)/;
+	my ($id) = /d=([A-Z0-9]*)/i;
+	$id = uc $id;
 	my $host = "megaupload";
 	$host = "megaporn" if m{^http://(?:www\.)?(?:megarotic|sexuploader|megaporn)};
 	return "http://$host.com/?d=$id";
