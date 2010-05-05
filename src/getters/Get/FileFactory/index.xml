@@ -4,8 +4,8 @@ desc:	[FF] <a href="http://filefactory.com/">"http://filefactory.com/"</a>
 
 body:	
 	<p>Check <a href="http://filefactory.com/legal/terms.php">terms of service</a>.</p>
-<p>Status: OK 2010-04-08</p>
-	<pre># $Id: FileFactory 11353 2010-04-29 18:11:37Z sparky $
+<p>Status: OK 2010-05-05</p>
+	<pre># $Id: FileFactory 11376 2010-05-05 01:09:08Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ short: FF
 web: "http://filefactory.com/"
 tos: "http://filefactory.com/legal/terms.php"
 uri: qr{filefactory\.com/file/[0-9a-z]{6}}
-status: OK 2010-04-08
+status: OK 2010-05-05
 
 start:
 	GET( $-{_uri} );
@@ -42,7 +42,7 @@ start:
 
 	! m#&lt;span class="countdown".*?&gt;(\d+)&lt;/span&gt;#;
 	my $wait = $1;
-	RESTART( $wait, "free limit reached" ) if $wait &gt; 30;
+	RESTART( $wait, "free limit reached" ) if $wait &gt; 120;
 
 	WAIT( $wait, "expecting download link" );
 

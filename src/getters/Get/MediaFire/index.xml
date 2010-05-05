@@ -4,8 +4,8 @@ desc:	[MF] <a href="http://www.mediafire.com/">"http://www.mediafire.com/"</a>
 
 body:	
 	<p>Check <a href="http://www.mediafire.com/terms_of_service.php">terms of service</a>.</p>
-<p>Status: OK 2010-04-08</p>
-	<pre># $Id: MediaFire 11326 2010-04-08 19:25:05Z sparky $
+<p>Status: OK 2010-05-05</p>
+	<pre># $Id: MediaFire 11377 2010-05-05 01:10:51Z sparky $
 # Get::MediaFire - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://www.mediafire.com/terms_of_service.php"
 uri: qr{mediafire\.com/(file/|\?|download\.php\?)[a-z0-9]+}
 cookie: mf
 slots: max
-status: OK 2010-04-08
+status: OK 2010-05-05
 
 unify:
 	return "http://www.mediafire.com/?$1" if
@@ -65,7 +65,7 @@ stage_init:
 		}
 	}
 
-	! m{href=\\"http://"\s*\+\s*(.*?)\s*\+'(.*?)"&gt;};
+	! m{href=\\"http://"\s*\+\s*(.*)\s*\+\s*'(/.*?)"&gt;};
 	my $order = $1; my $name = $2;
 	my $code = join "", map { /'(.*)'/ ? $1 : $vars{ $_ } } split /\s*\+\s*/, $order;
 	my $uri = "http://" . $code . $name;
