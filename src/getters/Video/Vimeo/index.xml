@@ -4,7 +4,7 @@ desc:	[V:Vimeo] <a href="http://vimeo.com/">"http://vimeo.com/"</a>
 
 body:	
 	<p>Status: OK 2010-04-08</p>
-	<pre># $Id: Vimeo 11320 2010-04-08 14:05:07Z sparky $
+	<pre># $Id: Vimeo 11392 2010-05-06 21:45:48Z sparky $
 # Video::Vimeo - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -14,12 +14,13 @@ body:
 name: Vimeo
 short: V:Vimeo
 web: "http://vimeo.com/"
-uri: qr{vimeo\.com/\d+([/#].*)?$}
+uri: qr{vimeo\.com/\d+([/#?].*)?$}
 slots: max
 status: OK 2010-04-08
 
 unify:
 	s/#.*//;
+	s/\?.*//;
 	return "http://vimeo.com/$1" if m{/(\d+)(?:/.*)?$};
 
 start:

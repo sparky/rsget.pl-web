@@ -1,0 +1,45 @@
+index:	0
+title:	MultiUpload
+desc:	[L:MultiUpload] <a href="http://multiupload.com/">"http://multiupload.com/"</a>
+
+body:	
+	<p>Check <a href="http://multiupload.com/terms">terms of service</a>.</p>
+<p>Status: OK 2010-05-08</p>
+	<pre># $Id: MultiUpload 11402 2010-05-08 16:40:38Z sparky $
+# Link::MultiUpload - Link retriever plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: MultiUpload
+short: L:MultiUpload
+web: "http://multiupload.com/"
+tos: "http://multiupload.com/terms"
+uri: qr{multiupload\.com/[A-Z0-9]{10}}
+slots: max
+status: OK 2010-05-08
+
+start:
+	GET( $-{_uri} );
+
+	my @list;
+	push @list, $1 while s/&lt;div .*?id="url_\d+"&gt;&lt;a href="(.+?)"//;
+
+	ERROR( "no links" ) unless @list;
+
+	$-{list} = \@list;
+	$-{outlist} = [];
+	$-{referer} = $-{_referer};
+
+stage_get_link:
+	$-{_referer} = $-{referer};
+	GET( shift @{$-{list}} );
+
+	push @{$-{outlist}}, $-{_referer};
+	GOTO stage_get_link if @{$-{list}};
+
+	LINK( @{$-{outlist}} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
