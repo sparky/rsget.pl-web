@@ -1,0 +1,27 @@
+index:	0
+title:	BigAndFree
+desc:	[BigAndFree] <a href="http://bigandfree.com/">"http://bigandfree.com/"</a>
+
+body:	
+	<p>Check <a href="http://bigandfree.com/tos">terms of service</a>.</p>
+<p>Status: OK 2010-05-09</p>
+	<pre># $Id: BigAndFree 11408 2010-05-09 17:19:14Z sparky $
+# Get::BigAndFree - File getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: BigAndFree
+short: BigAndFree
+web: "http://bigandfree.com/"
+tos: "http://bigandfree.com/tos"
+uri: qr{bigandfree\.com/\d+}
+uri: qr{BigAndFree\.com/\d+}
+status: OK 2010-05-09
+
+start:
+	ERROR( "Service not supported. Check http://rsget.pl/getters/" );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

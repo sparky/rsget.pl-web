@@ -5,7 +5,7 @@ desc:	[TB] <a href="http://turbobit.net/">"http://turbobit.net/"</a>
 body:	
 	<p>Check <a href="http://turbobit.net/rules">terms of service</a>.</p>
 <p>Status: OK 2010-03-13</p>
-	<pre># $Id: TurboBit 11267 2010-03-13 01:32:41Z sparky $
+	<pre># $Id: TurboBit 11405 2010-05-09 13:45:02Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -32,9 +32,9 @@ start:
 	ERROR( "file not found" ) if m#&lt;div class="code-404"&gt;404&lt;/div&gt;#;
 	ERROR( "file not found" ) if m#Файл не найден. Возможно он был удален|File was not found. It could possibly be deleted#;
 
-	! m#&lt;h1 class="download-file"&gt;.*?&lt;span.*?&gt;&amp;nbsp;(.*?)&lt;/b&gt;&lt;/h1&gt;#;
+	! m#&lt;h1 class="download-file"&gt;.*?&lt;span.*?&gt;(.*?)&lt;/span&gt;&lt;/h1&gt;#;
 	my $name = $1;
-	! m#&lt;br&gt;&lt;b&gt;File size:&lt;/b&gt; ([\d,\.]+ .b)&lt;/div&gt;#;
+	! m#&lt;b&gt;File size:&lt;/b&gt; ([\d,\.]+ .b)&lt;/div&gt;#;
 	( my $size = $1 ) =~ tr/,/./;
 	INFO( name =&gt; $name, asize =&gt; $size );
 

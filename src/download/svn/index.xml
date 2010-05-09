@@ -11,8 +11,21 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 3</p>
+	<p>Commits: 9</p>
 	<dl>
+		<dt id="r11409"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11409&amp;view=rev">r11409</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 22:39:49 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPServer.pm">RSGet/HTTPServer.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- don't fork in http server - trap sigpipe instead</pre></dd>
+		<dt id="r11408"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11408&amp;view=rev">r11408</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 17:19:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/BigAndFree">Get/BigAndFree</a> (<a href="/getters/Get/BigAndFree/">getter</a>)</li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/EgoShare">Get/EgoShare</a> (<a href="/getters/Get/EgoShare/">getter</a>)</li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/ShareOnline">Get/ShareOnline</a> (<a href="/getters/Get/ShareOnline/">getter</a>)</li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SuperFastFile">Get/SuperFastFile</a> (<a href="/getters/Get/SuperFastFile/">getter</a>)</li></ul><pre>- placeholders for relatively popular services</pre></dd>
+		<dt id="r11407"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11407&amp;view=rev">r11407</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 17:08:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Simple">Link/Simple</a> (<a href="/getters/Link/Simple/">getter</a>)</li></ul><pre>- less useless web uri</pre></dd>
+		<dt id="r11406"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11406&amp;view=rev">r11406</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 14:11:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Simple">Link/Simple</a> (<a href="/getters/Link/Simple/">getter</a>)</li></ul><pre>- added to. url shortener</pre></dd>
+		<dt id="r11405"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11405&amp;view=rev">r11405</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 13:45:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboBit">Get/TurboBit</a> (<a href="/getters/Get/TurboBit/">getter</a>)</li></ul><pre>- updated</pre></dd>
+		<dt id="r11403"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11403&amp;view=rev">r11403</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-08 17:40:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/MultiUpload">Link/MultiUpload</a> (<a href="/getters/Link/MultiUpload/">getter</a>)</li></ul><pre>- allow alternative wwwN. uris
+- added TODO</pre></dd>
 		<dt id="r11402"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11402&amp;view=rev">r11402</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-08 16:40:38 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/MultiUpload">Link/MultiUpload</a> (<a href="/getters/Link/MultiUpload/">getter</a>)</li></ul><pre>- added multiupload.com support</pre></dd>
 		<dt id="r11392"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11392&amp;view=rev">r11392</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-06 21:45:48 UTC</em></dt>

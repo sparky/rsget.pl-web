@@ -1,0 +1,26 @@
+index:	0
+title:	ShareOnline
+desc:	[ShareOnline] <a href="http://www.share-online.biz/">"http://www.share-online.biz/"</a>
+
+body:	
+	<p>Check <a href="http://www.share-online.biz/rules.php">terms of service</a>.</p>
+<p>Status: OK 2010-05-09</p>
+	<pre># $Id: ShareOnline 11408 2010-05-09 17:19:14Z sparky $
+# Get::ShareOnline - File getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: ShareOnline
+short: ShareOnline
+web: "http://www.share-online.biz/"
+tos: "http://www.share-online.biz/rules.php"
+uri: qr{share-online\.biz/download\.php\?id=[A-Z0-9]+}
+status: OK 2010-05-09
+
+start:
+	ERROR( "Service not supported. Check http://rsget.pl/getters/" );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

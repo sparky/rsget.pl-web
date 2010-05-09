@@ -5,7 +5,7 @@ desc:	[L:MultiUpload] <a href="http://multiupload.com/">"http://multiupload.com/
 body:	
 	<p>Check <a href="http://multiupload.com/terms">terms of service</a>.</p>
 <p>Status: OK 2010-05-08</p>
-	<pre># $Id: MultiUpload 11402 2010-05-08 16:40:38Z sparky $
+	<pre># $Id: MultiUpload 11403 2010-05-08 17:40:25Z sparky $
 # Link::MultiUpload - Link retriever plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,9 +16,12 @@ name: MultiUpload
 short: L:MultiUpload
 web: "http://multiupload.com/"
 tos: "http://multiupload.com/terms"
-uri: qr{multiupload\.com/[A-Z0-9]{10}}
+uri: qr{(?:www\d*\.)?multiupload\.com/[A-Z0-9]{10}}
 slots: max
 status: OK 2010-05-08
+
+# TODO: there sometimes is "Direct download" link, allowing to download
+# directly from multiupload servers; but I don't know how to trigger it
 
 start:
 	GET( $-{_uri} );

@@ -1,0 +1,26 @@
+index:	0
+title:	EgoShare
+desc:	[EgoShare] <a href="http://www.egoshare.com/">"http://www.egoshare.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.egoshare.com/rules.php">terms of service</a>.</p>
+<p>Status: OK 2010-05-09</p>
+	<pre># $Id: EgoShare 11408 2010-05-09 17:19:14Z sparky $
+# Get::EgoShare - File getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: EgoShare
+short: EgoShare
+web: "http://www.egoshare.com/"
+tos: "http://www.egoshare.com/rules.php"
+uri: qr{egoshare.com/download\.php\?id=[A-Z0-9]+}
+status: OK 2010-05-09
+
+start:
+	ERROR( "Service not supported. Check http://rsget.pl/getters/" );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
