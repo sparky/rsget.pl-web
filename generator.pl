@@ -225,6 +225,7 @@ sub write_templates
 	my $branch = pop @_;
 
 	my $titles = join ": ", map { $_->{_title} } @columns;
+	$titles = "rsget.pl - a powerful downloader" if $titles eq "rsget.pl";
 	my $columns = join "\n", map { $_->{_processed} } @columns;
 	my %cont = (
 		titles => $titles,
