@@ -2,6 +2,44 @@ index:	0
 title:	getter plugins
 desc:	Detailed information about downloader plugins.
 
-body:	
+body:
+<h3>broken plugins</h3>
 <p>
+	There isn't any "easy" way to report plugin problems (yet),
+	so the best way to accomplish it right now is to send an email
+	at &lt;<tt>plugins&at;&domain;</tt>&gt;. Remember to put
+	plugins name in the subject and some failing links in mails body,
+	also some short explanation of the problem would be nice.
+</p>
+<h3>new plugins</h3>
+<p>
+	There are many getters yet to be implemented. If you would really like
+	some service supported there are multiple ways to attain it.
+</p>
+<p>
+	You can drop your request at &lt;<tt>plugins&at;&domain;</tt>&gt;.
+	When I find some free time and willingness I may prepare that one.
+	Just don't expect me to write captcha solver for some complicated
+	ones.
+</p>
+<p>
+	If you <a href="/donate/">drop a dime</a> along with the request,
+	you may be quite certain the plugin will be prepared in one to three
+	days.
+</p>
+<p>
+	But! The most effective way is to write and test that plugin yourself.
+	This may be quite difficult though. Plugins are written in perl, but
+	it is heavily preprocessed before running, and those mechanisms aren't
+	described anywhere.
+</p>
+<h3>notes</h3>
+<p>
+	For now only http-only plugins are supported.
+	<a href="/news/2010-04-07/">New core</a> may support some
+	other ways to retrieve data, like video streaming protocols.
+</p>
+<p>
+	There is no support for premium services right now. This will be fixed
+	in the <a href="/news/2010-04-07/">new core</a>.
 </p>
