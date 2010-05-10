@@ -7,7 +7,7 @@ body:
 <p>
 	There isn't any "easy" way to report plugin problems (yet),
 	so the best way to accomplish it right now is to send an email
-	at &lt;<tt>plugins&at;&domain;</tt>&gt;. Remember to put
+	at &lt;<tt>plugins&at;rsget.pl</tt>&gt;. Remember to put
 	plugins name in the subject and some failing links in mails body,
 	also some short explanation of the problem would be nice.
 </p>
@@ -17,7 +17,7 @@ body:
 	some service supported there are multiple ways to attain it.
 </p>
 <p>
-	You can drop your request at &lt;<tt>plugins&at;&domain;</tt>&gt;.
+	You can drop your request at &lt;<tt>plugins&at;rsget.pl</tt>&gt;.
 	When I find some free time and willingness I may prepare that one.
 	Just don't expect me to write captcha solver for some complicated
 	ones.
