@@ -24,7 +24,7 @@ header('Content-type: text/xml');
 		<p style="font-size: 20pt">File not found</p>
 		<p>
 			The requested file <strong>
-			<?= htmlspecialchars( $_SERVER["REDIRECT_URL"] ) ?>
+			<?= isset( $_SERVER["REDIRECT_URL"] ) ? htmlspecialchars( $_SERVER["REDIRECT_URL"] ) : "" ?>
 			</strong> was not found on this server.
 		</p>
 		<hr />

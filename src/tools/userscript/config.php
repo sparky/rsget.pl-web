@@ -1,5 +1,5 @@
 <?php /* {{{ */
-if ( ! $_SERVER["PATH_TRANSLATED"] || ! ereg( ".user.js$", $_SERVER["PATH_TRANSLATED"] ) ) {
+if ( ! isset( $_SERVER["PATH_TRANSLATED"] ) || ! ereg( ".user.js$", $_SERVER["PATH_TRANSLATED"] ) ) {
 	header( 'Refresh: 1;url=/tools/userscript/config.php/rsgetpl.user.js' );
 }
 header( 'Content-type: text/javascript' );
@@ -8,15 +8,15 @@ $cpath = "/tools/userscript/";
 $host = "http://localhost:7666/";
 $open = 0;
 $uzbl = 0;
-if ( $_POST["host"] ) {
+if ( isset( $_POST["host"] ) && $_POST["host"] ) {
 	$host = $_POST["host"];
 	$open = $_POST["open_supported"] ? 1 : 0;
 	$uzbl = $_POST["uzbl_hacks"] ? 1 : 0;
-} else if ( $_GET["host"] ) {
+} else if ( isset( $_GET["host"] ) && $_GET["host"] ) {
 	$host = $_GET["host"];
 	$open = $_GET["open_supported"] ? 1 : 0;
 	$uzbl = $_GET["uzbl_hacks"] ? 1 : 0;
-} else if ( $_REQUEST["host"] ) {
+} else if ( isset( $_REQUEST["host"] ) && $_REQUEST["host"] ) {
 	$host = $_REQUEST["host"];
 	$open = $_REQUEST["open_supported"] ? 1 : 0;
 	$uzbl = $_REQUEST["uzbl_hacks"] ? 1 : 0;
