@@ -64,7 +64,7 @@ body:
 	</dd>
 	<dt>Almost valid CSS 2.1</dt>
 	<dd>
-		Is uses <tt>::selection</tt> which is part of CSS 3, and
+		It uses <tt>::selection</tt> which is part of CSS 3, and
 		<tt>::-moz-selection</tt> which does the same but works in
 		gecko engine. Other than that there are no browser tricks.
 	</dd>
