@@ -11,8 +11,12 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 9</p>
+	<p>Commits: 11</p>
 	<dl>
+		<dt id="r11487"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11487&amp;view=rev">r11487</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-23 21:16:32 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a> (<a href="/getters/Get/HotFile/">getter</a>)</li></ul><pre>- force english</pre></dd>
+		<dt id="r11486"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11486&amp;view=rev">r11486</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-23 20:53:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/ListAdder.pm">RSGet/ListAdder.pm</a></li></ul><pre>- change line command back to "ADD" when clearing error in http add interface</pre></dd>
 		<dt id="r11409"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11409&amp;view=rev">r11409</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 22:39:49 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPServer.pm">RSGet/HTTPServer.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- don't fork in http server - trap sigpipe instead</pre></dd>
 		<dt id="r11408"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11408&amp;view=rev">r11408</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-05-09 17:19:14 UTC</em></dt>

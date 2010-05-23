@@ -5,7 +5,7 @@ desc:	[HF] <a href="http://hotfile.com/">"http://hotfile.com/"</a>
 body:	
 	<p>Check <a href="http://hotfile.com/terms-of-service.html">terms of service</a>.</p>
 <p>Status: OK 2010-05-05</p>
-	<pre># $Id: HotFile 11377 2010-05-05 01:10:51Z sparky $
+	<pre># $Id: HotFile 11487 2010-05-23 21:16:32Z sparky $
 # Get::HotFile - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -25,7 +25,7 @@ unify:
 		if m{hotfile\.com/dl/(\d+/[0-9a-f]+/.+?)(?:\.html)?$};
 
 start:
-	GET( $-{_uri} );
+	GET( $-{_uri} . "?lang=en" );
 
 	ERROR( "file not found" ) unless length $_;
 	ERROR( "file not found" ) if /This file is either removed|File is removed/;
