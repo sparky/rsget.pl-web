@@ -4,8 +4,8 @@ desc:	[MF] <a href="http://www.mediafire.com/">"http://www.mediafire.com/"</a>
 
 body:	
 	<p>Check <a href="http://www.mediafire.com/terms_of_service.php">terms of service</a>.</p>
-<p>Status: OK 2010-05-05</p>
-	<pre># $Id: MediaFire 11377 2010-05-05 01:10:51Z sparky $
+<p>Status: BROKEN 2010-06-04</p>
+	<pre># $Id: MediaFire 11511 2010-06-04 02:28:05Z sparky $
 # Get::MediaFire - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://www.mediafire.com/terms_of_service.php"
 uri: qr{mediafire\.com/(file/|\?|download\.php\?)[a-z0-9]+}
 cookie: mf
 slots: max
-status: OK 2010-05-05
+status: BROKEN 2010-06-04
 
 unify:
 	return "http://www.mediafire.com/?$1" if

@@ -4,8 +4,8 @@ desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
 
 body:	
 	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
-<p>Status: OK 2010-04-08</p>
-	<pre># $Id: SharingMatrix 11322 2010-04-08 16:10:11Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: SharingMatrix 11510 2010-06-04 02:26:04Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://sharingmatrix.com/"
 tos: "http://sharingmatrix.com/user_agreement"
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
 cookie: sm
-status: OK 2010-04-08
+status: OK 2010-06-04
 
 unify:
 	return "http://sharingmatrix.com/file/$1"

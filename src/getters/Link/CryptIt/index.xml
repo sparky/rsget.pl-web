@@ -3,8 +3,8 @@ title:	CryptIt
 desc:	[L:CryptIt] <a href="http://crypt-it.com/">"http://crypt-it.com/"</a>
 
 body:	
-	<p>Status: OK 2010-04-03</p>
-	<pre># $Id: CryptIt 11297 2010-04-03 00:32:29Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: CryptIt 11508 2010-06-04 02:22:50Z sparky $
 # Link::CryptIt - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:CryptIt
 web: "http://crypt-it.com/"
 uri: qr{crypt-it\.com/}
 slots: max
-status: OK 2010-04-03
+status: OK 2010-06-04
 
 pre:
 	# from jdownloader

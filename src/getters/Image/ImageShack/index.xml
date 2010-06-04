@@ -4,8 +4,8 @@ desc:	[I:ImageShack] <a href="http://imageshack.us/">"http://imageshack.us/"</a>
 
 body:	
 	<p>Check <a href="http://reg.imageshack.us/content.php?page=rules">terms of service</a>.</p>
-<p>Status: OK 2010-03-11</p>
-	<pre># $Id: ImageShack 11277 2010-03-14 16:35:53Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: ImageShack 11509 2010-06-04 02:23:56Z sparky $
 # Image::ImageShack - Image getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,18 +17,21 @@ short: I:ImageShack
 web: "http://imageshack.us/"
 tos: "http://reg.imageshack.us/content.php?page=rules"
 uri: qr{profile\.imageshack\.us/user/.*?/images/detail/#\d+/.+}
-uri: qr{(?:img\d+\.)imageshack\.us/i/.+/}
+uri: qr{(?:img\d+\.)imageshack\.us/(?:i/.+/|my\.php\?image=.+)}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-06-04
 
 unify:
 	return "http://img$1.imageshack.us/i/$2/"
-		if m{http://profile\.imageshack\.us/user/.*?/images/detail/#(\d+)/(.+)};
+		if m{http://profile\.imageshack\.us/user/.*?/images/detail/#(\d+)/(.+)}
+			or m{http://img(\d+)\.imageshack\.us/my\.php\?image=(.+)};
 
 start:
 	GET( $-{_uri} );
 
-	! m{&lt;a href="(.*?)" target="_blank".*class="last"&gt;\s*&lt;img title="Zoom"};
+	ERROR( "file not found" ) if $-{_referer} eq "http://www.imageshack.us/";
+
+	! m{src="(.*?)" alt="click to zoom"};
 	my $file_uri = de_ml( $1 );
 	( my $fname = $file_uri ) =~ s{.*/}{};
 

@@ -4,8 +4,8 @@ desc:	[L:4Shared] <a href="http://www.4shared.com/">"http://www.4shared.com/"</a
 
 body:	
 	<p>Check <a href="http://www.4shared.com/terms.jsp">terms of service</a>.</p>
-<p>Status: OK 2010-04-05</p>
-	<pre># $Id: 4Shared 11311 2010-04-05 20:34:55Z sparky $
+<p>Status: BROKEN 2010-06-04</p>
+	<pre># $Id: 4Shared 11507 2010-06-04 02:20:04Z sparky $
 # Link::4Shared - Link retriever plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://www.4shared.com/terms.jsp"
 uri: qr{4shared\.com/dir/}
 slots: max
 cookie: !4sh
-status: OK 2010-04-05
+status: BROKEN 2010-06-04
 
 unify:
 	return "http://www.4shared.com/dir/$1/$2"

@@ -4,8 +4,8 @@ desc:	[TB] <a href="http://turbobit.net/">"http://turbobit.net/"</a>
 
 body:	
 	<p>Check <a href="http://turbobit.net/rules">terms of service</a>.</p>
-<p>Status: OK 2010-03-13</p>
-	<pre># $Id: TurboBit 11405 2010-05-09 13:45:02Z sparky $
+<p>Status: BROKEN 2010-06-04</p>
+	<pre># $Id: TurboBit 11516 2010-06-04 02:33:32Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -20,7 +20,7 @@ uri: qr{turbobit\.net/[a-z0-9]+\.html}
 uri: qr{turbobit\.ru/[a-z0-9]+\.html}
 cookie: tb
 slots: max
-status: OK 2010-03-13
+status: BROKEN 2010-06-04
 
 unify:
 	return "http://turbobit.net/$1"

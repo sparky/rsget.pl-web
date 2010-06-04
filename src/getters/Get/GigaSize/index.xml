@@ -4,8 +4,8 @@ desc:	[GS] <a href="http://gigasize.com/">"http://gigasize.com/"</a>
 
 body:	
 	<p>Check <a href="http://www.gigasize.com/page.php?p=terms">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: GigaSize 11257 2010-03-12 02:56:59Z sparky $
+<p>Status: BROKEN 2010-06-04</p>
+	<pre># $Id: GigaSize 11511 2010-06-04 02:28:05Z sparky $
 # Get::GigaSize - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://gigasize.com/"
 tos: "http://www.gigasize.com/page.php?p=terms"
 uri: qr{gigasize\.com/get\.php\?d=}
 cookie: gs
-status: OK 2010-03-12
+status: BROKEN 2010-06-04
 
 start:
 	GET( $-{_uri} );

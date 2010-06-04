@@ -3,8 +3,8 @@ title:	LinkProtector
 desc:	[L:LinkProtector] <a href="http://link-protector.com/">"http://link-protector.com/"</a>
 
 body:	
-	<p>Status: OK 2009-10-24</p>
-	<pre># $Id: LinkProtector 11111 2010-01-13 13:09:39Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: LinkProtector 11508 2010-06-04 02:22:50Z sparky $
 # Link::LinkProtector - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:LinkProtector
 web: "http://link-protector.com/"
 uri: qr{link-protector\.com/}
 slots: max
-status: OK 2009-10-24
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

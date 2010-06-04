@@ -3,8 +3,8 @@ title:	Simple
 desc:	[L:Simple] <a href="http://rsget.pl/getters/Link/Simple/">"http://rsget.pl/getters/Link/Simple/"</a>
 
 body:	
-	<p>Status: OK 2010-05-09</p>
-	<pre># $Id: Simple 11407 2010-05-09 17:08:40Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: Simple 11508 2010-06-04 02:22:50Z sparky $
 # Link::Simple - Link retriever plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -20,7 +20,7 @@ uri: qr{tinyurl\.com/}
 uri: qr{linkhider\.com/}
 uri: qr{to\./}
 slots: max
-status: OK 2010-05-09
+status: OK 2010-06-04
 
 start:
 	my $uri = $-{_uri};

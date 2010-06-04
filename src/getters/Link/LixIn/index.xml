@@ -3,8 +3,8 @@ title:	LixIn
 desc:	[L:LixIn] <a href="http://lix.in/">"http://lix.in/"</a>
 
 body:	
-	<p>Status: OK 2009-10-25</p>
-	<pre># $Id: LixIn 11111 2010-01-13 13:09:39Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: LixIn 11508 2010-06-04 02:22:50Z sparky $
 # Link::LixIn - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ web: "http://lix.in/"
 uri: qr{lix\.in/-?[0-9a-f]+(#.*)?$}
 slots: !1
 cookie: !lix
-status: OK 2009-10-25
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

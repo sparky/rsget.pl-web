@@ -3,8 +3,8 @@ title:	GoEar
 desc:	[A:GoEar] <a href="http://goear.com/">"http://goear.com/"</a>
 
 body:	
-	<p>Status: OK 2010-04-05</p>
-	<pre># $Id: GoEar 11311 2010-04-05 20:34:55Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: GoEar 11509 2010-06-04 02:23:56Z sparky $
 # Audio::GoEar - Audio getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: A:GoEar
 web: "http://goear.com/"
 uri: qr{goear\.com/listen/[0-9a-f]+/}
 slots: max
-status: OK 2010-04-05
+status: OK 2010-06-04
 
 unify:
 	my ( $id ) = m{/listen/([0-9a-f]+)/};
@@ -28,7 +28,7 @@ start:
 	! m{&lt;object.*?&gt;&lt;embed src=".*?swf\?file=([0-9a-f]+)"};
 	my $id = $1;
 
-	GET( "/localtrackhost.php?f=$id" );
+	GET( "/tracker758.php?f=$id" );
 
 	! m{&lt;song path="(.*?)" bild=".*?" artist="(.*?)" title="(.*?)"/&gt;};
 	my ( $file_uri, $artist, $title ) = ( $1, $2, $3 );
