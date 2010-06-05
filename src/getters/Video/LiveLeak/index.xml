@@ -3,8 +3,8 @@ title:	LiveLeak
 desc:	[V:LiveLeak] <a href="http://liveleak.com/">"http://liveleak.com/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: LiveLeak 11238 2010-03-11 00:32:41Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: LiveLeak 11518 2010-06-04 14:26:39Z sparky $
 # Video::LiveLeak - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:LiveLeak
 web: "http://liveleak.com/"
 uri: qr{liveleak\.com/view\?i=}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

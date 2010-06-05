@@ -3,8 +3,8 @@ title:	InteriaPL
 desc:	[V:InteriaPL] <a href="http://video.interia.pl/">"http://video.interia.pl/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: InteriaPL 11238 2010-03-11 00:32:41Z sparky $
+	<p>Status: OK 2010-06-05</p>
+	<pre># $Id: InteriaPL 11547 2010-06-05 13:57:30Z sparky $
 # Video::InteriaPL - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:InteriaPL
 web: "http://video.interia.pl/"
 uri: qr{video\.interia\.pl/obejrzyj,film,\d+}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-06-05
 
 start:
 	GET( $-{_uri} );
@@ -24,14 +24,15 @@ start:
 	! m{&lt;h2&gt;(.*?)&lt;/h2&gt;};
 	my $fname = de_ml( $1 );
 	$fname =~ s{/}{_}g;
-	$fname .= ".flv";
+	$-{fname} = $fname . ".flv";
 
 	INFO( name =&gt; $fname, quality =&gt; "flv" );
 
 	! m{so\.addVariable\("vid", "(\d+)"\);};
-	my $id = $1;
+	GET( "/vurl,id,$1?" );
 
-	DOWNLOAD( "http://flv.interia.pl/l/$id.flv", fname =&gt; $fname );
+	! m{videoID=(.*?)&amp;};
+	DOWNLOAD( $1, fname =&gt; $-{fname} );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

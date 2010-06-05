@@ -5,7 +5,7 @@ desc:	[UT] <a href="http://uploaded.to/">"http://uploaded.to/"</a>
 body:	
 	<p>Check <a href="http://uploaded.to/agb">terms of service</a>.</p>
 <p>Status: OK 2010-06-04</p>
-	<pre># $Id: UploadedTo 11512 2010-06-04 02:29:22Z sparky $
+	<pre># $Id: UploadedTo 11522 2010-06-04 16:27:57Z sparky $
 # Get::UploadedTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -27,8 +27,8 @@ unify:
 start:
 	GET( $-{_uri} );
 
-	RESTART( $1 * 60, "free limit reached" )
-		if /Or wait (\d+) minutes/;
+	RESTART( ( $1 &gt; 0 ? $1 * 60 : irand 60 ), "free limit reached" )
+		if /Or wait (-?\d+) minutes/;
 
 	if ( $-{_referer} =~ m#/\?view=# ) {
 		ERROR( "file not found" ) if $-{_referer} =~ /fileremoved/;

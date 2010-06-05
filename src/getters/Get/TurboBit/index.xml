@@ -4,13 +4,16 @@ desc:	[TB] <a href="http://turbobit.net/">"http://turbobit.net/"</a>
 
 body:	
 	<p>Check <a href="http://turbobit.net/rules">terms of service</a>.</p>
-<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: TurboBit 11516 2010-06-04 02:33:32Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: TurboBit 11532 2010-06-04 22:37:16Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
+
+# TODO: there are two captcha methods: their own (kohana) and recaptcha
+# the latter is not supported, but it doesn't seem to be a big problem
 
 name: TurboBit
 short: TB
@@ -20,7 +23,7 @@ uri: qr{turbobit\.net/[a-z0-9]+\.html}
 uri: qr{turbobit\.ru/[a-z0-9]+\.html}
 cookie: tb
 slots: max
-status: BROKEN 2010-06-04
+status: OK 2010-06-04
 
 unify:
 	return "http://turbobit.net/$1"
@@ -48,6 +51,7 @@ stage_captcha:
 		! m#var Timeout = {\s*limit: (\d+),#s;
 		RESTART( $1, "free limit reached" );
 	}
+
 	! $-{form} = $self-&gt;form( match =&gt; { body =&gt; qr#&lt;img alt="Captcha"# } );
 
 stage_getimg:

@@ -4,8 +4,8 @@ desc:	[SS] <a href="http://sendspace.com/">"http://sendspace.com/"</a>
 
 body:	
 	<p>Check <a href="http://sendspace.com/terms.html">terms of service</a>.</p>
-<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: SendSpace 11511 2010-06-04 02:28:05Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: SendSpace 11533 2010-06-05 00:05:12Z sparky $
 # Get::SendSpace - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://sendspace.com/"
 tos: "http://sendspace.com/terms.html"
 uri: qr{sendspace\.com/file/}
 cookie: ss
-status: BROKEN 2010-06-04
+status: OK 2010-06-05
 
 start:
 	GET( $-{_uri} );
@@ -26,7 +26,7 @@ start:
 	ERROR( "file not found" )
 		if /Sorry, the file you requested is not available/;
 
-	! m#&lt;b&gt;Name:&lt;/b&gt;\s*(.*?)\s*&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt;\s*(\d+MB)\s*&lt;br&gt;#;
+	! m#&lt;b&gt;Name:&lt;/b&gt;\s*(.*?)\s*&lt;br&gt;&lt;b&gt;Size:&lt;/b&gt;\s*([\d\.]+MB)\s*&lt;br&gt;#;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/"download"/ } );

@@ -4,8 +4,8 @@ desc:	[X7] <a href="http://x7.to/">"http://x7.to/"</a>
 
 body:	
 	<p>Check <a href="http://x7.to/legal">terms of service</a>.</p>
-<p>Status: OK 2010-04-09</p>
-	<pre># $Id: X7 11328 2010-04-09 22:26:20Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: X7 11529 2010-06-04 21:28:32Z sparky $
 # Get::X7 - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ short: X7
 web: "http://x7.to/"
 tos: "http://x7.to/legal"
 uri: qr{x7\.to/[a-z0-9]{6}}
-status: OK 2010-04-09
+status: OK 2010-06-04
 
 unify:
 	return "http://x7.to/$1"
@@ -46,7 +46,7 @@ start:
 		if /{err:"limit-dl"}/;
 	MULTI() if /{err:"limit-parallel"}/;
 
-	! m#{type:'download',wait:(\d+),url:'(.+?)'}#;
+	! m#{type:'download',wait:(\d+),url:'(.+?)'#;
 	$-{file_uri} = $2;
 
 	# wait a bit longer because server needs some time to prepare the file

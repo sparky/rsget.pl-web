@@ -4,8 +4,8 @@ desc:	[RK] <a href="http://www.rapidshark.pl/">"http://www.rapidshark.pl/"</a>
 
 body:	
 	<p>Check <a href="http://www.rapidshark.pl/tos.html">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: RapidShark 11265 2010-03-12 20:57:48Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: RapidShark 11546 2010-06-05 11:47:20Z sparky $
 # Get::RapidShark - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://www.rapidshark.pl/"
 tos: "http://www.rapidshark.pl/tos.html"
 uri: qr{rapidshark\.pl/[a-z0-9]{12}}
 slots: max
-status: OK 2010-03-12
+status: OK 2010-06-05
 
 unify:
 	return "http://www.rapidshark.pl/$1"
@@ -30,7 +30,9 @@ start:
 	ERROR( "file not found" )
 		if m{&lt;b&gt;(Plik nie został odnaleziony|File Not Found|Datei nicht gefunden)&lt;/b&gt;};
 	ERROR( "file not found" )
-		if m{&lt;font class="err"&gt;No such file};
+		if m{&lt;font class="err"&gt;(Brak|No such file)};
+	ERROR( "file not found" )
+		if m{&lt;font style="font-size:12px;"&gt;Probujesz otworzyć adres &lt;font color="red"&gt;.*//&lt;/font&gt; \(\)&lt;/font&gt;};
 
 	! m{&lt;font style="font-size:12px;"&gt;Probujesz otworzyć adres &lt;font color="red"&gt;.*/(.*?)&lt;/font&gt; \(($STDSIZE)\)&lt;/font&gt;};
 	INFO( name =&gt; $1, asize =&gt; $2 );
@@ -40,6 +42,8 @@ start:
 
 	CLICK( $form-&gt;post() );
 
+	RESTART( -irand( 60, 600 ), "free limit reached" )
+		if /&lt;p class="err"&gt;Wykorzystałeś dzienny limit pobierania/;
 	if ( /Muszisz poczekać (.*) aby pobrać następny plik/ ) {
 		$_ = $1;
 		my $wait = 0;

@@ -3,8 +3,8 @@ title:	DailyMotion
 desc:	[V:DailyMotion] <a href="http://www.dailymotion.com/">"http://www.dailymotion.com/"</a>
 
 body:	
-	<p>Status: OK 2010-04-08</p>
-	<pre># $Id: DailyMotion 11320 2010-04-08 14:05:07Z sparky $
+	<p>Status: OK 2010-06-05</p>
+	<pre># $Id: DailyMotion 11542 2010-06-05 02:18:47Z sparky $
 # Video::DailyMotion - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,11 +17,13 @@ web: "http://www.dailymotion.com/"
 uri: qr{dailymotion\.com/(.*?/)?video/[a-z0-9]+}
 uri: qr{dailymotion\.pl/(.*?/)?video/[a-z0-9]+}
 slots: max
-status: OK 2010-04-08
+status: OK 2010-06-05
 
 start:
 	GET( $-{_uri} );
 
+	ERROR( "file not found" )
+		if m/&gt;Dailymotion – 404 Not Found&lt;/;
 	! m{&lt;h1 class="dmco_title"&gt;&lt;span class="title" title="(.*?)"};
 	my $name = de_ml( $1 );
 	$name =~ s{/}{_}g;

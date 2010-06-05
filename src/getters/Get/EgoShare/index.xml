@@ -4,8 +4,8 @@ desc:	[EgoShare] <a href="http://www.egoshare.com/">"http://www.egoshare.com/"</
 
 body:	
 	<p>Check <a href="http://www.egoshare.com/rules.php">terms of service</a>.</p>
-<p>Status: OK 2010-05-09</p>
-	<pre># $Id: EgoShare 11408 2010-05-09 17:19:14Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: EgoShare 11551 2010-06-05 15:33:46Z sparky $
 # Get::EgoShare - File getter plugin for rsget.pl
 #
 # 2010 (c) ??? &lt;???@???.??&gt;
@@ -17,7 +17,7 @@ short: EgoShare
 web: "http://www.egoshare.com/"
 tos: "http://www.egoshare.com/rules.php"
 uri: qr{egoshare.com/download\.php\?id=[A-Z0-9]+}
-status: OK 2010-05-09
+status: OK 2010-06-05
 
 start:
 	ERROR( "Service not supported. Check http://rsget.pl/getters/" );

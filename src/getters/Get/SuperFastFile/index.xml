@@ -4,8 +4,8 @@ desc:	[SuperFastFile] <a href="http://www.superfastfile.com/">"http://www.superf
 
 body:	
 	<p>Check <a href="http://www.superfastfile.com/tos.html">terms of service</a>.</p>
-<p>Status: OK 2010-05-09</p>
-	<pre># $Id: SuperFastFile 11408 2010-05-09 17:19:14Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: SuperFastFile 11551 2010-06-05 15:33:46Z sparky $
 # Get::SuperFastFile - File getter plugin for rsget.pl
 #
 # 2010 (c) ??? &lt;???@???.??&gt;
@@ -17,7 +17,7 @@ short: SuperFastFile
 web: "http://www.superfastfile.com/"
 tos: "http://www.superfastfile.com/tos.html"
 uri: qr{superfastfile.com/[0-9a-z]+}
-status: OK 2010-05-09
+status: OK 2010-06-05
 
 start:
 	ERROR( "Service not supported. Check http://rsget.pl/getters/" );

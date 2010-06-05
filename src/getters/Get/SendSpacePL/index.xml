@@ -4,8 +4,8 @@ desc:	[SS.pl] <a href="http://www.sendspace.pl/">"http://www.sendspace.pl/"</a>
 
 body:	
 	<p>Check <a href="http://www.sendspace.pl/informacje/regulamin">terms of service</a>.</p>
-<p>Status: OK 2010-03-12</p>
-	<pre># $Id: SendSpacePL 11257 2010-03-12 02:56:59Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: SendSpacePL 11544 2010-06-05 11:26:59Z sparky $
 # Get::SendSpacePL - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://www.sendspace.pl/"
 tos: "http://www.sendspace.pl/informacje/regulamin"
 uri: qr{sendspace\.pl/file/[a-zA-Z0-9]{8}}
 cookie: ss.pl
-status: OK 2010-03-12
+status: OK 2010-06-05
 
 start:
 	GET( $-{_uri} );
@@ -26,8 +26,9 @@ start:
 	ERROR( "file not found" )
 		if /Podany plik nie istnieje lub został usunięty./;
 
-	! m#&lt;div class="text"&gt;&lt;span class="black3"&gt;Nazwa pliku:&lt;/span&gt;&lt;/div&gt;\s*&lt;div class="info"&gt;&lt;span class="black3".*?&gt;&lt;b&gt;(.*?)&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;#s;
-	my $name = $1;
+	! m#&lt;div class="text"&gt;&lt;span class="black3"&gt;Nazwa pliku:&lt;/span&gt;&lt;/div&gt;\s*&lt;div class="info"&gt;&lt;a href="(.*?)".*?&gt;&lt;b&gt;(.*?)&lt;/b&gt;&lt;/a&gt;&lt;/div&gt;#s;
+	my $file_uri = $1;
+	my $name = $2;
 	$name =~ s/\.\.\.$/\0/;
 
 	! m#&lt;div class="text"&gt;&lt;span class="black3"&gt;Rozmiar pliku:&lt;/span&gt;&lt;/div&gt;\s*&lt;div class="info"&gt;&lt;span class="blue4"&gt;([\d,]+ MB)&lt;/span&gt;&lt;/div&gt;#s;
@@ -36,11 +37,9 @@ start:
 
 	INFO( name =&gt; $name, asize =&gt; $size );
 
-	! m#&lt;a href="(http://www.sendspace.pl/download/.*?)"&gt;&lt;img src=".*?" alt="Pobierz plik" title="Pobierz plik" /&gt;&lt;/a&gt;#;
-	my $file_uri = $1;
-
 	CLICK_DOWNLOAD( $file_uri );
 
+	ERROR( "temporarily unavailable" ) if /jest chwilowo niedostępny/;
 	RESTART( $1, "free limit reached" ) if /setDownloadTimeOut\('(\d+)'\);/;
 
 # vim: filetype=perl:ts=4:sw=4

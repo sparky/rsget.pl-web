@@ -3,8 +3,8 @@ title:	Delfi
 desc:	[V:Delfi] <a href="http://tv.delfi.ee/">"http://tv.delfi.ee/"</a>
 
 body:	
-	<p>Status: OK 2010-03-11</p>
-	<pre># $Id: Delfi 11237 2010-03-11 00:24:12Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: Delfi 11518 2010-06-04 14:26:39Z sparky $
 # Video::Delfi - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Delfi
 web: "http://tv.delfi.ee/"
 uri: qr{tv\.delfi\.ee/video/[a-zA-Z0-9]+}
 slots: max
-status: OK 2010-03-11
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

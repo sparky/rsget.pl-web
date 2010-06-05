@@ -4,8 +4,8 @@ desc:	[ShareOnline] <a href="http://www.share-online.biz/">"http://www.share-onl
 
 body:	
 	<p>Check <a href="http://www.share-online.biz/rules.php">terms of service</a>.</p>
-<p>Status: OK 2010-05-09</p>
-	<pre># $Id: ShareOnline 11408 2010-05-09 17:19:14Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: ShareOnline 11551 2010-06-05 15:33:46Z sparky $
 # Get::ShareOnline - File getter plugin for rsget.pl
 #
 # 2010 (c) ??? &lt;???@???.??&gt;
@@ -17,7 +17,7 @@ short: ShareOnline
 web: "http://www.share-online.biz/"
 tos: "http://www.share-online.biz/rules.php"
 uri: qr{share-online\.biz/download\.php\?id=[A-Z0-9]+}
-status: OK 2010-05-09
+status: OK 2010-06-05
 
 start:
 	ERROR( "Service not supported. Check http://rsget.pl/getters/" );

@@ -3,8 +3,8 @@ title:	SpankWire
 desc:	[V:SpankWire] <a href="http://www.spankwire.com/">"http://www.spankwire.com/"</a>
 
 body:	
-	<p>Status: OK 2010-04-08</p>
-	<pre># $Id: SpankWire 11320 2010-04-08 14:05:07Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: SpankWire 11518 2010-06-04 14:26:39Z sparky $
 # Video::SpankWire - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:SpankWire
 web: "http://www.spankwire.com/"
 uri: qr{spankwire\.com/[^/]+/video\d+}
 slots: max
-status: OK 2010-04-08
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

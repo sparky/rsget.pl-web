@@ -4,8 +4,8 @@ desc:	[4S] <a href="http://www.4shared.com/">"http://www.4shared.com/"</a>
 
 body:	
 	<p>Check <a href="http://www.4shared.com/terms.jsp">terms of service</a>.</p>
-<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: 4Shared 11511 2010-06-04 02:28:05Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: 4Shared 11538 2010-06-05 00:52:35Z sparky $
 # Get::4Shared - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -20,7 +20,7 @@ web: "http://www.4shared.com/"
 tos: "http://www.4shared.com/terms.jsp"
 uri: qr{4shared\.com/(account/)?file/}
 slots: max
-status: BROKEN 2010-06-04
+status: OK 2010-06-05
 
 unify:
 	return "http://www.4shared.com/file/$1/$2"
@@ -43,7 +43,7 @@ start:
 	! m{&lt;a href="(.*?)" class="dbtn" tabindex="1"&gt;};
 	CLICK( $1 );
 
-	! m{id='divDLStart' &gt;\s*&lt;a href='(.*?)'&gt;};
+	! m{id='divDLStart'&gt;\s*&lt;a href='(.*?)'&gt;};
 	$-{file_uri} = $1;
 
 	! /var c = (\d+);/;

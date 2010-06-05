@@ -3,8 +3,8 @@ title:	YouTube
 desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a>
 
 body:	
-	<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: YouTube 11515 2010-06-04 02:32:29Z sparky $
+	<p>Status: OK 2010-06-04</p>
+	<pre># $Id: YouTube 11525 2010-06-04 18:43:53Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:YouTube
 web: "http://www.youtube.com/"
 uri: qr{youtube\.com/watch\?v=.*}
 slots: max
-status: BROKEN 2010-06-04
+status: OK 2010-06-04
 
 unify:
 	s/#.*//;
@@ -47,8 +47,8 @@ pre:
 start:
 	GET( $-{_uri} );
 
-	ERROR( "file cannot be accessed" )
-		if /&lt;div id="" class="yt-alert-content"&gt;/;
+	ERROR( "file not found: $1" )
+		if /&lt;div id="" class="yt-alert-content"&gt;\s*(Th.*?)\s*&lt;/s;
 
 	# try to find best format
 	$-{fmt} = best_format();

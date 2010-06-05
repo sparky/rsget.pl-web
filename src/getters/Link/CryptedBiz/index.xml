@@ -3,8 +3,8 @@ title:	CryptedBiz
 desc:	[L:CryptedBiz] <a href="http://crypted.biz/">"http://crypted.biz/"</a>
 
 body:	
-	<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: CryptedBiz 11506 2010-06-04 02:09:51Z sparky $
+	<p>Status: SITE_DOWN 2010-06-04</p>
+	<pre># $Id: CryptedBiz 11550 2010-06-05 15:04:57Z sparky $
 # Link::CryptedBiz - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:CryptedBiz
 web: "http://crypted.biz/"
 uri: qr{crypted\.biz/}
 slots: max
-status: BROKEN 2010-06-04
+status: SITE_DOWN 2010-06-04
 
 pre:
 	use MIME::Base64;

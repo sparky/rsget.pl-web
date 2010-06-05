@@ -4,8 +4,8 @@ desc:	[V:MegaVideo] <a href="http://megavideo.com/">"http://megavideo.com/"</a>
 
 body:	
 	<p>Check <a href="http://megavideo.com/?c=terms">terms of service</a>.</p>
-<p>Status: OK 2010-04-08</p>
-	<pre># $Id: MegaVideo 11320 2010-04-08 14:05:07Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: MegaVideo 11518 2010-06-04 14:26:39Z sparky $
 # Video::MegaVideo - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://megavideo.com/?c=terms"
 uri: qr{megavideo\.com/\?v=}
 uri: qr{megaporn\.com/(.*?/)?\?v=}
 slots: max
-status: OK 2010-04-08
+status: OK 2010-06-04
 
 start:
 	GET( $-{_uri} );

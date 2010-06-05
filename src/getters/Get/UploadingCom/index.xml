@@ -4,8 +4,8 @@ desc:	[UC] <a href="http://uploading.com/">"http://uploading.com/"</a>
 
 body:	
 	<p>Check <a href="http://uploading.com/terms/">terms of service</a>.</p>
-<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: UploadingCom 11513 2010-06-04 02:29:50Z sparky $
+<p>Status: OK 2010-06-05</p>
+	<pre># $Id: UploadingCom 11537 2010-06-05 00:39:42Z sparky $
 # Get::UploadingCom - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,8 +18,8 @@ web: "http://uploading.com/"
 tos: "http://uploading.com/terms/"
 uri: qr{uploading\.com/(../)?files/(get/)?[A-Za-z0-9]{8}}
 cookie: !uc
-slots: 1
-status: BROKEN 2010-06-04
+slots: !1
+status: OK 2010-06-05
 
 unify:
 	return "http://uploading.com/files/$1/"
@@ -32,9 +32,10 @@ start:
 
 	RESTART( -irand( 60, 300 ), "free limit reached: $1" )
 		if /(Sorry, you can download only one file per \d+ minutes)/;
-	RESTART( -irand( 60, 300 ), "temporarily unavailable" )
+	RESTART( -irand( 30, 120 ), "temporarily unavailable" )
 		if m{&lt;h1&gt;Service Not Available&lt;/h1&gt;};
-	ERROR( "file not found" ) if /Requested file not found/;
+	ERROR( "file not found" ) if /&gt;The requested file is not found&lt;/;
+	MULTI() if /&gt;Parallel Download&lt;/;
 
 	! m{.*&lt;h2&gt;(.+?)&lt;/h2&gt;&lt;br/&gt;\s*File size: &lt;b&gt;($STDSIZE)&lt;/b&gt;}so;
 	my $name = $1; my $size = $2;

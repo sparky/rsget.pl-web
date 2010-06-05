@@ -4,8 +4,8 @@ desc:	[SP] <a href="http://shareplace.com/">"http://shareplace.com/"</a>
 
 body:	
 	<p>Check <a href="http://shareplace.com/rules.php">terms of service</a>.</p>
-<p>Status: OK 2010-03-13</p>
-	<pre># $Id: SharePlace 11268 2010-03-13 02:07:14Z sparky $
+<p>Status: OK 2010-06-04</p>
+	<pre># $Id: SharePlace 11521 2010-06-04 16:06:34Z sparky $
 # Get::SharePlace - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://shareplace.com/rules.php"
 uri: qr{shareplace\.com/\?[0-9A-F]+(/.*)?}
 uri: qr{shareplace\.org/\?[0-9A-F]+(/.*)?}
 slots: max
-status: OK 2010-03-13
+status: OK 2010-06-04
 
 unify:
 	return "http://shareplace.org/?$1"

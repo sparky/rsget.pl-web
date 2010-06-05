@@ -3,8 +3,8 @@ title:	BadongoCom
 desc:	[BC] <a href="http://www.badongo.com/">"http://www.badongo.com/"</a>
 
 body:	
-	<p>Status: FAIL 2010-04-29</p>
-	<pre># $Id: BadongoCom 11354 2010-04-29 18:50:32Z sparky $
+	<p>Status: BROKEN 2010-06-04</p>
+	<pre># $Id: BadongoCom 11520 2010-06-04 16:01:05Z sparky $
 # Get::BadongoCom - File, audio, video and picture getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: BC
 web: "http://www.badongo.com/"
 uri: qr{badongo\.com/}
 cookie: !badongo
-status: FAIL 2010-04-29
+status: BROKEN 2010-06-04
 
 unify:
 	s/#.*//; s{/$}{};
