@@ -1,0 +1,39 @@
+index:	-7
+title:	2010-06-05
+desc:	<strong>r11550 released (<a href="/download/r11550/">changelog</a>)</strong>
+	<p>
+		This is mostly a plugin maintenance release.
+		Some long-time broken plugins were obsoleted and removed.
+		Few others remain broken.
+	</p>
+
+body:	
+<h2>Broken plugins</h2>
+<dl>
+	<dt>MediaFire</dt>
+	<dd>
+		Changes obfuscation methods very often. Not worth keeping up
+		with those changes.
+	</dd>
+
+	<dt>BadongoCom</dt>
+	<dd>
+		Very low quality service, hard to download anything manually.
+	</dd>
+
+	<dt>BitRoad</dt>
+	<dd>
+		No service for free users, if this situation won't change plugin
+		will be completely removed.
+	</dd>
+
+	<dt>Video::MetaCafe</dt>
+	<dd>
+		Content not does have quality high enough to bother.
+	</dd>
+
+	<dt>Link::CryptedBiz</dt>
+	<dd>
+		Site is down.
+	</dd>
+</dl>

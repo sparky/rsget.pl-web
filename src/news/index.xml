@@ -5,9 +5,17 @@ desc:	Current and past events.
 body:	
 <h2>Old news</h2>
 <dl>
+
+	<dt>2010-05-05 - <a href="/download/r11377/">r11377</a> released</dt>
+	<dd>
+		First version that includes the <a href="/news/2010-04-11/">proxy
+		support</a>.
+		Superseded by <a href="/news/2010-06-05/">r11550</a> release.
+	</dd>
+
 	<dt>2010-04-08 - <a href="/download/r11322/">r11322</a> released</dt>
 	<dd>
-		Superseded by <a href="/news/2010-05-05/">r11377</a> release.
+		Superseded by r11377 release.
 	</dd>
 
 	<dt>2010-03-13 - <a href="/download/r11270/">r11270</a> released</dt>
