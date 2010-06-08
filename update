@@ -11,13 +11,15 @@ rm -rf rsget.pl
 ./getter_info.pl
 ./generator.pl
 
+XMLLINT="xmllint --valid --memory --noout --nonet"
+
 find rsget.pl -name "index.xml" -o -name "error*.xml" \
-	| xargs xmllint --valid >/dev/null
+	| xargs $XMLLINT
 
 set +x
 for PHP in $(find rsget.pl -name "index.php" -o -name "error*.php"); do
-	echo "+ xmllint --valid $PHP"
-	php $PHP | xmllint --valid - > /dev/null
+	echo "+ $XMLLINT $PHP"
+	php $PHP | $XMLLINT -
 done
 set -x
 
