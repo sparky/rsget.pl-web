@@ -97,6 +97,44 @@ body:
 </dl>
 
 
+<h3>OpenWRT</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>
+				perl
+				perlbase-autoloader
+				perlbase-base
+				perlbase-bytes
+				perlbase-config
+				perlbase-cwd
+				perlbase-digest
+				perlbase-dynaloader
+				perlbase-encode
+				perlbase-errno
+				perlbase-essential
+				perlbase-fcntl
+				perlbase-file
+				perlbase-io
+				perlbase-mime
+				perlbase-posix
+				perlbase-selectsaver
+				perlbase-socket
+				perlbase-symbol
+				perlbase-tie
+				perlbase-time
+				perlbase-xsloader<br />
+				<em>NOTE: perlbase-encode may not be required for current svn version</em><br />
+				<em>NOTE2: those requirements may expand some day</em>
+			</li>
+			<li>perl-www-curl</li>
+			<li>perl-uri</li>
+		</ul>
+	</dd>
+</dl>
+
+
 <h3>OpenSolaris</h3>
 <dl>
 	<dt>Required</dt>
