@@ -33,7 +33,7 @@ sub xslt_isgetter
 {
 	local $_ = shift || die;
 
-	if ( m#^/toys/rsget\.pl/((Get|Video|Audio|Image|Link)/\S+)# ) {
+	if ( m#^/toys/rsget\.pl/((Get|Video|Audio|Image|Link|Direct)/\S+)# ) {
 		return 1 if -r "svn/$1";
 	}
 
