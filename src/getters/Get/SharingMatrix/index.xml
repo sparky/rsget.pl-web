@@ -5,7 +5,7 @@ desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
 body:	
 	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
 <p>Status: OK 2010-06-04</p>
-	<pre># $Id: SharingMatrix 11510 2010-06-04 02:26:04Z sparky $
+	<pre># $Id: SharingMatrix 11577 2010-06-25 23:38:51Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -28,6 +28,11 @@ start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found" ) if m#File has been deleted#;
+
+	if ( $self-&gt;{_cmd} ne "check" ) {
+		DELAY( 600, "free limit reached" )
+			if /Your daily download limit is over/;
+	}
 
 	if ( /You are already downloading file/ ) {
 		! m#link_name = '(.*?)';#;
@@ -98,10 +103,14 @@ stage_captcha:
 	GET( "/ajax_scripts/_get.php?link_id=$-{link_id}&amp;link_name=$-{link_name}&amp;dl_id=$-{dl_id}&amp;password=",
 		keep_referer =&gt; 1 );
 
+	DELAY( 600, "free limit reached" )
+		if /"You can not download now/;
+
 	s/^{//; s/}$//;
 	my %js = map { /^(.*?)\s*:\s*"(.*?)"/ } split /\s*,\s*/, $_;
 
 	CLICK_DOWNLOAD( "$js{serv}/download/$js{hash}/$-{dl_id}/" );
+
 
 	# most likely multi-download
 	RESTART( 0, "download error" ) if /Download Error/;

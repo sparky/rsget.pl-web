@@ -1,0 +1,42 @@
+index:	0
+title:	HTTP
+desc:	[Direct::HTTP] <a href="http://rsget.pl/getters/Direct/HTTP/">"http://rsget.pl/getters/Direct/HTTP/"</a>
+
+body:	
+	<p>Status: OK 2010-06-26</p>
+	<pre># $Id: HTTP 11592 2010-06-26 15:17:53Z sparky $
+# Direct::HTTP - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: HTTP
+short: Direct::HTTP
+web: "http://rsget.pl/getters/Direct/HTTP/"
+uri: qr{http://.*[^/]}
+slots: max
+status: OK 2010-06-26
+
+start:
+	GET( $-{_uri}, headonly =&gt; 1 );
+
+	! my ( $type ) = /^Content-Type:\s*(\S+?)(;.*?)\r?$/mi;
+	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
+	$len ||= -1;
+
+	ERROR( "file is text ($type)" ) if $type =~ m#^text/#;
+	ERROR( "file is a small image ($type, $len)" )
+		if $type =~ m#^image/# and $len &lt; 100 * 1024;
+
+	my ( $name ) = $-{_uri} =~ m{.*/(.*)$};
+	if ( /^Content-Disposition:(.+?)\r?$/mi ) {
+		$name = RSGet::Curl::content_filename( $1 );
+	}
+
+	INFO( name =&gt; $name, size =&gt; $len );
+
+	DOWNLOAD( $-{_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

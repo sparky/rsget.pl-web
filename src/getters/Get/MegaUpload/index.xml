@@ -5,7 +5,7 @@ desc:	[MU] <a href="http://megaupload.com/">"http://megaupload.com/"</a>
 body:	
 	<p>Check <a href="http://megaupload.com/?c=terms">terms of service</a>.</p>
 <p>Status: OK 2010-06-04</p>
-	<pre># $Id: MegaUpload 11510 2010-06-04 02:26:04Z sparky $
+	<pre># $Id: MegaUpload 11583 2010-06-26 11:51:57Z sparky $
 # Get::MegaUpload - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -55,17 +55,17 @@ stage_init:
 	RESTART( 10 * 60, "temporarily blocked" )
 		if m{document\.location='http://www\.megaupload\.com/\?c=msg'};
 
-	# TODO: if file is unavailable temporarily try to download it
-	# later (lower uri priority)
-	ERROR( "file not found" ) if
-		/The file you are trying to access is temporarily unavailable/
-			or /Unfortunately, the link you have clicked is not available/
+	ERROR( "file not found" )
+		if /Unfortunately, the link you have clicked is not available/
 			or /This file has expired due to inactivity/;
 	m{&lt;TD valign="middle" align="left" .*?width="500"&gt;(.*?)&lt;/TD&gt;}s;
 	my @f = map m#&lt;font.*?&gt;\s*(.*?)\s*&lt;/font&gt;#g, $1;
 	my $name = $f[1];
 	$name =~ s/(.*)\.(\..{1,5})$/$1\0$2/; # mark truncated name
 	INFO( iname =&gt; $name, asize =&gt; $f[5] );
+
+	DELAY( 600, "temporarily unavailable" )
+		if /The file you are trying to access is temporarily unavailable/;
 
 	if ( /The file you're trying to download is password protected/ ) {
 		ERROR( "password required" ) unless exists $-{_opts}-&gt;{pass};

@@ -4,7 +4,7 @@ desc:	[RS] <a href="http://rapidshare.com/">"http://rapidshare.com/"</a>
 
 body:	
 	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: RapidShare 11510 2010-06-04 02:26:04Z sparky $
+	<pre># $Id: RapidShare 11578 2010-06-25 23:42:28Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -74,9 +74,7 @@ start:
 	MULTI( "multi-download not allowed: $_" )
 		if match "Please wait until the download is completed";
 
-	# TODO: this should decrease file priority to delay its download,
-	# postpone it, download after the next file.
-	RESTART( -2 * 60, "no slots for free users: $_" )
+	DELAY( 5 * 60, "no slots for free users: $_" )
 		if match "There are no more download slots available for free users right now"
 			or match "Unfortunately right now our servers are overloaded";
 

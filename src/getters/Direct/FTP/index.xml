@@ -1,0 +1,34 @@
+index:	0
+title:	FTP
+desc:	[Direct::FTP] <a href="http://rsget.pl/getters/Direct/FTP/">"http://rsget.pl/getters/Direct/FTP/"</a>
+
+body:	
+	<p>Status: OK 2010-06-26</p>
+	<pre># $Id: FTP 11589 2010-06-26 15:04:45Z sparky $
+# Direct::FTP - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FTP
+short: Direct::FTP
+web: "http://rsget.pl/getters/Direct/FTP/"
+uri: qr{ftp://.*[^/]}
+slots: max
+status: OK 2010-06-26
+
+start:
+	GET( $-{_uri}, headonly =&gt; 1 );
+
+	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
+	$len ||= -1;
+
+	my ( $name ) = $-{_uri} =~ m{.*/(.*)$};
+
+	INFO( name =&gt; $name, size =&gt; $len );
+
+	DOWNLOAD( $-{_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

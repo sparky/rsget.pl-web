@@ -5,7 +5,7 @@ desc:	[4S] <a href="http://www.4shared.com/">"http://www.4shared.com/"</a>
 body:	
 	<p>Check <a href="http://www.4shared.com/terms.jsp">terms of service</a>.</p>
 <p>Status: OK 2010-06-05</p>
-	<pre># $Id: 4Shared 11538 2010-06-05 00:52:35Z sparky $
+	<pre># $Id: 4Shared 11554 2010-06-12 19:59:45Z sparky $
 # Get::4Shared - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,6 +19,7 @@ short: 4S
 web: "http://www.4shared.com/"
 tos: "http://www.4shared.com/terms.jsp"
 uri: qr{4shared\.com/(account/)?file/}
+cookie: 4s
 slots: max
 status: OK 2010-06-05
 
