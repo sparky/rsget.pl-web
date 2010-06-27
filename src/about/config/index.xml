@@ -5,7 +5,7 @@ desc:	Config file example.
 body:
 <h2>README.config</h2>
 <pre># Example config file
-# $Id: README.config 11330 2010-04-11 14:28:15Z sparky $
+# $Id: README.config 11600 2010-06-26 23:23:37Z sparky $
 #
 # Copy it to $HOME/.rsget.pl/config and make necessary adjustments.
 
@@ -65,6 +65,30 @@ workdir = partial
 
 # move finished downloads to "done"
 outdir = done
+
+# Execute shell command after finishing file download.
+# Will not block, stdin and stdout are ignored.
+# Recognized special variables:
+#  $(name) - name of the file
+#  $(file) - path to the file (including outdir), use $PWD/$(file) if you
+#            need full path and your outdir is relative
+#  $(source) - source uri
+#  $(size) - file size in bytes
+# All those variables are automatically quoted, so you _must__not_ quote them.
+# Examples:
+# * send nice dbus org.freedesktop.notifications message (some notification
+#   deamons may not support those html tags):
+#postdownload = notify-send "rsget.pl: "$(name) "Finished downloading &lt;a href='$PWD/"$(file)"'&gt;"$(name)"&lt;/a&gt; (size: &lt;b&gt;"$(size)"B&lt;/b&gt;) from &lt;tt&gt;"$(source)"&lt;/tt&gt;"
+#
+# * copy your file somewhere else:
+#postdownload = scp $(file) remote_machine:my_downloads
+#
+# * unpack and delete if successful
+#   &lt;http://github.com/sparky/home/blob/master/bin/spill&gt;:
+#postdownload = spill -c $(file)
+#
+# * execute your own script which does anything you want:
+#postdownload = ${HOME}/bin/postdownload $(file) $(source) || notify-send "rsget.pl: "$(name) "postdownload failed"
 
 # update automatically from SVN (possibly dangerous, but very convenient):
 #use_svn = update
