@@ -111,7 +111,6 @@ body:
 				perlbase-cwd
 				perlbase-digest
 				perlbase-dynaloader
-				perlbase-encode
 				perlbase-errno
 				perlbase-essential
 				perlbase-fcntl
@@ -125,7 +124,7 @@ body:
 				perlbase-tie
 				perlbase-time
 				perlbase-xsloader<br />
-				<em>NOTE: perlbase-encode may not be required for current svn version</em><br />
+				<em>NOTE: perlbase-encode is required in latest release, grab svn snapshot instead</em><br />
 				<em>NOTE2: those requirements may expand some day</em>
 			</li>
 			<li>perl-www-curl</li>
