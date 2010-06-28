@@ -11,8 +11,60 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 30</p>
+	<p>Commits: 53</p>
 	<dl>
+		<dt id="r11616"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11616&amp;view=rev">r11616</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 11:41:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- install in /usr/local if /usr/bin/rsget.pl wasn't found</pre></dd>
+		<dt id="r11615"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11615&amp;view=rev">r11615</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 11:02:00 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- simplified</pre></dd>
+		<dt id="r11614"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11614&amp;view=rev">r11614</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-06-28 10:59:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- reverted</pre></dd>
+		<dt id="r11613"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11613&amp;view=rev">r11613</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-06-28 10:56:26 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- Don't use '{,}'. It does not work on dash, which is default shell on ubuntu.
+- BTW: is '{,}' bashizm? Or dash misses some POSIX shell features?</pre></dd>
+		<dt id="r11612"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11612&amp;view=rev">r11612</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 23:53:15 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.dev">README.dev</a></li></ul><pre>- how to write an external caprcha solver</pre></dd>
+		<dt id="r11611"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11611&amp;view=rev">r11611</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 23:24:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li></ul><pre>- /captcha lists needed captchas if no post/get options have been passed</pre></dd>
+		<dt id="r11610"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11610&amp;view=rev">r11610</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 22:40:03 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Simple">Link/Simple</a> (<a href="/getters/Link/Simple/">getter</a>)</li></ul><pre>- linkhider no longer operative
+- don't be so strict about meta and frame tags</pre></dd>
+		<dt id="r11609"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11609&amp;view=rev">r11609</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 22:03:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- resolve Refresh-based redirections</pre></dd>
+		<dt id="r11608"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11608&amp;view=rev">r11608</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 18:04:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Simple">Link/Simple</a> (<a href="/getters/Link/Simple/">getter</a>)</li></ul><pre>- added anonym-to.com support</pre></dd>
+		<dt id="r11607"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11607&amp;view=rev">r11607</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 16:27:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- recognize https://</pre></dd>
+		<dt id="r11606"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11606&amp;view=rev">r11606</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 16:26:50 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- allow rtmp and rtsp uris</pre></dd>
+		<dt id="r11605"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11605&amp;view=rev">r11605</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 16:26:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/RTSP">Direct/RTSP</a> (<a href="/getters/Direct/RTSP/">getter</a>)</li></ul><pre>- NEW, rtsp:// handler, not tested</pre></dd>
+		<dt id="r11604"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11604&amp;view=rev">r11604</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 16:25:27 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/RTMP">Direct/RTMP</a> (<a href="/getters/Direct/RTMP/">getter</a>)</li></ul><pre>- NEW, rtmp:// handler, problematic but works</pre></dd>
+		<dt id="r11603"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11603&amp;view=rev">r11603</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 02:09:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/addgetter">addgetter</a></li></ul><pre>- added Direct to getter dirs</pre></dd>
+		<dt id="r11602"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11602&amp;view=rev">r11602</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 01:53:15 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.requirements">README.requirements</a></li></ul><pre>- updated with:
+  elinks -dump http://rsget.pl/about/requirements/_ajax/ &gt; README.requirements</pre></dd>
+		<dt id="r11601"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11601&amp;view=rev">r11601</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-27 01:39:58 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/.template">Direct/.template</a> (<a href="/getters/Direct/.template/">getter</a>)</li></ul><pre>- added template for Direct</pre></dd>
+		<dt id="r11600"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11600&amp;view=rev">r11600</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 23:23:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- added some postdownload examples</pre></dd>
+		<dt id="r11599"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11599&amp;view=rev">r11599</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 23:13:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- changed recognized vars from @{foo} to $(foo) to be consistent with lock_file</pre></dd>
+		<dt id="r11598"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11598&amp;view=rev">r11598</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 22:10:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- quote arguments in callback</pre></dd>
+		<dt id="r11597"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11597&amp;view=rev">r11597</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 21:56:52 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- added postdownload callback support - shell code executed after finished
+  download</pre></dd>
+		<dt id="r11596"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11596&amp;view=rev">r11596</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 21:00:01 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- return "file not found" on everything but 200 OK</pre></dd>
+		<dt id="r11595"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11595&amp;view=rev">r11595</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 20:29:06 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- added redirect detection, for arbitrary redirecting sites</pre></dd>
+		<dt id="r11594"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11594&amp;view=rev">r11594</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 17:05:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- added "file not found" detection (HTTP 404)
+- fixed content-type detection
+- improved filename detection in case of redirect</pre></dd>
 		<dt id="r11593"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11593&amp;view=rev">r11593</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 15:49:55 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- include Direct directory in installation</pre></dd>
 		<dt id="r11592"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11592&amp;view=rev">r11592</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-26 15:17:53 UTC</em></dt>

@@ -4,7 +4,7 @@ desc:	[Direct::HTTP] <a href="http://rsget.pl/getters/Direct/HTTP/">"http://rsge
 
 body:	
 	<p>Status: OK 2010-06-26</p>
-	<pre># $Id: HTTP 11592 2010-06-26 15:17:53Z sparky $
+	<pre># $Id: HTTP 11609 2010-06-27 22:03:18Z sparky $
 # Direct::HTTP - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -15,21 +15,33 @@ name: HTTP
 short: Direct::HTTP
 web: "http://rsget.pl/getters/Direct/HTTP/"
 uri: qr{http://.*[^/]}
+uri: qr{https://.*[^/]}
 slots: max
 status: OK 2010-06-26
 
 start:
 	GET( $-{_uri}, headonly =&gt; 1 );
 
-	! my ( $type ) = /^Content-Type:\s*(\S+?)(;.*?)\r?$/mi;
+	my @type = /^Content-Type:\s*(\S+?)(?:;.*?)?\r?$/mig;
+	! my $type = pop @type;
 	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
 	$len ||= -1;
 
-	ERROR( "file is text ($type)" ) if $type =~ m#^text/#;
+	if ( /^Location:\s*\s+/mi ) {
+		LINK( $-{_referer} );
+	}
+	ERROR( "file not found" ) unless m{^HTTP/1\.\d 200}m;
+	if ( $type =~ m#^text/# ) {
+		if ( /^Refresh:\s*.*?url=("|'|)(.*?)\1\s*\r$/mi ) {
+			require URI;
+			LINK( URI-&gt;new( $2 )-&gt;abs( $-{_referer} )-&gt;as_string );
+		}
+		ERROR( "file is text ($type)" );
+	}
 	ERROR( "file is a small image ($type, $len)" )
 		if $type =~ m#^image/# and $len &lt; 100 * 1024;
 
-	my ( $name ) = $-{_uri} =~ m{.*/(.*)$};
+	my ( $name ) = $-{_referer} =~ m{.*/(.*)$};
 	if ( /^Content-Disposition:(.+?)\r?$/mi ) {
 		$name = RSGet::Curl::content_filename( $1 );
 	}

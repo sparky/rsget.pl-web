@@ -1,0 +1,31 @@
+index:	0
+title:	RTSP
+desc:	[Direct::RTSP] <a href="http://rsget.pl/getters/Direct/RTSP/">"http://rsget.pl/getters/Direct/RTSP/"</a>
+
+body:	
+	<p>Status: OK 2010-06-27</p>
+	<pre># $Id: RTSP 11605 2010-06-27 16:26:29Z sparky $
+# Direct::RTSP - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: RTSP
+short: Direct::RTSP
+web: "http://rsget.pl/getters/Direct/RTSP/"
+uri: qr{rtsp://.*[^/]}
+uri: qr{rtspu://.*[^/]}
+slots: max
+status: OK 2010-06-27
+
+start:
+	GET( $-{_uri}, headonly =&gt; 1 );
+
+	my ( $name ) = $-{_uri} =~ m{.*/(.*)$};
+	INFO( name =&gt; $1, size =&gt; -1 );
+
+	DOWNLOAD( $-{_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

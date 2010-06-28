@@ -4,7 +4,7 @@ desc:	[L:Simple] <a href="http://rsget.pl/getters/Link/Simple/">"http://rsget.pl
 
 body:	
 	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: Simple 11508 2010-06-04 02:22:50Z sparky $
+	<pre># $Id: Simple 11610 2010-06-27 22:40:03Z sparky $
 # Link::Simple - Link retriever plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,8 +17,8 @@ web: "http://rsget.pl/getters/Link/Simple/"
 uri: qr{4gk\.com/}
 uri: qr{xurl\.jp/}
 uri: qr{tinyurl\.com/}
-uri: qr{linkhider\.com/}
 uri: qr{to\./}
+uri: qr{anonym-to\.com/\?}
 slots: max
 status: OK 2010-06-04
 
@@ -31,10 +31,10 @@ start:
 
 	my $link;
 	if ( $-{_referer} =~ m#^$serv# ) {
-		if ( m#&lt;meta http-equiv="refresh" content="\d+;url='(.*?)'"&gt;#i ) {
-			$link = $1;
-		} elsif ( m#&lt;i?frame\s+.*?src="(http://.*?)"&gt;#i ) {
-			$link = $1;
+		if ( m#&lt;meta\s+http-equiv=("|')refresh\1\s+content=("|')\s*\d+;\s*url=("|'|)(.*?)\3\s*\2\s*&gt;#si ) {
+			$link = $4;
+		} elsif ( m#&lt;i?frame\s+.*?src=("|')(http://.*?)\1&gt;#si ) {
+			$link = $2;
 		} else {
 			ERROR( "can't find link" );
 		}
