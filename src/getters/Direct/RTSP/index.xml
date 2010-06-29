@@ -3,8 +3,8 @@ title:	RTSP
 desc:	[Direct::RTSP] <a href="http://rsget.pl/getters/Direct/RTSP/">"http://rsget.pl/getters/Direct/RTSP/"</a>
 
 body:	
-	<p>Status: OK 2010-06-27</p>
-	<pre># $Id: RTSP 11605 2010-06-27 16:26:29Z sparky $
+	<p>Status: BROKEN 2010-06-28</p>
+	<pre># $Id: RTSP 11618 2010-06-28 14:04:36Z sparky $
 # Direct::RTSP - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ web: "http://rsget.pl/getters/Direct/RTSP/"
 uri: qr{rtsp://.*[^/]}
 uri: qr{rtspu://.*[^/]}
 slots: max
-status: OK 2010-06-27
+status: BROKEN 2010-06-28
 
 start:
 	GET( $-{_uri}, headonly =&gt; 1 );

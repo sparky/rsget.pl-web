@@ -11,8 +11,22 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 53</p>
+	<p>Commits: 60</p>
 	<dl>
+		<dt id="r11623"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11623&amp;view=rev">r11623</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 18:14:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- ignore getter= option if its value is not valid; fixes RSGETPL-6</pre></dd>
+		<dt id="r11622"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11622&amp;view=rev">r11622</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 17:11:04 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- try to clarify http_port</pre></dd>
+		<dt id="r11621"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11621&amp;view=rev">r11621</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 16:37:09 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/MetaCafe">Video/MetaCafe</a> (<a href="/getters/Video/MetaCafe/">getter</a>)</li></ul><pre>- fixed, status: OK</pre></dd>
+		<dt id="r11620"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11620&amp;view=rev">r11620</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 14:10:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/CryptedBiz">Link/CryptedBiz</a></li></ul><pre>- dropped, site is down for some time now</pre></dd>
+		<dt id="r11619"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11619&amp;view=rev">r11619</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 14:09:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/BitRoad">Get/BitRoad</a></li></ul><pre>- dropped, no free service</pre></dd>
+		<dt id="r11618"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11618&amp;view=rev">r11618</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 14:04:36 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/RTSP">Direct/RTSP</a> (<a href="/getters/Direct/RTSP/">getter</a>)</li></ul><pre>- status: BROKEN - additional curl programming required</pre></dd>
+		<dt id="r11617"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11617&amp;view=rev">r11617</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 13:48:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li></ul><pre>- dropped, you are not paying me enough to follow all the changes</pre></dd>
 		<dt id="r11616"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11616&amp;view=rev">r11616</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 11:41:02 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- install in /usr/local if /usr/bin/rsget.pl wasn't found</pre></dd>
 		<dt id="r11615"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11615&amp;view=rev">r11615</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 11:02:00 UTC</em></dt>
