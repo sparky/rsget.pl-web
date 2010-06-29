@@ -52,12 +52,14 @@ Updating from SVN:
 </pre>
 
 <h2>WWW interface</h2>
-<p>Main page - file list
-	<a href="/screenshots/if1.png"><img src="/screenshots/if1_sm.png" alt="file list" /></a>
-</p>
+<h3>Main page - file list</h3>
+<a href="/screenshots/if1.png"><img src="/screenshots/if1_sm.png" alt="file list" /></a>
 
 <p><a href="/screenshots/if2.xml">Another capture of the interface</a>, in xml form (links are partially obscured).</p>
 
-<p>Add page
-	<a href="/screenshots/add.png"><img src="/screenshots/add_sm.png" alt="add file" /></a>
-</p>
+<h3>Add page</h3>
+<a href="/screenshots/add.png"><img src="/screenshots/add_sm.png" alt="add file" /></a>
+
+<h2>htop on OpenWRT box</h2>
+<p>Asus WL-500gp: CPU: MIPS 266MHz, flash: 8MB, RAM: 32MB</p>
+<a href="/screenshots/openwrt-htop.png"><img src="/screenshots/openwrt-htop_sm.png" alt="htop on OpenWRT" /></a>
