@@ -62,12 +62,12 @@ body:
 	<dt>Open menu on all supported pages (including flash-based)</dt>
 	<dd><label for="open_supported">always open</label>:
 		<input type="checkbox" id="open_supported" name="open_supported"
-		<?= isset( $_REQUEST["open_supported"] ) ? 'checked="checked"' : '' ?>
+		<?= isset( $_REQUEST["open_supported"] ) && $_REQUEST["open_supported"] ? 'checked="checked"' : '' ?>
 		/></dd>
 	<dt>Are you using UZBL ? If so, enable uzbl-specific hacks</dt>
 	<dd><label for="uzbl_hacks">uzbl hacks</label>:
 		<input type="checkbox" id="uzbl_hacks" name="uzbl_hacks"
-		<?= isset( $_REQUEST["uzbl_hacks"] ) ? 'checked="checked"' : '' ?>
+		<?= isset( $_REQUEST["uzbl_hacks"] ) && $_REQUEST["uzbl_hacks"] ? 'checked="checked"' : '' ?>
 		/></dd>
 	<dt>All done ?</dt>
 	<dd><input type="submit" value="Get it !" /></dd>
