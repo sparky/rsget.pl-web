@@ -687,24 +687,27 @@ div#rsget_pl * {\
 	border: 0;\
 	background: transparent;\
 	text-decoration: none;\
+	visibility: visible;\
+	display: inline;\
 }\
 div#rsget_pl div {\
 	position: relative;\
+	display: block;\
 }\
 div#rsget_pl ul {\
 	list-style-type: none;\
 	width: 250px;\
 	right: 0;\
 	position: absolute;\
+	display: block;\
 }\
 div#rsget_pl li {\
 	text-align: right;\
+	display: list-item;\
 }\
 div#rsget_pl input[type=submit], div#rsget_pl a {\
 	margin-top: -1px;\
 	margin-bottom: -1px;\
-}\
-div#rsget_pl input[type=submit], div#rsget_pl a {\
 	display: inline;\
 	border-bottom: 1px solid transparent;\
 	color: #711;\
@@ -720,6 +723,7 @@ div#rsget_pl span {\
 	width: 16px;\
 	display: block;\
 	cursor: pointer;\
+	display: block;\
 	background: " + png_rsget_red + ";\
 }\
 div#rsget_pl span:hover {\
