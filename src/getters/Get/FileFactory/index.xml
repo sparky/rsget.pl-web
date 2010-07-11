@@ -4,8 +4,8 @@ desc:	[FF] <a href="http://filefactory.com/">"http://filefactory.com/"</a>
 
 body:	
 	<p>Check <a href="http://filefactory.com/legal/terms.php">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: FileFactory 11524 2010-06-04 18:17:16Z sparky $
+<p>Status: OK 2010-07-11</p>
+	<pre># $Id: FileFactory 11646 2010-07-11 17:49:22Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,13 +17,15 @@ short: FF
 web: "http://filefactory.com/"
 tos: "http://filefactory.com/legal/terms.php"
 uri: qr{filefactory\.com/file/[0-9a-z]{6}}
-status: OK 2010-06-04
+status: OK 2010-07-11
 
 start:
 	GET( $-{_uri} );
 
 	RESTART( -2 * 60, "no slots for free users" )
 		if /there are currently no free download slots available/;
+	DELAY( 2 * 60, "server overloaded" )
+		if /All of the available .*download slots on this server are in use/;
 	ERROR( "file not found" ) if /File Not Found|This file has been deleted/;
 	! m{&lt;title&gt;(.*?) - download now for free};
 	my $name = $1;
@@ -36,31 +38,43 @@ start:
 		RESTART( $1 / 1000, "free limit reached" ) if $1 &gt; 0;
 	}
 
-	! m#var.*?eval.*?fromCharCode.*?"(\?key=.*?)"#;
-	GET( "/file/getLink.js" . $1, keep_referer =&gt; 1 );
+	$-{post} = {
+		recaptcha_shortencode_field =&gt; "undefined",
+	};
+	! m#(check):'([0-9a-f]{32})'#;
+	$-{post}-&gt;{$1} = $2;
 
-	! s/^(.*)var \S+=function\(\){ var \S+=(.*?);.*//m;
-	my ($vars, $toeval) = ($1, $2);
+	! m#Recaptcha\.create\("([a-zA-Z0-9]{40})"#;
+	CLICK( "http://www.google.com/recaptcha/api/challenge?k=$1&amp;ajax=1&amp;cachestop=" . rand, keep_referer =&gt; 1 );
 
-	my %vars = map { /var\s+(\S+?)\s*=\s*'(.*?)'/ } split /;/, $vars;
-	my $code = join "", map { /'(.*)'/ ? $1 : $vars{ $_ } } split /\s*\+\s*/, $toeval;
+	! m{challenge : '(\S+?)',};
+	$-{post}-&gt;{recaptcha_challenge_field} = $1;
+	GET( "http://www.google.com/recaptcha/api/image?c=$1", keep_referer =&gt; 1 );
 
-	CLICK( $code );
+	CAPTCHA(
+		qr/\S+ \S+/
+	);
 
-	! m#&lt;span class="countdown".*?&gt;(\d+)&lt;/span&gt;#;
-	$-{wait} = $1;
-	RESTART( $-{wait}, "free limit reached" ) if $-{wait} &gt; 120;
+	RESTART( 0, "Captcha not solved" ) unless $_;
 
-	! m#var.*?eval.*?fromCharCode.*?"(\?key=.*?)"#;
-	GET( "/file/getLink.js" . $1, keep_referer =&gt; 1 );
+	$-{post}-&gt;{recaptcha_response_field} = $_;
+	GET( "http://www.filefactory.com/file/checkCaptcha.php", post =&gt; $-{post}, keep_referer =&gt; 1 );
 
-	! s/^(.*)var \S+=function\(\){ var \S+=(.*?);.*//m;
-	my ($vars, $toeval) = ($1, $2);
+	if ( /{status:"fail",message:"Entered code was incorrect\."}/ ) {
+		CAPTCHA_RESULT( "FAIL" );
+		RESTART( 0, "Captcha failed" );
+	} else {
+		CAPTCHA_RESULT( "OK" );
+	}
 
-	my %vars = map { /var\s+(\S+?)\s*=\s*'(.*?)'/ } split /;/, $vars;
-	$-{file_uri} = join "", map { /'(.*)'/ ? $1 : $vars{ $_ } } split /\s*\+\s*/, $toeval;
+	! m#{status:"ok",path:"(.*?)"}#;
+	GET( $1 );
 
-	WAIT( $-{wait}, "starting download" );
+	! m#&lt;a href="(\S+)" id="downloadLinkTarget"&gt;#;
+	$-{file_uri} = $1;
+
+	! m#&lt;input type="hidden" id="startWait" value="(\d+)"#;
+	WAIT( $1, "starting download" );
 
 	CLICK_DOWNLOAD( $-{file_uri} );
 

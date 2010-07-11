@@ -11,8 +11,52 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 60</p>
+	<p>Commits: 80</p>
 	<dl>
+		<dt id="r11646"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11646&amp;view=rev">r11646</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-11 17:49:22 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileFactory">Get/FileFactory</a> (<a href="/getters/Get/FileFactory/">getter</a>)</li></ul><pre>- updated, mostly rewritten, to use recaptcha</pre></dd>
+		<dt id="r11645"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11645&amp;view=rev">r11645</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-11 15:44:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileFactory">Get/FileFactory</a> (<a href="/getters/Get/FileFactory/">getter</a>)</li></ul><pre>- BROKEN: uses recaptcha now</pre></dd>
+		<dt id="r11644"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11644&amp;view=rev">r11644</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-10 00:03:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- increase delay time each time delay is called</pre></dd>
+		<dt id="r11643"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11643&amp;view=rev">r11643</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-09 22:51:00 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a> (<a href="/getters/Get/SharingMatrix/">getter</a>)</li></ul><pre>- return problem if page says "You can not download now"</pre></dd>
+		<dt id="r11642"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11642&amp;view=rev">r11642</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-09 22:50:07 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- unify plugin compilation messages</pre></dd>
+		<dt id="r11641"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11641&amp;view=rev">r11641</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-09 22:25:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- if problem appears too many times delay the uri for 15min instead of
+  returning an error</pre></dd>
+		<dt id="r11640"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11640&amp;view=rev">r11640</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-08 10:59:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- use IO::Handle - problem appeared only if one didn't use http server</pre></dd>
+		<dt id="r11637"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11637&amp;view=rev">r11637</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-08 00:35:13 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- implement list file locking, may be buggy - please test;
+  should solve RSGETPL-9</pre></dd>
+		<dt id="r11636"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11636&amp;view=rev">r11636</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 20:30:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a> (<a href="/getters/Get/HotFile/">getter</a>)</li></ul><pre>- wait few seconds more before captcha</pre></dd>
+		<dt id="r11635"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11635&amp;view=rev">r11635</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 20:13:00 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FreakShare">Get/FreakShare</a> (<a href="/getters/Get/FreakShare/">getter</a>)</li></ul><pre>- fixed/updated "file not found" detection, fixes RSGETPL-11</pre></dd>
+		<dt id="r11634"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11634&amp;view=rev">r11634</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 19:56:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a> (<a href="/getters/Get/SharingMatrix/">getter</a>)</li></ul><pre>- fixed/updated "file not found" detection</pre></dd>
+		<dt id="r11633"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11633&amp;view=rev">r11633</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 12:54:28 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Captcha.pm">RSGet/Captcha.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li></ul><pre>- added timeout to captcha list</pre></dd>
+		<dt id="r11632"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11632&amp;view=rev">r11632</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 12:11:51 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- updated/fixed "file not found" detection</pre></dd>
+		<dt id="r11631"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11631&amp;view=rev">r11631</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-07 12:08:22 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/YouTube">Link/YouTube</a> (<a href="/getters/Link/YouTube/">getter</a>)</li></ul><pre>- updated for page changes, fixes RSGETPL-10</pre></dd>
+		<dt id="r11629"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11629&amp;view=rev">r11629</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-03 21:03:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- support ftp download resuming</pre></dd>
+		<dt id="r11628"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11628&amp;view=rev">r11628</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-03 20:26:19 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- (new default) don't make copies when continuing download</pre></dd>
+		<dt id="r11627"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11627&amp;view=rev">r11627</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-03 00:49:49 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/XVideos">Video/XVideos</a> (<a href="/getters/Video/XVideos/">getter</a>)</li></ul><pre>- file not found detection
+- added unify</pre></dd>
+		<dt id="r11626"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11626&amp;view=rev">r11626</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-03 00:45:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/XVideos">Video/XVideos</a> (<a href="/getters/Video/XVideos/">getter</a>)</li></ul><pre>- new, works</pre></dd>
+		<dt id="r11625"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11625&amp;view=rev">r11625</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-01 20:30:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- clarify plugin error message: return "Plugin is marked as BROKEN" instead
+  of "Incorrect status"</pre></dd>
+		<dt id="r11624"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11624&amp;view=rev">r11624</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-29 10:47:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- return error on 18+ videos (login required)</pre></dd>
 		<dt id="r11623"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11623&amp;view=rev">r11623</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 18:14:40 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- ignore getter= option if its value is not valid; fixes RSGETPL-6</pre></dd>
 		<dt id="r11622"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11622&amp;view=rev">r11622</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-06-28 17:11:04 UTC</em></dt>

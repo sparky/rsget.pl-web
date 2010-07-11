@@ -5,7 +5,7 @@ desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
 body:	
 	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
 <p>Status: OK 2010-06-04</p>
-	<pre># $Id: SharingMatrix 11577 2010-06-25 23:38:51Z sparky $
+	<pre># $Id: SharingMatrix 11643 2010-07-09 22:51:00Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -27,7 +27,8 @@ unify:
 start:
 	GET( $-{_uri} );
 
-	ERROR( "file not found" ) if m#File has been deleted#;
+	ERROR( "file not found" )
+		if m#&lt;h1&gt;&lt;span&gt;The file has been deleted&lt;/span&gt;&lt;/h1&gt;#;
 
 	if ( $self-&gt;{_cmd} ne "check" ) {
 		DELAY( 600, "free limit reached" )
@@ -103,8 +104,7 @@ stage_captcha:
 	GET( "/ajax_scripts/_get.php?link_id=$-{link_id}&amp;link_name=$-{link_name}&amp;dl_id=$-{dl_id}&amp;password=",
 		keep_referer =&gt; 1 );
 
-	DELAY( 600, "free limit reached" )
-		if /"You can not download now/;
+	! !/"You can not download now/;
 
 	s/^{//; s/}$//;
 	my %js = map { /^(.*?)\s*:\s*"(.*?)"/ } split /\s*,\s*/, $_;

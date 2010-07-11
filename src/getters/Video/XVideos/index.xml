@@ -1,0 +1,42 @@
+index:	0
+title:	XVideos
+desc:	[V:XVideos] <a href="http://xvideos.com/">"http://xvideos.com/"</a>
+
+body:	
+	<p>Status: OK 2010-07-03</p>
+	<pre># $Id: XVideos 11627 2010-07-03 00:49:49Z sparky $
+# Video::XVideos - Video getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: XVideos
+short: V:XVideos
+web: "http://xvideos.com/"
+uri: qr{xvideos\.com/video\d+}
+slots: max
+status: OK 2010-07-03
+
+unify:
+	return "http://www.xvideos.com/video$1/"
+		if m{xvideos\.com/video(\d+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" ) if m{&lt;h2&gt;Page not found&lt;/h2&gt;};
+
+	! m{&lt;meta name=description content="XVIDEOS (.*?)"&gt;};
+	my $fname = de_ml( $1 );
+	$fname =~ s{/}{_}g;
+	$fname .= ".flv";
+
+	INFO( name =&gt; $fname, quality =&gt; "flv" );
+
+	! m/flashvars.*&amp;amp;flv_url=(http.*)&amp;amp/;
+	my $file_uri = uri_unescape( $1 );
+	DOWNLOAD( $file_uri, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

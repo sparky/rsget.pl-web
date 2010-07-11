@@ -4,7 +4,7 @@ desc:	[L:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a
 
 body:	
 	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: YouTube 11514 2010-06-04 02:31:53Z sparky $
+	<pre># $Id: YouTube 11631 2010-07-07 12:08:22Z sparky $
 # Link::YouTube - Link retriever plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -26,9 +26,9 @@ start:
 	GET( $-{_uri} );
 
 stage_morelinks:
-	push @{$-{list}}, $1 while s# href="(/watch\?v=.*?)\&amp;feature=PlayList##;
+	push @{$-{list}}, $1 while s# href="(/watch\?v=.*?)\&amp;##;
 
-	if ( m{class="pagerCurrent".*&lt;a href='(.*/view_play_list\?p=.{16}&amp;page=\d+)' class="pagerNotCurrent" &gt;}s ) {
+	if ( m{&lt;a href="(http://.*?view_play_list.*?page=.*?)" class="yt-uix-pager-link" data-page="\d+" &gt;Next&lt;/a&gt;} ) {
 		GET_NEXT( stage_morelinks, $1 );
 	}
 

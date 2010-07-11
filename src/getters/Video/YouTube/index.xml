@@ -4,7 +4,7 @@ desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a
 
 body:	
 	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: YouTube 11525 2010-06-04 18:43:53Z sparky $
+	<pre># $Id: YouTube 11632 2010-07-07 12:11:51Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -44,11 +44,14 @@ pre:
 
 		return undef;
 	}
+
 start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found: $1" )
-		if /&lt;div id="" class="yt-alert-content"&gt;\s*(Th.*?)\s*&lt;/s;
+		if /&lt;div\s[^&gt;]+class="yt-alert-content"&gt;\s*(Th.*?)\s*&lt;/s;
+	ERROR( "age verification required" )
+		if $-{_referer} =~ m#/verify_age#;
 
 	# try to find best format
 	$-{fmt} = best_format();

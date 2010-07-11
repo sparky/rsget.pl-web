@@ -5,7 +5,7 @@ desc:	[FS] <a href="http://freakshare.net/">"http://freakshare.net/"</a>
 body:	
 	<p>Check <a href="http://freakshare.net/terms-of-service.html">terms of service</a>.</p>
 <p>Status: OK 2010-06-04</p>
-	<pre># $Id: FreakShare 11510 2010-06-04 02:26:04Z sparky $
+	<pre># $Id: FreakShare 11635 2010-07-07 20:13:00Z sparky $
 # Get::FreakShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -23,7 +23,8 @@ status: OK 2010-06-04
 start:
 	GET( $-{_uri} );
 
-	ERROR( "file not found" ) if /Sorry, this Download doesnt exist anymore/;
+	ERROR( "file not found: $1" )
+		if m#&lt;h1 .*?&gt;Error&lt;/h1&gt;\s+&lt;div.*?&gt;\s*(.*?)\s+&lt;#s;
 	RESTART( - irand( 60, 300 ), "free limit reached" )
 		if /Sorry, your Traffic is used up for today/;
 
