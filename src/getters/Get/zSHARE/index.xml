@@ -4,8 +4,8 @@ desc:	[zS] <a href="http://zshare.net/">"http://zshare.net/"</a>
 
 body:	
 	<p>Check <a href="http://zshare.net/TOS.html">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: zSHARE 11510 2010-06-04 02:26:04Z sparky $
+<p>Status: OK 2010-07-12</p>
+	<pre># $Id: zSHARE 11657 2010-07-12 01:59:46Z sparky $
 # Get::zSHARE - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://zshare.net/TOS.html"
 uri: qr{zshare\.net/(?:download|video)/[0-9a-f]+}
 cookie: zs
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	return "http://zshare.net/download/$1"

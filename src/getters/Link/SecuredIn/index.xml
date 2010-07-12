@@ -3,8 +3,8 @@ title:	SecuredIn
 desc:	[L:SecuredIn] <a href="http://secured.in/">"http://secured.in/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: SecuredIn 11508 2010-06-04 02:22:50Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: SecuredIn 11656 2010-07-12 01:58:33Z sparky $
 # Link::SecuredIn - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:SecuredIn
 web: "http://secured.in/"
 uri: qr{secured\.in/download-\d+-[0-9a-f]+\.html$}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 pre:
 	use MIME::Base64;

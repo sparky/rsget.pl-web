@@ -4,8 +4,8 @@ desc:	[FF] <a href="http://filefactory.com/">"http://filefactory.com/"</a>
 
 body:	
 	<p>Check <a href="http://filefactory.com/legal/terms.php">terms of service</a>.</p>
-<p>Status: OK 2010-07-11</p>
-	<pre># $Id: FileFactory 11646 2010-07-11 17:49:22Z sparky $
+<p>Status: OK 2010-07-12</p>
+	<pre># $Id: FileFactory 11657 2010-07-12 01:59:46Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ short: FF
 web: "http://filefactory.com/"
 tos: "http://filefactory.com/legal/terms.php"
 uri: qr{filefactory\.com/file/[0-9a-z]{6}}
-status: OK 2010-07-11
+status: OK 2010-07-12
 
 start:
 	GET( $-{_uri} );

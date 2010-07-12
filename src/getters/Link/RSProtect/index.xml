@@ -3,8 +3,8 @@ title:	RSProtect
 desc:	[L:RSProtect] <a href="http://www.rsprotect.com/">"http://www.rsprotect.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: RSProtect 11508 2010-06-04 02:22:50Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: RSProtect 11656 2010-07-12 01:58:33Z sparky $
 # Link::RSProtect - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:RSProtect
 web: "http://www.rsprotect.com/"
 uri: qr{rsprotect\.com/rc-.*?/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	s/#.*//;

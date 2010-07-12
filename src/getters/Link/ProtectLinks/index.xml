@@ -4,8 +4,8 @@ desc:	[L:ProtectLinks] <a href="http://protectlinks.com/">"http://protectlinks.c
 
 body:	
 	<p>Check <a href="http://protectlinks.com/tos.php">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: ProtectLinks 11508 2010-06-04 02:22:50Z sparky $
+<p>Status: OK 2010-07-12</p>
+	<pre># $Id: ProtectLinks 11656 2010-07-12 01:58:33Z sparky $
 # Link::ProtectLinks - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://protectlinks.com/"
 tos: "http://protectlinks.com/tos.php"
 uri: qr{protectlinks\.com/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 start:
 	$_ = $-{_uri};

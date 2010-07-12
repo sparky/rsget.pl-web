@@ -4,17 +4,20 @@ desc:	[L:LinkProtector] <a href="http://link-protector.com/">"http://link-protec
 
 body:	
 	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: LinkProtector 11508 2010-06-04 02:22:50Z sparky $
+	<pre># $Id: LinkProtector 11655 2010-07-12 01:53:45Z sparky $
 # Link::LinkProtector - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
+# TODO: support new-type links links (dedicated subdomain)
+
 name: LinkProtector
 short: L:LinkProtector
 web: "http://link-protector.com/"
 uri: qr{link-protector\.com/}
+uri: qr{[a-z]{6}\.link-protector\.com}
 slots: max
 status: OK 2010-06-04
 

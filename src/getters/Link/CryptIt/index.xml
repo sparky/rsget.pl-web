@@ -3,8 +3,8 @@ title:	CryptIt
 desc:	[L:CryptIt] <a href="http://crypt-it.com/">"http://crypt-it.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: CryptIt 11508 2010-06-04 02:22:50Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: CryptIt 11659 2010-07-12 14:08:09Z sparky $
 # Link::CryptIt - Link decrypter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:CryptIt
 web: "http://crypt-it.com/"
 uri: qr{crypt-it\.com/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 pre:
 	# from jdownloader
@@ -36,14 +36,21 @@ pre:
 	use Crypt::Rijndael;
 	my $cipher = new Crypt::Rijndael $key;
 
+unify:
+	return "http://crypt-it.com/$1/$2"
+		if m{^http://crypt-it\.com/(.*?)/(.*?)(/.*)?$};
+
 start:
-	! $-{_uri} =~ m{^http://crypt-it\.com/(.*?)/(.*?)(/.*)?$};
-	my $mode = $1;
+	GET( $-{_uri} );
+	ERROR( "links not found" )
+		unless $-{_referer} =~ m{^http://crypt-it\.com/(.*?)/(.*?)$};
 	$-{dir} = $2;
-	GET( "http://crypt-it.com/$mode/$-{dir}/" );
 
 	my $pass = $-{_opts}-&gt;{pass} || "";
 	my $post = $post_header . $-{dir} . $post_separator . ( chr length $pass ) . $pass;
+
+	ERROR( "password required" )
+		if /&gt;Acces denied! Password required&lt;/ and not $pass;
 
 	GET( "http://crypt-it.com/engine/",
 		post =&gt; $post,

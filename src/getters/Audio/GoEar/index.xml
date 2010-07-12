@@ -3,8 +3,8 @@ title:	GoEar
 desc:	[A:GoEar] <a href="http://goear.com/">"http://goear.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: GoEar 11509 2010-06-04 02:23:56Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: GoEar 11654 2010-07-12 01:21:17Z sparky $
 # Audio::GoEar - Audio getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: A:GoEar
 web: "http://goear.com/"
 uri: qr{goear\.com/listen/[0-9a-f]+/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	my ( $id ) = m{/listen/([0-9a-f]+)/};

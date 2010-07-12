@@ -3,8 +3,8 @@ title:	HTTP
 desc:	[Direct::HTTP] <a href="http://rsget.pl/getters/Direct/HTTP/">"http://rsget.pl/getters/Direct/HTTP/"</a>
 
 body:	
-	<p>Status: OK 2010-06-26</p>
-	<pre># $Id: HTTP 11609 2010-06-27 22:03:18Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: HTTP 11653 2010-07-12 01:13:45Z sparky $
 # Direct::HTTP - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,7 +17,7 @@ web: "http://rsget.pl/getters/Direct/HTTP/"
 uri: qr{http://.*[^/]}
 uri: qr{https://.*[^/]}
 slots: max
-status: OK 2010-06-26
+status: OK 2010-07-12
 
 start:
 	GET( $-{_uri}, headonly =&gt; 1 );
@@ -39,7 +39,7 @@ start:
 		ERROR( "file is text ($type)" );
 	}
 	ERROR( "file is a small image ($type, $len)" )
-		if $type =~ m#^image/# and $len &lt; 100 * 1024;
+		if $type =~ m#^image/# and $len &lt; 32 * 1024;
 
 	my ( $name ) = $-{_referer} =~ m{.*/(.*)$};
 	if ( /^Content-Disposition:(.+?)\r?$/mi ) {

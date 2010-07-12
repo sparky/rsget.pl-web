@@ -3,8 +3,8 @@ title:	DepositFiles
 desc:	[DF] <a href="http://depositfiles.com/">"http://depositfiles.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: DepositFiles 11510 2010-06-04 02:26:04Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: DepositFiles 11657 2010-07-12 01:59:46Z sparky $
 # Get::DepositFiles - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -15,7 +15,7 @@ name: DepositFiles
 short: DF
 web: "http://depositfiles.com/"
 uri: qr{depositfiles\.com/(../)?files/[0-9a-z]+}
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	return "http://depositfiles.com/files/$1" if m#/files/([0-9a-z]+)#;
