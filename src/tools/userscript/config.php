@@ -177,6 +177,7 @@ function cnt()
 
 var finder = { /* {{{ */
 	page_supported: false,
+	page_location: document.location.href,
 
 	_text_tags: [ "pre", "div", "td", "p", "span", "code", "li" ],
 	_text_i: 0,
@@ -188,7 +189,13 @@ var finder = { /* {{{ */
 
 	init: function ()
 	{
-		if ( finder.page_supported = finder._check_support( document.location.href ) ) {
+		var bases = document.getElementsByTagName( 'base' );
+		for ( var i = 0; i < bases.length; i++ ) {
+			var href = bases[ i ].getAttribute( 'href' );
+			if ( href )
+				finder.page_location = href;
+		}
+		if ( finder.page_supported = finder._check_support( finder.page_location ) ) {
 			menu.init();
 		}
 		finder._get_text();
@@ -308,10 +315,10 @@ var finder = { /* {{{ */
 			var m = href.match( /^[a-zA-Z0-9]+:/ );
 			if ( !m || m.length < 1 ) {
 				if ( href.indexOf( "/" ) == 0 ) {
-					m = document.location.href.match( /^(.*?\/\/.*?)\// );
+					m = finder.page_location.match( /^(.*?\/\/.*?)\// );
 					href = m[ 1 ] + href;
 				} else {
-					m = document.location.href.match( /^(.*?\/\/.*\/)/ );
+					m = finder.page_location.match( /^(.*?\/\/.*\/)/ );
 					href = m[ 1 ] + href;
 				}
 				a.setAttribute( 'class',
