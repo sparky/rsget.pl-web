@@ -183,7 +183,8 @@ var finder = { /* {{{ */
 	_text_nodes: null,
 	_a_i: 0,
 	_a_nodes: 0,
-	links: [],
+	links: new Array(),
+	link_nodes: new Array(),
 
 	init: function ()
 	{
@@ -279,36 +280,44 @@ var finder = { /* {{{ */
 			if ( finder._a_i >= finder._a_nodes.length )
 				break;
 
-			var a = finder._a_nodes[ finder._a_i ];
-			var cl = a.getAttribute( 'class' );
-			if ( cl && cl == 'get_link_text' ) {
-				finder._link( a );
-				continue;
+			try {
+				finder._add_a( finder._a_i );
+			} catch( e ) {
+				GM_log( "error: " + e );
 			}
+		}
+	},
+	_add_a: function( i )
+	{
+		var a = finder._a_nodes[ i ];
+		var cl = a.getAttribute( 'class' );
+		if ( cl && cl == 'get_link_text' ) {
+			finder._link( a );
+			return;
+		}
 
-			var href = a.getAttribute( 'href' );
-			if ( href == null )
-				continue;
+		var href = a.getAttribute( 'href' );
+		if ( href == null )
+			return;
 
-			if ( finder._check_support( href ) ) {
+		if ( finder._check_support( href ) ) {
+			a.setAttribute( 'class',
+				cl == null ? 'get_link' : cl + ' get_link' );
+			finder._link( a );
+		} else if ( finder.page_supported ) {
+			var m = href.match( /^[a-zA-Z0-9]+:/ );
+			if ( !m || m.length < 1 ) {
+				if ( href.indexOf( "/" ) == 0 ) {
+					m = document.location.href.match( /^(.*?\/\/.*?)\// );
+					href = m[ 1 ] + href;
+				} else {
+					m = document.location.href.match( /^(.*?\/\/.*\/)/ );
+					href = m[ 1 ] + href;
+				}
 				a.setAttribute( 'class',
 					cl == null ? 'get_link' : cl + ' get_link' );
+				a.setAttribute( 'href', href );
 				finder._link( a );
-			} else if ( finder.page_supported ) {
-				var m = href.match( /^[a-zA-Z0-9]+:/ );
-				if ( !m || m.length < 1 ) {
-					if ( href.indexOf( "/" ) == 0 ) {
-						m = document.location.href.match( /^(.*?\/\/.*?)\// );
-						href = m[ 1 ] + href;
-					} else {
-						m = document.location.href.match( /^(.*?\/\/.*\/)/ );
-						href = m[ 1 ] + href;
-					}
-					a.setAttribute( 'class',
-						cl == null ? 'get_link' : cl + ' get_link' );
-					a.setAttribute( 'href', href );
-					finder._link( a );
-				}
 			}
 		}
 	},
@@ -325,7 +334,8 @@ var finder = { /* {{{ */
 		if ( finder.links.length == 0 )
 			menu.init();
 
-		finder.links.push( a );
+		finder.links.push( a.getAttribute( 'href' ) );
+		finder.link_nodes.push( a );
 	},
 	_check_support: function ( href )
 	{
@@ -371,11 +381,11 @@ var selection = { /* {{{ */
 		var links = [];
 		if ( sel.isCollapsed === true )
 			return links;
-		var srclinks = finder.links;
+		var srclinks = finder.link_nodes;
 		var len = srclinks.length;
 		for ( var i = 0; i < len; i++ ) {
 			if ( sel.containsNode( srclinks[ i ], true ) )
-				links.push( srclinks[ i ] );
+				links.push( srclinks[ i ].getAttribute( 'href' ) );
 		}
 
 		return links;
