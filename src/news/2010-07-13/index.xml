@@ -1,0 +1,98 @@
+index:	-7
+title:	2010-07-13: release
+desc:	<strong>r11666 released (<a href="/download/r11666/">changelog</a>)</strong>
+	<p>
+		This release includes many improvements. Also most of the
+		plugins were revised if needed.
+	</p>
+
+body:	
+<h2>Improvements</h2>
+<dl>
+	<dt>Better OpenWRT support</dt>
+	<dd>
+		<tt>Enocode.pm</tt> is no longer required. This cuts about
+		2MB of required packages.
+	</dd>
+
+	<dt>DELAY()</dt>
+	<dd>
+		Now rsget.pl can postpone some URIs for later. Useful if some
+		file is unavailable temporarily.
+	</dd>
+
+	<dt>Direct downloaders</dt>
+	<dd>
+		You can download any file directly from various protocols.
+		<ul>
+			<li><tt>http://</tt> - file must not be text or small image</li>
+			<li><tt>ftp://</tt> - may be buggy</li>
+			<li><tt>rtmp://</tt> - may be buggy, requires recent curl
+				with rtmp support enabled</li>
+		</ul>
+	</dd>
+
+	<dt>postdownload callback</dt>
+	<dd>
+		Executes your external application after finishing download.
+		You can use it to extract files, copy them to another harddrive,
+		different computer or do anything else you see fit.
+	</dd>
+
+	<dt>Simple http interface for external captcha solvers</dt>
+	<dd>
+		You can easily write some popup application to warn you about
+		new captchas to solve. You can check
+		<tt>http://localhost:7666/captcha</tt> for a list of captchas
+		to solve. It returns plain text file with captcha md5 and time
+		left to solve it in seconds. Download the image from
+		<tt>http://localhost:7666/captcha?md5=${MD5}</tt> and when
+		you've got the solution report it as:
+		<tt>http://localhost:7666/captcha?md5=${MD5}&amp;solve=${CAPTCHA}</tt>.
+	</dd>
+
+	<dt>Makefile changes</dt>
+	<dd>
+		Makefile now installs rsget.pl to /usr/local by default.
+		Set <tt>PREFIX=/usr</tt> if you are a packager.
+		Shell parts are POSIX compatible now. Fixes problems with dash.
+	</dd>
+
+	<dt>MefiaFire dropped</dt>
+	<dd>
+		This service changes too often to keep up with it.
+	</dd>
+
+	<dt>List locking</dt>
+	<dd>
+		Prevents from running multiple instances of rsget.pl on the
+		same uri list file.
+	</dd>
+
+	<dt>Partial XDG support</dt>
+	<dd>
+		Now you can put your config file in <tt>$XDG_CONFIG_HOME/rsget.pl</tt>
+		or <tt>$HOME/.config/rsget.pl</tt>. SVN autoupdate will be
+		downloaded there if it exists.<br />
+		You can set all the other paths to xdg-compatible ones in your
+		config file. If your environment is properly set your config
+		file could look like this (<tt>${RSGET_DIR}</tt> is set by
+		rsget.pl to the directory where config file is found):
+		<pre># uri list at ~/.config/rsget.pl/get.list
+list_file = ${RSGET_DIR}/get.list
+
+# save cookies in ~/.config/rsget.pl/tmp (dir must exist)
+tmpdir = ${RSGET_DIR}/tmp
+
+# save partial files to ~/.local/share/rsget.pl
+workdir = ${XDG_DATA_HOME}/rsget.pl
+
+# move finished downloads to ~/Desktop/downloads
+donedir = ${XDG_DOWNLOAD_DIR}</pre>
+	</dd>
+
+	<dt>Log output to file</dt>
+	<dd>
+		Set <tt>logfile=SOME_PATH</tt> to enable logging.
+	</dd>
+</dl>

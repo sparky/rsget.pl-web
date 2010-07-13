@@ -5,6 +5,10 @@ desc:	Current and past events.
 body:	
 <h2>Old news</h2>
 <dl>
+	<dt>2010-06-05 - <a href="/download/r11550/">r11550</a> released</dt>
+	<dd>
+		Superseded by <a href="/news/2010-07-13/">r11550</a> release.
+	</dd>
 
 	<dt>2010-05-05 - <a href="/download/r11377/">r11377</a> released</dt>
 	<dd>
