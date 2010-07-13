@@ -3,8 +3,8 @@ title:	ExtremeTube
 desc:	[V:ExtremeTube] <a href="http://www.extremetube.com/">"http://www.extremetube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-05</p>
-	<pre># $Id: ExtremeTube 11541 2010-06-05 02:04:56Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: ExtremeTube 11662 2010-07-13 01:31:48Z sparky $
 # Video::ExtremeTube - Video getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:ExtremeTube
 web: "http://www.extremetube.com/"
 uri: qr{extremetube\.com/video/}
 slots: max
-status: OK 2010-06-05
+status: OK 2010-07-13
 
 start:
 	GET( $-{_uri} );

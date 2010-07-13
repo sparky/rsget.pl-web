@@ -3,8 +3,8 @@ title:	YouTube
 desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: YouTube 11632 2010-07-07 12:11:51Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: YouTube 11662 2010-07-13 01:31:48Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:YouTube
 web: "http://www.youtube.com/"
 uri: qr{youtube\.com/watch\?v=.*}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	s/#.*//;

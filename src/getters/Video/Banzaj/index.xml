@@ -3,8 +3,8 @@ title:	Banzaj
 desc:	[V:Banzaj] <a href="http://www.video.banzaj.pl/">"http://www.video.banzaj.pl/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: Banzaj 11518 2010-06-04 14:26:39Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: Banzaj 11662 2010-07-13 01:31:48Z sparky $
 # Video::Banzaj - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Banzaj
 web: "http://www.video.banzaj.pl/"
 uri: qr{video\.banzaj\.pl/film/\d+/\S+/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	s/#.*//;

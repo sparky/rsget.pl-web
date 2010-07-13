@@ -3,8 +3,8 @@ title:	Google
 desc:	[V:Google] <a href="http://video.google.com/">"http://video.google.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: Google 11518 2010-06-04 14:26:39Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: Google 11662 2010-07-13 01:31:48Z sparky $
 # Video::Google - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Google
 web: "http://video.google.com/"
 uri: qr{video\.google\.com/videoplay\?}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-13
 
 start:
 	GET( $-{_uri} );

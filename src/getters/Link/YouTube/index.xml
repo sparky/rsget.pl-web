@@ -3,8 +3,8 @@ title:	YouTube
 desc:	[L:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: YouTube 11631 2010-07-07 12:08:22Z sparky $
+	<p>Status: OK 2010-07-12</p>
+	<pre># $Id: YouTube 11662 2010-07-13 01:31:48Z sparky $
 # Link::YouTube - Link retriever plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: L:YouTube
 web: "http://www.youtube.com/"
 uri: qr{youtube\.com/view_play_list\?p=([A-F0-9]{16})}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-12
 
 unify:
 	return "http://www.youtube.com/view_play_list?p=$1"

@@ -3,8 +3,8 @@ title:	Break
 desc:	[V:Break] <a href="http://www.break.com/">"http://www.break.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-05</p>
-	<pre># $Id: Break 11548 2010-06-05 14:59:03Z sparky $
+	<p>Status: BROKEN 2010-07-13</p>
+	<pre># $Id: Break 11661 2010-07-13 01:29:20Z sparky $
 # Video::Break - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Break
 web: "http://www.break.com/"
 uri: qr{break\.com/.+?/.+}
 slots: max
-status: OK 2010-06-05
+status: BROKEN 2010-07-13
 
 # TODO: support pictures
 

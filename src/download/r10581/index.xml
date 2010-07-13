@@ -19,7 +19,7 @@ body:
 		<dt id="r10576"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10576&amp;view=rev">r10576</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:12:56 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/zSHARE">Get/zSHARE</a> (<a href="/getters/Get/zSHARE/">getter</a>)</li></ul><pre>- new, seems somewhat problematic</pre></dd>
 		<dt id="r10575"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10575&amp;view=rev">r10575</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:12:14 UTC</em></dt>
-		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a> (<a href="/getters/Get/MediaFire/">getter</a>)</li></ul><pre>- new</pre></dd>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li></ul><pre>- new</pre></dd>
 		<dt id="r10574"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10574&amp;view=rev">r10574</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-09-11 17:10:52 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaShares">Get/MegaShares</a> (<a href="/getters/Get/MegaShares/">getter</a>)</li></ul><pre>- mark incomplete name
 - other improvements</pre></dd>

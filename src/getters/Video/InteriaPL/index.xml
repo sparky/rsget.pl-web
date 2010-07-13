@@ -3,8 +3,8 @@ title:	InteriaPL
 desc:	[V:InteriaPL] <a href="http://video.interia.pl/">"http://video.interia.pl/"</a>
 
 body:	
-	<p>Status: OK 2010-06-05</p>
-	<pre># $Id: InteriaPL 11547 2010-06-05 13:57:30Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: InteriaPL 11662 2010-07-13 01:31:48Z sparky $
 # Video::InteriaPL - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:InteriaPL
 web: "http://video.interia.pl/"
 uri: qr{video\.interia\.pl/obejrzyj,film,\d+}
 slots: max
-status: OK 2010-06-05
+status: OK 2010-07-13
 
 start:
 	GET( $-{_uri} );

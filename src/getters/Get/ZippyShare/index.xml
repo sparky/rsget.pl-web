@@ -4,8 +4,8 @@ desc:	[ZipS] <a href="http://www.zippyshare.com/">"http://www.zippyshare.com/"</
 
 body:	
 	<p>Check <a href="http://www.zippyshare.com/terms.html">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: ZippyShare 11521 2010-06-04 16:06:34Z sparky $
+<p>Status: OK 2010-07-13</p>
+	<pre># $Id: ZippyShare 11664 2010-07-13 11:37:30Z sparky $
 # Get::ZippyShare - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://www.zippyshare.com/terms.html"
 uri: qr{(?:www\d*\.)?zippyshare\.com/v/\d+/file\.}
 cookie: zips
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-13
 
 unify:
 	return "$1/file.html" if m{^(.*?)/file};
@@ -29,12 +29,12 @@ start:
 
 	ERROR( "file not found" ) if m{&lt;title&gt;.*?- File does not exist&lt;/title&gt;};
 
-	! m#&lt;strong&gt;Name: &lt;/strong&gt;(.+?)&lt;#;
+	! m#&lt;font.*?&gt;Name:\s*&lt;/font&gt;\s*&lt;font.*?&gt;(.+?)&lt;/font&gt;&lt;#;
 	my $name = $1;
-	! m#&lt;strong&gt;Size: &lt;/strong&gt;($STDSIZE)&lt;#;
+	! m#&lt;font.*?&gt;Size:\s*&lt;/font&gt;\s*&lt;font.*?&gt;($STDSIZE)&lt;/font&gt;&lt;#;
 	INFO( name =&gt; $name, asize =&gt; $1 );
 
-	! m#var ziptime = (\d+); tuw\(\);#s;
+	! m#var ziptime = (\d+);#s;
 	my $wait = $1;
 
 	! m#var pong = '(.*?)';#;

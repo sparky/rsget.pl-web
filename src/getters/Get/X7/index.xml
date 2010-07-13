@@ -4,8 +4,8 @@ desc:	[X7] <a href="http://x7.to/">"http://x7.to/"</a>
 
 body:	
 	<p>Check <a href="http://x7.to/legal">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: X7 11529 2010-06-04 21:28:32Z sparky $
+<p>Status: BROKEN 2010-07-13</p>
+	<pre># $Id: X7 11665 2010-07-13 11:57:38Z sparky $
 # Get::X7 - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ short: X7
 web: "http://x7.to/"
 tos: "http://x7.to/legal"
 uri: qr{x7\.to/[a-z0-9]{6}}
-status: OK 2010-06-04
+status: BROKEN 2010-07-13
 
 unify:
 	return "http://x7.to/$1"
@@ -30,6 +30,8 @@ start:
 
 	ERROR( "file not found" )
 		if /&lt;title&gt;File not found/;
+	ERROR( "not allowed: $1" )
+		if /(The requested file is larger.*only premium.*?)&lt;/;
 
 	! m#&lt;b&gt;Download&lt;/b&gt;\s+\((\d+(?:,\d+)?\s*[KMG]?B)\)#s;
 	my $asize = $1;

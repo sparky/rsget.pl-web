@@ -3,8 +3,8 @@ title:	Veoh
 desc:	[V:Veoh] <a href="http://www.veoh.com/">"http://www.veoh.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-04</p>
-	<pre># $Id: Veoh 11518 2010-06-04 14:26:39Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: Veoh 11662 2010-07-13 01:31:48Z sparky $
 # Video::Veoh - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Veoh
 web: "http://www.veoh.com/"
 uri: qr{veoh\.com/}
 slots: max
-status: OK 2010-06-04
+status: OK 2010-07-13
 
 unify:
 	my $id;

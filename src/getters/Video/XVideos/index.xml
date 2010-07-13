@@ -3,8 +3,8 @@ title:	XVideos
 desc:	[V:XVideos] <a href="http://xvideos.com/">"http://xvideos.com/"</a>
 
 body:	
-	<p>Status: OK 2010-07-03</p>
-	<pre># $Id: XVideos 11627 2010-07-03 00:49:49Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: XVideos 11662 2010-07-13 01:31:48Z sparky $
 # Video::XVideos - Video getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:XVideos
 web: "http://xvideos.com/"
 uri: qr{xvideos\.com/video\d+}
 slots: max
-status: OK 2010-07-03
+status: OK 2010-07-13
 
 unify:
 	return "http://www.xvideos.com/video$1/"

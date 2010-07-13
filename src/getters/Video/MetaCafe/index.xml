@@ -3,8 +3,8 @@ title:	MetaCafe
 desc:	[V:MetaCafe] <a href="http://www.metacafe.com/">"http://www.metacafe.com/"</a>
 
 body:	
-	<p>Status: OK 2010-06-28</p>
-	<pre># $Id: MetaCafe 11621 2010-06-28 16:37:09Z sparky $
+	<p>Status: OK 2010-07-13</p>
+	<pre># $Id: MetaCafe 11662 2010-07-13 01:31:48Z sparky $
 # Video::MetaCafe - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:MetaCafe
 web: "http://www.metacafe.com/"
 uri: qr{metacafe\.com/watch/}
 slots: max
-status: OK 2010-06-28
+status: OK 2010-07-13
 
 start:
 	GET( $-{_uri} );
