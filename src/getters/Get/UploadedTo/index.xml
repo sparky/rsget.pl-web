@@ -4,8 +4,8 @@ desc:	[UT] <a href="http://uploaded.to/">"http://uploaded.to/"</a>
 
 body:	
 	<p>Check <a href="http://uploaded.to/agb">terms of service</a>.</p>
-<p>Status: OK 2010-06-04</p>
-	<pre># $Id: UploadedTo 11522 2010-06-04 16:27:57Z sparky $
+<p>Status: OK 2010-07-13</p>
+	<pre># $Id: UploadedTo 11668 2010-07-13 14:04:38Z sparky $
 # Get::UploadedTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://uploaded.to/"
 tos: "http://uploaded.to/agb"
 uri: qr{uploaded\.to/(?:file/|\?id=)[0-9a-z]{6}}
 uri: qr{ul\.to/[0-9a-z]{6}}
-status: OK 2010-06-04
+status: OK 2010-07-13
 
 unify:
 	return "http://uploaded.to/file/$1" if

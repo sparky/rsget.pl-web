@@ -4,8 +4,8 @@ desc:	[UC] <a href="http://uploading.com/">"http://uploading.com/"</a>
 
 body:	
 	<p>Check <a href="http://uploading.com/terms/">terms of service</a>.</p>
-<p>Status: OK 2010-06-05</p>
-	<pre># $Id: UploadingCom 11537 2010-06-05 00:39:42Z sparky $
+<p>Status: OK 2010-07-13</p>
+	<pre># $Id: UploadingCom 11668 2010-07-13 14:04:38Z sparky $
 # Get::UploadingCom - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,7 +19,7 @@ tos: "http://uploading.com/terms/"
 uri: qr{uploading\.com/(../)?files/(get/)?[A-Za-z0-9]{8}}
 cookie: !uc
 slots: !1
-status: OK 2010-06-05
+status: OK 2010-07-13
 
 unify:
 	return "http://uploading.com/files/$1/"
