@@ -4,15 +4,13 @@ desc:	[4S] <a href="http://www.4shared.com/">"http://www.4shared.com/"</a>
 
 body:	
 	<p>Check <a href="http://www.4shared.com/terms.jsp">terms of service</a>.</p>
-<p>Status: OK 2010-06-05</p>
-	<pre># $Id: 4Shared 11554 2010-06-12 19:59:45Z sparky $
+<p>Status: OK 2010-07-14</p>
+	<pre># $Id: 4Shared 11675 2010-07-14 17:41:47Z sparky $
 # Get::4Shared - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
-
-# TODO: support images, and probably other content
 
 name: 4Shared
 short: 4S
@@ -21,7 +19,7 @@ tos: "http://www.4shared.com/terms.jsp"
 uri: qr{4shared\.com/(account/)?file/}
 cookie: 4s
 slots: max
-status: OK 2010-06-05
+status: OK 2010-07-14
 
 unify:
 	return "http://www.4shared.com/file/$1/$2"
@@ -33,7 +31,7 @@ start:
 	ERROR( "file not found" )
 		if m{^\s*&lt;img alt="" src="/images/spacer\.gif" class="warn" hspace="3" align="left" /&gt;\s*$}m;
 
-	! m{window\.location = ".*/(.*?)\?tsid=.*";};
+	! m{window\.location = ".*/(.*?)\?tsid=.*";} or m{doFullImgExpand\(this, '[^'?]+/(.*?)\?};
 	my $name = uri_unescape( $1 );
 
 	! m{&lt;td class="finforight"&gt;(\d+(?:,\d+)? KB)&lt;/td&gt;}s;
@@ -42,7 +40,14 @@ start:
 	INFO( name =&gt; $name, asize =&gt; $size );
 
 	! m{&lt;a href="(.*?)" class="dbtn" tabindex="1"&gt;};
-	CLICK( $1 );
+	my $btn_uri = $1;
+
+	if ( m{doFullImgExpand\(this,} ) {
+		$-{file_uri} = $btn_uri;
+		GOTO stage_download;
+	}
+
+	CLICK( $btn_uri );
 
 	! m{id='divDLStart'&gt;\s*&lt;a href='(.*?)'&gt;};
 	$-{file_uri} = $1;
@@ -50,6 +55,7 @@ start:
 	! /var c = (\d+);/;
 	WAIT( $1, "starting download" );
 
+stage_download:
 	CLICK_DOWNLOAD( $-{file_uri} );
 
 # vim: filetype=perl:ts=4:sw=4

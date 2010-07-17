@@ -3,8 +3,8 @@ title:	Break
 desc:	[V:Break] <a href="http://www.break.com/">"http://www.break.com/"</a>
 
 body:	
-	<p>Status: BROKEN 2010-07-13</p>
-	<pre># $Id: Break 11661 2010-07-13 01:29:20Z sparky $
+	<p>Status: OK 2010-07-15</p>
+	<pre># $Id: Break 11676 2010-07-15 01:10:30Z sparky $
 # Video::Break - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:Break
 web: "http://www.break.com/"
 uri: qr{break\.com/.+?/.+}
 slots: max
-status: BROKEN 2010-07-13
+status: OK 2010-07-15
 
 # TODO: support pictures
 
@@ -26,23 +26,19 @@ start:
 	ERROR( "file not found" )
 		if m{404 Page Not Found} or $-{_referer} eq "http://www.break.com/";
 
-	! m{&lt;meta name="title" content="(.*?)"};
-	my $name = de_ml( $1 );
-	$name =~ s{/}{_}g;
-	$name .= ".flv";
-	INFO( name =&gt; $name, quality =&gt; "flv" );
-
-	! m{sGlobalContentFilePath='(.*?)'};
-	my $fp = $1;
 	! m{sGlobalFileName='(.*?)'};
-	my $fn = $1;
-	! m{var\s+videoPath\s*=\s*"(.*?)"};
-	my $vp = $1;
+	my $uri = $1;
+	! m{var\s+videoPath\s*=\s*sGlobalFileName\s*\+\s*'(.*?)';};
+	$uri .= $1;
 
-	! m{\s+flashVars\.icon\s*=\s*"(.*?)"};
-	my $icon = $1;
+	! $uri =~ m#.*/(.+)#;
+	INFO( name =&gt; $1, quality =&gt; "flv" );
 
-	DOWNLOAD( "$vp$fp/$fn.flv?$icon", fname =&gt; $name );
+	! m{sGlobalToken='([0-9A-F]+)'};
+	my $token = $1;
+
+
+	DOWNLOAD( "$uri?$token" );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

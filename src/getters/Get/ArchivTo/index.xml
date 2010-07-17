@@ -4,8 +4,8 @@ desc:	[AT] <a href="http://archiv.to/">"http://archiv.to/"</a>
 
 body:	
 	<p>Check <a href="http://archiv.to/?Module=Policy">terms of service</a>.</p>
-<p>Status: OK 2010-06-05</p>
-	<pre># $Id: ArchivTo 11540 2010-06-05 01:04:20Z sparky $
+<p>Status: OK 2010-07-14</p>
+	<pre># $Id: ArchivTo 11673 2010-07-14 16:55:15Z sparky $
 # Get::ArchivTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -21,7 +21,7 @@ tos: "http://archiv.to/?Module=Policy"
 uri: qr{archiv\.to/\?.*?HashID=FILE[0-9A-F]+}
 uri: qr{archiv\.to/GET/FILE[0-9A-F]+}
 slots: max
-status: OK 2010-06-05
+status: OK 2010-07-14
 
 unify:
 	return "http://archiv.to/GET/$1"

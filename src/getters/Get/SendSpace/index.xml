@@ -4,8 +4,8 @@ desc:	[SS] <a href="http://sendspace.com/">"http://sendspace.com/"</a>
 
 body:	
 	<p>Check <a href="http://sendspace.com/terms.html">terms of service</a>.</p>
-<p>Status: OK 2010-06-05</p>
-	<pre># $Id: SendSpace 11533 2010-06-05 00:05:12Z sparky $
+<p>Status: OK 2010-07-14</p>
+	<pre># $Id: SendSpace 11673 2010-07-14 16:55:15Z sparky $
 # Get::SendSpace - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://sendspace.com/"
 tos: "http://sendspace.com/terms.html"
 uri: qr{sendspace\.com/file/}
 cookie: ss
-status: OK 2010-06-05
+status: OK 2010-07-14
 
 start:
 	GET( $-{_uri} );
