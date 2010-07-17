@@ -88,7 +88,7 @@ tmpdir = ${RSGET_DIR}/tmp
 workdir = ${XDG_DATA_HOME}/rsget.pl
 
 # move finished downloads to ~/Desktop/downloads
-donedir = ${XDG_DOWNLOAD_DIR}</pre>
+outdir = ${XDG_DOWNLOAD_DIR}</pre>
 	</dd>
 
 	<dt>Log output to file</dt>
