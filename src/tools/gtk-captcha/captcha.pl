@@ -404,15 +404,23 @@ sub set
 
 	my $window = $self->{window};
 	if ( $show ) {
-		$self->{active} = $show;
 		$self->{max_pbar} = int ( 1 + $show->{end} - time);
 		$self->{img}->set_from_pixbuf( $show->{img} );
 		$self->{entry}->set_text( "" );
-		$window->move( (Tray->position_menu)[0..1] );
-		$window->show_all;
+
+		if ( not $self->{active} ) {
+			unless ( defined $self->{x} ) {
+				( $self->{x}, $self->{y}, my $unused ) = Tray->position_menu;
+			}
+			$window->stick();
+			$window->show_all;
+			$window->move( $self->{x}, $self->{y} );
+		}
+		$self->{active} = $show;
 		$window->set_focus( $self->{entry} );
 	} else {
 		$self->{active} = undef;
+		($self->{x}, $self->{y}) = $window->get_position();
 		$window->set_default_size( 200, 50 );
 		$window->hide_all();
 	}
