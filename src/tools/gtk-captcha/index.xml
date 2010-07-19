@@ -46,7 +46,7 @@ body:
 	<dt>disable_after</dt>
 	<dd>(integer) Stop slideshow "disable_after" seconds after last image.
 		Useful only with popup disabled.<br />
-		<tt>--disable_after=16</tt>
+		<tt>--disable-after=16</tt>
 	</dd>
 
 	<dt>interval</dt>
@@ -56,17 +56,21 @@ body:
 	</dd>
 
 	<dt>window_hint</dt>
-	<dd>(string) Window Type Hint.<br />
-		<tt>--window_hint=default</tt>
+	<dd>(string) Window Type Hint. One of: normal, dialog, menu, toolbar,
+		splashscreen, utility, dock, desktop, dropdown-menu,
+		popup-menu, tooltip, notification, combo, dnd.
+		Read more about type hints in
+		<a href="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html#id2551529">wm spec</a>.<br />
+		<tt>--window-hint=default</tt>
 	</dd>
 
 	<dt>window_type</dt>
-	<dd>(string) Window Type.<br />
-		<tt>--window_type=toplevel</tt>
+	<dd>(string) Window Type. Either toplevel or popup.<br />
+		<tt>--window-type=toplevel</tt>
 	</dd>
 
 	<dt>opacity</dt>
-	<dd>(float) Window opacity.<br />
+	<dd>(float) Window opacity. Useful with compiz and kwin.<br />
 		<tt>--opacity=0.9</tt>
 	</dd>
 </dl>
