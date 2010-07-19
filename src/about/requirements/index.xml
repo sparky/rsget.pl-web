@@ -60,7 +60,7 @@ body:
 	<dd>
 		<ul>
 			<li>perl-Term-Size</li>
-			<li>ImageMagick-perl</li>
+			<li>perl-ImageMagick (or ImageMagick-perl in older versions)</li>
 			<li>perl-Crypt-Blowfish</li>
 			<li>perl-Crypt-Rijndael</li>
 		</ul>
@@ -92,6 +92,35 @@ body:
 			<li>perlmagick</li>
 			<li>libcrypt-blowfish-perl</li>
 			<li>libcrypt-rijndael-perl</li>
+		</ul>
+	</dd>
+</dl>
+
+
+<h3>Fedora 13</h3>
+<dl>
+	<dt>Required</dt>
+	<dd>
+		<ul>
+			<li>perl</li>
+			<li>perl-WWW-Curl</li>
+			<li>perl-URI</li>
+		</ul>
+	</dd>
+	<dt>Recommended</dt>
+	<dd>
+		<ul>
+			<li>perl-GD, tesseract</li>
+			<li>subversion</li>
+		</ul>
+	</dd>
+	<dt>Optional</dt>
+	<dd>
+		<ul>
+			<li>perl-Term-Size</li>
+			<li>ImageMagick-perl</li>
+			<li>perl-Crypt-Blowfish</li>
+			<li>perl-Crypt-Rijndael</li>
 		</ul>
 	</dd>
 </dl>
