@@ -598,6 +598,8 @@ sub toggle
 	}
 }
 
+$SIG{USR1} = \&toggle;
+
 sub from_list
 {
 	my $unused = shift;
@@ -660,8 +662,12 @@ use Gtk2;
 
 Gtk2->init();
 config->init( @ARGV );
-if ( config->fork and fork ) {
-	exit 0;
+if ( config->fork ) {
+	my $pid = fork();
+	if ( $pid ) {
+		print "Started on pid: $pid\n";
+		exit 0;
+	}
 }
 WWW->init();
 Tray->init();
