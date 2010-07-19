@@ -293,7 +293,8 @@ sub init
 	$icon->signal_connect( 'activate', \&SlideShow::toggle );
 	$icon->signal_connect( 'popup-menu', \&_sig_menu );
 
-	$self->{icon}->set_tooltip( "rsget.pl captcha asker" );
+	Tray->notify( unused => 1 );
+	Tray->notify( unused => undef );
 }
 
 sub notify
@@ -310,6 +311,7 @@ sub notify
 	my @args = "rsget.pl captcha asker";
 	push @args, map "$_: $notify->{$_}", sort keys %$notify;
 	$self->{icon}->set_tooltip( join "\n\t", @args );
+	$0 = join "; ", @args;
 }
 
 sub position_menu
