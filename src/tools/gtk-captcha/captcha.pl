@@ -268,7 +268,7 @@ sub init
 
 	my $menu = $self->{menu} = Gtk2::Menu->new();
 	{
-		my $m_web = Gtk2::ImageMenuItem->new_from_stock( 'gtk-open' ); # gtk-open
+		my $m_web = Gtk2::ImageMenuItem->new_from_stock( 'gtk-open' );
 		$m_web->signal_connect( 'activate', \&_sig_web );
 		$menu->append( $m_web );
 	}
@@ -290,7 +290,6 @@ sub init
 
 	$icon->signal_connect( 'activate', \&SlideShow::toggle );
 	$icon->signal_connect( 'popup-menu', \&_sig_menu );
-	#$icon->set_blinking( TRUE );
 	
 	$self->{icon}->set_tooltip( "rsget.pl captcha asker" );
 }
