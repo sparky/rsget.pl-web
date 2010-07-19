@@ -292,7 +292,7 @@ sub init
 
 	$icon->signal_connect( 'activate', \&SlideShow::toggle );
 	$icon->signal_connect( 'popup-menu', \&_sig_menu );
-	
+
 	$self->{icon}->set_tooltip( "rsget.pl captcha asker" );
 }
 
@@ -366,7 +366,7 @@ sub init
 	$window->set_type_hint( config->window_hint );
 	$window->set_accept_focus( TRUE );
 	$window->set_keep_above( TRUE );
-	
+
 	$window->set_default_icon( Pixbuf->hook );
 	$window->set_default_size( 200, 50 );
 	$window->set_opacity( config->opacity );
@@ -558,7 +558,7 @@ sub next
 	my $maxend = 1000 + $last_at;
 
 	foreach ( values %all ) {
-		if ( $_->{img} and not $_->{sent} 
+		if ( $_->{img} and not $_->{sent}
 				and $_->{end} < ( $first->{end} || $maxend ) ) {
 			$first = $_;
 		}
