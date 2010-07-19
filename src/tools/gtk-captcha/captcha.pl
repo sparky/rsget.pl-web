@@ -10,6 +10,7 @@ use warnings;
 package config;
 my $defaults = {
 	remote => "http://localhost:7666/",
+	fork => 0, # 0 | 1
 	popup => 1, # 0 | 1
 	disable_after => 16, # 1+
 	interval => 5, # 2+
@@ -27,6 +28,7 @@ our $AUTOLOAD;
 
 my $allowed = {
 	remote => qr{https?://\S+/(.*/)?}o,
+	fork => qr{0|1}o,
 	popup => qr{0|1}o,
 	interval => qr{0*[1-9][0-9]*}o,
 	disable_after => qr{0*[1-9][0-9]*}o,
@@ -650,6 +652,9 @@ use Gtk2;
 
 Gtk2->init();
 config->init( @ARGV );
+if ( config->fork and fork ) {
+	exit 0;
+}
 WWW->init();
 Tray->init();
 Window->init();
