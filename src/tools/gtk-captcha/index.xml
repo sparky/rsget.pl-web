@@ -1,8 +1,72 @@
 index:	0
 title:	gtk captcha
-desc:	<a href="/tools/gtk-captcha/captcha.pl">Simple captcha asker in gtk</a>.
+desc:	Simple <a href="/tools/gtk-captcha/captcha.pl">captcha asker in gtk</a>.
 
 body:	
+<h3>Requirements</h3>
+<p>perl, perl Gtk2 and perl WWW::Curl</p>
+
+<h3>Usage</h3>
 <p>
-	Just a placeholder, will add more info later.
+	This script creates tray icon and checks captcha list of your
+	<strong>rsget.pl</strong>. Remember to run your rsget.pl with http
+	interface.
 </p>
+<p>
+	If there is some captcha to solve tray icon changes and starts to
+	blink. When you click on it (or send SIGUSR1) image slideshow will
+	start and it will keep asking you to solve captchas until there are
+	no more of them to solve.
+</p>
+
+
+<h3>Options</h3>
+<p>
+	You can change those values in the first lines of the script or pass
+	them as command arguments.
+</p>
+<dl>
+	<dt>remote</dt>
+	<dd>(string) Base URI of your rsget.pl interface.<br />
+		<tt>--remote="http://localhost:7666/"</tt>
+	</dd>
+
+	<dt>fork</dt>
+	<dd>(bool) Fork after executing.<br />
+		<tt>--fork</tt> / <tt>--no-fork</tt>
+	</dd>
+
+	<dt>popup</dt>
+	<dd>(bool) Automatically start slideshow after receiving first image.
+		This is efficient, but may be very annoying.
+		You can change it from context menu after startup.<br />
+		<tt>--popup</tt> / <tt>--no-popup</tt>
+	</dd>
+
+	<dt>disable_after</dt>
+	<dd>(integer) Stop slideshow "disable_after" seconds after last image.
+		Useful only with popup disabled.<br />
+		<tt>--disable_after=16</tt>
+	</dd>
+
+	<dt>interval</dt>
+	<dd>(integer) Check captcha list every "interval" seconds.<br />
+		<tt>--interval=5</tt>
+
+	</dd>
+
+	<dt>window_hint</dt>
+	<dd>(string) Window Type Hint.<br />
+		<tt>--window_hint=default</tt>
+	</dd>
+
+	<dt>window_type</dt>
+	<dd>(string) Window Type.<br />
+		<tt>--window_type=toplevel</tt>
+	</dd>
+
+	<dt>opacity</dt>
+	<dd>(float) Window opacity.<br />
+		<tt>--opacity=0.9</tt>
+	</dd>
+</dl>
