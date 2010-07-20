@@ -753,6 +753,12 @@ div#rsget_pl span:hover {\
 
 function start()
 {
+	var body = document.getElementsByTagName( 'body' )[0];
+	if ( body ) {
+		var cl = body.getAttribute( 'class' );
+		if ( cl && cl.search( "no_rsget" ) >= 0 )
+			return;
+	}
 	window.setTimeout( finder.init, 500 );
 }
 
