@@ -4,101 +4,101 @@ desc:	Config file example.
 
 body:
 <h2>README.config</h2>
-<pre># Example config file
-# $Id: README.config 11600 2010-06-26 23:23:37Z sparky $
-#
-# Copy it to $HOME/.rsget.pl/config and make necessary adjustments.
+<pre class="vim"><span class="Comment"># Example config file</span>
+<span class="Comment"># $Id: README.config 11622 2010-06-28 17:11:04Z sparky $</span>
+<span class="Comment">#</span>
+<span class="Comment"># Copy it to $HOME/.rsget.pl/config and make necessary adjustments.</span>
 
-# backups may be disabled or enabled for 3 different cases:
-#  done - make backup of file in donedir
-#  continue - make backup of file in workdir if continuing partial download
-#  scratch - make backup of file in workdir if downloading it from scratch
-#  no - backups are never made
-# make backups always:
+<span class="Comment"># backups may be disabled or enabled for 3 different cases:</span>
+<span class="Comment">#  done - make backup of file in donedir</span>
+<span class="Comment">#  continue - make backup of file in workdir if continuing partial download</span>
+<span class="Comment">#  scratch - make backup of file in workdir if downloading it from scratch</span>
+<span class="Comment">#  no - backups are never made</span>
+<span class="Comment"># make backups always:</span>
 backup = done,continue,scratch
-# make backups of completed downloads only:
-#backup = done
-# never make backups:
-#backup = no
+<span class="Comment"># make backups of completed downloads only:</span>
+<span class="Comment">#backup = done</span>
+<span class="Comment"># never make backups:</span>
+<span class="Comment">#backup = no</span>
 
-# for file FILE_NAME.EXT by default backups will be named as:
-# FILE_NAME-{N}.EXT where {N} is 1, 2, 3...
-# to name backups as FILE_NAME.EXT~{N} use:
+<span class="Comment"># for file FILE_NAME.EXT by default backups will be named as:</span>
+<span class="Comment"># FILE_NAME-{N}.EXT where {N} is 1, 2, 3...</span>
+<span class="Comment"># to name backups as FILE_NAME.EXT~{N} use:</span>
 backup_suf = ~
 
-# Start http server on port 7666 (won't be started by default or if port is 0).
-# Make sure the port is blocked in the firewall (only allow IPs you trust),
-# because rsget.pl has very weak authentication.
+<span class="Comment"># Start web interface by setting http_port to a non-zero value.</span>
+<span class="Comment"># I suggest using port 7666 as it is used in all other examples.</span>
+<span class="Comment"># NOTE: rsget.pl has very weak authentication so make sure firewall only</span>
+<span class="Comment"># allows trusted hosts to connect to this port.</span>
 http_port = 7666
 
-# require authentication for http:
-#  user: root
-#  password: qwerty
+<span class="Comment"># require authentication for http:</span>
+<span class="Comment">#  user: root</span>
+<span class="Comment">#  password: qwerty</span>
 http_pass = qwerty
 
-# Some services have no parallel-downloads limitation, set max slots
-# for such services. If you've got fast connection and only one
-# ip address / interface, increase this number to a large value.
-# Number of maximum connections is the number of max_slots multiplied
-# by number of ip addresses / interfaces.
+<span class="Comment"># Some services have no parallel-downloads limitation, set max slots</span>
+<span class="Comment"># for such services. If you've got fast connection and only one</span>
+<span class="Comment"># ip address / interface, increase this number to a large value.</span>
+<span class="Comment"># Number of maximum connections is the number of max_slots multiplied</span>
+<span class="Comment"># by number of ip addresses / interfaces.</span>
 max_slots = 8
 
-# number of links to check at once in the same service
+<span class="Comment"># number of links to check at once in the same service</span>
 max_slots_check = 8
 
-# if you are blessed with multiple interfaces:
-#interfaces = eth0, tun0, tun1
-# same thing for multiple IP addresses:
-#interfaces = 1.1.1.1, 1.1.1.2, 1.1.1.3
-# use http and socks5 proxies as additional interfaces:
-#interfaces = eth0, socks5=localhost:9999, http=someproxy.com:8080
+<span class="Comment"># if you are blessed with multiple interfaces:</span>
+<span class="Comment">#interfaces = eth0, tun0, tun1</span>
+<span class="Comment"># same thing for multiple IP addresses:</span>
+<span class="Comment">#interfaces = 1.1.1.1, 1.1.1.2, 1.1.1.3</span>
+<span class="Comment"># use http and socks5 proxies as additional interfaces:</span>
+<span class="Comment">#interfaces = eth0, socks5=localhost:9999, http=someproxy.com:8080</span>
 
-# if your vim stores swap files in different directory and you want list
-# file locking:
-#list_lock = ${HOME}/.vim/.$(file).swp
-# list will be manipulated by some external app which creates .lock file
-# in the same directory as list file:
-#list_lock = $(dir)/.lock
+<span class="Comment"># if your vim stores swap files in different directory and you want list</span>
+<span class="Comment"># file locking:</span>
+<span class="Comment">#list_lock = ${HOME}/.vim/.$(file).swp</span>
+<span class="Comment"># list will be manipulated by some external app which creates .lock file</span>
+<span class="Comment"># in the same directory as list file:</span>
+<span class="Comment">#list_lock = $(dir)/.lock</span>
 
-# store unfinished files in "partial" directory
+<span class="Comment"># store unfinished files in &quot;partial&quot; directory</span>
 workdir = partial
 
-# move finished downloads to "done"
+<span class="Comment"># move finished downloads to &quot;done&quot;</span>
 outdir = done
 
-# Execute shell command after finishing file download.
-# Will not block, stdin and stdout are ignored.
-# Recognized special variables:
-#  $(name) - name of the file
-#  $(file) - path to the file (including outdir), use $PWD/$(file) if you
-#            need full path and your outdir is relative
-#  $(source) - source uri
-#  $(size) - file size in bytes
-# All those variables are automatically quoted, so you _must__not_ quote them.
-# Examples:
-# * send nice dbus org.freedesktop.notifications message (some notification
-#   deamons may not support those html tags):
-#postdownload = notify-send "rsget.pl: "$(name) "Finished downloading &lt;a href='$PWD/"$(file)"'&gt;"$(name)"&lt;/a&gt; (size: &lt;b&gt;"$(size)"B&lt;/b&gt;) from &lt;tt&gt;"$(source)"&lt;/tt&gt;"
-#
-# * copy your file somewhere else:
-#postdownload = scp $(file) remote_machine:my_downloads
-#
-# * unpack and delete if successful
-#   &lt;http://github.com/sparky/home/blob/master/bin/spill&gt;:
-#postdownload = spill -c $(file)
-#
-# * execute your own script which does anything you want:
-#postdownload = ${HOME}/bin/postdownload $(file) $(source) || notify-send "rsget.pl: "$(name) "postdownload failed"
+<span class="Comment"># Execute shell command after finishing file download.</span>
+<span class="Comment"># Will not block, stdin and stdout are ignored.</span>
+<span class="Comment"># Recognized special variables:</span>
+<span class="Comment">#  $(name) - name of the file</span>
+<span class="Comment">#  $(file) - path to the file (including outdir), use $PWD/$(file) if you</span>
+<span class="Comment">#            need full path and your outdir is relative</span>
+<span class="Comment">#  $(source) - source uri</span>
+<span class="Comment">#  $(size) - file size in bytes</span>
+<span class="Comment"># All those variables are automatically quoted, so you _must__not_ quote them.</span>
+<span class="Comment"># Examples:</span>
+<span class="Comment"># * send nice dbus org.freedesktop.notifications message (some notification</span>
+<span class="Comment">#   deamons may not support those html tags):</span>
+<span class="Comment">#postdownload = notify-send &quot;rsget.pl: &quot;$(name) &quot;Finished downloading &lt;a href='$PWD/&quot;$(file)&quot;'&gt;&quot;$(name)&quot;&lt;/a&gt; (size: &lt;b&gt;&quot;$(size)&quot;B&lt;/b&gt;) from &lt;tt&gt;&quot;$(source)&quot;&lt;/tt&gt;&quot;</span>
+<span class="Comment">#</span>
+<span class="Comment"># * copy your file somewhere else:</span>
+<span class="Comment">#postdownload = scp $(file) remote_machine:my_downloads</span>
+<span class="Comment">#</span>
+<span class="Comment"># * unpack and delete if successful</span>
+<span class="Comment">#   &lt;http://github.com/sparky/home/blob/master/bin/spill&gt;:</span>
+<span class="Comment">#postdownload = spill -c $(file)</span>
+<span class="Comment">#</span>
+<span class="Comment"># * execute your own script which does anything you want:</span>
+<span class="Comment">#postdownload = ${HOME}/bin/postdownload $(file) $(source) || notify-send &quot;rsget.pl: &quot;$(name) &quot;postdownload failed&quot;</span>
 
-# update automatically from SVN (possibly dangerous, but very convenient):
-#use_svn = update
+<span class="Comment"># update automatically from SVN (possibly dangerous, but very convenient):</span>
+<span class="Comment">#use_svn = update</span>
 
-# save erroneous pages (only useful for getter debugging):
-#debug = 1
+<span class="Comment"># save erroneous pages (only useful for getter debugging):</span>
+<span class="Comment">#debug = 1</span>
 
-# be verbose (useful for debugging):
-#verbose = 2
+<span class="Comment"># be verbose (useful for debugging):</span>
+<span class="Comment">#verbose = 2</span>
 
-# save captcha images (useful for debugging) in ~/.rsget.pl/captcha directory:
-#captcha_save_results = ${RSGET_DIR}/captcha
-</pre>
+<span class="Comment"># save captcha images (useful for debugging) in ~/.rsget.pl/captcha directory:</span>
+<span class="Comment">#captcha_save_results = ${RSGET_DIR}/captcha</span></pre>
