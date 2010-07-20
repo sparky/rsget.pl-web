@@ -166,9 +166,24 @@ pre {
 	page-break-inside: avoid;
 	line-height: 1.25;
 }
+pre * {
+	color: inherit;
+	font: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	line-height: inherit;
+	text-decoration: inherit;
+}
+pre tt {
+	border-bottom: 1px dashed #888;
+	color: #eee;
+}
 
 tt {
 	font-family: "Monospace", monospace;
+	border-bottom: 1px dashed #777;
 }
 
 input, select {
@@ -212,6 +227,10 @@ ins {
 	font-size: inherit;
 }
 
-#googleobject {
-	display: none;
-}
+pre.vim .Todo { color: #ffff00; font-weight: bold; }
+pre.vim .Statement { color: #a0a000; }
+pre.vim .Constant { color: #ff6060; }
+pre.vim .Special { color: #ff40ff; }
+pre.vim .PreProc { color: #ff40ff; }
+pre.vim .Comment { color: #20a0ff; }
+pre.vim .Identifier { color: #00ffff; }

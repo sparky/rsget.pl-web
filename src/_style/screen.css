@@ -276,15 +276,19 @@ pre {
 	overflow: auto;
 	line-height: 1.25;
 }
-pre tt {
-	border-bottom: 1px dashed #888;
-	color: #eee;
+pre * {
+	color: inherit;
+	font: inherit;
 	font-size: inherit;
 	font-family: inherit;
 	font-weight: inherit;
 	font-style: inherit;
 	line-height: inherit;
 	text-decoration: inherit;
+}
+pre tt {
+	border-bottom: 1px dashed #888;
+	color: #eee;
 }
 
 tt {
@@ -348,11 +352,11 @@ ins {
 	color: #711;
 	background: #888;
 }
-pre::selection, pre tt::selection {
+pre::selection, pre *::selection {
 	color: #2d2d2d;
 	background: #aaa;
 }
-pre::-moz-selection, pre tt::-moz-selection {
+pre::-moz-selection, pre *::-moz-selection {
 	color: #2d2d2d;
 	background: #aaa;
 }
@@ -382,8 +386,10 @@ pre::-moz-selection, pre tt::-moz-selection {
 	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IArs4c6QAAAGNQTFRFcAAAZmZmbGxscHBwdHR0d3d3fn5+goKChoaGi4uLjo6OkJCQlJSUlpaWm5uboqKis7Ozt7e3ubm5vb29xcXFyMjIy8vLzc3N0NDQ1NTU2NjY2tra4ODg5OTk6enp7u7u8fHxzVpKowAAAAF0Uk5TAEDm2GYAAACDSURBVAjXRY7hEoIwDIObAiIwZUw3i8rq+z+lHcMzP3L97to0REXrLST6KZ1gakOlgHOUJA5zIcFVdWpUPRbD4aQV9dJk2rDkAwWJVkRmBsyibRs651o2EwTK7OvtRxOEaOrygUNnyS8e8x41414eR+58iqGHr7WeYynZ/1tv8njvwxfCHwk2a0ooQgAAAABJRU5ErkJggg==) 2px 2px no-repeat;
 }
 
-#googleobject {
-	overflow: hidden;
-	width: 200px;
-	height: 10px;
-}
+pre.vim .Todo { color: #808080; background-color: #ffff00; }
+pre.vim .Statement { color: #ffff00; }
+pre.vim .Constant { color: #ff6060; }
+pre.vim .Special { color: #ff40ff; }
+pre.vim .PreProc { color: #ff40ff; }
+pre.vim .Comment { color: #20a0ff; }
+pre.vim .Identifier { color: #00ffff; }
