@@ -1,6 +1,6 @@
 index:	0
 title:	YouTube
-desc:	[V:YouTube] <a href="http://www.youtube.com/">"http://www.youtube.com/"</a>
+desc:	[V:YouTube] <a href="http://www.youtube.com/" rel="nofollow">"http://www.youtube.com/"</a>
 
 body:	
 	<p>Status: OK 2010-07-12</p>

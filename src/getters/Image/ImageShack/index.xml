@@ -1,9 +1,9 @@
 index:	0
 title:	ImageShack
-desc:	[I:ImageShack] <a href="http://imageshack.us/">"http://imageshack.us/"</a>
+desc:	[I:ImageShack] <a href="http://imageshack.us/" rel="nofollow">"http://imageshack.us/"</a>
 
 body:	
-	<p>Check <a href="http://reg.imageshack.us/content.php?page=rules">terms of service</a>.</p>
+	<p>Check <a href="http://reg.imageshack.us/content.php?page=rules" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: ImageShack 11654 2010-07-12 01:21:17Z sparky $
 # Image::ImageShack - Image getter plugin for rsget.pl

@@ -1,9 +1,9 @@
 index:	0
 title:	4Shared
-desc:	[4S] <a href="http://www.4shared.com/">"http://www.4shared.com/"</a>
+desc:	[4S] <a href="http://www.4shared.com/" rel="nofollow">"http://www.4shared.com/"</a>
 
 body:	
-	<p>Check <a href="http://www.4shared.com/terms.jsp">terms of service</a>.</p>
+	<p>Check <a href="http://www.4shared.com/terms.jsp" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
 	<pre># $Id: 4Shared 11675 2010-07-14 17:41:47Z sparky $
 # Get::4Shared - File getter plugin for rsget.pl

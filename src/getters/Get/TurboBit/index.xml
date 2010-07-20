@@ -1,9 +1,9 @@
 index:	0
 title:	TurboBit
-desc:	[TB] <a href="http://turbobit.net/">"http://turbobit.net/"</a>
+desc:	[TB] <a href="http://turbobit.net/" rel="nofollow">"http://turbobit.net/"</a>
 
 body:	
-	<p>Check <a href="http://turbobit.net/rules">terms of service</a>.</p>
+	<p>Check <a href="http://turbobit.net/rules" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: TurboBit 11668 2010-07-13 14:04:38Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl

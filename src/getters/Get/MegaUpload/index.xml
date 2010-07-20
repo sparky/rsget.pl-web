@@ -1,9 +1,9 @@
 index:	0
 title:	MegaUpload
-desc:	[MU] <a href="http://megaupload.com/">"http://megaupload.com/"</a>
+desc:	[MU] <a href="http://megaupload.com/" rel="nofollow">"http://megaupload.com/"</a>
 
 body:	
-	<p>Check <a href="http://megaupload.com/?c=terms">terms of service</a>.</p>
+	<p>Check <a href="http://megaupload.com/?c=terms" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: MegaUpload 11657 2010-07-12 01:59:46Z sparky $
 # Get::MegaUpload - File getter plugin for rsget.pl

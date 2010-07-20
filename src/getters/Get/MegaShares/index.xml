@@ -1,9 +1,9 @@
 index:	0
 title:	MegaShares
-desc:	[MS] <a href="http://megashares.com/">"http://megashares.com/"</a>
+desc:	[MS] <a href="http://megashares.com/" rel="nofollow">"http://megashares.com/"</a>
 
 body:	
-	<p>Check <a href="http://megashares.com/tos.php">terms of service</a>.</p>
+	<p>Check <a href="http://megashares.com/tos.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: MegaShares 11668 2010-07-13 14:04:38Z sparky $
 # Get::MegaShares - File getter plugin for rsget.pl

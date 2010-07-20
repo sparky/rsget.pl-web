@@ -1,9 +1,9 @@
 index:	0
 title:	SharePlace
-desc:	[SP] <a href="http://shareplace.com/">"http://shareplace.com/"</a>
+desc:	[SP] <a href="http://shareplace.com/" rel="nofollow">"http://shareplace.com/"</a>
 
 body:	
-	<p>Check <a href="http://shareplace.com/rules.php">terms of service</a>.</p>
+	<p>Check <a href="http://shareplace.com/rules.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
 	<pre># $Id: SharePlace 11673 2010-07-14 16:55:15Z sparky $
 # Get::SharePlace - File getter plugin for rsget.pl

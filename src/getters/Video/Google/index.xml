@@ -1,6 +1,6 @@
 index:	0
 title:	Google
-desc:	[V:Google] <a href="http://video.google.com/">"http://video.google.com/"</a>
+desc:	[V:Google] <a href="http://video.google.com/" rel="nofollow">"http://video.google.com/"</a>
 
 body:	
 	<p>Status: OK 2010-07-13</p>

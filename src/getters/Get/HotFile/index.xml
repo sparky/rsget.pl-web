@@ -1,9 +1,9 @@
 index:	0
 title:	HotFile
-desc:	[HF] <a href="http://hotfile.com/">"http://hotfile.com/"</a>
+desc:	[HF] <a href="http://hotfile.com/" rel="nofollow">"http://hotfile.com/"</a>
 
 body:	
-	<p>Check <a href="http://hotfile.com/terms-of-service.html">terms of service</a>.</p>
+	<p>Check <a href="http://hotfile.com/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: HotFile 11668 2010-07-13 14:04:38Z sparky $
 # Get::HotFile - File getter plugin for rsget.pl

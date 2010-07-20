@@ -1,9 +1,9 @@
 index:	0
 title:	SharingMatrix
-desc:	[SM] <a href="http://sharingmatrix.com/">"http://sharingmatrix.com/"</a>
+desc:	[SM] <a href="http://sharingmatrix.com/" rel="nofollow">"http://sharingmatrix.com/"</a>
 
 body:	
-	<p>Check <a href="http://sharingmatrix.com/user_agreement">terms of service</a>.</p>
+	<p>Check <a href="http://sharingmatrix.com/user_agreement" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: SharingMatrix 11668 2010-07-13 14:04:38Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl

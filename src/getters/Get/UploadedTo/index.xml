@@ -1,9 +1,9 @@
 index:	0
 title:	UploadedTo
-desc:	[UT] <a href="http://uploaded.to/">"http://uploaded.to/"</a>
+desc:	[UT] <a href="http://uploaded.to/" rel="nofollow">"http://uploaded.to/"</a>
 
 body:	
-	<p>Check <a href="http://uploaded.to/agb">terms of service</a>.</p>
+	<p>Check <a href="http://uploaded.to/agb" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: UploadedTo 11668 2010-07-13 14:04:38Z sparky $
 # Get::UploadedTo - File getter plugin for rsget.pl

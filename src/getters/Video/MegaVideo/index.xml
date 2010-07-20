@@ -1,9 +1,9 @@
 index:	0
 title:	MegaVideo
-desc:	[V:MegaVideo] <a href="http://megavideo.com/">"http://megavideo.com/"</a>
+desc:	[V:MegaVideo] <a href="http://megavideo.com/" rel="nofollow">"http://megavideo.com/"</a>
 
 body:	
-	<p>Check <a href="http://megavideo.com/?c=terms">terms of service</a>.</p>
+	<p>Check <a href="http://megavideo.com/?c=terms" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: MegaVideo 11662 2010-07-13 01:31:48Z sparky $
 # Video::MegaVideo - Video getter plugin for rsget.pl

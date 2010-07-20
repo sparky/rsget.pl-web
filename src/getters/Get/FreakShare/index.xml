@@ -1,9 +1,9 @@
 index:	0
 title:	FreakShare
-desc:	[FS] <a href="http://freakshare.net/">"http://freakshare.net/"</a>
+desc:	[FS] <a href="http://freakshare.net/" rel="nofollow">"http://freakshare.net/"</a>
 
 body:	
-	<p>Check <a href="http://freakshare.net/terms-of-service.html">terms of service</a>.</p>
+	<p>Check <a href="http://freakshare.net/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: FreakShare 11668 2010-07-13 14:04:38Z sparky $
 # Get::FreakShare - File getter plugin for rsget.pl

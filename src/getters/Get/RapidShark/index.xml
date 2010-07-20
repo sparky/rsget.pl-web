@@ -1,9 +1,9 @@
 index:	0
 title:	RapidShark
-desc:	[RK] <a href="http://www.rapidshark.pl/">"http://www.rapidshark.pl/"</a>
+desc:	[RK] <a href="http://www.rapidshark.pl/" rel="nofollow">"http://www.rapidshark.pl/"</a>
 
 body:	
-	<p>Check <a href="http://www.rapidshark.pl/tos.html">terms of service</a>.</p>
+	<p>Check <a href="http://www.rapidshark.pl/tos.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: BROKEN 2010-07-13</p>
 	<pre># $Id: RapidShark 11666 2010-07-13 11:58:44Z sparky $
 # Get::RapidShark - File getter plugin for rsget.pl

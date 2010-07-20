@@ -1,6 +1,6 @@
 index:	0
 title:	[NAME]
-desc:	[A:[NAME]] <a href="http://asite.com/">"http://asite.com/"</a>
+desc:	[A:[NAME]] <a href="http://asite.com/" rel="nofollow">"http://asite.com/"</a>
 
 body:	
 	<p>Status: OK [DATE]</p>

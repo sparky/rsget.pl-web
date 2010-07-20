@@ -1,9 +1,9 @@
 index:	0
 title:	EasyShare
-desc:	[ES] <a href="http://easy-share.com/">"http://easy-share.com/"</a>
+desc:	[ES] <a href="http://easy-share.com/" rel="nofollow">"http://easy-share.com/"</a>
 
 body:	
-	<p>Check <a href="http://easy-share.com/tos.html">terms of service</a>.</p>
+	<p>Check <a href="http://easy-share.com/tos.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: BROKEN 2010-07-14</p>
 	<pre># $Id: EasyShare 11674 2010-07-14 16:57:55Z sparky $
 # Get::EasyShare - File getter plugin for rsget.pl

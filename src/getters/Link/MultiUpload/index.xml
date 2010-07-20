@@ -1,9 +1,9 @@
 index:	0
 title:	MultiUpload
-desc:	[L:MultiUpload] <a href="http://multiupload.com/">"http://multiupload.com/"</a>
+desc:	[L:MultiUpload] <a href="http://multiupload.com/" rel="nofollow">"http://multiupload.com/"</a>
 
 body:	
-	<p>Check <a href="http://multiupload.com/terms">terms of service</a>.</p>
+	<p>Check <a href="http://multiupload.com/terms" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: MultiUpload 11656 2010-07-12 01:58:33Z sparky $
 # Link::MultiUpload - Link retriever plugin for rsget.pl

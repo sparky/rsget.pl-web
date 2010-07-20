@@ -1,9 +1,9 @@
 index:	0
 title:	UploadingCom
-desc:	[UC] <a href="http://uploading.com/">"http://uploading.com/"</a>
+desc:	[UC] <a href="http://uploading.com/" rel="nofollow">"http://uploading.com/"</a>
 
 body:	
-	<p>Check <a href="http://uploading.com/terms/">terms of service</a>.</p>
+	<p>Check <a href="http://uploading.com/terms/" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: UploadingCom 11668 2010-07-13 14:04:38Z sparky $
 # Get::UploadingCom - File getter plugin for rsget.pl

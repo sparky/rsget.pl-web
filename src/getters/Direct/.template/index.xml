@@ -1,6 +1,6 @@
 index:	0
 title:	[NAME]
-desc:	[Direct::[NAME]] <a href="http://rsget.pl/getters/Direct/[NAME]/">"http://rsget.pl/getters/Direct/[NAME]/"</a>
+desc:	[Direct::[NAME]] <a href="http://rsget.pl/getters/Direct/[NAME]/" rel="nofollow">"http://rsget.pl/getters/Direct/[NAME]/"</a>
 
 body:	
 	<p>Status: OK [DATE]</p>

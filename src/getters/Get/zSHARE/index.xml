@@ -1,9 +1,9 @@
 index:	0
 title:	zSHARE
-desc:	[zS] <a href="http://zshare.net/">"http://zshare.net/"</a>
+desc:	[zS] <a href="http://zshare.net/" rel="nofollow">"http://zshare.net/"</a>
 
 body:	
-	<p>Check <a href="http://zshare.net/TOS.html">terms of service</a>.</p>
+	<p>Check <a href="http://zshare.net/TOS.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: zSHARE 11657 2010-07-12 01:59:46Z sparky $
 # Get::zSHARE - File getter plugin for rsget.pl

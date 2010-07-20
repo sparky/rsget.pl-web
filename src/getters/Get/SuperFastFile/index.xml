@@ -1,9 +1,9 @@
 index:	0
 title:	SuperFastFile
-desc:	[SuperFastFile] <a href="http://www.superfastfile.com/">"http://www.superfastfile.com/"</a>
+desc:	[SuperFastFile] <a href="http://www.superfastfile.com/" rel="nofollow">"http://www.superfastfile.com/"</a>
 
 body:	
-	<p>Check <a href="http://www.superfastfile.com/tos.html">terms of service</a>.</p>
+	<p>Check <a href="http://www.superfastfile.com/tos.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-06-05</p>
 	<pre># $Id: SuperFastFile 11551 2010-06-05 15:33:46Z sparky $
 # Get::SuperFastFile - File getter plugin for rsget.pl

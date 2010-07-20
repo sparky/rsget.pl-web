@@ -1,9 +1,9 @@
 index:	0
 title:	NetLoad
-desc:	[NL] <a href="http://netload.in/">"http://netload.in/"</a>
+desc:	[NL] <a href="http://netload.in/" rel="nofollow">"http://netload.in/"</a>
 
 body:	
-	<p>Check <a href="http://netload.in/index.php?id=13">terms of service</a>.</p>
+	<p>Check <a href="http://netload.in/index.php?id=13" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: NetLoad 11668 2010-07-13 14:04:38Z sparky $
 # Get::NetLoad - File getter plugin for rsget.pl

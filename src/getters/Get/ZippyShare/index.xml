@@ -1,9 +1,9 @@
 index:	0
 title:	ZippyShare
-desc:	[ZipS] <a href="http://www.zippyshare.com/">"http://www.zippyshare.com/"</a>
+desc:	[ZipS] <a href="http://www.zippyshare.com/" rel="nofollow">"http://www.zippyshare.com/"</a>
 
 body:	
-	<p>Check <a href="http://www.zippyshare.com/terms.html">terms of service</a>.</p>
+	<p>Check <a href="http://www.zippyshare.com/terms.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
 	<pre># $Id: ZippyShare 11664 2010-07-13 11:37:30Z sparky $
 # Get::ZippyShare - File getter plugin for rsget.pl

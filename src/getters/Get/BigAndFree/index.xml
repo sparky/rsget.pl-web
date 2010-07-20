@@ -1,9 +1,9 @@
 index:	0
 title:	BigAndFree
-desc:	[BigAndFree] <a href="http://bigandfree.com/">"http://bigandfree.com/"</a>
+desc:	[BigAndFree] <a href="http://bigandfree.com/" rel="nofollow">"http://bigandfree.com/"</a>
 
 body:	
-	<p>Check <a href="http://bigandfree.com/tos">terms of service</a>.</p>
+	<p>Check <a href="http://bigandfree.com/tos" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-06-05</p>
 	<pre># $Id: BigAndFree 11551 2010-06-05 15:33:46Z sparky $
 # Get::BigAndFree - File getter plugin for rsget.pl

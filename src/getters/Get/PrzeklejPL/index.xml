@@ -1,9 +1,9 @@
 index:	0
 title:	PrzeklejPL
-desc:	[przeklej.pl] <a href="http://www.przeklej.pl/">"http://www.przeklej.pl/"</a>
+desc:	[przeklej.pl] <a href="http://www.przeklej.pl/" rel="nofollow">"http://www.przeklej.pl/"</a>
 
 body:	
-	<p>Check <a href="http://www.przeklej.pl/regulamin">terms of service</a>.</p>
+	<p>Check <a href="http://www.przeklej.pl/regulamin" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
 	<pre># $Id: PrzeklejPL 11673 2010-07-14 16:55:15Z sparky $
 # Get::PrzeklejPL - File getter plugin for rsget.pl

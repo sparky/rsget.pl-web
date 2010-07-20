@@ -1,9 +1,9 @@
 index:	0
 title:	EgoShare
-desc:	[EgoShare] <a href="http://www.egoshare.com/">"http://www.egoshare.com/"</a>
+desc:	[EgoShare] <a href="http://www.egoshare.com/" rel="nofollow">"http://www.egoshare.com/"</a>
 
 body:	
-	<p>Check <a href="http://www.egoshare.com/rules.php">terms of service</a>.</p>
+	<p>Check <a href="http://www.egoshare.com/rules.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-06-05</p>
 	<pre># $Id: EgoShare 11551 2010-06-05 15:33:46Z sparky $
 # Get::EgoShare - File getter plugin for rsget.pl

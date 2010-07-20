@@ -1,9 +1,9 @@
 index:	0
 title:	ShareBee
-desc:	[L:ShareBee] <a href="http://www.sharebee.com/">"http://www.sharebee.com/"</a>
+desc:	[L:ShareBee] <a href="http://www.sharebee.com/" rel="nofollow">"http://www.sharebee.com/"</a>
 
 body:	
-	<p>Check <a href="http://www.sharebee.com/tos">terms of service</a>.</p>
+	<p>Check <a href="http://www.sharebee.com/tos" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: ShareBee 11656 2010-07-12 01:58:33Z sparky $
 # Link::ShareBee - Link retriever plugin for rsget.pl

@@ -1,9 +1,9 @@
 index:	0
 title:	ArchivTo
-desc:	[AT] <a href="http://archiv.to/">"http://archiv.to/"</a>
+desc:	[AT] <a href="http://archiv.to/" rel="nofollow">"http://archiv.to/"</a>
 
 body:	
-	<p>Check <a href="http://archiv.to/?Module=Policy">terms of service</a>.</p>
+	<p>Check <a href="http://archiv.to/?Module=Policy" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
 	<pre># $Id: ArchivTo 11673 2010-07-14 16:55:15Z sparky $
 # Get::ArchivTo - File getter plugin for rsget.pl

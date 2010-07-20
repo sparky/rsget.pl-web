@@ -1,9 +1,9 @@
 index:	0
 title:	ProtectLinks
-desc:	[L:ProtectLinks] <a href="http://protectlinks.com/">"http://protectlinks.com/"</a>
+desc:	[L:ProtectLinks] <a href="http://protectlinks.com/" rel="nofollow">"http://protectlinks.com/"</a>
 
 body:	
-	<p>Check <a href="http://protectlinks.com/tos.php">terms of service</a>.</p>
+	<p>Check <a href="http://protectlinks.com/tos.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: ProtectLinks 11656 2010-07-12 01:58:33Z sparky $
 # Link::ProtectLinks - Link decrypter plugin for rsget.pl

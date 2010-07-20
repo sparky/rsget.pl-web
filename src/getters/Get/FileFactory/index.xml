@@ -1,9 +1,9 @@
 index:	0
 title:	FileFactory
-desc:	[FF] <a href="http://filefactory.com/">"http://filefactory.com/"</a>
+desc:	[FF] <a href="http://filefactory.com/" rel="nofollow">"http://filefactory.com/"</a>
 
 body:	
-	<p>Check <a href="http://filefactory.com/legal/terms.php">terms of service</a>.</p>
+	<p>Check <a href="http://filefactory.com/legal/terms.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
 	<pre># $Id: FileFactory 11657 2010-07-12 01:59:46Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl

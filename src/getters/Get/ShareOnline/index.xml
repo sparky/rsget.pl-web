@@ -1,9 +1,9 @@
 index:	0
 title:	ShareOnline
-desc:	[ShareOnline] <a href="http://www.share-online.biz/">"http://www.share-online.biz/"</a>
+desc:	[ShareOnline] <a href="http://www.share-online.biz/" rel="nofollow">"http://www.share-online.biz/"</a>
 
 body:	
-	<p>Check <a href="http://www.share-online.biz/rules.php">terms of service</a>.</p>
+	<p>Check <a href="http://www.share-online.biz/rules.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-06-05</p>
 	<pre># $Id: ShareOnline 11551 2010-06-05 15:33:46Z sparky $
 # Get::ShareOnline - File getter plugin for rsget.pl

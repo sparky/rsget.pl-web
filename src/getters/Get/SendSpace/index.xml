@@ -1,9 +1,9 @@
 index:	0
 title:	SendSpace
-desc:	[SS] <a href="http://sendspace.com/">"http://sendspace.com/"</a>
+desc:	[SS] <a href="http://sendspace.com/" rel="nofollow">"http://sendspace.com/"</a>
 
 body:	
-	<p>Check <a href="http://sendspace.com/terms.html">terms of service</a>.</p>
+	<p>Check <a href="http://sendspace.com/terms.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
 	<pre># $Id: SendSpace 11673 2010-07-14 16:55:15Z sparky $
 # Get::SendSpace - File getter plugin for rsget.pl

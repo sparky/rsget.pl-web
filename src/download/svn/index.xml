@@ -11,8 +11,13 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 16</p>
+	<p>Commits: 18</p>
 	<dl>
+		<dt id="r11686"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11686&amp;view=rev">r11686</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-20 16:49:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- added http_outdir option</pre></dd>
+		<dt id="r11685"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11685&amp;view=rev">r11685</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-20 13:23:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.js">data/main.js</a></li></ul><pre>- don't require http interface files to be in server root (should help
+  in www forwarding)</pre></dd>
 		<dt id="r11683"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11683&amp;view=rev">r11683</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-19 22:33:31 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.requirements">README.requirements</a></li></ul><pre>- updated from web page</pre></dd>
 		<dt id="r11681"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11681&amp;view=rev">r11681</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-17 20:00:12 UTC</em></dt>

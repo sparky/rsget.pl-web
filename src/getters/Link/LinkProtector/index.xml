@@ -1,6 +1,6 @@
 index:	0
 title:	LinkProtector
-desc:	[L:LinkProtector] <a href="http://link-protector.com/">"http://link-protector.com/"</a>
+desc:	[L:LinkProtector] <a href="http://link-protector.com/" rel="nofollow">"http://link-protector.com/"</a>
 
 body:	
 	<p>Status: OK 2010-07-14</p>
