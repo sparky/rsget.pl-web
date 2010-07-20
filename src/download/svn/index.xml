@@ -11,8 +11,12 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 14</p>
+	<p>Commits: 16</p>
 	<dl>
+		<dt id="r11683"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11683&amp;view=rev">r11683</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-19 22:33:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.requirements">README.requirements</a></li></ul><pre>- updated from web page</pre></dd>
+		<dt id="r11681"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11681&amp;view=rev">r11681</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-17 20:00:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- require Cwd only if really needed</pre></dd>
 		<dt id="r11680"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11680&amp;view=rev">r11680</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-17 19:55:12 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- print workdir and outdir paths with --verbose=1 or above</pre></dd>
 		<dt id="r11679"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11679&amp;view=rev">r11679</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-16 18:15:03 UTC</em></dt>
