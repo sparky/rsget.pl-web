@@ -535,7 +535,7 @@ sub _ret_captcha
 	my $md5 = shift;
 	my $data = shift;
 
-	warn "Captcha returned: $data\n";
+	warn "Captcha returned: $data\n" unless config->fork;
 }
 
 sub update
