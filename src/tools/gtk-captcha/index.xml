@@ -28,7 +28,12 @@ body:
 <dl>
 	<dt>remote</dt>
 	<dd>(string) Base URI of your rsget.pl interface.<br />
-		<tt>--remote="http://localhost:7666/"</tt>
+		<tt>--remote="http://localhost:7666/"</tt> / <tt>--remote="https://user:password@remotehost/rsget/"</tt>
+	</dd>
+
+	<dt>ignore_ssl_cert</dt>
+	<dd>(bool) Don't verify SSL certificate when connecting to https remote.<br />
+		<tt>--ignore-ssl-cert</tt> / <tt>--no-ignore-ssl-cert</tt>
 	</dd>
 
 	<dt>fork</dt>
