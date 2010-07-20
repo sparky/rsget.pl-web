@@ -1,6 +1,6 @@
 index:	0
 title:	gtk captcha
-desc:	Simple <a href="/tools/gtk-captcha/captcha.pl">captcha asker in gtk</a>.
+desc:	Simple <a href="/tools/gtk-captcha/gtk-captcha-rsget.pl">captcha asker in gtk</a>.
 
 body:	
 <h3>Requirements</h3>
@@ -70,7 +70,7 @@ body:
 	</dd>
 
 	<dt>opacity</dt>
-	<dd>(float) Window opacity. Useful with compiz and kwin.<br />
+	<dd>(float) Window opacity. Value between 0.0 and 1.0, useful with compiz and kwin.<br />
 		<tt>--opacity=0.9</tt>
 	</dd>
 </dl>
