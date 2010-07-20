@@ -167,8 +167,8 @@ sub _finish
 		undef );
 	my $response;
 	if ( ( my $code = $data->{curl}->getinfo( CURLINFO_RESPONSE_CODE ) ) != 200 ) {
-		$data->{body} =~ m#<title>(.*)</title>#;
-		$response = "$code: $1";
+		$data->{body} =~ m#<title>(.*?)</title>#is;
+		$response = defined $1 ? "$code: $1" : $code;
 	}
 	Tray->notify( "curl response" => $response );
 
