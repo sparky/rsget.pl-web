@@ -159,6 +159,12 @@ sub _finish
 	Tray->notify( curl => $err ?
 		"error($err): " . $data->{curl}->errbuf :
 		undef );
+	my $response;
+	if ( ( my $code = $data->{curl}->getinfo( CURLINFO_RESPONSE_CODE ) ) != 200 ) {
+		$data->{body} =~ m#<title>(.*)</title>#;
+		$response = "$code: $1";
+	}
+	Tray->notify( "curl response" => $response );
 
 	delete $data->{curl};
 
