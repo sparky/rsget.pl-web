@@ -18,7 +18,7 @@ my $defaults = {
 		# | utility | dock | desktop | dropdown-menu | popup-menu | tooltip
 		# | notification | combo | dnd
 	window_type => 'toplevel', # toplevel | popup
-	opacity => 0.9,
+	opacity => 1,
 };
 
 {
@@ -371,10 +371,12 @@ sub init
 
 	$window->set_default_icon( Pixbuf->hook );
 	$window->set_default_size( 200, 50 );
-	$window->set_opacity( config->opacity );
+	$window->set_opacity( config->opacity ) if config->opacity != 1;
 	$window->signal_connect( delete_event => sub { SlideShow::disable(); return TRUE; } );
 
+	$window->set_wmclass( "rsget.pl", "rsget.pl-gtk-captcha" );
 	$window->set_title( "rsget.pl captcha asker" );
+
 
 	my $vbox = new Gtk2::VBox FALSE, 5;
 	$window->add( $vbox );
