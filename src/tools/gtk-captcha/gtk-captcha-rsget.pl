@@ -10,6 +10,7 @@ use warnings;
 package config;
 my $defaults = {
 	remote => "http://localhost:7666/",
+	ignore_ssl_cert => 0, # 0 | 1
 	fork => 0, # 0 | 1
 	popup => 1, # 0 | 1
 	disable_after => 16, # 1+
@@ -18,7 +19,7 @@ my $defaults = {
 		# | utility | dock | desktop | dropdown-menu | popup-menu | tooltip
 		# | notification | combo | dnd
 	window_type => 'toplevel', # toplevel | popup
-	opacity => 1,
+	opacity => 1, # 0.0 < opacity <= 1.0
 };
 
 {
@@ -28,6 +29,7 @@ our $AUTOLOAD;
 
 my $allowed = {
 	remote => qr{https?://\S+/(.*/)?}o,
+	ignore_ssl_cert => qr{0|1}o,
 	fork => qr{0|1}o,
 	popup => qr{0|1}o,
 	interval => qr{0*[1-9][0-9]*}o,
@@ -121,6 +123,10 @@ sub get
 	$curl->setopt( CURLOPT_CONNECTTIMEOUT, config->interval - 1 );
 	$curl->setopt( CURLOPT_WRITEFUNCTION, \&_write_scalar );
 	$curl->setopt( CURLOPT_WRITEDATA, \$self->{body} );
+	if ( config->ignore_ssl_cert ) {
+		$curl->setopt( CURLOPT_SSL_VERIFYPEER, 0 );
+		$curl->setopt( CURLOPT_SSL_VERIFYHOST, 0 );
+	}
 
 	$active{ $id } = $self;
 	$multi->add_handle( $curl );
