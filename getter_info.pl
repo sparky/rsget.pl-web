@@ -49,7 +49,7 @@ sub getter_info
 	$outfile .= "/index.xml";
 
 	my $tos = "";
-	$tos = "<p>Check <a href=$tags{tos}>terms of service</a>.</p>\n"
+	$tos = "<p>Check <a href=$tags{tos} rel=\"nofollow\">terms of service</a>.</p>\n"
 		if $tags{tos};
 
 	$pre =~ s/&/&amp;/g;
@@ -60,7 +60,7 @@ sub getter_info
 	print F_OUT <<EOF;
 index:	0
 title:	$tags{name}
-desc:	[$tags{short}] <a href=$tags{web}>$tags{web}</a>
+desc:	[$tags{short}] <a href=$tags{web} rel="nofollow">$tags{web}</a>
 
 body:	
 	$tos<p>Status: $tags{status}</p>
