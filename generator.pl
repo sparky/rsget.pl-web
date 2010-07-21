@@ -162,8 +162,11 @@ sub make_sublist
 	my @columns = @_;
 
 	my $list = "";
+	my @bookmarks;
 	foreach my $name ( subpages $branch ) {
 		my $subbranch = $branch->{ $name };
+		push @bookmarks, qq(<link rel="Bookmark" title="$subbranch->{_title}" href="/$subbranch->{_dir}" />);
+
 		$list .= "<dt><a href=\"/$subbranch->{_dir}\">$subbranch->{_title}</a></dt>\n";
 		$list .= "<dd>$subbranch->{_desc}";
 		my $sublist = "";
@@ -177,7 +180,7 @@ sub make_sublist
 		$list .= "</dd>\n";
 	}
 	$list = "<div class=\"sublist\"><h2>Subpage list</h2>\n<dl>$list</dl></div>\n" if length $list;
-	return $list;
+	return ($list, (join "\n\t", @bookmarks));
 }
 
 sub h_id
@@ -212,7 +215,7 @@ sub make_column
 		$cont{class} = " nocache";
 	}
 
-	$cont{sublist} = make_sublist( $branch, @columns );
+	($cont{sublist}, $branch->{_bookmarks}) = make_sublist( $branch, @columns );
 
 	$branch->{_processed} = process_template( "column", \%cont );
 
@@ -227,10 +230,18 @@ sub write_templates
 	my $titles = join ": ", map { $_->{_title} } @columns;
 	$titles = "rsget.pl - a powerful downloader" if $titles eq "rsget.pl";
 	my $columns = join "\n", map { $_->{_processed} } @columns;
+	my $desc = $branch->{_desc};
+	$desc =~ s/<.*?>//sg;
+	$desc =~ tr/"/'/;
+	$desc =~ s/\s+/ /sg;
+	$desc =~ s/(^\s+|\s+$)//g;
 	my %cont = (
 		titles => $titles,
 		columns => $columns,
 		column => $branch->{_processed},
+		parent => ( $branch->{_dir} =~ m#(.*/).*/# )[0] || '',
+		desc => $desc,
+		bookmarks => $branch->{_bookmarks},
 		head => "",
 	);
 	my $ext = $branch->{_name};

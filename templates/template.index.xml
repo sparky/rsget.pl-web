@@ -17,6 +17,16 @@
 	<link rel="stylesheet" type="text/css" href="/_style/print.css" media="print" />
 	<link rel="shortcut icon" href="/_style/favicon.png" />
 	<script type="text/javascript" src="/_style/screen.js"></script>
+
+	<meta name="language" content="English" />
+	<meta name="description" content="<content:desc />" />
+	<meta name="robots" content="index,follow" />
+
+	<link rel="Start" href="/" />
+	<link rel="Contents" href="/<content:parent />" />
+	<link rel="Index" href="/<content:parent />" />
+	<link rel="Help" href="/about/" />
+	<content:bookmarks />
 </head>
 <body id="body" class="no_rsget">
 
