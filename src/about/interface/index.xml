@@ -1,0 +1,18 @@
+index:	0
+title:	http interface
+desc:	How to make best use of the http interface.
+
+body:
+<pre class="vim"><span class="Comment"># Patch http intherface through apache web server.</span>
+
+<span class="Identifier">ProxyPass</span> /rsget/ http://localhost:7666/ retry=2
+<span class="Identifier">ProxyPass</span> /rsget/done !
+
+<span class="Statement">&lt;Location</span><span class="Constant"> /rsget</span><span class="Statement">&gt;</span>
+	<span class="Identifier">AuthType</span> <span class="Constant">basic</span>
+	<span class="Identifier">AuthName</span> <span class="Constant">&quot;rsget.pl downloader&quot;</span>
+	<span class="Identifier">AuthBasicProvider</span> file
+	<span class="Identifier">AuthUserFile</span> /srv/http/root/rsget/.htpasswd
+	<span class="Identifier">Require</span> <span class="Constant">valid-user</span>
+	<span class="Identifier">Options</span> <span class="Constant">+FollowSymLinks</span>
+<span class="Statement">&lt;/Location&gt;</span></pre>
