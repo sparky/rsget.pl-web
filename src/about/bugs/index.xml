@@ -1,0 +1,102 @@
+index:	0
+title:	bugs
+desc:	How and where to report bugs and request new features.
+
+body:
+<h2>Components</h2>
+<p>
+	When reporting bugs you must be aware that rsget.pl is divided in
+	three major components.
+</p>
+<dl>
+	<dt>[core]</dt>
+	<dd>
+		It is the main downloader code. Includes everything but the plugins.
+		In terms of source code files it is the <tt>rsget.pl</tt> executable,
+		everything under <tt>RSGet</tt> directory and files from <tt>data</tt>
+		not related to plugins.
+	</dd>
+
+	<dt>[plugins]</dt>
+	<dd>
+		Downloader plugins. That is, everything from <tt>Get</tt>, <tt>Video</tt>,
+		<tt>Audio</tt>, <tt>Image</tt>, <tt>Link</tt> and <tt>Direct</tt>
+		directories. It also includes files from <tt>data</tt> related to plugins.
+	</dd>
+
+	<dt>[web]</dt>
+	<dd>
+		This web page. It includes text from pages, web design
+		(css, javascript and data files). It also includes
+		the <a href="/tools/">tools</a> you can find here.
+	</dd>
+</dl>
+
+<h2>Known bugs</h2>
+<dl>
+	<dt>[web]</dt>
+	<dd>
+		<dl>
+			<dt>Internet Explorer cannot display this page</dt>
+			<dd>That's a bug in IE, it does not support XHTML.
+				There is no good reason to remake half the page just to
+				support that "web browser".</dd>
+
+			<dt>www.rsget.pl does not work</dt>
+			<dd>It isn't a bug, it's a feature.</dd>
+		</dl>
+	</dd>
+</dl>
+
+<h2>Where bugs should be reported</h2>
+<h3>bugs.rsget.pl</h3>
+<p>
+	Thanks to <a href="http://github.com/pawelz">pawelz</a> we have a
+	<a href="http://bugs.rsget.pl/browse/RSGETPL">JIRA bug tracker</a>.
+	<strong>This is the best way to report problems</strong>,
+	especially plugin problems. New issues are not publicly visible,
+	only the reporter and rsget.pl developers can see them. Afterwards
+	developers may decide to make the bug visible to everyone.
+</p>
+<p>
+	Please be as specific as possible. Use <strong>[core]</strong>,
+	<strong>[plugins]</strong> or <strong>[web]</strong> as the first
+	word of the <em>summary</em> and select appropriate <em>component</em>.
+	Put links and source snippets in <tt>{code}</tt> markers.
+</p>
+<pre>Some short description of the bug.
+
+{code}
+http://link1/
+http://link2/
+http://link3/
+{code}
+</pre>
+
+
+<h3>issues @ github.com</h3>
+<p>
+	You can report <strong>[core]</strong> problems in the
+	<a href="http://github.com/sparky/rsget.pl/issues">rsget.pl/issues</a>
+	section of the svn mirror.
+	<em>Please do not post <strong>[plugins]</strong> problems there</em>
+	unless you are the legal owner of the links you include.
+</p>
+<p>
+	Problems with <strong>[web]</strong> can be reported in the
+	<a href="http://github.com/sparky/rsget.pl-web/issues">rsget.pl-web/issues</a>
+	section of the web page source.
+</p>
+
+<h3>by email</h3>
+<p>
+	Alternatively you can send the bug reports via email. Note that this is
+	not the best solution because some of those reports may get lost,
+	be forgotten or stay unanswered. Also they can't be seen by other rsget.pl
+	developers.
+</p>
+<ul>
+	<li>rsget.pl <strong>[core]</strong> &lt;<tt>bugs&at;rsget.pl</tt>&gt;</li>
+	<li>rsget.pl <strong>[plugins]</strong> &lt;<tt>plugins&at;rsget.pl</tt>&gt;</li>
+	<li>rsget.pl <strong>[web]</strong> &lt;<tt>web&at;rsget.pl</tt>&gt;</li>
+</ul>
