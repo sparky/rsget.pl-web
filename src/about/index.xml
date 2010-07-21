@@ -1,6 +1,7 @@
 index:	0
 title:	about
-desc:	Basic information. This section will some day be organized.
+desc:	Basic information what <strong>rsget.pl</strong> is and what it is not.
+	You can find more specific information in the subpages.
 
 body:
 <p>
@@ -39,7 +40,7 @@ body:
 		downloads, and more</li>
 	<li>File group support (first step for multiuser support)</li>
 	<li>File priorities and group priorities.</li>
-	<li>Selectable temporary directory.</li>
+	<li><del>Selectable temporary directory.</del> <ins>Set tmpdir=</ins></li>
 	<li><del>Fix freezing http server - move to separate thread/process ?</del>
 		<ins>Should be fixed now.</ins></li>
 	<li><del>Fix bugs in http server, and speed it up.</del>
