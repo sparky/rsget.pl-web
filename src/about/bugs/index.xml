@@ -49,7 +49,7 @@ body:
 </dl>
 
 <h2>Where bugs should be reported</h2>
-<h3>bugs.rsget.pl</h3>
+<h4>bugs.rsget.pl</h4>
 <p>
 	Thanks to <a href="http://github.com/pawelz">pawelz</a> we have a
 	<a href="http://bugs.rsget.pl/browse/RSGETPL">JIRA bug tracker</a>.
@@ -74,7 +74,7 @@ http://link3/
 </pre>
 
 
-<h3>issues @ github.com</h3>
+<h4>issues @ github.com</h4>
 <p>
 	You can report <strong>[core]</strong> problems in the
 	<a href="http://github.com/sparky/rsget.pl/issues">rsget.pl/issues</a>
@@ -88,7 +88,7 @@ http://link3/
 	section of the web page source.
 </p>
 
-<h3>by email</h3>
+<h4>by email</h4>
 <p>
 	Alternatively you can send the bug reports via email. Note that this is
 	not the best solution because some of those reports may get lost,
@@ -99,4 +99,22 @@ http://link3/
 	<li>rsget.pl <strong>[core]</strong> &lt;<tt>bugs&at;rsget.pl</tt>&gt;</li>
 	<li>rsget.pl <strong>[plugins]</strong> &lt;<tt>plugins&at;rsget.pl</tt>&gt;</li>
 	<li>rsget.pl <strong>[web]</strong> &lt;<tt>web&at;rsget.pl</tt>&gt;</li>
+</ul>
+
+<h2>Reporting bugs hard to reproduce</h2>
+<p>
+	Some bugs cannot be easily reproduced (e.g. a page may behave
+	differently in some geographical zones). Because of this we may ask you
+	to post the whole download dump for us to analyze the data.
+	To achieve best results follow those steps:
+</p>
+<ul>
+	<li>Disable all but one failing link.</li>
+	<li>Run <strong>rsget.pl</strong> with <tt>--logfile=download.log
+			--debug=2</tt> arguments.</li>
+	<li>Stop <strong>rsget.pl</strong> as soon as the problem appears.</li>
+	<li>Grab <tt>download.log</tt> and all the <tt>dump</tt> files that were
+		generated and put them in <tt>.tar.gz</tt> or <tt>.zip</tt> file.</li>
+	<li>Attach that archive to the bug report and paste the important lines
+		from <tt>download.log</tt></li>
 </ul>
