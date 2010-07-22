@@ -50,6 +50,7 @@ body:
 
 <h2>Where bugs should be reported</h2>
 <h4>bugs.rsget.pl</h4>
+(link: <a href="http://bugs.rsget.pl/browse/RSGETPL">http://bugs.rsget.pl/</a>)
 <p>
 	Thanks to <a href="http://github.com/pawelz">pawelz</a> we have a
 	<a href="http://bugs.rsget.pl/browse/RSGETPL">JIRA bug tracker</a>.
