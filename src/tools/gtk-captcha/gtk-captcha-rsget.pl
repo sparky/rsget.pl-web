@@ -478,6 +478,7 @@ sub _set_captcha
 
 {
 package Image; # {{{
+use URI::Escape;
 
 sub new
 {
@@ -536,9 +537,10 @@ sub set_captcha
 {
 	my $self = shift;
 	my $val = shift;
-	$self->{sent} = $val;
+	$self->{sent} = uri_escape( $val );
 
-	WWW->get( "captcha?md5=$self->{md5}&solve=$val", \&_ret_captcha, $self->{md5} );
+	WWW->get( "captcha?md5=$self->{md5}&solve=$self->{sent}",
+		\&_ret_captcha, $self->{md5} );
 	SlideShow->next();
 }
 
