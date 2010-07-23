@@ -301,6 +301,12 @@ sub init
 		$menu->append( $m_popup );
 	}
 
+	{
+		my $m_web = Gtk2::ImageMenuItem->new_from_stock( 'gtk-about' );
+		$m_web->signal_connect( 'activate', \&_sig_about );
+		$menu->append( $m_web );
+	}
+
 	$menu->append( new Gtk2::SeparatorMenuItem );
 
 	{
@@ -342,6 +348,11 @@ sub position_menu
 sub _sig_web
 {
 	Gtk2::show_uri( undef, config->remote );
+}
+
+sub _sig_about
+{
+	Gtk2::show_uri( undef, "http://rsget.pl/tools/gtk-captcha/" );
 }
 
 sub _sig_toggle_popup
