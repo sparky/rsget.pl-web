@@ -283,7 +283,7 @@ sub init
 {
 	$self = {
 		active => FALSE,
-		notify => {},
+		notify => { unused => 1 },
 	};
 	my $icon = $self->{icon} = new_from_pixbuf Gtk2::StatusIcon Pixbuf->hook_gray;
 
@@ -318,7 +318,8 @@ sub init
 	$icon->signal_connect( 'activate', \&SlideShow::toggle );
 	$icon->signal_connect( 'popup-menu', \&_sig_menu );
 
-	Tray->notify( unused => 1 );
+	( $self->{uri_nouser} = config->remote ) =~ s#//[^/]+@#//#;
+
 	Tray->notify( unused => undef );
 }
 
@@ -333,7 +334,7 @@ sub notify
 		return unless exists $notify->{$key};
 		delete $notify->{$key};
 	}
-	my @args = "rsget.pl captcha asker";
+	my @args = "rsget.pl captcha asker: $self->{uri_nouser}";
 	push @args, map "$_: $notify->{$_}", sort keys %$notify;
 	$self->{icon}->set_tooltip( join "\n\t", @args );
 	$0 = join "; ", @args;
