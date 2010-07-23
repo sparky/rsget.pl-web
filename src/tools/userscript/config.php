@@ -179,7 +179,7 @@ var finder = { /* {{{ */
 	page_supported: false,
 	page_location: document.location.href,
 
-	_text_tags: [ "pre", "div", "td", "p", "span", "code", "li" ],
+	_text_tags: [ "pre", "div", "td", "p", "span", "code", "li", "font" ],
 	_text_i: 0,
 	_text_nodes: null,
 	_a_i: 0,
