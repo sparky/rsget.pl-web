@@ -61,10 +61,17 @@ sub init
 			config->$1 = $2;
 		} elsif ( /^--no-($argre)$/o ) {
 			config->$1 = 0;
-		} elsif ( /^--($argre)$/o ) {
+		} elsif ( /^--($argre)$/o and !/^--h(?:elp)?/ ) {
 			config->$1 = 1;
 		} else {
-			croak "'$_' is not a valid argument\n";
+			carp "Error: '$_' is not a valid argument\n"
+				unless /^--?h(elp)?/;
+			print "Recognized options:\n";
+			print "  --$_=[...]\n" foreach sort keys %$allowed;
+			print "\nFor more information try one of:\n";
+			print " $_ http://rsget.pl/tools/gtk-captcha/_ajax\n"
+				foreach "lynx --dump", "links -dump", "elinks --dump";
+			exit 0;
 		}
 	}
 
