@@ -1,0 +1,32 @@
+index:	0
+title:	RapidShare
+desc:	[L:RapidShare] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.com/"</a>
+
+body:	
+	<p>Check <a href="http://rapidshare.com/agb.html" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-07-25</p>
+	<pre># $Id: RapidShare 11701 2010-07-25 13:22:28Z sparky $
+# Link::RapidShare - Link decrypter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: RapidShare
+short: L:RapidShare
+web: "http://rapidshare.com/"
+tos: "http://rapidshare.com/agb.html"
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/users/[A-Z0-9]+}
+slots: max
+status: OK 2010-07-25
+
+start:
+	GET( $-{_uri} );
+
+	my @list = /&lt;a href="(.*?)" target="_blank"&gt;Start/g;
+	ERROR( "no links" ) unless @list;
+
+	LINK( @list );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

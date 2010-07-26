@@ -4,8 +4,8 @@ desc:	[HF] <a href="http://hotfile.com/" rel="nofollow">"http://hotfile.com/"</a
 
 body:	
 	<p>Check <a href="http://hotfile.com/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-13</p>
-	<pre># $Id: HotFile 11668 2010-07-13 14:04:38Z sparky $
+<p>Status: OK 2010-07-23</p>
+	<pre># $Id: HotFile 11696 2010-07-23 19:09:47Z pawelz $
 # Get::HotFile - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,8 @@ web: "http://hotfile.com/"
 tos: "http://hotfile.com/terms-of-service.html"
 uri: qr{hotfile\.com/dl/\d+/[0-9a-f]+/.+}
 uri: qr{pl\.hotfile\.com/dl/\d+/[0-9a-f]+/.+}
-status: OK 2010-07-13
+uri: qr{new\.hotfile\.com/dl/\d+/[0-9a-f]+/.+}
+status: OK 2010-07-23
 
 unify:
 	return "http://hotfile.com/dl/$1"

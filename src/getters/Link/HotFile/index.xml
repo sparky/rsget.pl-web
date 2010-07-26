@@ -1,0 +1,34 @@
+index:	0
+title:	HotFile
+desc:	[L:HotFile] <a href="http://hotfile.com/" rel="nofollow">"http://hotfile.com/"</a>
+
+body:	
+	<p>Check <a href="http://hotfile.com/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-07-24</p>
+	<pre># $Id: HotFile 11703 2010-07-25 13:24:12Z sparky $
+# Link::HotFile - Link decrypter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: HotFile
+short: L:HotFile
+web: "http://hotfile.com/"
+tos: "http://hotfile.com/terms-of-service.html"
+uri: qr{hotfile\.com/list/\d+/[0-9a-f]+}
+uri: qr{pl\.hotfile\.com/list/\d+/[0-9a-f]+}
+uri: qr{new\.hotfile\.com/list/\d+/[0-9a-f]+}
+slots: max
+status: OK 2010-07-24
+
+start:
+	GET( $-{_uri} );
+
+	my @list = /&lt;td .*?&gt;&lt;a href="(.*?)"&gt;/g;
+	ERROR( "no links" ) unless @list;
+
+	LINK( @list );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

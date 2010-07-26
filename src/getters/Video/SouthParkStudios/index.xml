@@ -1,0 +1,50 @@
+index:	0
+title:	SouthParkStudios
+desc:	[V:SouthParkStudios] <a href="http://www.southparkstudios.com/" rel="nofollow">"http://www.southparkstudios.com/"</a>
+
+body:	
+	<p>Status: OK 2010-07-23</p>
+	<pre># $Id: SouthParkStudios 11706 2010-07-25 15:47:22Z sparky $
+# Video::SouthParkStudios - Video getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: SouthParkStudios
+short: V:SouthParkStudios
+web: "http://www.southparkstudios.com/"
+uri: qr{comedycentral\.com/global/feeds/entertainment/media/mediaGenEntertainment\.jhtml\?uri=mgid:cms:item:comedycentral.com:\d+&amp;show=southpark}
+# limit slots bacause rtmp support is very bad
+slots: 3
+status: OK 2010-07-23
+
+pre:
+	my $rtmpopts = " swfUrl=http://media.mtvnservices.com/player/release/?v=4.5.3 swfVfy=1";
+
+start:
+	GET( $-{_uri} );
+
+	my $width = 0;
+	my $bitrate = 0;
+	my ( $size, $file_uri );
+	while ( s#&lt;rendition .*? width="(\d+)" height="(\d+)" .*? bitrate="(\d+)"&gt;\s*&lt;src&gt;(rtmpe://.*?)&lt;/src&gt;\s+&lt;/rendition&gt;## ) {
+		if ( $1 &gt; $width or ( $1 == $width and $3 &gt; $bitrate ) ) {
+			$width = $1;
+			$bitrate = $3;
+			$size = "$1x$2 @ $3kbps";
+			$file_uri = $4;
+		}
+	}
+	ERROR( "file not found (this should never happen)" ) unless $file_uri;
+
+	my $fname = de_ml( $file_uri );
+	$fname =~ s#.*/##;
+
+	INFO( name =&gt; $fname, quality =&gt; $size );
+
+	undef $-{_referer}; # because URI cannot handle rtmp:
+	DOWNLOAD( $file_uri . $rtmpopts );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -1,0 +1,50 @@
+index:	0
+title:	FileServe
+desc:	[FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.com/"</a>
+
+body:	
+	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-07-25</p>
+	<pre># $Id: FileServe 11711 2010-07-25 23:55:20Z pawelz $
+# Get::FileServe - File getter plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FileServe
+short: FSRV
+web: "http://fileserve.com/"
+tos: "http://fileserve.com/terms.php"
+uri: qr{fileserve\.com/file/[A-Za-z0-9]+(/.*)?}
+cookie: fsrv
+status: OK 2010-07-25
+
+unify:
+	s/#.*//;
+	return "http://fileserve.com/files/$1"
+		if m{fileserve\.com/files/([A-Za-z0-9]+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" ) if m#&lt;span class="fail_info"&gt;\s*(.*?)\s*&lt;/span&gt;#s;
+
+	! m#&lt;h1&gt;(.+?)&lt;br/&gt;&lt;/h1&gt;#;
+	my $fname = $1;
+	! m#&lt;span&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #;
+	INFO( name =&gt; $fname, asize =&gt; $1 );
+
+	CLICK( $-{_uri}, post =&gt; { downloadLink =&gt; "wait" } );
+
+	WAIT( 30, "waiting for download link" );
+
+	CLICK( $-{_uri}, post =&gt; { downloadLink =&gt; "show" } );
+
+	CLICK_DOWNLOAD( $-{_uri}, post =&gt; { download =&gt; "normal" } );
+
+	RESTART( $1, "free limit reached" )
+		if m#You need to wait (\d+) seconds to start another download\.#;
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

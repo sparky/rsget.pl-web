@@ -4,8 +4,8 @@ desc:	[TB] <a href="http://turbobit.net/" rel="nofollow">"http://turbobit.net/"<
 
 body:	
 	<p>Check <a href="http://turbobit.net/rules" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-13</p>
-	<pre># $Id: TurboBit 11668 2010-07-13 14:04:38Z sparky $
+<p>Status: OK 2010-07-26</p>
+	<pre># $Id: TurboBit 11708 2010-07-25 22:58:54Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -19,15 +19,15 @@ name: TurboBit
 short: TB
 web: "http://turbobit.net/"
 tos: "http://turbobit.net/rules"
-uri: qr{turbobit\.net/[a-z0-9]+\.html}
-uri: qr{turbobit\.ru/[a-z0-9]+\.html}
+uri: qr{turbobit\.net/[a-z0-9]+(/.+)?\.html}
+uri: qr{turbobit\.ru/[a-z0-9]+(/.+)?\.html}
 cookie: tb
 slots: max
-status: OK 2010-07-13
+status: OK 2010-07-26
 
 unify:
-	return "http://turbobit.net/$1"
-		if m{turbobit\.[a-z]{2,3}/([a-z0-9]+\.html)};
+	return "http://turbobit.net/$1.html"
+		if m{turbobit\.[a-z]{2,3}/([a-z0-9]+)};
 
 start:
 	GET( $-{_uri} );
@@ -41,7 +41,7 @@ start:
 	( my $size = $1 ) =~ tr/,/./;
 	INFO( name =&gt; $name, asize =&gt; $size );
 
-	! m#&lt;td&gt;&lt;a class="free" href="(.*?)" onclick#;
+	! m#&lt;td&gt;&lt;a class="free" href="(.*?)" #;
 	CLICK( $1 );
 
 stage_captcha:

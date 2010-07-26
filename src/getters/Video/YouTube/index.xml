@@ -3,8 +3,8 @@ title:	YouTube
 desc:	[V:YouTube] <a href="http://www.youtube.com/" rel="nofollow">"http://www.youtube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-07-12</p>
-	<pre># $Id: YouTube 11662 2010-07-13 01:31:48Z sparky $
+	<p>Status: OK 2010-07-22</p>
+	<pre># $Id: YouTube 11694 2010-07-22 17:22:45Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,7 +16,7 @@ short: V:YouTube
 web: "http://www.youtube.com/"
 uri: qr{youtube\.com/watch\?v=.*}
 slots: max
-status: OK 2010-07-12
+status: OK 2010-07-22
 
 unify:
 	s/#.*//;
@@ -35,7 +35,7 @@ pre:
 	{
 		/"fmt_map"\s*:\s*"(.*?)"/ or m{&amp;fmt_map=(\S+?)&amp;}
 			or return undef;
-		my %fmts = map { m{(\d+)/}; $1 =&gt; $_ } split ",", uri_unescape( $1 );
+		my %fmts = map { m{(\d+)\\?/}; $1 =&gt; $_ } split ",", uri_unescape( $1 );
 
 		foreach my $f ( @fmt ) {
 			return $f
@@ -83,8 +83,12 @@ stage_got_format:
 	my $fname = $name . "." . $fmt-&gt;[1];
 	INFO( name =&gt; $fname, fmt =&gt; $fmt-&gt;[0], quality =&gt; $fmt-&gt;[2] );
 
-	DOWNLOAD( "http://youtube.com/get_video?video_id=$id&amp;t=$t$fmtstr",
-		fname =&gt; $fname );
+	/"fmt_url_map": "(.*?)"/;
+	my %uri = map /(\d+)\|(.*)/, split /,/, $1;
+	my $uri = $uri{ $fmt-&gt;[0] };
+	$uri =~ s#\\/#/#g;
+
+	DOWNLOAD( uri_unescape( $uri ), fname =&gt; $fname );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

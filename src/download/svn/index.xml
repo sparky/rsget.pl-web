@@ -11,8 +11,61 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 18</p>
+	<p>Commits: 42</p>
 	<dl>
+		<dt id="r11711"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11711&amp;view=rev">r11711</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-25 23:55:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- catch "You will neet to wait ... seconds" error</pre></dd>
+		<dt id="r11710"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11710&amp;view=rev">r11710</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 23:30:45 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- allow uris without www.
+- added tos:
+- non-greedy filename match</pre></dd>
+		<dt id="r11709"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11709&amp;view=rev">r11709</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-25 23:25:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- new plugin</pre></dd>
+		<dt id="r11708"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11708&amp;view=rev">r11708</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 22:58:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboBit">Get/TurboBit</a> (<a href="/getters/Get/TurboBit/">getter</a>)</li></ul><pre>- updated, fixes RSGETPL-23</pre></dd>
+		<dt id="r11707"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11707&amp;view=rev">r11707</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-25 21:06:38 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboBit">Get/TurboBit</a> (<a href="/getters/Get/TurboBit/">getter</a>)</li></ul><pre>- TurboBit uris may contain filename.</pre></dd>
+		<dt id="r11706"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11706&amp;view=rev">r11706</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 15:47:22 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/SouthParkStudios">Video/SouthParkStudios</a> (<a href="/getters/Video/SouthParkStudios/">getter</a>)</li></ul><pre>- finished, use rtmp magic to get swf information
+- WARNING: rtmp may render rsget.pl unresponsive, use at your own risk</pre></dd>
+		<dt id="r11705"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11705&amp;view=rev">r11705</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 15:45:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/SouthParkStudios">Link/SouthParkStudios</a> (<a href="/getters/Link/SouthParkStudios/">getter</a>)</li></ul><pre>- new, extracts movie parts from each episode</pre></dd>
+		<dt id="r11704"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11704&amp;view=rev">r11704</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 13:28:15 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- return error if link() list is empty</pre></dd>
+		<dt id="r11703"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11703&amp;view=rev">r11703</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 13:24:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/HotFile">Link/HotFile</a> (<a href="/getters/Link/HotFile/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/SharingMatrix">Link/SharingMatrix</a> (<a href="/getters/Link/SharingMatrix/">getter</a>)</li></ul><pre>- return error if no links are found</pre></dd>
+		<dt id="r11702"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11702&amp;view=rev">r11702</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 13:22:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- added TOS</pre></dd>
+		<dt id="r11701"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11701&amp;view=rev">r11701</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-25 13:22:28 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/RapidShare">Link/RapidShare</a> (<a href="/getters/Link/RapidShare/">getter</a>)</li></ul><pre>- new, reads users folder</pre></dd>
+		<dt id="r11700"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11700&amp;view=rev">r11700</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-25 00:22:09 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/SharingMatrix">Link/SharingMatrix</a> (<a href="/getters/Link/SharingMatrix/">getter</a>)</li></ul><pre>- new plugin</pre></dd>
+		<dt id="r11699"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11699&amp;view=rev">r11699</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-24 18:16:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FreakShare">Get/FreakShare</a> (<a href="/getters/Get/FreakShare/">getter</a>)</li></ul><pre>- force english, fixes RSGETPL-21</pre></dd>
+		<dt id="r11698"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11698&amp;view=rev">r11698</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-24 01:07:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/HotFile">Link/HotFile</a> (<a href="/getters/Link/HotFile/">getter</a>)</li></ul><pre>- new, fixes RSGETPL-20</pre></dd>
+		<dt id="r11697"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11697&amp;view=rev">r11697</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-23 21:14:58 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/SouthParkStudios">Video/SouthParkStudios</a> (<a href="/getters/Video/SouthParkStudios/">getter</a>)</li></ul><pre>- new, unfinished and requires patch to curl which I haven't even sent
+  upstream yet</pre></dd>
+		<dt id="r11696"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11696&amp;view=rev">r11696</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-23 19:09:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/HotFile">Get/HotFile</a> (<a href="/getters/Get/HotFile/">getter</a>)</li></ul><pre>- new type of HF uris (http://new.hotfile.com/...)
+- updated status</pre></dd>
+		<dt id="r11695"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11695&amp;view=rev">r11695</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-23 16:59:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- allow setting arbitrary options in curl</pre></dd>
+		<dt id="r11694"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11694&amp;view=rev">r11694</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-22 17:22:45 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- forgot to remove diagnostic warning</pre></dd>
+		<dt id="r11693"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11693&amp;view=rev">r11693</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-22 17:08:48 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- updated, should fix RSGETPL-17</pre></dd>
+		<dt id="r11692"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11692&amp;view=rev">r11692</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-21 21:41:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- "an HTML" is more correct than "a HTML"</pre></dd>
+		<dt id="r11691"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11691&amp;view=rev">r11691</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-21 21:40:50 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- compile all plugins only with debug &gt;= 3</pre></dd>
+		<dt id="r11690"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11690&amp;view=rev">r11690</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-21 18:58:59 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- record download problem if verbose &gt;= 4</pre></dd>
+		<dt id="r11689"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11689&amp;view=rev">r11689</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-21 18:57:59 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- added clone() method</pre></dd>
+		<dt id="r11687"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11687&amp;view=rev">r11687</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-20 19:04:05 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li></ul><pre>- added no_rsget class to &lt;body&gt;</pre></dd>
 		<dt id="r11686"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11686&amp;view=rev">r11686</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-20 16:49:54 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- added http_outdir option</pre></dd>
 		<dt id="r11685"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11685&amp;view=rev">r11685</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-20 13:23:41 UTC</em></dt>
