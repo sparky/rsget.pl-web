@@ -5,7 +5,7 @@ desc:	Config file example.
 body:
 <h2>README.config</h2>
 <pre class="vim"><span class="Comment"># Example config file</span>
-<span class="Comment"># $Id: README.config 11622 2010-06-28 17:11:04Z sparky $</span>
+<span class="Comment"># $Id: README.config 11725 2010-07-28 15:21:30Z pawelz $</span>
 <span class="Comment">#</span>
 <span class="Comment"># Copy it to $HOME/.rsget.pl/config and make necessary adjustments.</span>
 
@@ -77,7 +77,7 @@ outdir = done
 <span class="Comment">#  $(size) - file size in bytes</span>
 <span class="Comment"># All those variables are automatically quoted, so you _must__not_ quote them.</span>
 <span class="Comment"># Examples:</span>
-<span class="Comment"># * send nice dbus org.freedesktop.notifications message (some notification</span>
+<span class="Comment"># * send nice dbus org.freedesktop.Notifications message (some notification</span>
 <span class="Comment">#   deamons may not support those html tags):</span>
 <span class="Comment">#postdownload = notify-send &quot;rsget.pl: &quot;$(name) &quot;Finished downloading &lt;a href='$PWD/&quot;$(file)&quot;'&gt;&quot;$(name)&quot;&lt;/a&gt; (size: &lt;b&gt;&quot;$(size)&quot;B&lt;/b&gt;) from &lt;tt&gt;&quot;$(source)&quot;&lt;/tt&gt;&quot;</span>
 <span class="Comment">#</span>
@@ -91,6 +91,36 @@ outdir = done
 <span class="Comment"># * execute your own script which does anything you want:</span>
 <span class="Comment">#postdownload = ${HOME}/bin/postdownload $(file) $(source) || notify-send &quot;rsget.pl: &quot;$(name) &quot;postdownload failed&quot;</span>
 
+<span class="Comment"># Execute shell command after successfully adding new link directly to the list</span>
+<span class="Comment"># (direct list manipulation only, http interface doesn't trigger it).</span>
+<span class="Comment"># Recognized special variables:</span>
+<span class="Comment">#  $(uri) - original URI</span>
+<span class="Comment">#  $(newuri) - unified URI</span>
+<span class="Comment">#  $(getter) - name of the plugin</span>
+<span class="Comment"># </span>
+<span class="Comment"># * send dbus org.freedesktop.Notifications message</span>
+<span class="Comment">#list_link_new = notify-send &quot;rsget.pl: &quot; &quot;Added &quot;$(uri)&quot; as &quot;$(newuri)&quot; for &quot;$(getter)</span>
+
+<span class="Comment"># Execute shell command if link wasn't recognized.</span>
+<span class="Comment"># (no getter found that supports it)</span>
+<span class="Comment"># Recognized special variables:</span>
+<span class="Comment">#  $(uri) - original URI</span>
+<span class="Comment">#</span>
+<span class="Comment"># * send dbus org.freedesktop.Notifications message</span>
+<span class="Comment">#list_link_failed = notify-send &quot;rsget.pl: &quot; &quot;Link &quot;$(uri)&quot; failed&quot;</span>
+
+<span class="Comment"># Execute shell command if download fails.</span>
+<span class="Comment"># (download returns an error)</span>
+<span class="Comment"># Recognized special variables:</span>
+<span class="Comment">#  $(uri) - URI that was used</span>
+<span class="Comment">#  $(error) - error message</span>
+<span class="Comment">#  $(getter) - plugin used</span>
+<span class="Comment">#  $(interface) - interface used, if any</span>
+<span class="Comment">#  $(command) - what rsget.pl was trying to do: check or get</span>
+<span class="Comment">#</span>
+<span class="Comment"># * send dbus org.freedesktop.Notifications message</span>
+<span class="Comment">#download_fail = notify-send &quot;rsget.pl: &quot; $(uri)&quot; download failed: &quot;$(error)</span>
+
 <span class="Comment"># update automatically from SVN (possibly dangerous, but very convenient):</span>
 <span class="Comment">#use_svn = update</span>
 
@@ -101,4 +131,5 @@ outdir = done
 <span class="Comment">#verbose = 2</span>
 
 <span class="Comment"># save captcha images (useful for debugging) in ~/.rsget.pl/captcha directory:</span>
-<span class="Comment">#captcha_save_results = ${RSGET_DIR}/captcha</span></pre>
+<span class="Comment">#captcha_save_results = ${RSGET_DIR}/captcha</span>
+</pre>
