@@ -5,7 +5,7 @@ desc:	[GS] <a href="http://gigasize.com/" rel="nofollow">"http://gigasize.com/"<
 body:	
 	<p>Check <a href="http://www.gigasize.com/page.php?p=terms" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-14</p>
-	<pre># $Id: GigaSize 11673 2010-07-14 16:55:15Z sparky $
+	<pre># $Id: GigaSize 11716 2010-07-27 20:18:28Z sparky $
 # Get::GigaSize - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -25,7 +25,7 @@ start:
 
 	ERROR( "file not found" ) if /The file\s+has been deleted/;
 
-	! m{&lt;strong&gt;Name&lt;/strong&gt;:\s*&lt;b&gt;(.*?)&lt;/b&gt;&lt;/p&gt;\s*&lt;p&gt;Size:\s*&lt;span&gt;($STDSIZE)&lt;/span&gt;};
+	! m{&lt;strong&gt;Name&lt;/strong&gt;:\s*&lt;b&gt;(.*?)&lt;/b&gt;&lt;/p&gt;\s*&lt;p&gt;Size:\s*&lt;span&gt;($STDSIZE)&lt;/span&gt;}o;
 	my ( $name, $size ) = ( $1, $2 );
 	$name =~ s/\.\.\.$/\0/;
 	INFO( iname =&gt; $name, asize =&gt; $size );

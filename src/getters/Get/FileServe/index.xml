@@ -5,7 +5,7 @@ desc:	[FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.co
 body:	
 	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-25</p>
-	<pre># $Id: FileServe 11711 2010-07-25 23:55:20Z pawelz $
+	<pre># $Id: FileServe 11716 2010-07-27 20:18:28Z sparky $
 # Get::FileServe - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -32,7 +32,7 @@ start:
 
 	! m#&lt;h1&gt;(.+?)&lt;br/&gt;&lt;/h1&gt;#;
 	my $fname = $1;
-	! m#&lt;span&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #;
+	! m#&lt;span&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #o;
 	INFO( name =&gt; $fname, asize =&gt; $1 );
 
 	CLICK( $-{_uri}, post =&gt; { downloadLink =&gt; "wait" } );

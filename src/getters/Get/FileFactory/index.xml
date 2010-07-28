@@ -5,7 +5,7 @@ desc:	[FF] <a href="http://filefactory.com/" rel="nofollow">"http://filefactory.
 body:	
 	<p>Check <a href="http://filefactory.com/legal/terms.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
-	<pre># $Id: FileFactory 11657 2010-07-12 01:59:46Z sparky $
+	<pre># $Id: FileFactory 11716 2010-07-27 20:18:28Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -29,7 +29,7 @@ start:
 	ERROR( "file not found" ) if /File Not Found|This file has been deleted/;
 	! m{&lt;title&gt;(.*?) - download now for free};
 	my $name = $1;
-	! m{&lt;div id="info" class="metadata"&gt;\s*&lt;span&gt;($STDSIZE) file uploaded}s;
+	! m{&lt;div id="info" class="metadata"&gt;\s*&lt;span&gt;($STDSIZE) file uploaded}so;
 	my $size = $1;
 	INFO( name =&gt; $name, asize =&gt; $size );
 	

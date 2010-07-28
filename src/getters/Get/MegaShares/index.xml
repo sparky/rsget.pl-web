@@ -5,7 +5,7 @@ desc:	[MS] <a href="http://megashares.com/" rel="nofollow">"http://megashares.co
 body:	
 	<p>Check <a href="http://megashares.com/tos.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: MegaShares 11668 2010-07-13 14:04:38Z sparky $
+	<pre># $Id: MegaShares 11716 2010-07-27 20:18:28Z sparky $
 # Get::MegaShares - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -35,7 +35,7 @@ start:
 	my $fnf = join "|",
 		"Link was removed", "Invalid link", "Could not download file";
 	ERROR( "file not found" )
-		if m{&lt;dd class="red"&gt;([^&lt;]|&lt;br&gt;)*($fnf)([^&lt;]|&lt;br&gt;)*&lt;/dd&gt;};
+		if m{&lt;dd class="red"&gt;([^&lt;]|&lt;br&gt;)*($fnf)([^&lt;]|&lt;br&gt;)*&lt;/dd&gt;}o;
 	ERROR( "file not found" )
 		if m{&lt;dd class="red"&gt;Link has been deleted};
 	MULTI()

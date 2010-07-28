@@ -5,7 +5,7 @@ desc:	[NL] <a href="http://netload.in/" rel="nofollow">"http://netload.in/"</a>
 body:	
 	<p>Check <a href="http://netload.in/index.php?id=13" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: NetLoad 11668 2010-07-13 14:04:38Z sparky $
+	<pre># $Id: NetLoad 11716 2010-07-27 20:18:28Z sparky $
 # Get::NetLoad - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -33,7 +33,7 @@ stage_first:
 	ERROR( "file not found or something" )
 		if /&gt;Code: ER_NFF_/;
 
-	m#&lt;div class="dl_first_filename"&gt;\s*(.+?)&lt;span.*?&gt;, ($STDSIZE)&lt;/span&gt;&lt;/div&gt;#s;
+	m#&lt;div class="dl_first_filename"&gt;\s*(.+?)&lt;span.*?&gt;, ($STDSIZE)&lt;/span&gt;&lt;/div&gt;#so;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	RESTART( 60, "Not prepared" )

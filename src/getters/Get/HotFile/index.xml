@@ -5,7 +5,7 @@ desc:	[HF] <a href="http://hotfile.com/" rel="nofollow">"http://hotfile.com/"</a
 body:	
 	<p>Check <a href="http://hotfile.com/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-23</p>
-	<pre># $Id: HotFile 11696 2010-07-23 19:09:47Z pawelz $
+	<pre># $Id: HotFile 11716 2010-07-27 20:18:28Z sparky $
 # Get::HotFile - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -31,7 +31,7 @@ start:
 	ERROR( "file not found" ) unless length $_;
 	ERROR( "file not found" ) if /This file is either removed|File is removed/;
 
-	! m{&lt;strong&gt;Downloading:&lt;/strong&gt; (.*?) &lt;span&gt;\|&lt;/span&gt; &lt;strong&gt;($STDSIZE)&lt;/strong&gt;};
+	! m{&lt;strong&gt;Downloading:&lt;/strong&gt; (.*?) &lt;span&gt;\|&lt;/span&gt; &lt;strong&gt;($STDSIZE)&lt;/strong&gt;}o;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	MULTI() if /You are currently downloading/;

@@ -5,7 +5,7 @@ desc:	[ZipS] <a href="http://www.zippyshare.com/" rel="nofollow">"http://www.zip
 body:	
 	<p>Check <a href="http://www.zippyshare.com/terms.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: ZippyShare 11664 2010-07-13 11:37:30Z sparky $
+	<pre># $Id: ZippyShare 11716 2010-07-27 20:18:28Z sparky $
 # Get::ZippyShare - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -31,7 +31,7 @@ start:
 
 	! m#&lt;font.*?&gt;Name:\s*&lt;/font&gt;\s*&lt;font.*?&gt;(.+?)&lt;/font&gt;&lt;#;
 	my $name = $1;
-	! m#&lt;font.*?&gt;Size:\s*&lt;/font&gt;\s*&lt;font.*?&gt;($STDSIZE)&lt;/font&gt;&lt;#;
+	! m#&lt;font.*?&gt;Size:\s*&lt;/font&gt;\s*&lt;font.*?&gt;($STDSIZE)&lt;/font&gt;&lt;#o;
 	INFO( name =&gt; $name, asize =&gt; $1 );
 
 	! m#var ziptime = (\d+);#s;

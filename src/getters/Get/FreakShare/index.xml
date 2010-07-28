@@ -5,7 +5,7 @@ desc:	[FS] <a href="http://freakshare.net/" rel="nofollow">"http://freakshare.ne
 body:	
 	<p>Check <a href="http://freakshare.net/terms-of-service.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: FreakShare 11699 2010-07-24 18:16:40Z sparky $
+	<pre># $Id: FreakShare 11716 2010-07-27 20:18:28Z sparky $
 # Get::FreakShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -30,7 +30,7 @@ start:
 	RESTART( - irand( 60, 300 ), "free limit reached" )
 		if /Sorry, your Traffic is used up for today/;
 
-	! m#&lt;h1 class="box_heading" style="text-align:center;"&gt;(.*?) - ($STDSIZE)yte&lt;/h1&gt;#;
+	! m#&lt;h1 class="box_heading" style="text-align:center;"&gt;(.*?) - ($STDSIZE)yte&lt;/h1&gt;#o;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	! $-{form} = $self-&gt;form( match =&gt; { body =&gt; qr/"Free Download"/ } );

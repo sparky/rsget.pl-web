@@ -5,7 +5,7 @@ desc:	[ES] <a href="http://easy-share.com/" rel="nofollow">"http://easy-share.co
 body:	
 	<p>Check <a href="http://easy-share.com/tos.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: BROKEN 2010-07-14</p>
-	<pre># $Id: EasyShare 11674 2010-07-14 16:57:55Z sparky $
+	<pre># $Id: EasyShare 11716 2010-07-27 20:18:28Z sparky $
 # Get::EasyShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -28,7 +28,7 @@ start:
 	ERROR( "file not found" ) if /File not found/;
 	ERROR( "file removed" ) if /Requested file is deleted/;
 
-	! m{&lt;p class="pt15 pb0 px18 txtgray family2 c"&gt;You are requesting\s+(.*?) \(($STDSIZE)\)&lt;/p&gt;};
+	! m{&lt;p class="pt15 pb0 px18 txtgray family2 c"&gt;You are requesting\s+(.*?) \(($STDSIZE)\)&lt;/p&gt;}o;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	RESTART( - irand( 60, 300 ), "free limit reached" )

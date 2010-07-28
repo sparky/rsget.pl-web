@@ -5,7 +5,7 @@ desc:	[UT] <a href="http://uploaded.to/" rel="nofollow">"http://uploaded.to/"</a
 body:	
 	<p>Check <a href="http://uploaded.to/agb" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: UploadedTo 11668 2010-07-13 14:04:38Z sparky $
+	<pre># $Id: UploadedTo 11716 2010-07-27 20:18:28Z sparky $
 # Get::UploadedTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -44,7 +44,7 @@ start:
 		! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filetype: &amp;nbsp;&lt;/td&gt;&lt;td&gt;(.*?)&lt;/td&gt;&lt;/tr&gt;};
 		$name .= $1;
 	}
-	! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filesize: &amp;nbsp;&lt;/td&gt;&lt;td&gt;\s*($STDSIZE)\s*&lt;/td&gt;&lt;/tr&gt;};
+	! m{&lt;tr&gt;&lt;td style="padding-left:4px;"&gt;Filesize: &amp;nbsp;&lt;/td&gt;&lt;td&gt;\s*($STDSIZE)\s*&lt;/td&gt;&lt;/tr&gt;}o;
 	INFO( name =&gt; $name, asize =&gt; $1 );
 
 	! $-{form} = $self-&gt;form( name =&gt; "download_form" );

@@ -4,7 +4,7 @@ desc:	[ST] <a href="http://storage.to/" rel="nofollow">"http://storage.to/"</a>
 
 body:	
 	<p>Status: OK 2010-07-13</p>
-	<pre># $Id: StorageTo 11665 2010-07-13 11:57:38Z sparky $
+	<pre># $Id: StorageTo 11716 2010-07-27 20:18:28Z sparky $
 # Get::StorageTo - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -21,7 +21,7 @@ start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found" ) if /File not found\./;
-	! m{&lt;span class="orange"&gt;.*?:&lt;/span&gt; (.*?) &lt;span class="light"&gt;\(($STDSIZE)\)&lt;/span&gt;};
+	! m{&lt;span class="orange"&gt;.*?:&lt;/span&gt; (.*?) &lt;span class="light"&gt;\(($STDSIZE)\)&lt;/span&gt;}o;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	! /onclick='javascript:startcountdown\("(.*?)",\s*"(?:.*?)",\s*"(.*?)"\);'/;

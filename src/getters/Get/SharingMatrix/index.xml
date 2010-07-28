@@ -5,7 +5,7 @@ desc:	[SM] <a href="http://sharingmatrix.com/" rel="nofollow">"http://sharingmat
 body:	
 	<p>Check <a href="http://sharingmatrix.com/user_agreement" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: SharingMatrix 11668 2010-07-13 14:04:38Z sparky $
+	<pre># $Id: SharingMatrix 11717 2010-07-28 12:42:22Z sparky $
 # Get::SharingMatrix - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -35,7 +35,8 @@ start:
 			if /Your daily download limit is over/;
 	}
 
-	if ( /You are already downloading file/ ) {
+	if ( /You are already downloading file/ or
+			/free users may only download 1 file at a time/ ) {
 		! m#link_name = '(.*?)';#;
 		my $name = $1;
 		! m#fsize = '(.*?)';#;

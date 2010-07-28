@@ -5,7 +5,7 @@ desc:	[RK] <a href="http://www.rapidshark.pl/" rel="nofollow">"http://www.rapids
 body:	
 	<p>Check <a href="http://www.rapidshark.pl/tos.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: BROKEN 2010-07-13</p>
-	<pre># $Id: RapidShark 11666 2010-07-13 11:58:44Z sparky $
+	<pre># $Id: RapidShark 11716 2010-07-27 20:18:28Z sparky $
 # Get::RapidShark - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -34,7 +34,7 @@ start:
 	ERROR( "file not found" )
 		if m{&lt;font style="font-size:12px;"&gt;Probujesz otworzyć adres &lt;font color="red"&gt;.*//&lt;/font&gt; \(\)&lt;/font&gt;};
 
-	! m{&lt;font style="font-size:12px;"&gt;Probujesz otworzyć adres &lt;font color="red"&gt;.*/(.*?)&lt;/font&gt; \(($STDSIZE)\)&lt;/font&gt;};
+	! m{&lt;font style="font-size:12px;"&gt;Probujesz otworzyć adres &lt;font color="red"&gt;.*/(.*?)&lt;/font&gt; \(($STDSIZE)\)&lt;/font&gt;}o;
 	INFO( name =&gt; $1, asize =&gt; $2 );
 
 	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/"method_free"/ } );

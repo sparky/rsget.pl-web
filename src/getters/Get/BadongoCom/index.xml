@@ -4,7 +4,7 @@ desc:	[BC] <a href="http://www.badongo.com/" rel="nofollow">"http://www.badongo.
 
 body:	
 	<p>Status: BROKEN 2010-06-04</p>
-	<pre># $Id: BadongoCom 11520 2010-06-04 16:01:05Z sparky $
+	<pre># $Id: BadongoCom 11716 2010-07-27 20:18:28Z sparky $
 # Get::BadongoCom - File, audio, video and picture getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -39,7 +39,7 @@ start:
 		my $part = $1;
 		! m{&lt;div class="finfo"&gt;(.*?)&lt;/div&gt;};
 		my $name = $1;
-		! m{&lt;div class="ffileinfo"&gt;Views : \d+ \| Filesize : ($STDSIZE)&lt;/div&gt;};
+		! m{&lt;div class="ffileinfo"&gt;Views : \d+ \| Filesize : ($STDSIZE)&lt;/div&gt;}o;
 		my $size = $1;
 		if ( $part ) {
 			INFO( name =&gt; "$name.$part", quality =&gt; "part of $1" );
