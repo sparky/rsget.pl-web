@@ -4,8 +4,8 @@ desc:	[przeklej.pl] <a href="http://www.przeklej.pl/" rel="nofollow">"http://www
 
 body:	
 	<p>Check <a href="http://www.przeklej.pl/regulamin" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-14</p>
-	<pre># $Id: PrzeklejPL 11716 2010-07-27 20:18:28Z sparky $
+<p>Status: OK 2010-07-30</p>
+	<pre># $Id: PrzeklejPL 11729 2010-07-29 23:20:49Z sparky $
 # Get::PrzeklejPL - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -16,9 +16,13 @@ name: PrzeklejPL
 short: przeklej.pl
 web: "http://www.przeklej.pl/"
 tos: "http://www.przeklej.pl/regulamin"
-uri: qr{przeklej\.pl/plik/}
+uri: qr{przeklej\.pl/(?:plik|d)/}
 slots: max
-status: OK 2010-07-14
+status: OK 2010-07-30
+
+unify:
+	return "http://przeklej.pl/$1/$2"
+		if m{/(plik|d)/(.+)};
 
 start:
 	GET( $-{_uri} );
@@ -35,6 +39,9 @@ start:
 	INFO( ainame =&gt; $name, asize =&gt; $size );
 
 	CLICK_DOWNLOAD( de_ml( $file_uri ) );
+
+	ERROR( "not allowed: file larger than 50MB" )
+		if /&lt;strong&gt;Pliki większe niż 50MB&lt;\/strong&gt; możesz pobrać, jeżeli jesteś zalogowany./;
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

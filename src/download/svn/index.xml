@@ -11,8 +11,23 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 54</p>
+	<p>Commits: 61</p>
 	<dl>
+		<dt id="r11732"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11732&amp;view=rev">r11732</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-30 15:04:53 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- it actually does work, you just have to find some active links
+  (that would be a miracle)</pre></dd>
+		<dt id="r11731"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11731&amp;view=rev">r11731</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-30 14:26:53 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SuperFastFile">Get/SuperFastFile</a></li></ul><pre>- service is completely gone</pre></dd>
+		<dt id="r11730"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11730&amp;view=rev">r11730</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-30 14:26:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/BigAndFree">Get/BigAndFree</a></li></ul><pre>- website is gone</pre></dd>
+		<dt id="r11729"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11729&amp;view=rev">r11729</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-29 23:20:49 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/PrzeklejPL">Get/PrzeklejPL</a> (<a href="/getters/Get/PrzeklejPL/">getter</a>)</li></ul><pre>- use common-style error message, "not allowed: file larger than 50MB"</pre></dd>
+		<dt id="r11728"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11728&amp;view=rev">r11728</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-29 20:19:29 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/PrzeklejPL">Get/PrzeklejPL</a> (<a href="/getters/Get/PrzeklejPL/">getter</a>)</li></ul><pre>- no need to handle www. prefix on plugin level. It is handled by rsget.pl core.</pre></dd>
+		<dt id="r11727"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11727&amp;view=rev">r11727</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-29 20:16:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/PrzeklejPL">Get/PrzeklejPL</a> (<a href="/getters/Get/PrzeklejPL/">getter</a>)</li></ul><pre>- handle 'files &gt; 50MB' error</pre></dd>
+		<dt id="r11726"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11726&amp;view=rev">r11726</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-29 20:14:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/PrzeklejPL">Get/PrzeklejPL</a> (<a href="/getters/Get/PrzeklejPL/">getter</a>)</li></ul><pre>- more url schemas: www. prefix, and przeklej.pl/d/</pre></dd>
 		<dt id="r11725"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11725&amp;view=rev">r11725</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-07-28 15:21:30 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/README.config">README.config</a></li></ul><pre>- it is org.freedesktop.Notifications (note upper case N)</pre></dd>
 		<dt id="r11724"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11724&amp;view=rev">r11724</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-28 14:29:12 UTC</em></dt>
