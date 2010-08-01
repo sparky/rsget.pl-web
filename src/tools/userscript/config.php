@@ -101,6 +101,7 @@ var supported2 = {
 	"protectlinks.com":	1,
 	"przeklej.pl":	1,
 	"rapidshare.com":	1,
+	"rapidshare.de":	1,
 	"rapidshark.pl":	1,
 	"redtube.com":	2,
 	"rsprotect.com":	1,
