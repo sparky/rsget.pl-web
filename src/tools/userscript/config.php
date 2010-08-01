@@ -137,8 +137,10 @@ var supported2 = {
 
 var supported3 = {
 	"d01.megashares.com":	1,
+	"rus.tv.delfi.ee":	2,
 	"tv.delfi.ee":	2,
 	"video.banzaj.pl":	2,
+	"video.delfi.ee":	2,
 	"video.google.com":	2,
 	"video.interia.pl":	2
 };
