@@ -28,7 +28,7 @@ setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 // ==UserScript==
 // @name		rsget.pl
 // @author		Przemysław Iskra <sparky@pld-linux.org>
-// @version		2010-07-31
+// @version		2010-08-02
 // @namespace	http://rsget.pl/
 // @description	Quickly add links to rsget.pl http interface (you must enable it first by setting http-port).
 // @include		http://*/*
