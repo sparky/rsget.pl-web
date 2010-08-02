@@ -3,8 +3,8 @@ title:	Delfi
 desc:	[V:Delfi] <a href="http://tv.delfi.ee/" rel="nofollow">"http://tv.delfi.ee/"</a>
 
 body:	
-	<p>Status: OK 2010-07-13</p>
-	<pre># $Id: Delfi 11662 2010-07-13 01:31:48Z sparky $
+	<p>Status: OK 2010-08-01</p>
+	<pre># $Id: Delfi 11746 2010-08-02 07:40:17Z pawelz $
 # Video::Delfi - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -14,14 +14,19 @@ body:
 name: Delfi
 short: V:Delfi
 web: "http://tv.delfi.ee/"
-uri: qr{tv\.delfi\.ee/video/[a-zA-Z0-9]+}
+uri: qr{(?:rus\.)?tv\.delfi\.ee/video/[a-zA-Z0-9]+}
+uri: qr{video\.delfi\.ee/(?:ru/)?video/[a-zA-Z0-9]+}
 slots: max
-status: OK 2010-07-13
+status: OK 2010-08-01
+
+unify:
+	return "http://$1.delfi.ee/video/$2"
+		if m{([^/]+)\.delfi\.ee/(?:ru/)?video/([a-zA-Z0-9]+)};
 
 start:
 	GET( $-{_uri} );
 
-	! m{&lt;title&gt;DELFI TV &amp;#62; Video &amp;#62; (.*?)&lt;/title&gt;};
+	! m{&lt;title&gt;(?:DELFI TV &amp;#62; (?:Video|Видео) &amp;#62; )?(.*?)&lt;/title&gt;};
 	my $fname = de_ml( $1 );
 	$fname =~ s{/}{_}g;
 	$fname .= ".flv";

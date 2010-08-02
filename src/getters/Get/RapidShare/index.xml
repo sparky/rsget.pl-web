@@ -5,7 +5,7 @@ desc:	[RS] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.co
 body:	
 	<p>Check <a href="http://rapidshare.com/agb.html" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: RapidShare 11702 2010-07-25 13:22:47Z sparky $
+	<pre># $Id: RapidShare 11745 2010-08-02 07:23:08Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,12 +17,13 @@ short: RS
 web: "http://rapidshare.com/"
 tos: "http://rapidshare.com/agb.html"
 uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/files/\d+/.+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.de/files/\d+/.+}
 status: OK 2010-07-13
 
 unify:
 	s/#.*//;
 	return "http://rapidshare.com/files/$1"
-		if m{rapidshare\.com/files/(\d+/.+)};
+		if m{rapidshare\.(?:com|de)/files/(\d+/.+)};
 
 pre:
 	my $match;

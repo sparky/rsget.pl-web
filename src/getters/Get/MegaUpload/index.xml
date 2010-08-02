@@ -5,7 +5,7 @@ desc:	[MU] <a href="http://megaupload.com/" rel="nofollow">"http://megaupload.co
 body:	
 	<p>Check <a href="http://megaupload.com/?c=terms" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
-	<pre># $Id: MegaUpload 11657 2010-07-12 01:59:46Z sparky $
+	<pre># $Id: MegaUpload 11742 2010-08-01 16:39:18Z pawelz $
 # Get::MegaUpload - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -66,6 +66,9 @@ stage_init:
 
 	DELAY( 600, "temporarily unavailable" )
 		if /The file you are trying to access is temporarily unavailable/;
+
+	ERROR( "not allowed: file larger than 1GB" )
+		if /The file that you're trying to download is larger than 1 GB/;
 
 	if ( /The file you're trying to download is password protected/ ) {
 		ERROR( "password required" ) unless exists $-{_opts}-&gt;{pass};

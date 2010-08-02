@@ -11,8 +11,25 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 61</p>
+	<p>Commits: 68</p>
 	<dl>
+		<dt id="r11746"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11746&amp;view=rev">r11746</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 07:40:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>- fixed unify:</pre></dd>
+		<dt id="r11745"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11745&amp;view=rev">r11745</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 07:23:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- keep different domains as separate uris, to make my userscript update tools
+  happy</pre></dd>
+		<dt id="r11744"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11744&amp;view=rev">r11744</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-01 19:44:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>- support russian version of tv.delfi.ee and video.delfi.ee
+- status: OK 2010-08-01</pre></dd>
+		<dt id="r11743"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11743&amp;view=rev">r11743</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-01 19:05:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>- added support for http://video.delfi.ee/</pre></dd>
+		<dt id="r11742"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11742&amp;view=rev">r11742</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-01 16:39:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li></ul><pre>- catch “The file that you're trying to download is larger than 1 GB” error.
+  Only premium users can download such files.</pre></dd>
+		<dt id="r11740"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11740&amp;view=rev">r11740</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-01 16:24:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- fixed unify. It fixes RSGETPL-26.</pre></dd>
+		<dt id="r11734"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11734&amp;view=rev">r11734</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-01 15:36:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- rapidshare.de belongs to rapidshare.com now</pre></dd>
 		<dt id="r11732"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11732&amp;view=rev">r11732</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-30 15:04:53 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- it actually does work, you just have to find some active links
   (that would be a miracle)</pre></dd>
