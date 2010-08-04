@@ -28,7 +28,7 @@ setcookie( "uzbl_hacks", $uzbl, $exp, $cpath );
 // ==UserScript==
 // @name		rsget.pl
 // @author		Przemysław Iskra <sparky@pld-linux.org>
-// @version		2010-08-02
+// @version		2010-08-04
 // @namespace	http://rsget.pl/
 // @description	Quickly add links to rsget.pl http interface (you must enable it first by setting http-port).
 // @include		http://*/*
@@ -83,13 +83,16 @@ var supported2 = {
 	"filefactory.com":	1,
 	"fileserve.com":	1,
 	"freakshare.net":	1,
+	"gazeta.pl":	2,
 	"gigasize.com":	1,
 	"goear.com":	2,
+	"groszki.pl":	2,
 	"hotfile.com":	1,
 	"imageshack.us":	2,
 	"link-protector.com":	1,
 	"liveleak.com":	2,
 	"lix.in":	1,
+	"lula.pl":	2,
 	"megaporn.com":	2,
 	"megarotic.com":	1,
 	"megaupload.com":	1,
@@ -97,6 +100,7 @@ var supported2 = {
 	"metacafe.com":	2,
 	"multiupload.com":	1,
 	"netload.in":	1,
+	"plotek.pl":	2,
 	"pornhub.com":	2,
 	"protectlinks.com":	1,
 	"przeklej.pl":	1,
@@ -116,6 +120,7 @@ var supported2 = {
 	"sharingmatrix.com":	1,
 	"southparkstudios.com":	2,
 	"spankwire.com":	2,
+	"sport.pl":	2,
 	"storage.to":	1,
 	"tinyurl.com":	1,
 	"turbobit.net":	1,
@@ -125,6 +130,7 @@ var supported2 = {
 	"uploading.com":	1,
 	"veoh.com":	2,
 	"vimeo.com":	2,
+	"wyborcza.biz":	2,
 	"x7.to":	1,
 	"xhamster.com":	2,
 	"xurl.jp":	1,
