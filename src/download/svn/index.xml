@@ -11,8 +11,37 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 68</p>
+	<p>Commits: 80</p>
 	<dl>
+		<dt id="r11758"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11758&amp;view=rev">r11758</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-04 01:25:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- main uri somewhat nicer for my userscript update tool</pre></dd>
+		<dt id="r11757"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11757&amp;view=rev">r11757</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-03 12:53:05 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- be more lenient about uris</pre></dd>
+		<dt id="r11756"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11756&amp;view=rev">r11756</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-03 12:42:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- uri update: allow news from /warszawa</pre></dd>
+		<dt id="r11755"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11755&amp;view=rev">r11755</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-03 09:31:49 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>- strip leading whitespaces from filename</pre></dd>
+		<dt id="r11754"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11754&amp;view=rev">r11754</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 20:46:31 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/FileList.pm">RSGet/FileList.pm</a></li></ul><pre>- force file list rewrite on termination, even if list lock is
+  active, solves RSGETPL-27</pre></dd>
+		<dt id="r11753"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11753&amp;view=rev">r11753</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 20:13:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- One more Agora's hard porno site.</pre></dd>
+		<dt id="r11752"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11752&amp;view=rev">r11752</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 20:03:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- added groszki.pl and plotek.pl (omglolwtf)</pre></dd>
+		<dt id="r11751"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11751&amp;view=rev">r11751</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 19:59:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- added sport.pl and wyborcza.biz</pre></dd>
+		<dt id="r11750"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11750&amp;view=rev">r11750</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 19:43:04 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- handle FlashVars param
+- don't hardcode links</pre></dd>
+		<dt id="r11749"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11749&amp;view=rev">r11749</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 18:40:01 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- more specific uri to avoid Link loop</pre></dd>
+		<dt id="r11748"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11748&amp;view=rev">r11748</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 18:38:55 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- &lt;param name="FlashVars" means that binary link will be encoded as binary
+  file. It seems to be enough to wait a while and try again.</pre></dd>
+		<dt id="r11747"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11747&amp;view=rev">r11747</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 18:18:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- new plugin, downloads videos from gazeta.pl
+- in most cases it just downloads single video file. But sometimes there are
+  multiple videos on single page, hence "Link" plugin type.</pre></dd>
 		<dt id="r11746"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11746&amp;view=rev">r11746</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-02 07:40:17 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>- fixed unify:</pre></dd>
 		<dt id="r11745"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11745&amp;view=rev">r11745</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-02 07:23:08 UTC</em></dt>

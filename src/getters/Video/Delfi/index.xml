@@ -4,7 +4,7 @@ desc:	[V:Delfi] <a href="http://tv.delfi.ee/" rel="nofollow">"http://tv.delfi.ee
 
 body:	
 	<p>Status: OK 2010-08-01</p>
-	<pre># $Id: Delfi 11746 2010-08-02 07:40:17Z pawelz $
+	<pre># $Id: Delfi 11755 2010-08-03 09:31:49Z pawelz $
 # Video::Delfi - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -26,7 +26,7 @@ unify:
 start:
 	GET( $-{_uri} );
 
-	! m{&lt;title&gt;(?:DELFI TV &amp;#62; (?:Video|Видео) &amp;#62; )?(.*?)&lt;/title&gt;};
+	! m{&lt;title&gt;(?:DELFI TV &amp;#62; (?:Video|Видео) &amp;#62;\s+)?(.*?)&lt;/title&gt;};
 	my $fname = de_ml( $1 );
 	$fname =~ s{/}{_}g;
 	$fname .= ".flv";

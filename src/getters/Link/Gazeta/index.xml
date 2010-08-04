@@ -1,0 +1,40 @@
+index:	0
+title:	Gazeta
+desc:	[L:Gazeta] <a href="http://www.gazeta.pl/" rel="nofollow">"http://www.gazeta.pl/"</a>
+
+body:	
+	<p>Status: OK 2010-08-02</p>
+	<pre># $Id: Gazeta 11758 2010-08-04 01:25:21Z sparky $
+# Link:Gazeta - Link retriever plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Gazeta
+short: L:Gazeta
+web: "http://www.gazeta.pl/"
+uri: qr{(?:[a-z]+\.)?gazeta\.pl/\S+/\d+,\d+,\d+}
+uri: qr{groszki\.pl/\S+/\d+,\d+,\d+}
+uri: qr{lula.pl/\S+/\d+,\d+,\d+}
+uri: qr{plotek\.pl/\S+/\d+,\d+,\d+}
+uri: qr{sport\.pl/\S+/\d+,\d+,\d+}
+uri: qr{wyborcza\.biz/\S+/\d+,\d+,\d+}
+slots: max
+status: OK 2010-08-02
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "no video found" )
+		unless m{flashvars: "pid=swfObj&amp;m=(.*?)&amp;}
+			or m{&lt;param name="FlashVars" value="m=(.*?)&amp;};
+
+	GET( uri_unescape( $1 ) );
+
+	my @list = m{&lt;p&gt;(.*?)&lt;/p&gt;}g;
+
+	LINK( @list );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
