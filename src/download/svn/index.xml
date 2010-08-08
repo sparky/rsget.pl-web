@@ -11,8 +11,16 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 80</p>
+	<p>Commits: 84</p>
 	<dl>
+		<dt id="r11769"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11769&amp;view=rev">r11769</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-08 12:26:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Direct/HTTP">Direct/HTTP</a> (<a href="/getters/Direct/HTTP/">getter</a>)</li></ul><pre>- moved error detection before content-type detection, fixes RSGETPL-34</pre></dd>
+		<dt id="r11762"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11762&amp;view=rev">r11762</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-06 12:16:51 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- more uris: tokfm.pl and alert24.pl</pre></dd>
+		<dt id="r11761"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11761&amp;view=rev">r11761</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-06 00:51:46 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- print "INIT: &lt;plugin name&gt; Added" with verbose 2+</pre></dd>
+		<dt id="r11759"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11759&amp;view=rev">r11759</a>, <a href="http://cia.vc/stats/author/pawelz">pawelz</a>, <em>2010-08-04 07:58:43 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- allow parameters before 'm'</pre></dd>
 		<dt id="r11758"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11758&amp;view=rev">r11758</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-04 01:25:21 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/Gazeta">Link/Gazeta</a> (<a href="/getters/Link/Gazeta/">getter</a>)</li></ul><pre>- main uri somewhat nicer for my userscript update tool</pre></dd>
 		<dt id="r11757"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11757&amp;view=rev">r11757</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-08-03 12:53:05 UTC</em></dt>

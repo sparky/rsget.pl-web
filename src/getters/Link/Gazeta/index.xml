@@ -4,7 +4,7 @@ desc:	[L:Gazeta] <a href="http://www.gazeta.pl/" rel="nofollow">"http://www.gaze
 
 body:	
 	<p>Status: OK 2010-08-02</p>
-	<pre># $Id: Gazeta 11758 2010-08-04 01:25:21Z sparky $
+	<pre># $Id: Gazeta 11762 2010-08-06 12:16:51Z pawelz $
 # Link:Gazeta - Link retriever plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -14,11 +14,13 @@ body:
 name: Gazeta
 short: L:Gazeta
 web: "http://www.gazeta.pl/"
+uri: qr{alert24\.pl/\S+/\d+,\d+,\d+}
 uri: qr{(?:[a-z]+\.)?gazeta\.pl/\S+/\d+,\d+,\d+}
 uri: qr{groszki\.pl/\S+/\d+,\d+,\d+}
 uri: qr{lula.pl/\S+/\d+,\d+,\d+}
 uri: qr{plotek\.pl/\S+/\d+,\d+,\d+}
 uri: qr{sport\.pl/\S+/\d+,\d+,\d+}
+uri: qr{tokfm\.pl/\S+/\d+,\d+,\d+}
 uri: qr{wyborcza\.biz/\S+/\d+,\d+,\d+}
 slots: max
 status: OK 2010-08-02
@@ -28,7 +30,7 @@ start:
 
 	ERROR( "no video found" )
 		unless m{flashvars: "pid=swfObj&amp;m=(.*?)&amp;}
-			or m{&lt;param name="FlashVars" value="m=(.*?)&amp;};
+			or m{&lt;param name="FlashVars" value="(?:.*?&amp;)?m=(.*?)&amp;};
 
 	GET( uri_unescape( $1 ) );
 

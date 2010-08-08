@@ -4,7 +4,7 @@ desc:	[Direct::HTTP] <a href="http://rsget.pl/getters/Direct/HTTP/" rel="nofollo
 
 body:	
 	<p>Status: OK 2010-07-12</p>
-	<pre># $Id: HTTP 11653 2010-07-12 01:13:45Z sparky $
+	<pre># $Id: HTTP 11769 2010-08-08 12:26:33Z sparky $
 # Direct::HTTP - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -22,15 +22,16 @@ status: OK 2010-07-12
 start:
 	GET( $-{_uri}, headonly =&gt; 1 );
 
+	if ( /^Location:\s*\s+/mi ) {
+		LINK( $-{_referer} );
+	}
+	ERROR( "file not found" ) unless m{^HTTP/[\d\.]+ 200}m;
+
 	my @type = /^Content-Type:\s*(\S+?)(?:;.*?)?\r?$/mig;
 	! my $type = pop @type;
 	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
 	$len ||= -1;
 
-	if ( /^Location:\s*\s+/mi ) {
-		LINK( $-{_referer} );
-	}
-	ERROR( "file not found" ) unless m{^HTTP/1\.\d 200}m;
 	if ( $type =~ m#^text/# ) {
 		if ( /^Refresh:\s*.*?url=("|'|)(.*?)\1\s*\r$/mi ) {
 			require URI;
