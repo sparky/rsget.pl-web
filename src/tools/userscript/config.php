@@ -68,6 +68,7 @@ diff -u l.old l.new
 var supported2 = {
 	"4gk.com":	1,
 	"4shared.com":	1,
+	"alert24.pl":	2,
 	"anonym.to":	1,
 	"anonym-to.com":	1,
 	"archiv.to":	1,
@@ -123,6 +124,7 @@ var supported2 = {
 	"sport.pl":	2,
 	"storage.to":	1,
 	"tinyurl.com":	1,
+	"tokfm.pl":	2,
 	"turbobit.net":	1,
 	"turbobit.ru":	1,
 	"ul.to":	1,
