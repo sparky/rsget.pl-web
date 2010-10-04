@@ -4,7 +4,7 @@ desc:	[V:YouTube] <a href="http://www.youtube.com/" rel="nofollow">"http://www.y
 
 body:	
 	<p>Status: OK 2010-07-22</p>
-	<pre># $Id: YouTube 11694 2010-07-22 17:22:45Z sparky $
+	<pre># $Id: YouTube 11815 2010-09-24 20:14:48Z pawelz $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -49,7 +49,8 @@ start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found: $1" )
-		if /&lt;div\s[^&gt;]+class="yt-alert-content"&gt;\s*(Th.*?)\s*&lt;/s;
+		if /&lt;div\s[^&gt;]+class="yt-alert-content"&gt;\s*(The.*?)\s*&lt;/s
+			or /&lt;div\s[^&gt;]+class="yt-alert-content"&gt;\s*(This video contains content from .*?, who has blocked it in your country on copyright grounds\.)\s*&lt;/s;
 	ERROR( "age verification required" )
 		if $-{_referer} =~ m#/verify_age#;
 

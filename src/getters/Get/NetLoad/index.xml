@@ -5,7 +5,7 @@ desc:	[NL] <a href="http://netload.in/" rel="nofollow">"http://netload.in/"</a>
 body:	
 	<p>Check <a href="http://netload.in/index.php?id=13" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-13</p>
-	<pre># $Id: NetLoad 11716 2010-07-27 20:18:28Z sparky $
+	<pre># $Id: NetLoad 11802 2010-09-13 16:57:03Z sparky $
 # Get::NetLoad - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -74,6 +74,8 @@ stage_getcaptcha:
 	}
 	ERROR( "file not found" )
 		if /This file is currently unavailable/;
+	DELAY( 600, "file temporarily unavailable" )
+		if /Please retry again in a few minutes while the file is being uploaded/;
 	RESTART( $1 / 100, "free limit reached" )
 		if /You could download your next file in.*countdown\(([0-9]+)/;
 

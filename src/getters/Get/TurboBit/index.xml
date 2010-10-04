@@ -5,7 +5,7 @@ desc:	[TB] <a href="http://turbobit.net/" rel="nofollow">"http://turbobit.net/"<
 body:	
 	<p>Check <a href="http://turbobit.net/rules" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-26</p>
-	<pre># $Id: TurboBit 11723 2010-07-28 14:10:15Z pawelz $
+	<pre># $Id: TurboBit 11787 2010-08-18 09:38:56Z pawelz $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -33,6 +33,7 @@ start:
 	GET( $-{_uri} );
 
 	MULTI( "e404" ) if m#&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;#;
+	MULTI( "e502, will try again" ) if m#&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;#;
 	ERROR( "file not found" ) if m#&lt;div class="code-404"&gt;404&lt;/div&gt;#;
 	ERROR( "file not found" ) if m#Файл не найден. Возможно он был удален|File was not found. It could possibly be deleted#;
 

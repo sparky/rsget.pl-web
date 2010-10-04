@@ -3,9 +3,9 @@ title:	RapidShare
 desc:	[RS] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.com/"</a>
 
 body:	
-	<p>Check <a href="http://rapidshare.com/agb.html" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-13</p>
-	<pre># $Id: RapidShare 11745 2010-08-02 07:23:08Z sparky $
+	<p>Check <a href="http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-10-04</p>
+	<pre># $Id: RapidShare 11828 2010-10-04 23:20:46Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -15,91 +15,47 @@ body:
 name: RapidShare
 short: RS
 web: "http://rapidshare.com/"
-tos: "http://rapidshare.com/agb.html"
+tos: "http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb"
 uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/files/\d+/.+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/?#!download\|\d+\|\d+\|.+?\|\d+}
 uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.de/files/\d+/.+}
-status: OK 2010-07-13
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.de/?#!download\|\d+\|\d+\|.+?\|\d+}
+status: OK 2010-10-04
 
 unify:
-	s/#.*//;
-	return "http://rapidshare.com/files/$1"
-		if m{rapidshare\.(?:com|de)/files/(\d+/.+)};
-
-pre:
-	my $match;
-
-	sub match($)
-	{
-		my $re = shift;
-		if ( ref $re ) {
-			die "Incorrect match regexp"
-				unless ref $re eq "Regexp";
-		} else {
-			$re = qr/\Q$re\E/;
-		}
-		if ( /.*&gt;(.*?$re.*?)&lt;/s ) {
-			$match = $2;
-			$_ = $1;
-			s/\r//g;
-			s/\n/ /g;
-			return 1;
-		} else {
-			return undef;
-		}
-	}
-
+	return $_;
 
 start:
 	GET( $-{_uri} );
 
-	ERROR( "file not found: $_" )
-		if match "The file could not be found.  Please check the download link.";
-	ERROR( "file removed: $_" )
-		if match "file has been removed from the server";
-	ERROR( "file removed: $_" )
-		if match "The uploader has removed this file from the server";
-	ERROR( "file removed: $_" )
-		if match "download of this file is currently not possible";
-	ERROR( "file removed: $_" )
-		if match "This limit is reached";
-	ERROR( "not allowed: $_" )
-		if m#&lt;h1&gt;Error&lt;/h1&gt;# and match qr/This file is larger than /;
+	ERROR( "file not found: $1" )
+		if /^ERROR: (.*)/
+			and substr( $1, 0, 16 ) ne "You need to wait"
+			and substr( $1, 0, 17 ) ne "You need RapidPro";
 
-	! m#&lt;p class="downloadlink"&gt;.*/(.+?) &lt;font style=".*?"&gt;\| (\d+ KB)&lt;/font&gt;&lt;/p&gt;#;
-	INFO( name =&gt; $1, asize =&gt; $2, kilo =&gt; 1000 );
+	GOTO stage_uri_complete
+		unless m{&lt;script type="text/javascript"&gt;location="(.*?)"};
+	$-{_referer} = undef;
+	GET( "http://rapidshare.com$1" );
 
-	RESTART( $match * 60, "servers overloaded: $_" )
-		if match qr/Unfortunately you will have to wait (\d+) minutes/;
+stage_uri_complete:
+	! ( $-{id}, $-{name}, my $size ) = $-{_referer} =~ m{#!download\|\d+\|(\d+)\|(.+?)\|(\d+)};
+	INFO( name =&gt; $-{name}, asize =&gt; "$size KB" );
+	
+	CLICK( "http://api.rapidshare.com/cgi-bin/rsapi.cgi?sub=download_v1&amp;try=1&amp;fileid=$-{id}&amp;filename=$-{name}" );
 
-	! my $form = $self-&gt;form( id =&gt; "ff" );
-	CLICK( $form-&gt;post() );
+	MULTI( $1 )
+		if /^(ERROR: You need RapidPro.*)/;
+	RESTART( $2, "free limit reached: $1" )
+		if /^(ERROR: You need to wait (\d+) seconds.*)/;
 
-	MULTI( "multi-download not allowed: $_" )
-		if match "Please wait until the download is completed";
+	! my ( $host, $dlauth, $wait ) = m{DL:(.*?),([0-9A-F]+?),(\d+)};
 
-	DELAY( 5 * 60, "no slots for free users: $_" )
-		if match "There are no more download slots available for free users right now"
-			or match "Unfortunately right now our servers are overloaded";
+	$-{file_uri} = "http://$host/cgi-bin/rsapi.cgi?sub=download_v1&amp;dlauth=$dlauth&amp;bin=1&amp;fileid=$-{id}&amp;filename=$-{name}";
 
-	RESTART( $match * 60 + 10, "free limit reached: $_" )
-		if match qr/Instant download access! Or try again in about (\d+) minutes/;
+	WAIT( $wait, "starting download" );
 
-	RESTART( $match * 60, "servers overloaded: $_" )
-		if match qr/Unfortunately you will have to wait (\d+) minutes,/
-			or match qr/Please try again in (\d+) minutes/;
-
-	! $-{form} = $self-&gt;form( name =&gt; "dlf" );
-	$-{form}-&gt;set( mirror =&gt; "on" );
-	$-{form}-&gt;set( x =&gt; irand 5, 103 );
-	$-{form}-&gt;set( y =&gt; irand 5, 103 );
-
-	! /var c=(\d+);/;
-	WAIT( $1, "starting download" );
-
-	CLICK_DOWNLOAD( $-{form}-&gt;post() );
-
-	MULTI( "multi-download not allowed: $_" )
-		if match "Please wait until the download is completed";
+	DOWNLOAD( $-{file_uri} );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>
