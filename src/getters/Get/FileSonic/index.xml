@@ -1,0 +1,52 @@
+index:	0
+title:	FileSonic
+desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.filesonic.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-08-17</p>
+	<pre># $Id: FileSonic 11790 2010-08-29 19:22:27Z pawelz $
+# Get::FileSonic - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FileSonic
+short: FSC
+web: "http://www.filesonic.com/"
+tos: "http://www.filesonic.com/terms-and-conditions"
+uri: qr{filesonic\.com/file/\d+}
+uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
+status: OK 2010-08-17
+
+unify:
+	return "http://www.filesonic.com/file/$1"
+		if m{/file/(\d+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" )
+		if m#&lt;div class="section CL1"&gt;.*?&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
+
+	! m#&lt;p class="fileInfo filename"&gt;.*?&lt;strong&gt;(.*?)&lt;/strong&gt;#;
+	( my $fn = $1 ) =~ s/\.\.\./\0/;
+	! m#&lt;span class="size"&gt;($STDSIZE)&lt;/span&gt;#;
+	INFO( aname =&gt; $fn, asize =&gt; $1 );
+
+	! m#&lt;a class="downloadNow" href="(.*?)" id="free_download"&gt;#;
+	CLICK( $1, keep_referer =&gt; 1 );
+
+	MULTI() if m#&lt;span&gt;Download session in progress&lt;/span&gt;#;
+
+	! m#downloadUrl = "(.*?)"#;
+	$-{file_uri} = $1;
+
+	! /var countDownDelay = (\d+);/;
+	WAIT( - $1, "starting download" );
+
+	CLICK_DOWNLOAD( $-{file_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -1,0 +1,34 @@
+index:	0
+title:	TokFM
+desc:	[L:TokFM] <a href="http://www.tok.fm/" rel="nofollow">"http://www.tok.fm/"</a>
+
+body:	
+	<p>Status: OK 2010-09-19</p>
+	<pre># $Id: TokFM 11813 2010-09-19 22:28:57Z pawelz $
+# Link:TokFM - Link retriever plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: TokFM
+short: L:TokFM
+web: "http://www.tok.fm/"
+uri: qr{tok.fm/TOKFM/\d+,\d+.html}
+slots: max
+status: OK 2010-09-19
+
+start:
+	GET( $-{_uri} );
+
+	use Text::Iconv;
+	my $converter = Text::Iconv-&gt;new("ISO-8859-2", "UTF-8");
+
+	my @list = map { $1."#/".uri_escape($converter-&gt;convert($2))
+		if $_ =~ /href="(.+?)" title="(.+?)"/ }
+			m{&lt;a (href=".+?" title=".+?") class="tokfm_play"&gt;}g;
+
+	LINK( @list );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

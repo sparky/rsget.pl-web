@@ -1,0 +1,36 @@
+index:	0
+title:	AlbumEE
+desc:	[L:AlbumEE] <a href="http://album.ee/" rel="nofollow">"http://album.ee/"</a>
+
+body:	
+	<p>Check <a href="http://keskus.ee/page/Terms" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-09-19</p>
+	<pre># $Id: AlbumEE 11809 2010-09-19 16:07:20Z pawelz $
+# Link:AlbumEE - Link retriever plugin for album.ee
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: AlbumEE
+short: L:AlbumEE
+web: "http://album.ee/"
+tos: "http://keskus.ee/page/Terms"
+uri: qr{(?:(?:en|ru)\.)?album\.ee/album/\d+/\d+}
+slots: max
+status: OK 2010-09-19
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "album not found" ) if $-{_referer} eq "http://en.album.ee/";
+
+	ERROR( "no image in album" )
+		unless m{&lt;div class="img"&gt;&lt;a href="node/\d+/\d+"&gt;&lt;img src=};
+
+	my @list = map { "http://en.album.ee/".$_ } m{&lt;div class="img"&gt;&lt;a href="(node/\d+/\d+)"&gt;&lt;img src=}g;
+
+	LINK( @list );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

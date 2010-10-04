@@ -1,0 +1,51 @@
+index:	0
+title:	AlbumEE
+desc:	[I:AlbumEE] <a href="http://album.ee/" rel="nofollow">"http://album.ee/"</a>
+
+body:	
+	<p>Check <a href="http://keskus.ee/page/Terms" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-09-19</p>
+	<pre># $Id: AlbumEE 11811 2010-09-19 16:39:36Z pawelz $
+# Image::AlbumEE - Image getter plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: AlbumEE
+short: I:AlbumEE
+web: "http://album.ee/"
+tos: "http://keskus.ee/page/Terms"
+uri: qr{(?:(?:en|ru)\.)?album\.ee/node/\d+/\d+}
+slots: max
+status: OK 2010-09-19
+
+unify:
+	return "http://en.album.ee/node/$1/$2"
+		if m{http://(?:ru\.)?album\.ee/node/(\d+)/(\d+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found" )
+		if m#Page not found#;
+
+	! m{&lt;p class="f-left"&gt;user » &lt;b&gt;&lt;a href="user/\d+" title="View user profile."&gt;(.+?)&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;};
+	my $user = $1;
+
+	! m{&lt;p class="f-left"&gt;album » &lt;a href="album/\d+/\d+"&gt;(.+?)&lt;/a&gt;&lt;/p&gt;};
+	my $album = $1;
+
+	! m{&lt;p class="f-left"&gt;photo » &lt;b&gt;(.+?)&lt;/b&gt;&lt;/p&gt;};
+	my $name = $1;
+
+	! m{&lt;li&gt;&lt;a href="(http://.*?)" class="ico6"&gt;Original Size&lt;/a&gt;&lt;/li&gt;};
+	my $furi = $1;
+
+	my $fname = $user."-".$album."-".$name;
+	INFO( name =&gt; $fname, quality =&gt; "image" );
+
+	DOWNLOAD( $furi, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

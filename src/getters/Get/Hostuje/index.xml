@@ -1,0 +1,37 @@
+index:	0
+title:	Hostuje
+desc:	[HS] <a href="http://hostuje.net/" rel="nofollow">"http://hostuje.net/"</a>
+
+body:	
+	<p>Check <a href="http://hostuje.net/regulamin.php" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-09-26</p>
+	<pre># $Id: Hostuje 11819 2010-09-26 18:24:26Z pawelz $
+# Get::Hostuje - File getter plugin for rsget.pl
+#
+# 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Hostuje
+short: HS
+web: "http://hostuje.net/"
+tos: "http://hostuje.net/regulamin.php"
+uri: qr{hostuje\.net/file\.php\?id=[a-f0-9]+}
+status: OK 2010-09-26
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" ) if m/Podany plik nie zosta\xb3 odnaleziony\.\.\. \(?(.*?)\)?&lt;/;
+
+	! m#&lt;b&gt;Plik:&lt;/b&gt; (.+?)&lt;br&gt;&lt;b&gt;Rozmiar:&lt;/b&gt; ($STDSIZE)&lt;br&gt;&lt;b&gt;#;
+	my $fname = $1;
+	INFO( name =&gt; $fname, asize =&gt; $2 );
+
+	! m#so\.addVariable\("file", "(http://.*?)"\);#;
+	my $download_link = $1;
+
+	CLICK_DOWNLOAD( $download_link, fname =&gt; $fname );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
