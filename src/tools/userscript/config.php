@@ -68,6 +68,7 @@ diff -u l.old l.new
 var supported2 = {
 	"4gk.com":	1,
 	"4shared.com":	1,
+	"album.ee":	2,
 	"alert24.pl":	2,
 	"anonym.to":	1,
 	"anonym-to.com":	1,
@@ -83,11 +84,13 @@ var supported2 = {
 	"extremetube.com":	2,
 	"filefactory.com":	1,
 	"fileserve.com":	1,
+	"filesonic.com":	1,
 	"freakshare.net":	1,
 	"gazeta.pl":	2,
 	"gigasize.com":	1,
 	"goear.com":	2,
 	"groszki.pl":	2,
+	"hostuje.net":	1,
 	"hotfile.com":	1,
 	"imageshack.us":	2,
 	"link-protector.com":	1,
@@ -124,6 +127,7 @@ var supported2 = {
 	"sport.pl":	2,
 	"storage.to":	1,
 	"tinyurl.com":	1,
+	"tok.fm":	2,
 	"tokfm.pl":	2,
 	"turbobit.net":	1,
 	"turbobit.ru":	1,
@@ -144,6 +148,7 @@ var supported2 = {
 };
 
 var supported3 = {
+	"bi.gazeta.pl":	2,
 	"d01.megashares.com":	1,
 	"tv.delfi.ee":	2,
 	"video.banzaj.pl":	2,
