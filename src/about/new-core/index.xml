@@ -1,0 +1,227 @@
+index:	0
+title:	new core
+desc:	<p>Old development path is coming to an end, but there is a new one!
+	This page describes some hows and whys.</p>
+
+body:
+
+<p><abbr title="sparky">I</abbr> am going to separate core components and plugins development. New core will
+be released each time there is some major change, but no more often than required.
+Plugins won't be packaged anymore; rsget.pl will update its plugins database
+directly from our server (or a backup location) each time it is started.
+<small>It may even update the db periodically while running, but first I must find a
+	decent way to unload unused plugins cleanly.</small></p>
+
+<p>This separation should help Linux/UNIX distribution developers to prepare
+nice rsget.pl packages, while I should stop receiving complaints about plugin
+problems which were fixed days ago.</p>
+
+<p>But the main reason to start a rewrite is because current source code needs one.</p>
+
+<p>A brief history:</p>
+<ul>
+	<li>2008-12-28 - first rsget.pl script (only one file),
+		<a href="http://rs.nerdblog.pl/">rsget.sh</a> replica, with some enhancements</li>
+	<li>2009-01-05 - netload, parallel downloads</li>
+	<li>time between - added other services and a few features, still one-file script</li>
+	<li>2009-06-09 - major reorganization (multi-file structure), a lot of new code was added,
+		but most of the old one was untouched</li>
+	<li>more time... - many more features</li>
+</ul>
+
+<p>As you can see current code started as a very simple RapidShare downloader and
+then it was extended to support other services, allow multiple downloads at the
+same time and many other improvements were added. That code base has saturated.
+Right now there is no easy way to add premium account or multiuser support - both
+features requested often. At least half the core code must be rewritten to add
+those features without using any, potentially dangerous, hacks.</p>
+
+<p>If so much must be changed, why not just rewrite the remaining parts as well ?</p>
+
+<p>I will try to avoid some mistakes this time. Currently the main problems are:</p>
+<ul>
+	<li>very obscure plugin interface</li>
+	<li>rsget.pl's internal data in uri list file</li>
+	<li>needlessly complicated configuration interpreter</li>
+	<li>separation of uri list reader and download dispatcher (wastes a lot of ram)</li>
+</ul>
+
+<p>I will try to make sure that:</p>
+<ul>
+	<li>rsget.pl works at (nearly) its full potential on OpenWRT systems</li>
+	<li>make it as configurable as possible</li>
+	<li>add many hooks for user code or external commands</li>
+</ul>
+
+<h3>What is going to happen with current code ?</h3>
+
+<p>Current code is mature enough to stay as is. It shouldn't need any updates
+for another few months, enough time to finish the new one.
+Some plugins may be updated by rsget.pl contributors (namely, one: pawelz).
+I will fix plugins for current core only if the problem affects
+some of the services I usually use (MU, MS, RS, HF).</p>
+
+<hr />
+
+<h2>How can you help</h2>
+<p>There is a donation meter on the main page. The amount marked as "required" really isn't
+	a large sum compared to the work that has to be done (just keep reading to find it out).
+	This isn't money I would like to gain, naturally that would be a much larger value.
+	Instead, it is money I am most likely going to loose while coding and testing everything.
+	I am more than happy with current rsget.pl (after all, I wrote it for myself), so why
+	should I loose money on something I don't need?!</p>
+<p>I am nearly sure I won't be able to finish without your help.
+	It doesn't mean I won't try!</p>
+
+<h3>sponsor me</h3>
+<p>Primarily aimed to embedded hardware producers. With long-term founding and access to your hardware
+I would be able, and willing, to make sure rsget.pl works at its best on your devices.
+I am seriously thinking about changing core programming language to C, with plugins written
+in embedded perl or in Lua extended with pcre. However, the amount of work required for that version is just
+too big to do it in my spare time. In case of sponsorship I could spend on it a lot more time.</p>
+
+<h3>donate</h3>
+<p>If you donate you can be sure I will spend some extra hours coding, instead of spending them
+on monster .be/.se/.whatever looking for a job.</p>
+
+<h3>code things yourself</h3>
+<p>You can contribute using github. Any useful and non-crappy code will do.</p>
+
+<h3>general ideas</h3>
+<p>If you think you have a solution to some of my problems or an answer to some of my queries
+don't hesitate to contact me.</p>
+
+<h3>test environment access</h3>
+<p>I want rsget.pl to run on as many different hardware and software configurations as possible
+(don't really care about non-UNIX systems though). If you have some unusual environment and
+you would like to use rsget.pl on it, there are a few methods to help me accomplish it:</p>
+<ul>
+	<li>give ssh access</li>
+	<li>prepare qemu/virtualbox/mac-on-linux disk images and configuration files</li>
+	<li>send me the hardware if you've got a spare device</li>
+</ul>
+
+<h3>code reviews</h3>
+<p>Everyone knows three eyes are better than two [*]. If you can read my code
+	without becoming blind I would appreciate any comments and ideas for improvements.</p>
+<div><strong>[*]</strong> I've got two eyes, but you shouldn't be using both of your eyes in case you
+actually do get blind.</div>
+
+<h3>test and bug reports</h3>
+<p>None required at the moment. Code isn't mature enough.</p>
+
+<h3>more ideas</h3>
+<p>Did I miss something ?</p>
+
+<hr />
+
+<h2>Required parts</h2>
+<div>That is, parts that have to be written before new core starts to work at all.</div>
+
+<h4>uri list reader/writer</h4>
+<p>URIs will be stored in some kind of binary database now. Data organization
+must allow for fast retrieval of potential uris to download. It must be light,
+have small memory footprint, even on very large lists (1000+ entries) and must
+be able to quickly add multiple links (adding links one by one doesn't have
+to be very fast).</p>
+<div><strong>Status:</strong> just some ideas - use an iterator approach to minimize memory consumption.</div>
+
+<h4>download dispatcher</h4>
+<p>Proper download order must be calculated before writing the uri list.
+Dispatcher will grab first useful uri directly from the list handler.
+Right now the whole uri list file is read into memory and it is interpreted
+afterwards. This causes a huge memory consumption on large lists.
+In new core the dispatcher will grab uris one by one from the list.
+URIs on the list will be organized in a way that allows a minimal number of
+steps to start a new download.</p>
+<div><strong>Status:</strong> haven't even started to really think about it.</div>
+
+<h4>configuration</h4>
+<p>Config file will be a perl script. Probably with some syntactic sugar added.
+This will allow for great flexibility and power. I will try not to restrict
+the user in any way. I.e. most variables will allow subroutines as their values,
+so they could adapt the value as needed. Example: change max download speed depending
+on time of the day or on a number of computers currently connected to your network.</p>
+<div><strong>Status:</strong> I've got some ideas and test code.</div>
+
+<h4>dummy output file writer</h4>
+<p>It will be an abstract layer between curl wrapper and the file on the hard drive.
+	It won't have any special function yet. Just a placeholder for the real
+	file writer.</p>
+<div><strong>Status:</strong> nothing so far.</div>
+
+<h4>plugin interface</h4>
+<p>Current plugin interface is very limited and obscure. Plugin execution is divided
+into many stages, which isn't a very natural way to write the code. Because of
+that I created a code preprocessor which hides those stages from the programmer.
+It wasn't a good idea. Preprocessor limits possibilities of the code and hides
+some very important code aspects which the programmer should have in mind.
+New plugins will still have states, but those will be well defined and used
+explicitly.</p>
+<div><strong>Status:</strong> specification draft created.</div>
+
+<h4>communication</h4>
+<p>New core will only have a daemon mode (with some optional logging to the console).
+Some communication method must be developed to allow connecting different user
+interfaces to the daemon. It is required, even in the early stages of
+new core development, because it will be the only way to aggregate new links.
+This method must be fast (on the daemon side at least),
+needs authentication support, optional encryption and maybe data compression.
+It shouldn't be restricted to perl, if possible.</p>
+<div><strong>Status:</strong> created draft code using "storable" for serialization.</div>
+
+<h4>curl wrapper</h4>
+<p>Curl wrapper must be made more flexible. It should allow hooks from plugins
+(e.g. fix incorrectly encoded file name) and from user configuration (e.g.
+remove .html_ extension from badly named archives).
+Support for different types of protocols (http(s), ftp(s), rtsp, rtmp) should
+be added as separate modules, while sharing as much code as possible.
+Support for large http posts will be added some time, it is required for file
+upload.
+Wrapper must be made aware of current user/download session.
+Curl::Easy handle should be reused to take advantage of persistent connections.</p>
+<div><strong>Status:</strong> nothing really.</div>
+
+<h4>plugins</h4>
+<p>Port some plugins to the new interface. They will be needed to test the new core.</p>
+<div><strong>Status:</strong> none started - there is no "new interface" yet.</div>
+
+
+<h2>Needed parts</h2>
+<div>New core will work without those, but I want them present in the first official release.</div>
+
+<h4>Secure plugins</h4>
+<p>Some method for signing plugins must be developed. They aren't executed in any sandbox,
+so they have full access to rsget.pl's code and to anything the user running rsget.pl
+has access to. The daemon must refuse to load any plugin that hasn't been signed
+correctly (unless forced by the user). If for any reason rsget.pl domain name gets hijacked it should prevent
+hijackers from running any malicious code on remote rsget.pl daemons.
+Of course I still can create malicious code and sign it correctly, but I promise
+I won't do it. Not without a very good reason.</p>
+
+<h4>more plugins</h4>
+<p>Port all the remaining plugins that are still working.</p>
+
+<h2>Parts I want</h2>
+<div>Optional code, but I want them as soon as possible.</div>
+
+<h4>plugin core coverage reports</h4>
+<p>Download services change, some very often. We add new code to the plugins to
+account for those changes, but we rarely remove any old code, which may no longer
+be meaningful. Coverage reports will help us to detect that dead code and will
+allow us to keep plugins clean and up-to-date.</p>
+
+<h4>advanced output file writer</h4>
+<p>It will be an abstraction layer that will allow writing to one file from different sources
+at the same time. The hardest part to develop will be an error recovery mechanism. If data
+from different downloads turns out to be different the file will have to be split in two parts
+without the need to stop current downloads.</p>
+
+
+<h4>captcha</h4>
+<p>Current captcha approach has some success in some plugins, so it could be adapted
+to new core. But it is far from perfect. A completely new code will be developed
+once the core becomes stable.</p>
+
+<h4>new plugins</h4>
+<p>Add new plugins for any good service.</p>
