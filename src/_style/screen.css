@@ -366,12 +366,13 @@ pre::-moz-selection, pre *::-moz-selection {
 	background: #888;
 }
 
-.large {
-	font-size: 160%;
-}
-.large * {
-	font-size: inherit;
-}
+small {		font-size: 75%;	}
+small * {	font-size: inherit;	}
+big {		font-size: 133%;	}
+big * {		font-size: inherit;	}
+
+.large {	font-size: 160%;	}
+.large * {	font-size: inherit;	}
 
 .filelist li, .filelist li.file_M {
 	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IArs4c6QAAAGNQTFRFcAAAZmZma2trc3NzdXV1eHh4fHx8gYGBhYWFi4uLjo6OkpKSlpaWm5uboKCgo6Ojp6enra2ts7Ozubm5vb29wcHBxsbGy8vLz8/P0dHR09PT19fX29vb4eHh5eXl6urq7u7uWMGb8QAAAAF0Uk5TAEDm2GYAAACOSURBVAjXRY7bEoMgDAUTFCOtlxYsEVDI/39lQafT85SdZE4WoCVujuEXHrCmczc5HH3OYcKlUcC5lEQiFtveUExSsfDUAWR0Xi9MPKwBGSLuUqxW5hCp1w3zq1fEUioWZT/9O1AaZ8Yd4KnTeVUFo2vzoUyRZERW9O2xV9rGtBHaWys9miT9rfPO5zV8AQRFCd0p89w4AAAAAElFTkSuQmCC) 2px 2px no-repeat;

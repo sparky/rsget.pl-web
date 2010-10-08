@@ -220,6 +220,20 @@ ins {
 	text-decoration: underline;
 }
 
+small {
+	font-size: 75%;
+}
+small * {
+	font-size: inherit;
+}
+
+big {
+	font-size: 133%;
+}
+big * {
+	font-size: inherit;
+}
+
 .large {
 	font-size: 160%;
 }
