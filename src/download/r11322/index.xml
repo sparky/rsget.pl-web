@@ -13,7 +13,7 @@ body:
 	<p>Commits: 28</p>
 	<dl>
 		<dt id="r11322"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11322&amp;view=rev">r11322</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 16:10:11 UTC</em></dt>
-		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a> (<a href="/getters/Get/SharingMatrix/">getter</a>)</li></ul><pre>- updated and fixed; status: OK</pre></dd>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a></li></ul><pre>- updated and fixed; status: OK</pre></dd>
 		<dt id="r11321"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11321&amp;view=rev">r11321</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 15:16:20 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/RedTube">Video/RedTube</a> (<a href="/getters/Video/RedTube/">getter</a>)</li></ul><pre>- fixed, status: OK</pre></dd>
 		<dt id="r11320"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11320&amp;view=rev">r11320</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 14:05:07 UTC</em></dt>
@@ -25,7 +25,7 @@ body:
 		<dt id="r11317"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11317&amp;view=rev">r11317</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 13:37:38 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- BROKEN, will fix later</pre></dd>
 		<dt id="r11316"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11316&amp;view=rev">r11316</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 13:36:28 UTC</em></dt>
-		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a> (<a href="/getters/Get/SharingMatrix/">getter</a>)</li></ul><pre>- BROKEN, will fix later</pre></dd>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/SharingMatrix">Get/SharingMatrix</a></li></ul><pre>- BROKEN, will fix later</pre></dd>
 		<dt id="r11315"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11315&amp;view=rev">r11315</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-08 13:35:58 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a></li></ul><pre>- there are problems, added TODO</pre></dd>
 		<dt id="r11311"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11311&amp;view=rev">r11311</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-04-05 20:34:55 UTC</em></dt>

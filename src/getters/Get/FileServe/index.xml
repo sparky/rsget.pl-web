@@ -4,8 +4,8 @@ desc:	[FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.co
 
 body:	
 	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
-<p>Status: BROKEN 2010-08-30</p>
-	<pre># $Id: FileServe 11791 2010-08-29 22:29:07Z pawelz $
+<p>Status: OK 2010-10-08</p>
+	<pre># $Id: FileServe 11837 2010-10-09 18:41:40Z sparky $
 # Get::FileServe - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -18,30 +18,65 @@ web: "http://fileserve.com/"
 tos: "http://fileserve.com/terms.php"
 uri: qr{fileserve\.com/file/[A-Za-z0-9]+(/.*)?}
 cookie: fsrv
-status: BROKEN 2010-08-30
+status: OK 2010-10-08
 
 unify:
 	s/#.*//;
-	return "http://fileserve.com/files/$1"
-		if m{fileserve\.com/files/([A-Za-z0-9]+)};
+	return "http://fileserve.com/file/$1"
+		if m{fileserve\.com/file/([A-Za-z0-9]+)};
 
 start:
 	GET( $-{_uri} );
 
-	ERROR( "file not found: $1" ) if m#&lt;span class="fail_info"&gt;\s*(.*?)\s*&lt;/span&gt;#s;
+	ERROR( "file not found: $1" ) if m#&lt;span class="fail_info"&gt;\s*(.*?)\s*&lt;/span&gt;#s
+		or m{&lt;img src="/images/stop_error\.gif".*?&lt;h1&gt;.*?&lt;/h1&gt;&lt;/li&gt;&lt;li&gt;(.*?)&lt;/li&gt;}s;
 
 	! m#&lt;h1&gt;(.+?)&lt;br/&gt;&lt;/h1&gt;#;
 	my $fname = $1;
 	! m#&lt;span&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #o;
 	INFO( name =&gt; $fname, asize =&gt; $1 );
 
-	CLICK( $-{_uri}, post =&gt; { downloadLink =&gt; "wait" } );
+	( $-{captcha_key} ) = m{var reCAPTCHA_publickey='(.*?)';};
+	( $-{captcha_encode} ) = m{"recaptcha_shortencode_field".*? value="(.*?)" /&gt;};
 
-	WAIT( 30, "waiting for download link" );
+	! m{src="(/landing/.+?/download_captcha\.js)"};
+	CLICK( $1, keep_referer =&gt; 1,
+		headers =&gt; [ "X-Requested-With: XMLHttpRequest" ] );
 
-	CLICK( $-{_uri}, post =&gt; { downloadLink =&gt; "show" } );
+stage_getcaptcha:
+	GET( "http://www.google.com/recaptcha/api/challenge?k=$-{captcha_key}&amp;ajax=1&amp;cachestop=" . rand,
+		keep_referer =&gt; 1 );
 
-	CLICK_DOWNLOAD( $-{_uri}, post =&gt; { download =&gt; "normal" } );
+	! ( $-{captcha_challenge} ) = m{challenge\s*:\s*'(.*?)'};
+
+	GET( "http://www.google.com/recaptcha/api/image?c=" . $-{captcha_challenge},
+		keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/\S+ \S+/
+	);
+
+	CLICK( "/checkReCaptcha.php", post =&gt; {
+			recaptcha_shortencode_field =&gt; $-{captcha_encode},
+			recaptcha_response_field =&gt; $_,
+			recaptcha_challenge_field =&gt; $-{captcha_challenge},
+		}, keep_referer =&gt; 1 );
+
+	if ( /incorrect-captcha-sol/ ) {
+		CAPTCHA_RESULT( "FAIL" );
+		GOTO stage_getcaptcha;
+	} else {
+		CAPTCHA_RESULT( "OK" );
+	}
+
+	GET( "", post =&gt; { downloadLink =&gt; "wait" }, keep_referer =&gt; 1 );
+
+	! /(\d+)/;
+	WAIT( $1, "expecting for download link" );
+
+	CLICK( "", post =&gt; { downloadLink =&gt; "show" }, keep_referer =&gt; 1, );
+
+	CLICK_DOWNLOAD( "", post =&gt; { download =&gt; "normal" } );
 
 	RESTART( $1, "free limit reached" )
 		if m#You need to wait (\d+) seconds to start another download\.#;

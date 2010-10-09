@@ -4,7 +4,7 @@ desc:	[L:TokFM] <a href="http://www.tok.fm/" rel="nofollow">"http://www.tok.fm/"
 
 body:	
 	<p>Status: OK 2010-09-19</p>
-	<pre># $Id: TokFM 11813 2010-09-19 22:28:57Z pawelz $
+	<pre># $Id: TokFM 11832 2010-10-07 12:29:05Z sparky $
 # Link:TokFM - Link retriever plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -18,15 +18,15 @@ uri: qr{tok.fm/TOKFM/\d+,\d+.html}
 slots: max
 status: OK 2010-09-19
 
+pre:
+	use Encode;
+
 start:
 	GET( $-{_uri} );
 
-	use Text::Iconv;
-	my $converter = Text::Iconv-&gt;new("ISO-8859-2", "UTF-8");
-
-	my @list = map { $1."#/".uri_escape($converter-&gt;convert($2))
-		if $_ =~ /href="(.+?)" title="(.+?)"/ }
-			m{&lt;a (href=".+?" title=".+?") class="tokfm_play"&gt;}g;
+	my @list;
+	push @list, $1 . "#/" . uri_escape( encode( "utf8", decode( "iso-8859-2", $2) ) )
+		while s{&lt;a\s+href="(.+?)"\s+title="(.+?)"\s+class="tokfm_play"&gt;}{};
 
 	LINK( @list );
 

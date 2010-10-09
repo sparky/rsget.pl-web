@@ -4,7 +4,7 @@ desc:	[A:Gazeta] <a href="http://gazeta.pl/" rel="nofollow">"http://gazeta.pl/"<
 
 body:	
 	<p>Status: OK 2010-09-19</p>
-	<pre># $Id: Gazeta 11813 2010-09-19 22:28:57Z pawelz $
+	<pre># $Id: Gazeta 11833 2010-10-07 13:01:34Z sparky $
 # Audio::Gazeta - Audio getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -19,12 +19,19 @@ slots: max
 status: OK 2010-09-19
 
 unify:
+	# don't remove #/.*
 	return $_;
-start:
-	my $fname = uri_unescape( $1 ).".mp3"
-		if $-{_uri} =~ /\/([^\/]+?)(?:\.mp3)?$/;
 
-	INFO( name =&gt; $fname, quality =&gt; "mp3" );
+start:
+	GET( $-{_uri}, headonly =&gt; 1 );
+
+	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
+	$len ||= -1;
+
+	! $-{_uri} =~ m{#/([^/]+?)(?:\.mp3)?$};
+	my $fname = uri_unescape( $1 ) . ".mp3";
+
+	INFO( name =&gt; $fname, size =&gt; $len, quality =&gt; "mp3" );
 
 	DOWNLOAD( $-{_uri}, fname =&gt; $fname );
 

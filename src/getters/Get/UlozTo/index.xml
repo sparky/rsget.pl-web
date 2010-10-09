@@ -1,0 +1,49 @@
+index:	0
+title:	UlozTo
+desc:	[UlozTo] <a href="http://uloz.to/" rel="nofollow">"http://uloz.to/"</a>
+
+body:	
+	<p>Check <a href="http://img.uloz.to/podminky.pdf" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-10-05</p>
+	<pre># $Id: UlozTo 11829 2010-10-05 00:32:28Z sparky $
+# Get::UlozTo - File getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: UlozTo
+short: UlozTo
+web: "http://uloz.to/"
+tos: "http://img.uloz.to/podminky.pdf"
+uri: qr{uloz\.to/\d+/}
+slots: max
+status: OK 2010-10-05
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" )
+		if m{&lt;div id="errPage".*?&lt;h2&gt;(.*?)&lt;/h2&gt;}s;
+
+	! m{&lt;h2 class="nadpis" .*?&gt;&lt;a href=".*?"&gt;(.*?)&lt;/a&gt;&lt;/h2&gt;};
+	my $name = $1;
+
+	! m{&lt;div class="info_velikost" .*?&gt;&lt;div&gt;($STDSIZE)&lt;/div&gt;&lt;/div&gt;}o;
+	INFO( name =&gt; $name, asize =&gt; $1 );
+
+	! $-{form} = $self-&gt;form( name =&gt; "dwn" );
+
+	#! m{&lt;img .*? src="(http://img\.uloz\.to/captcha/\d+\.png)" alt="Captcha" class="captcha" /&gt;};
+	#GET( $1 );
+	#CAPTCHA( qr/[a-z]{4}/ );
+	#$-{form}-&gt;set( captcha_user =&gt; $_ );
+	
+	# captcha hack - no need to solve captchas !
+	$-{form}-&gt;set( captcha_nb =&gt; 1 );
+	$-{form}-&gt;set( captcha_user =&gt; "rxke" );
+
+	DOWNLOAD( $-{form}-&gt;post() );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
