@@ -46,11 +46,13 @@ those features without using any, potentially dangerous, hacks.</p>
 	<li>separation of uri list reader and download dispatcher (wastes a lot of ram)</li>
 </ul>
 
-<p>I will try to make sure that:</p>
+<p>I will try to make sure:</p>
 <ul>
 	<li>rsget.pl works at (nearly) its full potential on OpenWRT systems</li>
-	<li>make it as configurable as possible</li>
-	<li>add many hooks for user code or external commands</li>
+	<li>to make it as configurable as possible</li>
+	<li>to add many hooks for user code or external commands</li>
+	<li>there will be a good multiuser support</li>
+	<li>there will be a good framework for premium accounts</li>
 </ul>
 
 <h3>What is going to happen with current code ?</h3>
@@ -85,7 +87,8 @@ too big to do it in my spare time. In case of sponsorship I could spend on it a 
 on monster .be/.se/.whatever looking for a job.</p>
 
 <h3>code things yourself</h3>
-<p>You can contribute using github. Any useful and non-crappy code will do.</p>
+<p>You can contribute using <a href="http://github.com/sparky/rsget.pl-core">github</a>.
+	Any useful and non-crappy code will do.</p>
 
 <h3>general ideas</h3>
 <p>If you think you have a solution to some of my problems or an answer to some of my queries
@@ -109,6 +112,10 @@ actually do get blind.</div>
 
 <h3>test and bug reports</h3>
 <p>None required at the moment. Code isn't mature enough.</p>
+
+<h3>premium accounts</h3>
+<p>I will need (few days) access to premium accounts to develop plugins.
+	But this in future.</p>
 
 <h3>more ideas</h3>
 <p>Did I miss something ?</p>
