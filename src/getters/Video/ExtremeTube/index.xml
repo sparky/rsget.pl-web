@@ -4,7 +4,7 @@ desc:	[V:ExtremeTube] <a href="http://www.extremetube.com/" rel="nofollow">"http
 
 body:	
 	<p>Status: OK 2010-07-13</p>
-	<pre># $Id: ExtremeTube 11662 2010-07-13 01:31:48Z sparky $
+	<pre># $Id: ExtremeTube 11841 2010-10-12 22:51:27Z sparky $
 # Video::ExtremeTube - Video getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -21,16 +21,20 @@ status: OK 2010-07-13
 start:
 	GET( $-{_uri} );
 
-	! m{&lt;h1 class="title-video-box".+?&gt;(.*?)&lt;/h1&gt;};
+	! m{&lt;h1 class="title-video-box.+?&gt;(.*?)&lt;/h1&gt;};
 	$-{fname} = de_ml( $1 );
 	$-{fname} =~ s{/}{_}g;
 	$-{fname} =~ s/\s*$/.flv/;
 
-	INFO( name =&gt; $-{fname}, quality =&gt; "flv" );
-
 	! m{flashvars\.video_url = '(.*?)'};
+	$-{file_uri} = uri_unescape( $1 );
 
-	DOWNLOAD( $1, fname =&gt; $-{fname} );
+	GET( $-{file_uri}, headonly =&gt; 1, keep_referer =&gt; 1 );
+
+	! m{Content-Length:\s*(\d+)};
+	INFO( name =&gt; $-{fname}, size =&gt; $1 );
+
+	DOWNLOAD( $-{file_uri}, fname =&gt; $-{fname} );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

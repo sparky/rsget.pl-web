@@ -11,8 +11,11 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 1</p>
+	<p>Commits: 2</p>
 	<dl>
+		<dt id="r11841"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11841&amp;view=rev">r11841</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-12 22:51:27 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/ExtremeTube">Video/ExtremeTube</a> (<a href="/getters/Video/ExtremeTube/">getter</a>)</li></ul><pre>- updated
+- use http head to get file size</pre></dd>
 		<dt id="r11839"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11839&amp;view=rev">r11839</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-09 19:02:05 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Makefile">Makefile</a></li></ul><pre>- this source base is closed; throw away the key</pre></dd>
 	</dl>
