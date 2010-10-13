@@ -1,0 +1,35 @@
+index:	-8
+title:	2010-04-07: new core
+desc:	<strong>New rsget.pl ! Help wanted.</strong>
+
+body:	
+<p>I have started work on new rsget.pl core code, which should address some
+of problems of the actual one. It will also add features you may have
+wanted (premium accounts, multiuser support). Read more at:<br />
+
+<a href="/about/new-core/">http://rsget.pl/about/new-core/</a></p>
+
+<p>And spread the good word !</p>
+
+<p>However, I must ask for your help. This rewrite is going to be a huge
+task and I don't want to have to do it ever again. Please, write an email to
+&lt;core&at;rsget.pl&gt; with any suggestions you have for the new core and feel free
+to help in any other way you see fit. I can't promise all your
+expectations will be met right away, but I will make sure to design the
+core in such way that will allow adding those features without much
+complication.</p>
+
+<p>Thank you, I really appreciate your response !</p>
+
+<hr />
+<h4>Help people find out about rsget.pl:</h4>
+<dl>
+	<dt><a href="http://freshmeat.net/projects/rsgetpl">rsget.pl at freshmeat</a></dt>
+	<dd><ul><li>vote, comment and bump statistics</li></ul></dd>
+
+	<dt><a href="https://www.ohloh.net/p/rsget_pl">rsget.pl at ohloh</a></dt>
+	<dd><ul><li>rate and comment, also give kudos to managers</li></ul></dd>
+
+	<dt><a href="http://www.youtube.com/watch?v=5I8ipaDQIqs">userscript video on youtube</a></dt>
+	<dd><ul><li>comment and rate</li></ul></dd>
+</dl>
