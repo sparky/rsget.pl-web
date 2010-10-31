@@ -5,7 +5,7 @@ desc:	[FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.co
 body:	
 	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-10-08</p>
-	<pre># $Id: FileServe 11837 2010-10-09 18:41:40Z sparky $
+	<pre># $Id: FileServe 11846 2010-10-14 21:43:54Z sparky $
 # Get::FileServe - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -55,6 +55,8 @@ stage_getcaptcha:
 	CAPTCHA(
 		qr/\S+ \S+/
 	);
+
+	RESTART( 1, "Captcha not solved" ) unless $_;
 
 	CLICK( "/checkReCaptcha.php", post =&gt; {
 			recaptcha_shortencode_field =&gt; $-{captcha_encode},

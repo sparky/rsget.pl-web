@@ -5,7 +5,7 @@ desc:	[UlozTo] <a href="http://uloz.to/" rel="nofollow">"http://uloz.to/"</a>
 body:	
 	<p>Check <a href="http://img.uloz.to/podminky.pdf" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-10-05</p>
-	<pre># $Id: UlozTo 11829 2010-10-05 00:32:28Z sparky $
+	<pre># $Id: UlozTo 11852 2010-10-17 22:03:47Z sparky $
 # Get::UlozTo - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,6 +17,7 @@ short: UlozTo
 web: "http://uloz.to/"
 tos: "http://img.uloz.to/podminky.pdf"
 uri: qr{uloz\.to/\d+/}
+uri: qr{ulozto\.cz/\d+/}
 slots: max
 status: OK 2010-10-05
 
@@ -29,7 +30,7 @@ start:
 	! m{&lt;h2 class="nadpis" .*?&gt;&lt;a href=".*?"&gt;(.*?)&lt;/a&gt;&lt;/h2&gt;};
 	my $name = $1;
 
-	! m{&lt;div class="info_velikost" .*?&gt;&lt;div&gt;($STDSIZE)&lt;/div&gt;&lt;/div&gt;}o;
+	! m{&lt;div class="info_velikost" .*?&gt;&lt;div&gt;(?:[\d:]+\s*\|\s*)?($STDSIZE)&lt;/div&gt;&lt;/div&gt;}o;
 	INFO( name =&gt; $name, asize =&gt; $1 );
 
 	! $-{form} = $self-&gt;form( name =&gt; "dwn" );

@@ -4,8 +4,8 @@ desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.files
 
 body:	
 	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-08-17</p>
-	<pre># $Id: FileSonic 11790 2010-08-29 19:22:27Z pawelz $
+<p>Status: OK 2010-10-30</p>
+	<pre># $Id: FileSonic 11884 2010-10-30 12:49:43Z sparky $
 # Get::FileSonic - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://www.filesonic.com/"
 tos: "http://www.filesonic.com/terms-and-conditions"
 uri: qr{filesonic\.com/file/\d+}
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
-status: OK 2010-08-17
+status: OK 2010-10-30
 
 unify:
 	return "http://www.filesonic.com/file/$1"
@@ -28,24 +28,62 @@ start:
 	GET( $-{_uri} );
 
 	ERROR( "file not found: $1" )
-		if m#&lt;div class="section CL1"&gt;.*?&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
+		if m#&lt;div class="section CL1"&gt;.*?&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s
+		or m#&lt;div id="downloadFileInfo" class="section CL2"&gt;\s*&lt;h2&gt;&lt;span&gt;[^&lt;]*?&lt;/span&gt;&lt;/h2&gt;\s*&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
 
 	! m#&lt;p class="fileInfo filename"&gt;.*?&lt;strong&gt;(.*?)&lt;/strong&gt;#;
 	( my $fn = $1 ) =~ s/\.\.\./\0/;
 	! m#&lt;span class="size"&gt;($STDSIZE)&lt;/span&gt;#;
 	INFO( aname =&gt; $fn, asize =&gt; $1 );
 
-	! m#&lt;a class="downloadNow" href="(.*?)" id="free_download"&gt;#;
-	CLICK( $1, keep_referer =&gt; 1 );
+	! m#href="(.*?)" id="free_download"#;
+	$-{dl_start} = $1;
+	CLICK( $-{dl_start}, post =&gt; "", keep_referer =&gt; 1 );
 
 	MULTI() if m#&lt;span&gt;Download session in progress&lt;/span&gt;#;
 
-	! m#downloadUrl = "(.*?)"#;
-	$-{file_uri} = $1;
+stage_getlink:
+	( $-{file_uri} ) = m{&lt;p&gt;&lt;a href="(.*?)"&gt;&lt;span&gt;Start download now!&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;};
 
-	! /var countDownDelay = (\d+);/;
-	WAIT( - $1, "starting download" );
+	GOTO stage_download if $-{file_uri};
 
+	if ( /var countDownDelay = (\d+);/ ) {
+		$-{delay} = $1;
+		GOTO stage_wait;
+	}
+
+	! m{Recaptcha\.create\("(.*?)"};
+	$-{captcha_key} = $1;
+
+	GET( "http://www.google.com/recaptcha/api/challenge?k=$-{captcha_key}&amp;ajax=1&amp;cachestop=" . rand,
+		keep_referer =&gt; 1 );
+
+	! ( $-{captcha_challenge} ) = m{challenge\s*:\s*'(.*?)'};
+
+	GET( "http://www.google.com/recaptcha/api/image?c=" . $-{captcha_challenge},
+		keep_referer =&gt; 1 );
+
+	CAPTCHA(
+		qr/\S+ \S+/
+	);
+
+	RESTART( 1, "Captcha not solved" ) unless $_;
+
+	GET( $-{dl_start}, post =&gt; {
+			recaptcha_challenge_field =&gt; $-{captcha_challenge},
+			recaptcha_response_field =&gt; $_
+		} );
+
+	GOTO stage_getlink;
+
+stage_wait:
+	WAIT( -( $-{delay} + 5 ), "expecting download link" );
+
+	GET( $-{dl_start}, post =&gt; "" );
+
+	GOTO stage_getlink;
+
+stage_download:
 	CLICK_DOWNLOAD( $-{file_uri} );
 
 # vim: filetype=perl:ts=4:sw=4

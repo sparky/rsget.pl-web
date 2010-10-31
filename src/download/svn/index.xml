@@ -11,8 +11,24 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 2</p>
+	<p>Commits: 10</p>
 	<dl>
+		<dt id="r11884"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11884&amp;view=rev">r11884</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-30 12:49:43 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- updated</pre></dd>
+		<dt id="r11852"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11852&amp;view=rev">r11852</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-17 22:03:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UlozTo">Get/UlozTo</a> (<a href="/getters/Get/UlozTo/">getter</a>)</li></ul><pre>- allow ulozto.cz uris</pre></dd>
+		<dt id="r11849"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11849&amp;view=rev">r11849</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-15 22:13:46 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- fixed last commit</pre></dd>
+		<dt id="r11848"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11848&amp;view=rev">r11848</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-15 22:03:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- engrish</pre></dd>
+		<dt id="r11847"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11847&amp;view=rev">r11847</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-15 21:59:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- updated "file not found" detection</pre></dd>
+		<dt id="r11846"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11846&amp;view=rev">r11846</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-14 21:43:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- restart if captcha wasn't solved</pre></dd>
+		<dt id="r11844"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11844&amp;view=rev">r11844</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-14 10:51:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UlozTo">Get/UlozTo</a> (<a href="/getters/Get/UlozTo/">getter</a>)</li></ul><pre>- ignore video duration if there is any</pre></dd>
+		<dt id="r11843"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11843&amp;view=rev">r11843</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-13 22:31:32 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- updated, uses recaptcha now</pre></dd>
 		<dt id="r11841"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11841&amp;view=rev">r11841</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-12 22:51:27 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/ExtremeTube">Video/ExtremeTube</a> (<a href="/getters/Video/ExtremeTube/">getter</a>)</li></ul><pre>- updated
 - use http head to get file size</pre></dd>
