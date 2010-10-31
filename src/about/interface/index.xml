@@ -3,16 +3,55 @@ title:	http interface
 desc:	How to make best use of the http interface.
 
 body:
-<pre class="vim"><span class="Comment"># Patch http intherface through apache web server.</span>
+<p>HTTP interface is enabled setting http-port to 7666 (used in all examples)
+	or any other port you have available. You can do it either by specifying
+	<tt>--http-port=7666</tt> on the command line or setting <tt>http_port = 7666</tt>
+	in config file. This will enable built-in http server and said interface.
+	After starting rsget.pl you will be able to access it entering
+	&lt;<tt>http://host_where_you_run_rsget.pl:7666/</tt>&gt; address.</p>
 
-<span class="Identifier">ProxyPass</span> /rsget/ http://localhost:7666/ retry=2
-<span class="Identifier">ProxyPass</span> /rsget/done !
+<p>Bear in mind that this built-in server is very weak. It doesn't have a decent
+	authentication. It is extremely vulnerable to most DDoS attacks.
+	<em>You <strong>MUST</strong> protect it from the "internets".</em>
+	On Linux you can use iptables to disable connections from outside your local
+	network (assuming your network is 192.168.1.0):</p>
 
-<span class="Statement">&lt;Location</span><span class="Constant"> /rsget</span><span class="Statement">&gt;</span>
+<pre>iptables -A INPUT -p tcp ! -s 192.168.1.0/24 --dport 7666 -j DROP</pre>
+
+
+<h3>proxy</h3>
+
+<p>If you really want to use http interface from sources you don't trust
+	I suggest using apache server as proxy. The following config provides
+	much better authentication and some degree of protection.</p>
+
+<pre class="vim"><span class="Comment"># Patch http interface through apache web server.</span>
+
+<span class="Identifier">ProxyPass</span> /rsget.pl/ http://localhost:7666/ retry=2
+<span class="Identifier">ProxyPass</span> /rsget.pl/done !
+
+<span class="Statement">&lt;Location</span><span class="Constant"> /rsget.pl</span><span class="Statement">&gt;</span>
 	<span class="Identifier">AuthType</span> <span class="Constant">basic</span>
 	<span class="Identifier">AuthName</span> <span class="Constant">&quot;rsget.pl downloader&quot;</span>
 	<span class="Identifier">AuthBasicProvider</span> file
-	<span class="Identifier">AuthUserFile</span> /srv/http/root/rsget/.htpasswd
+	<span class="Identifier">AuthUserFile</span> /srv/http/root/rsget.pl/.htpasswd
 	<span class="Identifier">Require</span> <span class="Constant">valid-user</span>
 	<span class="Identifier">Options</span> <span class="Constant">+FollowSymLinks</span>
 <span class="Statement">&lt;/Location&gt;</span></pre>
+
+<p>Assuming you are running rsget.pl on host called <em>my_host</em> you should
+be able to access it as &lt;<tt>https://my_host/rsget.pl</tt>&gt;</p>
+
+
+<h3>download finished files</h3>
+
+<p>Built-in http server does not allow to retrieve finished downloads.
+	You must use some real file server for it.
+	In the example above you can point <tt>done</tt>
+	symbolic link to your download directory and run your rsget.pl with
+	http_outdir set as: <tt>--http-outdir=https://my_host/rsget.pl/done/</tt>.</p>
+
+<p><strong>http_outdir</strong> option does not require "proxy" integration. It just makes http
+	interface aware that downloaded files can be accessed through external URI.
+	You can even use ftp if you wish, in this case config line would be:</p>
+<pre>http_outdir = ftp://user@my_host//full/path/to/outdir/</pre>
