@@ -11,8 +11,14 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 10</p>
+	<p>Commits: 13</p>
 	<dl>
+		<dt id="r11899"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11899&amp;view=rev">r11899</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-06 21:32:33 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- also detect "free download slots are full"</pre></dd>
+		<dt id="r11898"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11898&amp;view=rev">r11898</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-06 21:25:38 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- detect flood detection</pre></dd>
+		<dt id="r11897"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11897&amp;view=rev">r11897</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-06 18:52:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- respect "free limit" time</pre></dd>
 		<dt id="r11884"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11884&amp;view=rev">r11884</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-30 12:49:43 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- updated</pre></dd>
 		<dt id="r11852"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11852&amp;view=rev">r11852</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-10-17 22:03:47 UTC</em></dt>
