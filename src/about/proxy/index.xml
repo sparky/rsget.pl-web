@@ -1,12 +1,6 @@
-index:	-6
-title:	2010-04-11: proxy
-desc:	<strong>proxy support</strong>
-	<p>
-		In svn revision
-		<a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm?r1=11195&amp;r2=11329">11329</a>,
-		proxy support was added. HTTP or SOCKS proxies can be used
-		as additional interfaces (a.k.a. IP addresses).
-	</p>
+index:	0
+title:	proxy
+desc:	Use socks and http proxy as additional interfaces.
 
 body:	
 <h2>Using SOCKS proxy</h2>
