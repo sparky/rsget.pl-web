@@ -1,0 +1,21 @@
+index:	-1
+title:	contact
+desc:	How to contact us.
+
+body:
+<h2>e-mail</h2>
+<p>There are multiple e-mail accounts <em>&at;rsget.pl</em>. Right now all of
+	them go directly to me (sparky).</p>
+
+<h2>IRC</h2>
+<dl>
+	<dt>server</dt>
+	<dd>irc.freenode.net (<a href="http://freenode.net/">web</a>)</dd>
+
+	<dt>channel</dt>
+	<dd>#rsget.pl</dd>
+
+	<dt>note</dt>
+	<dd>I (sparky) use nickname SamChi at freenode,
+		because sparky was used already.</dd>
+</dl>
