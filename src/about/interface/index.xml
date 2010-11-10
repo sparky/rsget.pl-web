@@ -16,7 +16,12 @@ body:
 	On Linux you can use iptables to disable connections from outside your local
 	network (assuming your network is 192.168.1.0):</p>
 
-<pre>iptables -A INPUT -p tcp ! -s 192.168.1.0/24 --dport 7666 -j DROP</pre>
+<pre class="vim"><span class="Comment"># accept connections from localhost</span>
+iptables -A INPUT -p tcp -s 127.0.0.0/8 --dport 7666 -j ACCEPT
+<span class="Comment"># accept connections from local network</span>
+iptables -A INPUT -p tcp -s 192.168.1.0/24 --dport 7666 -j ACCEPT
+<span class="Comment"># drop everything else</span>
+iptables -A INPUT -p tcp --dport 7666 -j DROP</pre>
 
 
 <h3>proxy</h3>
