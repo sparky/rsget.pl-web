@@ -4,8 +4,8 @@ desc:	How to contact us.
 
 body:
 <h2>e-mail</h2>
-<p>There are multiple e-mail accounts <em>&at;rsget.pl</em>. Right now all of
-	them go directly to me (sparky).</p>
+<p>There are multiple e-mail accounts <em>&at;rsget.pl</em>. You can find most
+	of them in appropriate <a href="/about/">about</a> sections.</p>
 
 <h2>IRC</h2>
 <dl>
@@ -18,4 +18,16 @@ body:
 	<dt>note</dt>
 	<dd>I (sparky) use nickname SamChi at freenode,
 		because sparky was used already.</dd>
+
+	<dt>rules</dt>
+	<dd>Say hi, ask your query and stay until someone answers you.</dd>
 </dl>
+
+<h2>other ?</h2>
+<p>If you think there should be another way to contact developer(s)
+	and other users let us know. The possibilities are:</p>
+<ul>
+	<li>forum</li>
+	<li>mailing list</li>
+	<li>comments on this web page</li>
+</ul>
