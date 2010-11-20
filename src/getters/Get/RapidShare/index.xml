@@ -5,7 +5,7 @@ desc:	[RS] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.co
 body:	
 	<p>Check <a href="http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-10-04</p>
-	<pre># $Id: RapidShare 11899 2010-11-06 21:32:33Z sparky $
+	<pre># $Id: RapidShare 11906 2010-11-11 12:12:46Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -26,29 +26,31 @@ unify:
 	return $_;
 
 start:
-	GET( $-{_uri} );
+	$-{__uri} = $-{_uri} unless $-{__uri};
 
-	RESTART( -300, "must wait: $1" )
-		if /^ERROR: (Please stop floo.*|All free download slots are full.*)/;
+	GET( $-{__uri} );
 
 	ERROR( "file not found: $1" )
-		if /^ERROR: (.*)/
-			and substr( $1, 0, 16 ) ne "You need to wait"
-			and substr( $1, 0, 17 ) ne "You need RapidPro";
+		if /^ERROR: (File .*)/;
 
-	GOTO stage_uri_complete
-		unless m{&lt;script type="text/javascript"&gt;location="(.*?)"};
-	$-{_referer} = undef;
-	GET( "http://rapidshare.com$1" );
+	if ( m{&lt;script type="text/javascript"&gt;location="(.*?)"} ) {
+		$-{__uri} = "http://rapidshare.com$1";
 
-stage_uri_complete:
-	! ( $-{id}, $-{name}, my $size ) = $-{_referer} =~ m{#!download\|\d+\|(\d+)\|(.+?)\|(\d+)};
-	INFO( name =&gt; $-{name}, asize =&gt; "$size KB" );
+		RESTART( 1, "found correct uri: $-{__uri}" );
+	}
+
+	if ( ( $-{id}, $-{name}, my $size ) = $-{_referer} =~ m{#!download\|[0-9a-z]+\|(\d+)\|(.+?)\|(\d+)} ) {
+		INFO( name =&gt; $-{name}, asize =&gt; "$size KB" );
+	} else {
+		ERROR( "unknown error, uri is: $-{_referer}" );
+	}
 	
 	CLICK( "http://api.rapidshare.com/cgi-bin/rsapi.cgi?sub=download_v1&amp;try=1&amp;fileid=$-{id}&amp;filename=$-{name}" );
 
 	MULTI( $1 )
 		if /^(ERROR: You need RapidPro.*)/;
+	RESTART( -60, "must wait: $1" )
+		if /^ERROR: (Please stop floo.*|All free download slots are full.*)/;
 	RESTART( -$2, "free limit reached: $1" )
 		if /^(ERROR: You need to wait (\d+) seconds.*)/;
 

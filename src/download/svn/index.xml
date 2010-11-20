@@ -11,8 +11,18 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 13</p>
+	<p>Commits: 18</p>
 	<dl>
+		<dt id="r11906"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11906&amp;view=rev">r11906</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-11 12:12:46 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- rs doesn't like when we use old uris - try to avoid them</pre></dd>
+		<dt id="r11905"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11905&amp;view=rev">r11905</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-11 11:41:04 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- updated</pre></dd>
+		<dt id="r11904"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11904&amp;view=rev">r11904</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-10 20:39:26 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- broken; not fixing, got better things to do</pre></dd>
+		<dt id="r11903"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11903&amp;view=rev">r11903</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-10 20:29:42 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- detect better file name</pre></dd>
+		<dt id="r11902"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11902&amp;view=rev">r11902</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-10 14:24:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPServer.pm">RSGet/HTTPServer.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.js">data/main.js</a></li></ul><pre>- moved connection: close http header from client to server</pre></dd>
 		<dt id="r11899"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11899&amp;view=rev">r11899</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-06 21:32:33 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- also detect "free download slots are full"</pre></dd>
 		<dt id="r11898"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11898&amp;view=rev">r11898</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-06 21:25:38 UTC</em></dt>

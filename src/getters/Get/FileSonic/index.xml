@@ -4,8 +4,8 @@ desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.files
 
 body:	
 	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-10-30</p>
-	<pre># $Id: FileSonic 11884 2010-10-30 12:49:43Z sparky $
+<p>Status: BROKEN 2010-11-10</p>
+	<pre># $Id: FileSonic 11904 2010-11-10 20:39:26Z sparky $
 # Get::FileSonic - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://www.filesonic.com/"
 tos: "http://www.filesonic.com/terms-and-conditions"
 uri: qr{filesonic\.com/file/\d+}
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
-status: OK 2010-10-30
+status: BROKEN 2010-11-10
 
 unify:
 	return "http://www.filesonic.com/file/$1"
@@ -31,10 +31,10 @@ start:
 		if m#&lt;div class="section CL1"&gt;.*?&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s
 		or m#&lt;div id="downloadFileInfo" class="section CL2"&gt;\s*&lt;h2&gt;&lt;span&gt;[^&lt;]*?&lt;/span&gt;&lt;/h2&gt;\s*&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
 
-	! m#&lt;p class="fileInfo filename"&gt;.*?&lt;strong&gt;(.*?)&lt;/strong&gt;#;
-	( my $fn = $1 ) =~ s/\.\.\./\0/;
+	! m#&lt;title&gt;Download (.*?) for free on Filesonic.com&lt;/title&gt;#;
+	my $fn = $1;
 	! m#&lt;span class="size"&gt;($STDSIZE)&lt;/span&gt;#;
-	INFO( aname =&gt; $fn, asize =&gt; $1 );
+	INFO( name =&gt; $fn, asize =&gt; $1 );
 
 	! m#href="(.*?)" id="free_download"#;
 	$-{dl_start} = $1;
