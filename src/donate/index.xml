@@ -31,6 +31,9 @@ body:
 		<dt>Reason you wish to donate</dt>
 		<dd>
 			<select name="detail1_description">
+				<option value="rsget.pl - I want new rsget.pl-core">
+					I want new rsget.pl-core !
+				</option>
 				<option value="rsget.pl - keep up the good work">
 					keep up the good work
 				</option>
