@@ -9,8 +9,8 @@ body:
 <h3>Usage</h3>
 <p>
 	This script creates tray icon and checks captcha list of your
-	<strong>rsget.pl</strong>. Remember to run your rsget.pl with http
-	interface.
+	<strong>rsget.pl</strong>. Remember to run your rsget.pl with
+	<a href="/about/interface/">http interface</a>.
 </p>
 <p>
 	If there is some captcha to solve tray icon changes and starts to
