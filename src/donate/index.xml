@@ -44,7 +44,10 @@ body:
 					I would like a new feature
 				</option>
 				<option value="rsget.pl - I would like a new getter plugin">
-					I would like new getter plugin
+					I would like a new getter plugin
+				</option>
+				<option value="rsget.pl - I want you to fix some getter plugin">
+					I want you to fix some getter plugin
 				</option>
 			</select><br />
 			Your comment:<br />
