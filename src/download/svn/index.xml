@@ -11,8 +11,15 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 32</p>
+	<p>Commits: 35</p>
 	<dl>
+		<dt id="r11967"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11967&amp;view=rev">r11967</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-06 19:19:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- implemented soft restart - SIGUSR2 will make rsget.pl restart after
+  finishing all current downloads</pre></dd>
+		<dt id="r11960"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11960&amp;view=rev">r11960</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-06 13:52:34 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Quota.pm">RSGet/Quota.pm</a></li></ul><pre>- typos</pre></dd>
+		<dt id="r11959"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11959&amp;view=rev">r11959</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-06 13:35:24 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Quota.pm">RSGet/Quota.pm</a></li></ul><pre>- added download quota support, may be buggy</pre></dd>
 		<dt id="r11954"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11954&amp;view=rev">r11954</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:46:30 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium/RapidShare">Premium/RapidShare</a> (<a href="/getters/Premium/RapidShare/">getter</a>)</li></ul><pre>- plugin for premium account at rapidshare</pre></dd>
 		<dt id="r11953"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11953&amp;view=rev">r11953</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:45:14 UTC</em></dt>
