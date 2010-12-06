@@ -8,7 +8,7 @@ my $out = "src/getters";
 
 my %getters = ();
 
-foreach my $dir ( qw(Get Video Audio Image Link Direct) ) {
+foreach my $dir ( qw(Premium Get Video Audio Image Link Direct) ) {
 	foreach my $f ( "$src/$dir/.template", glob "$src/$dir/*" ) {
 		next unless -r $f;
 		next if $f =~ /~$/;
@@ -16,7 +16,7 @@ foreach my $dir ( qw(Get Video Audio Image Link Direct) ) {
 		getter_info( $f );
 	}
 }
-foreach my $dir ( qw(Get Video Audio Image Link Direct) ) {
+foreach my $dir ( qw(Premium Get Video Audio Image Link Direct) ) {
 	foreach my $f ( "$out/$dir/.template", glob "$out/$dir/*" ) {
 		next unless -d $f;
 		$f =~ s/^$out/$src/;

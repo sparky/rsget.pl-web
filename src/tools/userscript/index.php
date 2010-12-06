@@ -57,7 +57,7 @@ body:
 <dl>
 	<dt>Where your rsget.pl can be found</dt>
 	<dd><input type="text" name="host"
-		value="<?= isset( $_REQUEST["host"] ) ? $_REQUEST["host"] : "http://localhost:7666/" ?>"
+		value="<?= isset( $_REQUEST["host"] ) ? htmlentities( $_REQUEST["host"] ) : "http://localhost:7666/" ?>"
 		/></dd>
 	<dt>Open menu on all supported pages (including flash-based)</dt>
 	<dd><label for="open_supported">always open</label>:

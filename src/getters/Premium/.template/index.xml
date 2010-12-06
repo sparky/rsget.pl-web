@@ -1,0 +1,44 @@
+index:	0
+title:	[NAME]
+desc:	[*[NAME]] <a href="http://gsite.com/" rel="nofollow">"http://gsite.com/"</a>
+
+body:	
+	<p>Status: OK [DATE]</p>
+	<pre># $Id: .template 11952 2010-12-05 23:44:43Z sparky $
+# Premium::[NAME] - Premium file getter plugin for rsget.pl
+#
+# 2010 (c) ??? &lt;???@???.??&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: [NAME]
+short: *[NAME]
+web: "http://gsite.com/"
+uri: qr{gsite\.com/}
+slots: max
+status: OK [DATE]
+
+pre:
+	my ($user, $pass);
+
+	if ( my $s = setting("premium_" . lc "[NAME]" ) ) {
+		($user, $pass) = ($s =~ /^(.+?):(.+)/) or die "Premium user:pass incorrect\n";
+	} else {
+		die "Premium user:pass not given\n";
+	}
+
+unify:
+	return $_;
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" )
+		if /^ERROR: (File .*)/;
+
+	CLICK( "http://login", post =&gt; { user =&gt; $user, password =&gt; $pass } );
+
+	DOWNLOAD( "file" );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

@@ -4,8 +4,8 @@ desc:	[MU] <a href="http://megaupload.com/" rel="nofollow">"http://megaupload.co
 
 body:	
 	<p>Check <a href="http://megaupload.com/?c=terms" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-12</p>
-	<pre># $Id: MegaUpload 11742 2010-08-01 16:39:18Z pawelz $
+<p>Status: OK 2010-12-03</p>
+	<pre># $Id: MegaUpload 11945 2010-12-03 23:37:19Z sparky $
 # Get::MegaUpload - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -21,25 +21,7 @@ uri: qr{megaporn\.com/(../)?\?d=}
 uri: qr{megarotic\.com/(../)?\?d=}
 uri: qr{sexuploader\.com/(../)?\?d=}
 uri: qr{megavideo\.com/\?d=}
-status: OK 2010-07-12
-
-pre:
-	my @captcha_solver;
-
-	my $mu_font_db = data_file( "mu_font_db.gif" );
-	eval {
-		die "Font DB 'mu_font_db.gif' does not exist\n" unless $mu_font_db;
-
-		require Image::Magick;
-		my $dbf = new Image::Magick;
-		$dbf-&gt;Read( $mu_font_db );
-		die "Cannot open image $mu_font_db\n" unless $dbf-&gt;Get( "width" );
-	};
-	if ( $@ ) {
-		warn "MegaUpload: Unable to use native captcha solver: $@\n";
-	} else {
-		@captcha_solver = ( solver =&gt; \&amp;mu_captcha );
-	}
+status: OK 2010-12-03
 
 unify:
 	my ($id) = /d=([A-Z0-9]*)/i;
@@ -51,177 +33,31 @@ unify:
 start:
 	GET( unify( $-{_uri} ) );
 
-stage_init:
-	RESTART( 10 * 60, "temporarily blocked" )
-		if m{document\.location='http://www\.megaupload\.com/\?c=msg'};
-
 	ERROR( "file not found" )
-		if /Unfortunately, the link you have clicked is not available/
-			or /This file has expired due to inactivity/;
-	m{&lt;TD valign="middle" align="left" .*?width="500"&gt;(.*?)&lt;/TD&gt;}s;
-	my @f = map m#&lt;font.*?&gt;\s*(.*?)\s*&lt;/font&gt;#g, $1;
-	my $name = $f[1];
-	$name =~ s/(.*)\.(\..{1,5})$/$1\0$2/; # mark truncated name
-	INFO( iname =&gt; $name, asize =&gt; $f[5] );
+		if /Unfortunately, the link you have clicked is not available/;
+
+	ERROR( "not allowed: file larger than 1GB" )
+		if /&lt;span class="down_txt1"&gt;The file you are trying to download is larger than/;
 
 	DELAY( 600, "temporarily unavailable" )
 		if /The file you are trying to access is temporarily unavailable/;
 
-	ERROR( "not allowed: file larger than 1GB" )
-		if /The file that you're trying to download is larger than 1 GB/;
+	! m{&lt;strong&gt;File size:&lt;/strong&gt; ($STDSIZE)&lt;br /&gt;}o;
+	my $size = $1;
 
-	if ( /The file you're trying to download is password protected/ ) {
-		ERROR( "password required" ) unless exists $-{_opts}-&gt;{pass};
-
-		! my $form = $self-&gt;form( id =&gt; "passwordform" );
-		$form-&gt;set( filepassword =&gt; $-{_opts}-&gt;{pass} );
-		CLICK_NEXT( stage_last, $form-&gt;post() );
-	}
-
-	! $-{form} = $self-&gt;form( id =&gt; "captchaform" );
-
-stage_captcha:
-	! m{&lt;img src="(http://.*?mega.*?\.com/gencap\.php\?[0-9a-f]+\.gif)"};
-
-	GET( $1, keep_referer =&gt; 1 );
-
-	CAPTCHA( qr/[A-HKMNP-Z]{3}[1-9]{1}/,
-		@captcha_solver,
-		process =&gt; \&amp;mu_decaptcha
-	);
-
-	RESTART( -1, "can't read captcha" ) unless defined $_;
-
-	$-{form}-&gt;set( captcha =&gt; $_ );
-	GET( $-{form}-&gt;post() );
-
-	$-{form} = $self-&gt;form( id =&gt; "captchaform" );
-	if ( $-{form} ) {
-		CAPTCHA_RESULT( "FAIL" );
-		PRINT( "invalid captcha" );
-		GOTO stage_captcha;
-	} else {
-		CAPTCHA_RESULT( "OK" );
-	}
-
-stage_last:
-	ERROR( "invalid password" )
-		if /The file you're trying to download is password protected/;
-
-	! /&lt;a href="(.*?)".*IMG SRC=".*?but_dnld_regular.gif/;
+	! m{&lt;div class="down_butt_pad1" style="display:none;" id="downloadlink"&gt;&lt;a href="(.*/files/.*/(.*))" class="down_butt1"};
 	$-{file_uri} = $1;
+	my $name = $2;
+
+	INFO( name =&gt; $name, asize =&gt; $size );
 
 	! /count=([0-9]+);/;
 	WAIT( $1, "starting download" );
 
 	CLICK_DOWNLOAD( $-{file_uri} );
 
-	GOTO stage_init if m{/download\.jpg'.*Filename:}s;
-
-	RESTART( - irand( 60, 300 ), "limit reached" )
+	RESTART( - irand( 60, 360 ), "free limit reached" )
 		if /Download limit exceeded/;
-
-perl:
-	
-sub mu_decaptcha
-{
-	my $img = shift;
-	$img-&gt;color_filter( sub { shift } );
-	return $img-&gt;doublesize-&gt;ocr();
-}
-
-my %size = (
-	A =&gt; 28, B =&gt; 22, C =&gt; 21, D =&gt; 27, E =&gt; 16,
-	F =&gt; 16, G =&gt; 26, H =&gt; 26, K =&gt; 20, M =&gt; 38,
-	N =&gt; 28, P =&gt; 21, Q =&gt; 30, R =&gt; 22, S =&gt; 18,
-	T =&gt; 19, U =&gt; 26, V =&gt; 22, W =&gt; 40, X =&gt; 23,
-	Y =&gt; 18, Z =&gt; 18
-);
-
-my @db;
-
-sub mu_captcha_read_db()
-{
-	my $dbf = new Image::Magick;
-	$dbf-&gt;Read( $mu_font_db );
-	foreach my $pos ( 0..3 ) {
-		my @list = sort keys %size;
-		@list = (1..9) if $pos == 3;
-
-		my $height = 32;
-		my $width = 40;
-		my $left = $width * $pos;
-		$width = 22 if $pos == 3;
-		my $top = 0;
-	
-		my %db;
-		foreach my $char ( @list ) {
-			my $db = $dbf-&gt;Clone();
-			$db-&gt;Crop( width =&gt; $width, height =&gt; $height, x =&gt; $left, y =&gt; $top );
-			$db{$char} = $db;
-			$top += 32;
-		}
-		push @db, \%db;
-	}
-}
-
-sub mu_captcha_get_char
-{
-	my ($src, $db, $width, $x) = @_;
-
-	my $img = $src-&gt;Clone();
-	$img-&gt;Crop( width =&gt; $width, height =&gt; 32, x =&gt; $x, y =&gt; 0 );
-	$img-&gt;Extent( width =&gt; $width, height =&gt; 32, x =&gt; 0, y =&gt; 0 );
-
-	my $min_me = 1;
-	my $best_char = undef;
-	my @metric = ( metric =&gt; 'MEPP' );
-	foreach my $n ( keys %$db ) {
-		my $diff = $img-&gt;Compare( image =&gt; $db-&gt;{$n}, @metric );
-		if ( $diff and $diff =~ /Exception 410:.*metric/ ) {
-			@metric = ();
-			redo;
-		}
-		$diff = $img unless $diff;
-		my $me = $diff-&gt;Get( 'mean-error' );
-		if ( $me &lt; $min_me ) {
-			$min_me = $me;
-			$best_char = $n;
-		}
-	}
-	return $best_char;
-}
-
-sub mu_captcha
-{
-	my $data_ref = shift;
-
-	mu_captcha_read_db() unless @db;
-
-	open IMAGE, '&gt;', '.captcha.gif';
-	print IMAGE $$data_ref;
-	close IMAGE;
-
-	my $img = new Image::Magick;
-	my $x = $img-&gt;Read( '.captcha.gif' );
-	unlink '.captcha.gif';
-	return if length $x;
-
-	my ($width, $height) = $img-&gt;Get( 'columns', 'rows' );
-
-	my $bg = new Image::Magick;
-	$bg-&gt;Set( size =&gt; $width."x32" );
-	$bg-&gt;Read( "xc:white" );
-	$bg-&gt;Composite( image =&gt; $img );
-
-	my @cap;
-	push @cap, mu_captcha_get_char( $bg, $db[0], 40, 0 );
-	push @cap, mu_captcha_get_char( $bg, $db[1], 40, $size{$cap[0]} - 6 );
-	push @cap, mu_captcha_get_char( $bg, $db[2], 40, $width - 56 );
-	push @cap, mu_captcha_get_char( $bg, $db[3], 22, $width - 22 );
-
-	return join "", @cap;
-}
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

@@ -1,0 +1,50 @@
+index:	0
+title:	Yahoo
+desc:	[V:Yahoo] <a href="http://video.yahoo.com/" rel="nofollow">"http://video.yahoo.com/"</a>
+
+body:	
+	<p>Status: OK 2010-12-05</p>
+	<pre># $Id: Yahoo 11949 2010-12-05 16:51:36Z sparky $
+# Video::Yahoo - Video getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: Yahoo
+short: V:Yahoo
+web: "http://video.yahoo.com/"
+uri: qr{(?:[a-z]+\.)?video\.yahoo\.com/watch/\d+/\d+}
+uri: qr{(?:[a-z]+\.)?video\.yahoo\.com/network/\d+\?v=\d+}
+slots: max
+status: OK 2010-12-05
+
+start:
+	GET( $-{_uri} );
+
+	! /&lt;meta name="title" content="(.*?)" /
+		or /&lt;h2 id="nvi_title"&gt;(.*?)&lt;/;
+	$-{fname} = de_ml( $1 ) . ".flv";
+	$-{fname} =~ tr{/}{_};
+
+	! /so\.addVariable\("id", "(\d+)"\);/;
+	GET( "http://cosmos.bcst.yahoo.com/up/yep/process/getPlaylistFOP.php?node_id=$1&amp;tech=flash&amp;mode=playlist" );
+
+	! /&lt;STREAM APP="(.*?)" FULLPATH="(.*?)" /;
+	$-{file_uri} = de_ml( $1 . $2 );
+
+	ERROR( "rtmp not supported" ) if $-{file_uri} =~ /^rtmp:/;
+
+	delete $-{_referer};
+	GET( $-{file_uri}, headonly =&gt; 1 );
+
+	# must be flash
+	! m{Content-Type: video/flash};
+
+	! m{Content-Length: (\d+)};
+	INFO( name =&gt; $-{fname}, size =&gt; $1 );
+
+	DOWNLOAD( $-{file_uri}, fname =&gt; $-{fname} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

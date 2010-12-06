@@ -1,0 +1,76 @@
+index:	0
+title:	RapidShare
+desc:	[*RS] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.com/"</a>
+
+body:	
+	<p>Check <a href="http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2010-10-04</p>
+	<pre># $Id: RapidShare 11954 2010-12-05 23:46:30Z sparky $
+# Get::RapidShare - Premium file getter plugin for rsget.pl
+#
+# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: RapidShare
+short: *RS
+web: "http://rapidshare.com/"
+tos: "http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb"
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/files/\d+/.+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/?#!download\|\d+\|\d+\|.+?\|\d+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.de/files/\d+/.+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.de/?#!download\|\d+\|\d+\|.+?\|\d+}
+cookie: rs.p
+slots: max
+status: OK 2010-10-04
+
+pre:
+	my ($user, $pass);
+	if ( my $s = setting("premium_rapidshare") ) {
+		($user, $pass) = ($s =~ /^(.+?):(.+)/) or die "Premium user:pass incorrect\n";
+	} else {
+		die "Premium user:pass not given\n";
+	}
+
+unify:
+	return $_;
+
+start:
+	$-{__uri} = $-{_uri} unless $-{__uri};
+
+	GET( $-{__uri} );
+
+	ERROR( "file not found: $1" )
+		if /^ERROR: (File .*)/;
+
+	if ( m{&lt;script type="text/javascript"&gt;location="(.*?)"} ) {
+		$-{__uri} = "http://rapidshare.com$1";
+
+		RESTART( 1, "found correct uri: $-{__uri}" );
+	}
+
+	if ( ( $-{id}, $-{name}, my $size ) = $-{_referer} =~ m{#!download\|[0-9a-z]+\|(\d+)\|(.+?)\|(\d+)} ) {
+		INFO( name =&gt; $-{name}, asize =&gt; "$size KB" );
+	} else {
+		ERROR( "unknown error, uri is: $-{_referer}" );
+	}
+
+	CLICK( "https://api.rapidshare.com/cgi-bin/rsapi.cgi?sub=getaccountdetails_v1&amp;withcookie=1&amp;withpublicid=1&amp;login=$user&amp;password=$pass&amp;cbf=RSAPIDispatcher&amp;cbid=1" );
+
+	# switch plugin to regular (non premium)
+	if ( /ERROR: Login failed/ ) {
+		INFO( getter =&gt; "Get::RapidShare" );
+		DELAY( 15, "Login as $user failed, switching to anonymous" );
+	}
+
+	! /\\ncookie=([0-9A-F]+)\\n/;
+	$-{cookie} = $1;
+
+	CLICK( "http://api.rapidshare.com/cgi-bin/rsapi.cgi?sub=download_v1&amp;cookie=$-{cookie}&amp;editparentlocation=1&amp;try=1&amp;fileid=$-{id}&amp;filename=$-{name}" );
+
+	! my ( $host, $dlauth, $wait ) = m{DL:(.*?),([0-9A-F]+?),(\d+)};
+
+	DOWNLOAD( "http://$host/cgi-bin/rsapi.cgi?sub=download_v1&amp;cookie=$-{cookie}&amp;editparentlocation=1&amp;fileid=$-{id}&amp;filename=$-{name}&amp;bin=1&amp;dlauth=0&amp;wantpremdl=1" );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

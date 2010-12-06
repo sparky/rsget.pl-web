@@ -4,8 +4,8 @@ desc:	[L:RapidShare] <a href="http://rapidshare.com/" rel="nofollow">"http://rap
 
 body:	
 	<p>Check <a href="http://rapidshare.com/agb.html" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-07-25</p>
-	<pre># $Id: RapidShare 11701 2010-07-25 13:22:28Z sparky $
+<p>Status: OK 2010-12-05</p>
+	<pre># $Id: RapidShare 11948 2010-12-05 15:59:01Z sparky $
 # Link::RapidShare - Link decrypter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -17,13 +17,23 @@ short: L:RapidShare
 web: "http://rapidshare.com/"
 tos: "http://rapidshare.com/agb.html"
 uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/users/[A-Z0-9]+}
+uri: qr{(?:rs[a-z0-9]+\.)?rapidshare\.com/#!linklist|[A-Z0-9]+}
 slots: max
-status: OK 2010-07-25
+status: OK 2010-12-05
 
 start:
-	GET( $-{_uri} );
+	! $-{_uri} =~ m{(?:users/|#!linklist\|)([A-Z0-9]+)};
+	my $id = $1;
 
-	my @list = /&lt;a href="(.*?)" target="_blank"&gt;Start/g;
+	$-{_referer} = "http://rapidshare.com/";
+	GET( "http://api.rapidshare.com/cgi-bin/rsapi.cgi?sub=viewlinklist_v1&amp;linklist=$id&amp;cbf=RSAPIDispatcher&amp;cbid=1" );
+
+	my @list;
+	foreach ( split /\\n/, $_ ) {
+		next unless /\\"1\\",\\"0\\",\\"(\d+)\\",\\"(.*?)\\"/;
+		push @list, "http://rapidshare.com/files/$1/$2";
+	}
+
 	ERROR( "no links" ) unless @list;
 
 	LINK( @list );

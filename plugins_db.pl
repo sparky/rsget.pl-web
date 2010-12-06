@@ -22,7 +22,7 @@ $dbh->do(
 my $sth = $dbh->prepare( "INSERT INTO plugins( name, md5, body ) VALUES( ?, ?, ? )" );
 
 chdir "svn";
-foreach my $dir ( qw(Get Video Audio Image Link Direct) ) {
+foreach my $dir ( qw(Premium Get Video Audio Image Link Direct) ) {
 	foreach my $name ( glob "$dir/*" ) {
 		local $/ = undef;
 

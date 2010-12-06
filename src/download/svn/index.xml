@@ -11,8 +11,36 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 18</p>
+	<p>Commits: 32</p>
 	<dl>
+		<dt id="r11954"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11954&amp;view=rev">r11954</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:46:30 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium/RapidShare">Premium/RapidShare</a> (<a href="/getters/Premium/RapidShare/">getter</a>)</li></ul><pre>- plugin for premium account at rapidshare</pre></dd>
+		<dt id="r11953"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11953&amp;view=rev">r11953</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:45:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/addgetter">addgetter</a></li></ul><pre>- add Premium to supported dirs</pre></dd>
+		<dt id="r11952"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11952&amp;view=rev">r11952</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:44:43 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium/.template">Premium/.template</a> (<a href="/getters/Premium/.template/">getter</a>)</li></ul><pre>- simple template</pre></dd>
+		<dt id="r11951"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11951&amp;view=rev">r11951</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:43:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium">Premium/</a></li></ul><pre>- directory for premium plugins</pre></dd>
+		<dt id="r11950"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11950&amp;view=rev">r11950</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 23:37:19 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li></ul><pre>- hack-in support for premium plugins, not very pretty, but works</pre></dd>
+		<dt id="r11949"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11949&amp;view=rev">r11949</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 16:51:36 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Yahoo">Video/Yahoo</a> (<a href="/getters/Video/Yahoo/">getter</a>)</li></ul><pre>- new, mostly fixes RSGETPL-47 (needs more testing)</pre></dd>
+		<dt id="r11948"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11948&amp;view=rev">r11948</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 15:59:01 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Link/RapidShare">Link/RapidShare</a> (<a href="/getters/Link/RapidShare/">getter</a>)</li></ul><pre>- updated, works now, fixes RSGETPL-48</pre></dd>
+		<dt id="r11947"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11947&amp;view=rev">r11947</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 15:46:11 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- restart on -USR1 instead of -HUP</pre></dd>
+		<dt id="r11946"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11946&amp;view=rev">r11946</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-05 15:38:26 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- kill -HUP to reexecute rsget.pl</pre></dd>
+		<dt id="r11945"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11945&amp;view=rev">r11945</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-03 23:37:19 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li></ul><pre>- some error detection is back</pre></dd>
+		<dt id="r11944"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11944&amp;view=rev">r11944</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-03 23:29:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li></ul><pre>- detect free limit</pre></dd>
+		<dt id="r11943"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11943&amp;view=rev">r11943</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-03 22:37:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MegaUpload">Get/MegaUpload</a> (<a href="/getters/Get/MegaUpload/">getter</a>)</li></ul><pre>- MU changed a lot (no more captcha), pushed what I've got so far</pre></dd>
+		<dt id="r11942"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11942&amp;view=rev">r11942</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-03 21:53:45 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- count lines when displaying source</pre></dd>
+		<dt id="r11941"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11941&amp;view=rev">r11941</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-03 21:21:39 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Plugin.pm">RSGet/Plugin.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- add line information to generated plugins - finally some meaningful warnings</pre></dd>
 		<dt id="r11906"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11906&amp;view=rev">r11906</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-11 12:12:46 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- rs doesn't like when we use old uris - try to avoid them</pre></dd>
 		<dt id="r11905"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11905&amp;view=rev">r11905</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-11-11 11:41:04 UTC</em></dt>
