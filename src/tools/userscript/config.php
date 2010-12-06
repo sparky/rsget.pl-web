@@ -131,6 +131,8 @@ var supported2 = {
 	"tokfm.pl":	2,
 	"turbobit.net":	1,
 	"turbobit.ru":	1,
+	"uloz.to":	1,
+	"ulozto.cz":	1,
 	"ul.to":	1,
 	"uploaded.to":	1,
 	"uploading.com":	1,
@@ -154,7 +156,8 @@ var supported3 = {
 	"video.banzaj.pl":	2,
 	"video.delfi.ee":	2,
 	"video.google.com":	2,
-	"video.interia.pl":	2
+	"video.interia.pl":	2,
+	"video.yahoo.com":	2
 };
 /* }}} */
 
