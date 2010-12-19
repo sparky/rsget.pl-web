@@ -5,7 +5,7 @@ desc:	[TB] <a href="http://turbobit.net/" rel="nofollow">"http://turbobit.net/"<
 body:	
 	<p>Check <a href="http://turbobit.net/rules" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-26</p>
-	<pre># $Id: TurboBit 11787 2010-08-18 09:38:56Z pawelz $
+	<pre># $Id: TurboBit 11994 2010-12-18 21:44:41Z sparky $
 # Get::TurboBit - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -36,14 +36,19 @@ start:
 	MULTI( "e502, will try again" ) if m#&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;#;
 	ERROR( "file not found" ) if m#&lt;div class="code-404"&gt;404&lt;/div&gt;#;
 	ERROR( "file not found" ) if m#Файл не найден. Возможно он был удален|File was not found. It could possibly be deleted#;
+	ERROR( "file not found" ) if m#\Q'h1').html('File not found. Probably it was deleted\E#;
 
 	! m#&lt;h1 class="download-file"&gt;.*?&lt;span.*?&gt;(.*?)&lt;/span&gt;&lt;/h1&gt;#;
 	my $name = $1;
+	if ( $name =~ /\.\.\./ ) {
+		$name =~ s/\.\.\./\0/;
+		m#&lt;title&gt;\s+Download (.*?)\. Free download#s and $name = $1;
+	}
 	! m#&lt;b&gt;File size:&lt;/b&gt; ([\d,\.]+ .b)&lt;/div&gt;#;
 	( my $size = $1 ) =~ tr/,/./;
 	INFO( name =&gt; $name, asize =&gt; $size );
 
-	! m#&lt;td&gt;&lt;a class="free" href="(.*?)" #;
+	! m#&lt;a class="free wide" href="(.*?)" #;
 	CLICK( $1 );
 
 stage_captcha:
@@ -77,7 +82,7 @@ stage_getimg:
 		GOTO stage_captcha;
 	}
 
-	! m{\$\("#timeout"\)\.load\("(/download/timeout/.*?)"\);};
+	! m{\$\("#timeoutBox"\)\.load\("(/download/timeout/.*?)"};
 	$-{dl_link} = $1;
 
 	! m#var Timeout = {\s*limit: (\d+),#;

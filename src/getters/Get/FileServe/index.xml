@@ -4,8 +4,8 @@ desc:	[FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.co
 
 body:	
 	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-10-08</p>
-	<pre># $Id: FileServe 11846 2010-10-14 21:43:54Z sparky $
+<p>Status: OK 2010-12-19</p>
+	<pre># $Id: FileServe 11996 2010-12-19 17:21:46Z sparky $
 # Get::FileServe - File getter plugin for rsget.pl
 #
 # 2010 (c) Paweł Zuzelski &lt;pawelz@pld-linux.org&gt;
@@ -18,7 +18,7 @@ web: "http://fileserve.com/"
 tos: "http://fileserve.com/terms.php"
 uri: qr{fileserve\.com/file/[A-Za-z0-9]+(/.*)?}
 cookie: fsrv
-status: OK 2010-10-08
+status: OK 2010-12-19
 
 unify:
 	s/#.*//;
@@ -33,11 +33,11 @@ start:
 
 	! m#&lt;h1&gt;(.+?)&lt;br/&gt;&lt;/h1&gt;#;
 	my $fname = $1;
-	! m#&lt;span&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #o;
+	! m#&lt;span.*?&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #o;
 	INFO( name =&gt; $fname, asize =&gt; $1 );
 
-	( $-{captcha_key} ) = m{var reCAPTCHA_publickey='(.*?)';};
-	( $-{captcha_encode} ) = m{"recaptcha_shortencode_field".*? value="(.*?)" /&gt;};
+	! ( $-{captcha_key} ) = m{var reCAPTCHA_publickey='(.*?)';};
+	! ( $-{captcha_encode} ) = m{"recaptcha_shortencode_field".*? value="(.*?)" /&gt;};
 
 	! m{src="(/landing/.+?/download_captcha\.js)"};
 	CLICK( $1, keep_referer =&gt; 1,

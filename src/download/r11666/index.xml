@@ -13,7 +13,7 @@ body:
 	<p>Commits: 100</p>
 	<dl>
 		<dt id="r11666"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11666&amp;view=rev">r11666</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-13 11:58:44 UTC</em></dt>
-		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a> (<a href="/getters/Get/RapidShark/">getter</a>)</li></ul><pre>- BROKEN, probably won't be fixed - service changed</pre></dd>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a></li></ul><pre>- BROKEN, probably won't be fixed - service changed</pre></dd>
 		<dt id="r11665"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11665&amp;view=rev">r11665</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-13 11:57:38 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/StorageTo">Get/StorageTo</a> (<a href="/getters/Get/StorageTo/">getter</a>)</li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/X7">Get/X7</a> (<a href="/getters/Get/X7/">getter</a>)</li></ul><pre>- improved</pre></dd>
 		<dt id="r11664"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11664&amp;view=rev">r11664</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-07-13 11:37:30 UTC</em></dt>

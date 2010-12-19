@@ -11,8 +11,36 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 35</p>
+	<p>Commits: 49</p>
 	<dl>
+		<dt id="r11998"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11998&amp;view=rev">r11998</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 17:46:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a></li></ul><pre>- no longer a download service</pre></dd>
+		<dt id="r11997"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11997&amp;view=rev">r11997</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 17:28:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Audio/Gazeta">Audio/Gazeta</a> (<a href="/getters/Audio/Gazeta/">getter</a>)</li></ul><pre>- fixed RSGETPL-50</pre></dd>
+		<dt id="r11996"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11996&amp;view=rev">r11996</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 17:21:46 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- fixed/updated</pre></dd>
+		<dt id="r11994"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11994&amp;view=rev">r11994</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 21:44:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboBit">Get/TurboBit</a> (<a href="/getters/Get/TurboBit/">getter</a>)</li></ul><pre>- improved error handling, should fix RSGETPL-40</pre></dd>
+		<dt id="r11993"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11993&amp;view=rev">r11993</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 21:24:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/TurboBit">Get/TurboBit</a> (<a href="/getters/Get/TurboBit/">getter</a>)</li></ul><pre>- fixed/updated</pre></dd>
+		<dt id="r11992"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11992&amp;view=rev">r11992</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 20:33:59 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li></ul><pre>- some more log on main http page</pre></dd>
+		<dt id="r11991"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11991&amp;view=rev">r11991</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 20:27:38 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- fixed, at least partially</pre></dd>
+		<dt id="r11990"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11990&amp;view=rev">r11990</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 20:27:07 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li></ul><pre>- warn instead of NOTICE</pre></dd>
+		<dt id="r11989"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11989&amp;view=rev">r11989</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 16:17:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- one more hack to Content-Disposition decoding</pre></dd>
+		<dt id="r11988"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11988&amp;view=rev">r11988</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-18 15:26:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/4Shared">Get/4Shared</a> (<a href="/getters/Get/4Shared/">getter</a>)</li></ul><pre>- fixed/updated</pre></dd>
+		<dt id="r11976"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11976&amp;view=rev">r11976</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-07 21:01:10 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- typo</pre></dd>
+		<dt id="r11975"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11975&amp;view=rev">r11975</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-07 20:59:13 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- ignore SIGUSR1 for now</pre></dd>
+		<dt id="r11974"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11974&amp;view=rev">r11974</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-07 20:56:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- implemented "soft stop" for SIGINT, send twice to terminate immediatelly</pre></dd>
+		<dt id="r11972"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11972&amp;view=rev">r11972</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-07 11:26:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- SIGUSR1 is no more: send SIGUSR2 twice to restart immediately</pre></dd>
 		<dt id="r11967"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11967&amp;view=rev">r11967</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-06 19:19:10 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- implemented soft restart - SIGUSR2 will make rsget.pl restart after
   finishing all current downloads</pre></dd>

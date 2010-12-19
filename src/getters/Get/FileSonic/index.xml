@@ -4,8 +4,8 @@ desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.files
 
 body:	
 	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
-<p>Status: BROKEN 2010-11-10</p>
-	<pre># $Id: FileSonic 11904 2010-11-10 20:39:26Z sparky $
+<p>Status: OK 2010-12-18</p>
+	<pre># $Id: FileSonic 11991 2010-12-18 20:27:38Z sparky $
 # Get::FileSonic - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -18,7 +18,8 @@ web: "http://www.filesonic.com/"
 tos: "http://www.filesonic.com/terms-and-conditions"
 uri: qr{filesonic\.com/file/\d+}
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
-status: BROKEN 2010-11-10
+cookie: fsc
+status: OK 2010-12-18
 
 unify:
 	return "http://www.filesonic.com/file/$1"
@@ -38,7 +39,7 @@ start:
 
 	! m#href="(.*?)" id="free_download"#;
 	$-{dl_start} = $1;
-	CLICK( $-{dl_start}, post =&gt; "", keep_referer =&gt; 1 );
+	CLICK( $-{dl_start}, headers =&gt; [ "X-Requested-With: XMLHttpRequest" ], post =&gt; "", keep_referer =&gt; 1 );
 
 	MULTI() if m#&lt;span&gt;Download session in progress&lt;/span&gt;#;
 

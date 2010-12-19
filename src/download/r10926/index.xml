@@ -43,5 +43,5 @@ body:
 		<dt id="r10894"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10894&amp;view=rev">r10894</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-30 19:24:04 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Captcha.pm">RSGet/Captcha.pm</a></li><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/CaptchaImage.pm">RSGet/CaptchaImage.pm</a></li></ul><pre>- moved RSGet::Captcha::Image from Captcha to separate file</pre></dd>
 		<dt id="r10893"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=10893&amp;view=rev">r10893</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2009-10-30 19:22:15 UTC</em></dt>
-		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a> (<a href="/getters/Get/RapidShark/">getter</a>)</li></ul><pre>- updated</pre></dd>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a></li></ul><pre>- updated</pre></dd>
 	</dl>
