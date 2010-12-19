@@ -1,6 +1,7 @@
 index:	0
 title:	gtk captcha
-desc:	Simple <a href="/tools/gtk-captcha/gtk-captcha-rsget.pl">captcha asker in gtk</a>.
+desc:	<p>Simple <a href="/tools/gtk-captcha/gtk-captcha-rsget.pl">captcha asker in gtk</a>.</p>
+	<img src="/tools/gtk-captcha/gtk-captcha.png" alt="gtk-captcha screenshot" />
 
 body:	
 <h3>Requirements</h3>

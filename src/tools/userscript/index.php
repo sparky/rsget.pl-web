@@ -1,6 +1,7 @@
 index:	0
 title:	userscript
-desc:	Userscript for Mozilla, Chormium, Opera, Epiphany and UZBL web browsers.
+desc:	<p>Userscript for Mozilla, Chormium, Opera, Epiphany and UZBL web browsers.</p>
+	<img src="/tools/userscript/userscript.png" alt="userscript screenshot" />
 
 body:	
 <p>
