@@ -3,11 +3,12 @@ title:	Delfi
 desc:	[V:Delfi] <a href="http://tv.delfi.ee/" rel="nofollow">"http://tv.delfi.ee/"</a>
 
 body:	
-	<p>Status: OK 2010-08-01</p>
-	<pre># $Id: Delfi 11755 2010-08-03 09:31:49Z pawelz $
+	<p>Status: OK 2011-02-03</p>
+	<pre># $Id: Delfi 12105 2011-02-03 09:44:17Z glen $
 # Video::Delfi - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+# 2011 (c) Elan Ruusamäe &lt;glen@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
@@ -16,21 +17,23 @@ short: V:Delfi
 web: "http://tv.delfi.ee/"
 uri: qr{(?:rus\.)?tv\.delfi\.ee/video/[a-zA-Z0-9]+}
 uri: qr{video\.delfi\.ee/(?:ru/)?video/[a-zA-Z0-9]+}
+uri: qr{tv\.delfi\.lv/(?:ru/)?video/[a-zA-Z0-9]+}
+uri: qr{tv\.delfi\.lt/(?:ru/)?video/[a-zA-Z0-9]+}
 slots: max
-status: OK 2010-08-01
+status: OK 2011-02-03
 
 unify:
-	return "http://$1.delfi.ee/video/$2"
-		if m{([^/]+)\.delfi\.ee/(?:ru/)?video/([a-zA-Z0-9]+)};
+	return "http://$1.delfi.$2/video/$3"
+		if m{([^/]+)\.delfi\.(ee|lv|lt)/(?:ru/)?video/([a-zA-Z0-9]+)};
 
 start:
 	GET( $-{_uri} );
 
-	! m{&lt;title&gt;(?:DELFI TV &amp;#62; (?:Video|Видео) &amp;#62;\s+)?(.*?)&lt;/title&gt;};
+	! m{&lt;title&gt;(?:DELFI (?:TV|Video) &amp;#62; (?:Video|Видео) &amp;#62;\s+)?(.*?)&lt;/title&gt;};
 	my $fname = de_ml( $1 );
 	$fname =~ s{/}{_}g;
-	$fname .= ".flv";
-	INFO( name =&gt; $fname, quality =&gt; "flv" );
+	$fname .= ".mp4";
+	INFO( name =&gt; $fname, quality =&gt; "mp4" );
 
 	! m{addVariable\('file','(.*?)'};
 

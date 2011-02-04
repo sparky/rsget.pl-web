@@ -5,7 +5,7 @@ desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.files
 body:	
 	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-12-18</p>
-	<pre># $Id: FileSonic 11991 2010-12-18 20:27:38Z sparky $
+	<pre># $Id: FileSonic 12027 2010-12-27 01:23:06Z sparky $
 # Get::FileSonic - File getter plugin for rsget.pl
 #
 # 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -33,7 +33,7 @@ start:
 		or m#&lt;div id="downloadFileInfo" class="section CL2"&gt;\s*&lt;h2&gt;&lt;span&gt;[^&lt;]*?&lt;/span&gt;&lt;/h2&gt;\s*&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
 
 	! m#&lt;title&gt;Download (.*?) for free on Filesonic.com&lt;/title&gt;#;
-	my $fn = $1;
+	my $fn = de_ml( $1 );
 	! m#&lt;span class="size"&gt;($STDSIZE)&lt;/span&gt;#;
 	INFO( name =&gt; $fn, asize =&gt; $1 );
 

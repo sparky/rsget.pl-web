@@ -4,7 +4,7 @@ desc:	[V:YouTube] <a href="http://www.youtube.com/" rel="nofollow">"http://www.y
 
 body:	
 	<p>Status: OK 2010-07-22</p>
-	<pre># $Id: YouTube 11815 2010-09-24 20:14:48Z pawelz $
+	<pre># $Id: YouTube 12000 2010-12-19 19:00:08Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -25,6 +25,7 @@ unify:
 
 pre:
 	my @fmt = (
+		[ 38, "mp4", "1200p" ],
 		[ 37, "mp4", "1080p" ],
 		[ 22, "mp4", "720p" ],
 		[ 35, "flv", "HQ" ],
@@ -81,15 +82,20 @@ stage_got_format:
 	my $fmtstr = $fmt ? "&amp;fmt=$fmt-&gt;[0]" : "";
 	$fmt ||= [ 5, "flv", "vLQ" ];
 
-	my $fname = $name . "." . $fmt-&gt;[1];
-	INFO( name =&gt; $fname, fmt =&gt; $fmt-&gt;[0], quality =&gt; $fmt-&gt;[2] );
+	$-{fname} = $name . "." . $fmt-&gt;[1];
 
 	/"fmt_url_map": "(.*?)"/;
 	my %uri = map /(\d+)\|(.*)/, split /,/, $1;
 	my $uri = $uri{ $fmt-&gt;[0] };
 	$uri =~ s#\\/#/#g;
+	$-{file_uri} = uri_unescape( $uri );
 
-	DOWNLOAD( uri_unescape( $uri ), fname =&gt; $fname );
+	GET( $-{file_uri}, headonly =&gt; 1 );
+
+	my ( $len ) = /^Content-Length:\s*(\d+)\r?$/mi;
+	INFO( name =&gt; $-{fname}, size =&gt; $len );
+
+	DOWNLOAD( $-{file_uri}, fname =&gt; $-{fname} );
 
 # vim: filetype=perl:ts=4:sw=4
 </pre>

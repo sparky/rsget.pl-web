@@ -11,8 +11,55 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 49</p>
+	<p>Commits: 70</p>
 	<dl>
+		<dt id="r12105"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12105&amp;view=rev">r12105</a>, <a href="http://cia.vc/stats/author/glen">glen</a>, <em>2011-02-03 09:44:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>update to support other video site brands
+
+http://tv.delfi.lv/
+http://tv.delfi.lt/
+http://tv.delfi.ee/
+http://video.delfi.ee/</pre></dd>
+		<dt id="r12028"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12028&amp;view=rev">r12028</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-28 20:43:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- fix http= proxy</pre></dd>
+		<dt id="r12027"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12027&amp;view=rev">r12027</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-27 01:23:06 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- remove markup tags from guessed file name</pre></dd>
+		<dt id="r12022"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12022&amp;view=rev">r12022</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-23 01:27:20 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Wait.pm">RSGet/Wait.pm</a></li></ul><pre>- use Time::HiRes for smoother wait progress indication</pre></dd>
+		<dt id="r12021"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12021&amp;view=rev">r12021</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-22 12:33:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- unify "Current date" color</pre></dd>
+		<dt id="r12015"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12015&amp;view=rev">r12015</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-20 20:54:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- fix redraw on SIGWINCH</pre></dd>
+		<dt id="r12013"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12013&amp;view=rev">r12013</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-20 14:13:03 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Dispatch.pm">RSGet/Dispatch.pm</a></li></ul><pre>- try to catch SIGSEGV - probably won't work</pre></dd>
+		<dt id="r12012"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12012&amp;view=rev">r12012</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 23:57:41 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/MOTD.pm">RSGet/MOTD.pm</a></li></ul><pre>- more messages</pre></dd>
+		<dt id="r12011"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12011&amp;view=rev">r12011</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 23:49:47 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/MOTD.pm">RSGet/MOTD.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Main.pm">RSGet/Main.pm</a></li></ul><pre>- added message of the day</pre></dd>
+		<dt id="r12010"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12010&amp;view=rev">r12010</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 23:02:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- make [Current date... lines bold instead of green</pre></dd>
+		<dt id="r12009"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12009&amp;view=rev">r12009</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 23:00:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Captcha.pm">RSGet/Captcha.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Wait.pm">RSGet/Wait.pm</a></li></ul><pre>- progress bar for wait times and captcha</pre></dd>
+		<dt id="r12008"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12008&amp;view=rev">r12008</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 22:46:11 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.css">data/main.css</a></li></ul><pre>- support more progress colors</pre></dd>
+		<dt id="r12007"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12007&amp;view=rev">r12007</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 22:39:22 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- allow different progress colors</pre></dd>
+		<dt id="r12006"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12006&amp;view=rev">r12006</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 22:35:54 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- record progress as 0.0-1.0 number, convert to % later</pre></dd>
+		<dt id="r12005"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12005&amp;view=rev">r12005</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 22:23:19 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- progressbar in console, whoo !</pre></dd>
+		<dt id="r12004"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12004&amp;view=rev">r12004</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 22:09:35 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.css">data/main.css</a></li></ul><pre>- use color information from for active downloads from RSGet::Line</pre></dd>
+		<dt id="r12003"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12003&amp;view=rev">r12003</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 19:55:28 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Wait.pm">RSGet/Wait.pm</a></li></ul><pre>- more colors</pre></dd>
+		<dt id="r12002"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12002&amp;view=rev">r12002</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 19:43:52 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- fix file logging</pre></dd>
+		<dt id="r12001"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12001&amp;view=rev">r12001</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 19:42:14 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/HTTPRequest.pm">RSGet/HTTPRequest.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- some colors on terminal</pre></dd>
+		<dt id="r12000"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12000&amp;view=rev">r12000</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 19:00:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- use HTTP HEAD request to get exact file size</pre></dd>
+		<dt id="r11999"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11999&amp;view=rev">r11999</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 18:53:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- added format 38 for 1200p video</pre></dd>
 		<dt id="r11998"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11998&amp;view=rev">r11998</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 17:46:37 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_D"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShark">Get/RapidShark</a></li></ul><pre>- no longer a download service</pre></dd>
 		<dt id="r11997"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=11997&amp;view=rev">r11997</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2010-12-19 17:28:08 UTC</em></dt>
