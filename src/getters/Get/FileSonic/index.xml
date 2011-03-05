@@ -4,11 +4,11 @@ desc:	[FSC] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.files
 
 body:	
 	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
-<p>Status: OK 2010-12-18</p>
-	<pre># $Id: FileSonic 12027 2010-12-27 01:23:06Z sparky $
+<p>Status: OK 2011-03-02</p>
+	<pre># $Id: FileSonic 12179 2011-03-03 00:20:16Z sparky $
 # Get::FileSonic - File getter plugin for rsget.pl
 #
-# 2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+# 2010-2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
@@ -19,7 +19,7 @@ tos: "http://www.filesonic.com/terms-and-conditions"
 uri: qr{filesonic\.com/file/\d+}
 uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
 cookie: fsc
-status: OK 2010-12-18
+status: OK 2011-03-02
 
 unify:
 	return "http://www.filesonic.com/file/$1"
@@ -41,18 +41,29 @@ start:
 	$-{dl_start} = $1;
 	CLICK( $-{dl_start}, headers =&gt; [ "X-Requested-With: XMLHttpRequest" ], post =&gt; "", keep_referer =&gt; 1 );
 
-	MULTI() if m#&lt;span&gt;Download session in progress&lt;/span&gt;#;
+	MULTI() if m#&lt;span&gt;Download session in progress&lt;/span&gt;#
+		or m#&lt;p&gt;Free users may only download 1 file at a time\.&lt;/p&gt;#;
 
-stage_getlink:
 	( $-{file_uri} ) = m{&lt;p&gt;&lt;a href="(.*?)"&gt;&lt;span&gt;Start download now!&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;};
-
 	GOTO stage_download if $-{file_uri};
 
-	if ( /var countDownDelay = (\d+);/ ) {
-		$-{delay} = $1;
-		GOTO stage_wait;
-	}
+	GOTO stage_captcha unless /var countDownDelay = (\d+);/;
+	my $wait = $1;
 
+	RESTART( $wait, "download limit" ) if $wait &gt; 300;
+
+	! /&lt;input type='hidden' id='tm' name='tm' value='(.*?)'/;
+	my %post = ( tm =&gt; $1 );
+
+    ! /&lt;input type='hidden' id='tm_hash' name='tm_hash' value='(.*?)'/;
+	$post{tm_hash} = $1;
+	$-{wait_post} = \%post;
+
+	WAIT( -$wait, "expecting download information" );
+
+	GET( $-{dl_start}, post =&gt; $-{wait_post} );
+
+stage_captcha:
 	! m{Recaptcha\.create\("(.*?)"};
 	$-{captcha_key} = $1;
 
@@ -75,14 +86,8 @@ stage_getlink:
 			recaptcha_response_field =&gt; $_
 		} );
 
-	GOTO stage_getlink;
-
-stage_wait:
-	WAIT( -( $-{delay} + 5 ), "expecting download link" );
-
-	GET( $-{dl_start}, post =&gt; "" );
-
-	GOTO stage_getlink;
+	! m{&lt;p&gt;&lt;a href="(.*?)"&gt;&lt;span&gt;Start download now!&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;};
+	$-{file_uri} = $1;
 
 stage_download:
 	CLICK_DOWNLOAD( $-{file_uri} );

@@ -3,11 +3,11 @@ title:	DepositFiles
 desc:	[DF] <a href="http://depositfiles.com/" rel="nofollow">"http://depositfiles.com/"</a>
 
 body:	
-	<p>Status: OK 2010-07-13</p>
-	<pre># $Id: DepositFiles 11668 2010-07-13 14:04:38Z sparky $
+	<p>Status: OK 2011-03-02</p>
+	<pre># $Id: DepositFiles 12176 2011-03-02 20:34:18Z sparky $
 # Get::DepositFiles - File getter plugin for rsget.pl
 #
-# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+# 2009-2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
@@ -15,7 +15,7 @@ name: DepositFiles
 short: DF
 web: "http://depositfiles.com/"
 uri: qr{depositfiles\.com/(../)?files/[0-9a-z]+}
-status: OK 2010-07-13
+status: OK 2011-03-02
 
 unify:
 	return "http://depositfiles.com/files/$1" if m#/files/([0-9a-z]+)#;
@@ -35,16 +35,26 @@ start:
 	$-{dl_form} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^download_started/ } );
 	GOTO stage_download if $-{dl_form};
 
-	! my $form = $self-&gt;form( match =&gt; { body =&gt; qr/name="gateway_result"/ } );
+	! my $form = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^show_begin_popup/ } );
 	CLICK( $form-&gt;post() );
 
 	RESTART( $1, "free limit reached" )
 		if m#&lt;span class="html_download_api-limit_interval"&gt;(\d+)&lt;/span&gt;#;
 	
 	MULTI() if m#&lt;span class="html_download_api-limit_parallel"&gt;#;
-	$-{dl_form} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^download_started/ } );
 	
-	WAIT( 60, "starting download" );
+	! m#setTimeout\('load_form\(\)', (\d+)\);#;
+	my $wait = $1 / 1000;
+
+	! m/\$\('#download_container'\)\.load\('(.*?)'\);/;
+	$-{dl_link} = $1;
+
+	WAIT( $wait, "starting download" );
+
+	CLICK( $-{dl_link} );
+
+	$-{dl_form} = $self-&gt;form( match =&gt; { onsubmit =&gt; qr/^download_started/ } );
+	GOTO stage_download if $-{dl_form};
 
 stage_download:
 	CLICK_DOWNLOAD( $-{dl_form}-&gt;post() );

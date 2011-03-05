@@ -11,8 +11,43 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 70</p>
+	<p>Commits: 87</p>
 	<dl>
+		<dt id="r12191"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12191&amp;view=rev">r12191</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-05 00:20:40 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- get download speed from curl, don't calculate manually</pre></dd>
+		<dt id="r12190"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12190&amp;view=rev">r12190</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 17:30:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Processor.pm">RSGet/Processor.pm</a></li></ul><pre>- dump data if download is html</pre></dd>
+		<dt id="r12189"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12189&amp;view=rev">r12189</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 17:30:09 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- more fixes</pre></dd>
+		<dt id="r12187"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12187&amp;view=rev">r12187</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 02:33:26 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- better dead-interface detection</pre></dd>
+		<dt id="r12186"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12186&amp;view=rev">r12186</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 00:22:08 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- colorize more messages</pre></dd>
+		<dt id="r12185"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12185&amp;view=rev">r12185</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 00:20:25 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- improvemed, but there are problems yet</pre></dd>
+		<dt id="r12184"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12184&amp;view=rev">r12184</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 20:49:37 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/data/main.js">data/main.js</a></li></ul><pre>- don't be so annoying when asking for captcha</pre></dd>
+		<dt id="r12182"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12182&amp;view=rev">r12182</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 03:06:13 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li></ul><pre>- multi() will delay if called too many times</pre></dd>
+		<dt id="r12181"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12181&amp;view=rev">r12181</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 03:01:17 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- detect parallel download early</pre></dd>
+		<dt id="r12180"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12180&amp;view=rev">r12180</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 01:04:58 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileFactory">Get/FileFactory</a> (<a href="/getters/Get/FileFactory/">getter</a>)</li></ul><pre>- wait what's needed</pre></dd>
+		<dt id="r12179"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12179&amp;view=rev">r12179</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 00:20:16 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- fixed multi-download detection</pre></dd>
+		<dt id="r12178"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12178&amp;view=rev">r12178</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-03 00:03:56 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileServe">Get/FileServe</a> (<a href="/getters/Get/FileServe/">getter</a>)</li></ul><pre>- improved: don't ask the captcha if we must wait anyways</pre></dd>
+		<dt id="r12177"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12177&amp;view=rev">r12177</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-02 21:10:51 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/FileSonic">Get/FileSonic</a> (<a href="/getters/Get/FileSonic/">getter</a>)</li></ul><pre>- improved</pre></dd>
+		<dt id="r12176"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12176&amp;view=rev">r12176</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-02 20:34:18 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/DepositFiles">Get/DepositFiles</a> (<a href="/getters/Get/DepositFiles/">getter</a>)</li></ul><pre>- fixed / updated</pre></dd>
+		<dt id="r12160"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12160&amp;view=rev">r12160</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-02-19 00:11:45 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/links_dlc.pl">links_dlc.pl</a></li></ul><pre>- NEW: extracts links from .dlc file
+- usage: ./links_dlc.pl file.dlc &gt;&gt; get.list</pre></dd>
+		<dt id="r12151"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12151&amp;view=rev">r12151</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-02-14 23:38:53 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Line.pm">RSGet/Line.pm</a></li></ul><pre>- collapse whitespaces before printing</pre></dd>
+		<dt id="r12150"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12150&amp;view=rev">r12150</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-02-14 23:38:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Get.pm">RSGet/Get.pm</a></li><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Wait.pm">RSGet/Wait.pm</a></li></ul><pre>- allow plugins to die without killing whole rsget.pl</pre></dd>
 		<dt id="r12105"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12105&amp;view=rev">r12105</a>, <a href="http://cia.vc/stats/author/glen">glen</a>, <em>2011-02-03 09:44:17 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/Delfi">Video/Delfi</a> (<a href="/getters/Video/Delfi/">getter</a>)</li></ul><pre>update to support other video site brands
 

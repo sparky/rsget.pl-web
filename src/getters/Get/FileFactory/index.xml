@@ -5,7 +5,7 @@ desc:	[FF] <a href="http://filefactory.com/" rel="nofollow">"http://filefactory.
 body:	
 	<p>Check <a href="http://filefactory.com/legal/terms.php" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-07-12</p>
-	<pre># $Id: FileFactory 11716 2010-07-27 20:18:28Z sparky $
+	<pre># $Id: FileFactory 12180 2011-03-03 01:04:58Z sparky $
 # Get::FileFactory - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -74,7 +74,7 @@ start:
 	$-{file_uri} = $1;
 
 	! m#&lt;input type="hidden" id="startWait" value="(\d+)"#;
-	WAIT( $1, "starting download" );
+	WAIT( -$1, "starting download" );
 
 	CLICK_DOWNLOAD( $-{file_uri} );
 
