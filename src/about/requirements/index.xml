@@ -155,6 +155,7 @@ body:
 				perlbase-xsloader<br />
 				<em>NOTE: those requirements may expand some day</em>
 			</li>
+			<li>libcurl</li>
 			<li>perl-www-curl</li>
 			<li>perl-uri</li>
 		</ul>
