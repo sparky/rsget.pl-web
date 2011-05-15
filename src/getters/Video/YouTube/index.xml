@@ -3,11 +3,11 @@ title:	YouTube
 desc:	[V:YouTube] <a href="http://www.youtube.com/" rel="nofollow">"http://www.youtube.com/"</a>
 
 body:	
-	<p>Status: OK 2010-07-22</p>
-	<pre># $Id: YouTube 12000 2010-12-19 19:00:08Z sparky $
+	<p>Status: OK 2011-03-25</p>
+	<pre># $Id: YouTube 12216 2011-03-25 19:13:23Z sparky $
 # Video::YouTube - Video getter plugin for rsget.pl
 #
-# 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+# 2009-2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
 #		This program is free software,
 # you may distribute it under GPL v2 or newer.
 
@@ -16,7 +16,7 @@ short: V:YouTube
 web: "http://www.youtube.com/"
 uri: qr{youtube\.com/watch\?v=.*}
 slots: max
-status: OK 2010-07-22
+status: OK 2011-03-25
 
 unify:
 	s/#.*//;
@@ -87,6 +87,7 @@ stage_got_format:
 	/"fmt_url_map": "(.*?)"/;
 	my %uri = map /(\d+)\|(.*)/, split /,/, $1;
 	my $uri = $uri{ $fmt-&gt;[0] };
+	$uri =~ s#\\u0026#&amp;#g;
 	$uri =~ s#\\/#/#g;
 	$-{file_uri} = uri_unescape( $uri );
 

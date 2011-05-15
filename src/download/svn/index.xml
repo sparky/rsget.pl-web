@@ -11,8 +11,23 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 87</p>
+	<p>Commits: 94</p>
 	<dl>
+		<dt id="r12240"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12240&amp;view=rev">r12240</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-05-15 21:52:12 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a> (<a href="/getters/Get/MediaFire/">getter</a>)</li></ul><pre>- NEW/resurrected: uses JE for javascript execution, slow as afterlife in
+  heaven, but works</pre></dd>
+		<dt id="r12234"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12234&amp;view=rev">r12234</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-04-27 16:54:27 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- WWW::CurlOO renamed to Net::Curl</pre></dd>
+		<dt id="r12232"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12232&amp;view=rev">r12232</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-04-22 00:52:21 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium/FileServe">Premium/FileServe</a> (<a href="/getters/Premium/FileServe/">getter</a>)</li></ul><pre>- NEW: premium fileserve getter</pre></dd>
+		<dt id="r12227"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12227&amp;view=rev">r12227</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-04-12 23:14:24 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Premium/FileSonic">Premium/FileSonic</a> (<a href="/getters/Premium/FileSonic/">getter</a>)</li></ul><pre>- new, filesonic premium account support</pre></dd>
+		<dt id="r12225"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12225&amp;view=rev">r12225</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-04-11 19:53:36 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- use WWW::CurlOO if available</pre></dd>
+		<dt id="r12216"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12216&amp;view=rev">r12216</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-25 19:13:23 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Video/YouTube">Video/YouTube</a> (<a href="/getters/Video/YouTube/">getter</a>)</li></ul><pre>- updated</pre></dd>
+		<dt id="r12194"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12194&amp;view=rev">r12194</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-06 13:34:34 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/UlozTo">Get/UlozTo</a> (<a href="/getters/Get/UlozTo/">getter</a>)</li></ul><pre>- updated/fixed</pre></dd>
 		<dt id="r12191"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12191&amp;view=rev">r12191</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-05 00:20:40 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/RSGet/Curl.pm">RSGet/Curl.pm</a></li></ul><pre>- get download speed from curl, don't calculate manually</pre></dd>
 		<dt id="r12190"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12190&amp;view=rev">r12190</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-03-04 17:30:56 UTC</em></dt>
