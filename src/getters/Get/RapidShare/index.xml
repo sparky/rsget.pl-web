@@ -5,7 +5,7 @@ desc:	[RS] <a href="http://rapidshare.com/" rel="nofollow">"http://rapidshare.co
 body:	
 	<p>Check <a href="http://rapidshare.com/#!rapidshare-ag/rapidshare-ag_agb" rel="nofollow">terms of service</a>.</p>
 <p>Status: OK 2010-10-04</p>
-	<pre># $Id: RapidShare 11906 2010-11-11 12:12:46Z sparky $
+	<pre># $Id: RapidShare 12241 2011-05-22 22:35:02Z sparky $
 # Get::RapidShare - File getter plugin for rsget.pl
 #
 # 2009-2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
@@ -58,7 +58,7 @@ start:
 
 	$-{file_uri} = "http://$host/cgi-bin/rsapi.cgi?sub=download_v1&amp;dlauth=$dlauth&amp;bin=1&amp;fileid=$-{id}&amp;filename=$-{name}";
 
-	WAIT( $wait, "starting download" );
+	WAIT( -$wait, "starting download" );
 
 	DOWNLOAD( $-{file_uri} );
 

@@ -11,8 +11,10 @@ desc:
 body:	
 
 	<h2>SVN changelog</h2>
-	<p>Commits: 94</p>
+	<p>Commits: 95</p>
 	<dl>
+		<dt id="r12241"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12241&amp;view=rev">r12241</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-05-22 22:35:02 UTC</em></dt>
+		<dd><ul class="filelist"><li class="file_M"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/RapidShare">Get/RapidShare</a> (<a href="/getters/Get/RapidShare/">getter</a>)</li></ul><pre>- fix getting 1GB+ files</pre></dd>
 		<dt id="r12240"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn?rev=12240&amp;view=rev">r12240</a>, <a href="http://cia.vc/stats/author/sparky">sparky</a>, <em>2011-05-15 21:52:12 UTC</em></dt>
 		<dd><ul class="filelist"><li class="file_A"><a href="http://svn.pld-linux.org/cgi-bin/viewsvn/toys/rsget.pl/Get/MediaFire">Get/MediaFire</a> (<a href="/getters/Get/MediaFire/">getter</a>)</li></ul><pre>- NEW/resurrected: uses JE for javascript execution, slow as afterlife in
   heaven, but works</pre></dd>
