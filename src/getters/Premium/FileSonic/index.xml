@@ -1,0 +1,53 @@
+index:	0
+title:	FileSonic
+desc:	[*FS] <a href="http://www.filesonic.com/" rel="nofollow">"http://www.filesonic.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.filesonic.com/terms-and-conditions" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2011-04-13</p>
+	<pre># $Id: FileSonic 12227 2011-04-12 23:14:24Z sparky $
+# Get::FileSonic - Premium file getter plugin for rsget.pl
+#
+# 2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FileSonic
+short: *FS
+web: "http://www.filesonic.com/"
+tos: "http://www.filesonic.com/terms-and-conditions"
+uri: qr{filesonic\.com/file/\d+}
+uri: qr{(?:www\d+\.)?sharingmatrix\.com/file/\d+}
+cookie: fsc.p
+slots: max
+status: OK 2011-04-13
+
+pre:
+	my ($user, $pass);
+	if ( my $s = setting("premium_filesonic") ) {
+		($user, $pass) = ($s =~ /^(.+?):(.+)/) or die "Premium user:pass incorrect\n";
+	} else {
+		die "Premium user:pass not given\n";
+	}
+
+unify:
+	return "http://www.filesonic.com/file/$1"
+		if m{/file/(\d+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" )
+		if m#&lt;div class="section CL1"&gt;.*?&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s
+			or m#&lt;div id="downloadFileInfo" class="section CL2"&gt;\s*&lt;h2&gt;&lt;span&gt;[^&lt;]*?&lt;/span&gt;&lt;/h2&gt;\s*&lt;p&gt;\s*(.*?)\s*&lt;/p&gt;#s;
+	! m#&lt;title&gt;Download (.*?) for free on Filesonic.com&lt;/title&gt;#;
+	my $fn = de_ml( $1 );
+	! m#&lt;span class="size"&gt;($STDSIZE)&lt;/span&gt;#;
+	INFO( name =&gt; $fn, asize =&gt; $1 );
+
+	GET( "/user/login", post =&gt; { email =&gt; $user, redirect =&gt; "/", password =&gt; $pass } );
+
+	DOWNLOAD( $-{_uri} );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

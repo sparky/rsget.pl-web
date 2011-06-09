@@ -1,0 +1,56 @@
+index:	0
+title:	FileServe
+desc:	[*FSRV] <a href="http://fileserve.com/" rel="nofollow">"http://fileserve.com/"</a>
+
+body:	
+	<p>Check <a href="http://fileserve.com/terms.php" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2011-03-03</p>
+	<pre># $Id: FileServe 12232 2011-04-22 00:52:21Z sparky $
+# Premium::FileServe - File getter plugin for rsget.pl
+#
+# 2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: FileServe
+short: *FSRV
+web: "http://fileserve.com/"
+tos: "http://fileserve.com/terms.php"
+uri: qr{fileserve\.com/file/[A-Za-z0-9]+(/.*)?}
+cookie: fsrv.p
+slots: max
+status: OK 2011-03-03
+
+pre:
+	my ($user, $pass);
+	if ( my $s = setting("premium_fileserve") ) {
+		($user, $pass) = ($s =~ /^(.+?):(.+)/) or die "Premium user:pass incorrect\n";
+	} else {
+		die "Premium user:pass not given\n";
+	}
+
+unify:
+	s/#.*//;
+	return "http://fileserve.com/file/$1"
+		if m{fileserve\.com/file/([A-Za-z0-9]+)};
+
+start:
+	GET( $-{_uri} );
+
+	ERROR( "file not found: $1" ) if m#&lt;span class="fail_info"&gt;\s*(.*?)\s*&lt;/span&gt;#s
+		or m{&lt;img src="/images/stop_error\.gif".*?&lt;h1&gt;.*?&lt;/h1&gt;&lt;/li&gt;&lt;li&gt;(.*?)&lt;/li&gt;}s;
+
+	! m#&lt;h1&gt;(.+?)&lt;br/&gt;&lt;/h1&gt;#;
+	my $fname = $1;
+	! m#&lt;span.*?&gt;&lt;strong&gt;($STDSIZE)&lt;/strong&gt; \| Uploaded on #o;
+	INFO( name =&gt; $fname, asize =&gt; $1 );
+
+	! ( $-{captcha_key} ) = m{var reCAPTCHA_publickey='(.*?)';};
+	! ( $-{captcha_encode} ) = m{"recaptcha_shortencode_field".*? value="(.*?)" /&gt;};
+
+	DOWNLOAD( "/login.php", post =&gt; { loginUserName =&gt; $user,
+			loginUserPassword =&gt; $pass, autoLogin =&gt; 'on',
+			loginFormSubmit =&gt; 'Login' } );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>

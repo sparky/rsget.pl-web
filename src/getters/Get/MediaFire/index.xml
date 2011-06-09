@@ -1,0 +1,118 @@
+index:	0
+title:	MediaFire
+desc:	[MF] <a href="http://www.mediafire.com/" rel="nofollow">"http://www.mediafire.com/"</a>
+
+body:	
+	<p>Check <a href="http://www.mediafire.com/terms_of_service.php" rel="nofollow">terms of service</a>.</p>
+<p>Status: OK 2011-05-15</p>
+	<pre># $Id: MediaFire 12240 2011-05-15 21:52:12Z sparky $
+# Get::MediaFire - File getter plugin for rsget.pl
+#
+# 2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;
+#		This program is free software,
+# you may distribute it under GPL v2 or newer.
+
+name: MediaFire
+short: MF
+web: "http://www.mediafire.com/"
+tos: "http://www.mediafire.com/terms_of_service.php"
+uri: qr{mediafire\.com/\?[a-z0-9]+}
+cookie: mf
+status: OK 2011-05-15
+slots: max
+
+pre:
+	use JE;
+
+start:
+	GET( $-{_uri} );
+
+	m#&lt;META NAME="description" CONTENT="(.*?)"#;
+	my $fn = $1;
+	m#&lt;input type="hidden" id="sharedtabsfileinfo1-fs" value="($STDSIZE)"&gt;#;
+	INFO( name =&gt; $fn, asize =&gt; $1 );
+
+	! s#&lt;script language="JavaScript" type="text/JavaScript"&gt;&lt;!--.*?&lt;/script&gt;##s;
+	! s#&lt;script language="JavaScript" type="text/JavaScript"&gt;&lt;!--(.*?)&lt;/script&gt;##s;
+	my $script = $1;
+
+	m#&lt;script type="text/javascript"&gt;DoShow.*?;cR\(\);\s+(\S+)\(\);\s+ap\(-1\);#s;
+	my $method = $1;
+
+	my $je = JE-&gt;new;
+	my $el = {};
+	my $div;
+	$je-&gt;new_function( DoShow =&gt; sub { } );
+	$je-&gt;new_function( aa =&gt; sub { warn "MediaFire Alert: @_\n"; } );
+	$je-&gt;new_function( _byid =&gt; sub {
+			my $name = shift;
+			$div = $name if $name =~ /^[0-9a-f]{32}$/;
+			return $el-&gt;{ $name } ||= $je-&gt;eval( 'new Object( { style: {} } )' );
+	} );
+	$je-&gt;eval( 'pk = null;' );
+	$je-&gt;{document} = $je-&gt;eval( 'new Object' );
+	$je-&gt;eval( "document.getElementById = _byid" );
+	$je-&gt;new_function( setTimeout =&gt; sub { shift-&gt;(); undef } );
+	$je-&gt;eval( $script );
+	eval {
+		$je-&gt;method( $method );
+	};
+
+	my $uri = $el-&gt;{workframe2}{src};
+
+	# minimize leaks
+	%$el = (); $el = undef;
+	$je = undef;
+
+	! $uri;
+	! $-{wanted} = $div;
+
+	GET( $uri );
+
+	! s#^.*?&lt;!--##s;
+	! s#&lt;/script&gt;.*$##s;
+
+	my $wanted = $-{wanted};
+	my $has_wanted;
+	my $je = JE-&gt;new;
+	my $el = {};
+	$je-&gt;new_function( aa =&gt; sub { warn "MediaFire Alert: @_\n"; } );
+	$je-&gt;new_function( _byid =&gt; sub {
+			my $name = shift;
+			if ( $name eq $wanted ) {
+				$has_wanted = 1;
+			} elsif ( $has_wanted ) {
+				die "That's enough\n";
+			}
+			return $el-&gt;{$name} ||= $je-&gt;eval( 'new Object( { style: {} } )' );
+	} );
+
+	$je-&gt;{parent} = $je-&gt;eval( 'new Object' );
+	$je-&gt;eval( "parent.document = { getElementById: _byid };" );
+	$je-&gt;{parent}{window}{location}{hash} = "";
+
+	$self-&gt;print( "extracting link, this may block for a while !" );
+	RSGet::Line::update();
+
+	$je-&gt;eval( $_ );
+	RSGet::Line::update();
+	eval {
+		$je-&gt;method( 'dz' );
+	};
+	$self-&gt;print( "extraction completed" );
+	RSGet::Line::update();
+
+	my $html = $el-&gt;{$wanted}{innerHTML};
+	%$el = (); $el = undef;
+	$je = undef;
+	
+	! $html =~ m# href="(.*?)"&gt;#;;
+	my $uri = $1;
+
+	# must not contain autodisable
+	! $uri !~ /autodisable/;
+
+	DOWNLOAD( $uri );
+
+# vim: filetype=perl:ts=4:sw=4
+</pre>
