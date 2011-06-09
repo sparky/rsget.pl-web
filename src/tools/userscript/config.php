@@ -2,7 +2,7 @@
 if ( ! isset( $_SERVER["PATH_TRANSLATED"] ) || ! ereg( ".user.js$", $_SERVER["PATH_TRANSLATED"] ) ) {
 	header( 'Refresh: 1;url=/tools/userscript/config.php/rsgetpl.user.js' );
 }
-header( 'Content-type: text/javascript' );
+header( 'Content-type: text/javascript; charset=utf-8' );
 $exp = time() + 60 * 60 * 24 * 150;
 $cpath = "/tools/userscript/";
 $host = "http://localhost:7666/";

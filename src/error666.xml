@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <!--
      http://rsget.pl/ error page
-     2010 (c) Przemysław Iskra <sparky@pld-linux.org>
+     2010-2011 (c) Przemysław Iskra <sparky@pld-linux.org>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
@@ -31,7 +32,7 @@
 			You should take your frustration out on the
 			person who gave you that incorrect link.
 		</p>
-		<address>2010 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;</address>
+		<address>2010-2011 (c) Przemysław Iskra &lt;sparky@pld-linux.org&gt;</address>
 	</div>
 	<hr class="foot"/>
 </div>
